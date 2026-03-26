@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Summit — Smarter Cycling Training</title>
+  <meta name="description" content="Built for cyclists who take training seriously. Smarter training. Better fueling. Real results." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #FAF6F0;
+      --surface: #FFFFFF;
+      --border:  #E5DDD4;
+      --accent:  #B8733A;
+      --accent2: #8C4F1E;
+      --text:    #1A1208;
+      --muted:   #6B5B47;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Source Sans 3', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .topbar { background: var(--text); height: 3px; width: 100%; }
+
+    /* NAV */
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+    .nav-logo {
+      width: 32px; height: 32px;
+      border-radius: 7px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(26,18,8,0.14);
+      flex-shrink: 0;
+    }
+    .nav-logo img { width: 100%; display: block; }
+
+    .nav-name {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: inline-block; padding: 9px 20px;
+      background: var(--text); color: var(--bg);
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* HERO */
+    .hero {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 28px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.025em;
+      max-width: 680px; margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards;
+    }
+    .hero-headline em { font-style: italic; color: var(--accent); }
+
+    .hero-sub {
+      font-size: 17px; color: var(--muted);
+      max-width: 480px; margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.5s ease 0.28s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block; padding: 14px 32px;
+      background: var(--accent); color: #fff;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent2); }
+
+    .hero-note { font-size: 13px; color: var(--muted); }
+    .hero-note strong { color: var(--accent); font-weight: 500; }
+
+    /* FEATURES */
+    .features {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 48px;
+    }
+
+    .features-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .feature-card {
+      background: var(--bg); padding: 40px 36px;
+      opacity: 0; transform: translateY(16px);
+      transition: background 0.2s;
+    }
+    .feature-card.visible { animation: fadeUp 0.45s ease forwards; }
+    .feature-card:hover { background: var(--surface); }
+
+    .feature-num {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .feature-title {
+      font-family: var(--serif);
+      font-size: 1.3rem; font-weight: 400;
+      line-height: 1.25; letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .feature-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* INTEGRATIONS */
+    .integrations {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .integrations-intro {
+      display: flex; align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 40px; gap: 20px; flex-wrap: wrap;
+    }
+
+    .integrations-title {
+      font-family: var(--serif);
+      font-size: 1.6rem; font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-sub {
+      font-size: 14px; color: var(--muted);
+      max-width: 340px; text-align: right;
+    }
+
+    .integrations-list {
+      display: flex; flex-wrap: wrap;
+      border: 1px solid var(--border);
+    }
+
+    .integration-item {
+      flex: 1; min-width: 120px;
+      padding: 24px 20px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px; font-weight: 500;
+      color: var(--muted); letter-spacing: 0.04em;
+      transition: color 0.15s, background 0.15s;
+    }
+    .integration-item:last-child { border-right: none; }
+    .integration-item:hover { color: var(--text); background: var(--surface); }
+
+    .integration-item span {
+      display: block; font-size: 10px; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px;
+    }
+
+    /* CTA */
+    .cta-section {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 28px;
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+    }
+
+    .cta-text { max-width: 520px; }
+
+    .cta-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400; line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .cta-title em { font-style: italic; color: var(--accent); }
+
+    .cta-body { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+
+    .cta-aside { text-align: right; flex-shrink: 0; }
+
+    .waitlist-count {
+      font-family: var(--serif);
+      font-size: 3rem; font-weight: 600;
+      color: var(--accent); line-height: 1; margin-bottom: 4px;
+    }
+
+    .waitlist-label {
+      font-size: 12px; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 900px; margin: 0 auto;
+      padding: 28px 28px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--muted);
+      display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px; align-items: center;
+    }
+
+    .footer-logo {
+      width: 24px; height: 24px; border-radius: 5px;
+      overflow: hidden; display: inline-block;
+      vertical-align: middle; margin-right: 7px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+      position: relative; top: -1px;
+    }
+    .footer-logo img { width: 100%; display: block; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .cta-section { flex-direction: column; align-items: flex-start; }
+      .cta-aside { text-align: left; }
+      .integrations-intro { flex-direction: column; }
+      .integrations-sub { text-align: left; }
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo"><img id="nav-icon" alt="Project Summit" /></div>
+    <span class="nav-name">Project Summit</span>
+  </a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">iOS App &nbsp;·&nbsp; Coming Soon</p>
+  <h1 class="hero-headline">Built for cyclists who take training <em>seriously.</em></h1>
+  <p class="hero-sub">Smarter training. Better fueling. Real results. An adaptive platform that learns from your body — not a rigid plan.</p>
+  <div class="hero-actions">
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary">Join the Waitlist</a>
+    <span class="hero-note"><strong>16 cyclists</strong> already on the list</span>
+  </div>
+</section>
+
+<section class="features">
+  <p class="section-label">What Project Summit does</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-num">01</div>
+      <h2 class="feature-title">Adaptive Training Load</h2>
+      <p class="feature-desc">Tracks CTL, ATL, and TSS in real time. Detects skipped sessions and automatically cascades plan adjustments so you never follow a stale schedule.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">02</div>
+      <h2 class="feature-title">FTP &amp; Power Curve Intelligence</h2>
+      <p class="feature-desc">Continuously estimates your eFTP and power zones using the CP2 model. No manual tests needed — your training data speaks for itself.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">03</div>
+      <h2 class="feature-title">HRV-Driven Recovery</h2>
+      <p class="feature-desc">Reads your HRV, resting heart rate, and sleep quality from Apple Health. Adjusts daily intensity before you even open the app.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">04</div>
+      <h2 class="feature-title">Push Workouts Everywhere</h2>
+      <p class="feature-desc">Structured workouts flow directly to Garmin, Zwift, and MyWhoosh via intervals.icu — one tap, ready to ride.</p>
+    </div>
+  </div>
+</section>
+
+<section class="integrations">
+  <div class="integrations-intro">
+    <h2 class="integrations-title">Connects with your kit</h2>
+    <p class="integrations-sub">Works with the platforms you already use. No manual imports.</p>
+  </div>
+  <div class="integrations-list">
+    <div class="integration-item"><span>Import</span>Strava</div>
+    <div class="integration-item"><span>Sync</span>Garmin Connect</div>
+    <div class="integration-item"><span>Distribute</span>intervals.icu</div>
+    <div class="integration-item"><span>Health</span>Apple HealthKit</div>
+    <div class="integration-item"><span>Train</span>Zwift</div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-text">
+    <h2 class="cta-title">Be first to ride<br><em>smarter.</em></h2>
+    <p class="cta-body">Project Summit is in pre-launch. Join the waitlist and get early access when we open the doors.</p>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary">Reserve Your Spot</a>
+  </div>
+  <div class="cta-aside">
+    <div class="waitlist-count">16</div>
+    <div class="waitlist-label">on the waitlist</div>
+  </div>
+</section>
+
+<footer>
+  <span>
+    <span class="footer-logo"><img id="footer-icon" alt="" /></span>
+    &copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong>
+  </span>
+  <span>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:team@projectsummit.app">team@projectsummit.app</a>
+  </span>
+</footer>
+
+<script>
+  var b64 = "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";
+  document.querySelectorAll('#nav-icon, #footer-icon').forEach(function(img) {
+    img.src = 'data:image/png;base64,' + b64;
+  });
+
+  // Scroll-triggered feature cards
+  var cards = document.querySelectorAll('.feature-card');
+  var delays = [0, 0.1, 0.2, 0.3];
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.from(cards).indexOf(entry.target);
+        entry.target.style.animationDelay = (delays[idx] || 0) + 's';
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(function(c) { observer.observe(c); });
+</script>
+
+</body>
+</html>
