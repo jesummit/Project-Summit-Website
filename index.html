@@ -483,12 +483,96 @@
         <li>You have a target event and want to peak for it</li>
         <li>You want nutrition integrated into your training, not bolted on</li>
       </ul>
-      <div class="who-for-not">
-        <strong>Not quite there yet?</strong> Project Summit assumes you're already training consistently and tracking power. If you're just starting out, a simpler app may be a better first step.
-      </div>
+
     </div>
   </div>
 </section>
+
+<!--
+  ═══════════════════════════════════════════════════
+  MOCKUP SECTION — Uncomment when screenshots ready
+  ═══════════════════════════════════════════════════
+
+  Add CSS inside <style>:
+
+    .mockup {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mockup-intro {
+      display: flex; align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px; gap: 20px; flex-wrap: wrap;
+    }
+
+    .mockup-title {
+      font-family: var(--serif);
+      font-size: 1.6rem; font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .mockup-sub {
+      font-size: 14px; color: var(--muted);
+      max-width: 340px; text-align: right;
+    }
+
+    .mockup-frames {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; align-items: end;
+    }
+
+    .mockup-frame {
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(26,18,8,0.12);
+      background: var(--surface);
+      aspect-ratio: 9 / 19.5;
+    }
+
+    .mockup-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .mockup-frame--center {
+      transform: scale(1.06);
+      box-shadow: 0 16px 48px rgba(26,18,8,0.18);
+    }
+
+    .mockup-caption {
+      margin-top: 32px; text-align: center;
+      font-size: 13px; color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 600px) {
+      .mockup-frames { grid-template-columns: 1fr; }
+      .mockup-frame--center { transform: none; }
+      .mockup-intro { flex-direction: column; }
+      .mockup-sub { text-align: left; }
+    }
+
+  Add HTML after .who-for section:
+
+  <section class="mockup">
+    <div class="mockup-intro">
+      <h2 class="mockup-title">A closer look</h2>
+      <p class="mockup-sub">Every screen designed around what cyclists actually need to see.</p>
+    </div>
+    <div class="mockup-frames">
+      <div class="mockup-frame">
+        <img src="mockup-dashboard.png" alt="Dashboard view" />
+      </div>
+      <div class="mockup-frame mockup-frame--center">
+        <img src="mockup-training.png" alt="Training load view" />
+      </div>
+      <div class="mockup-frame">
+        <img src="mockup-nutrition.png" alt="Nutrition planner view" />
+      </div>
+    </div>
+    <p class="mockup-caption">iOS App · Available Summer 2026</p>
+  </section>
+
+  ═══════════════════════════════════════════════════
+-->
 
 <section class="integrations">
   <div class="integrations-intro">
