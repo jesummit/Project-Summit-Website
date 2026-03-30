@@ -115,17 +115,17 @@
     .page-meta strong { font-weight: 500; color: var(--text); }
 
     /* ── TOC ── */
-    .toc-wrap {
+    nav.toc {
       max-width: 900px; margin: 0 auto;
       padding: 40px 28px 0;
+      opacity: 0; animation: fadeUp 0.5s ease 0.25s forwards;
     }
 
-    nav.toc {
+    nav.toc .toc-inner {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 24px 28px;
-      opacity: 0; animation: fadeUp 0.5s ease 0.25s forwards;
     }
 
     nav.toc h2 {
@@ -299,8 +299,8 @@
   </p>
 </div>
 
-<div class="toc-wrap">
-  <nav class="toc">
+<nav class="toc">
+  <div class="toc-inner">
     <h2>Contents</h2>
     <ol>
       <li><a href="#s1">Who we are</a></li>
@@ -314,12 +314,10 @@
       <li><a href="#s9">Changes to this policy</a></li>
       <li><a href="#s10">Contact</a></li>
     </ol>
-  </nav>
-</div>
+  </div>
+</nav>
 
-<div class="toc-wrap" style="padding-top: 0; padding-bottom: 40px;">
-
-  <div class="policy-section" id="s1">
+<div class="policy-section" id="s1">
     <h2><span class="num">01</span> Who we are</h2>
     <p><strong>Jordi Espanyol</strong> ("I", "me", or "Developer"), operating as an independent developer, is the controller of the personal data collected through the <strong>Project Summit</strong> iOS application ("the App").</p>
     <p>The App is an adaptive cycling training platform for iOS.</p>
@@ -429,8 +427,6 @@
       Email: <strong>privacy@projectsummit.app</strong>
     </div>
   </div>
-
-</div>
 
 <footer>
   <span>
