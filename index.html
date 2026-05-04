@@ -240,11 +240,11 @@
       padding: 0 48px 48px;
       display: flex; align-items: center;
       justify-content: space-between; gap: 20px;
-      flex-wrap: wrap;
     }
 
     .screenshots-header-left {
       display: flex; align-items: baseline; gap: 20px;
+      flex-wrap: wrap;
     }
 
     .carousel-arrows {
@@ -324,9 +324,9 @@
     .iphone-frame::before {
       content: '';
       position: absolute;
-      top: 14px; left: 50%;
+      top: 12px; left: 50%;
       transform: translateX(-50%);
-      width: 90px; height: 28px;
+      width: 72px; height: 20px;
       background: var(--ink);
       border-radius: 20px;
       z-index: 2;
@@ -388,7 +388,10 @@
     }
 
     @media (max-width: 640px) {
-      .screenshots-header { padding-left: 24px; padding-right: 24px; }
+      .screenshots-header { padding-left: 24px; padding-right: 24px; padding-bottom: 32px; }
+      .screenshots-title { font-size: 1.2rem; }
+      .screenshots-hint { display: none; }
+      .carousel-arrow { width: 34px; height: 34px; font-size: 14px; }
       .carousel-track { padding-left: 24px; padding-right: 24px; }
       .carousel-item { width: 220px; }
       .iphone-frame { width: 220px; border-radius: 36px; }
