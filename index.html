@@ -5,7 +5,7 @@
   <link rel="icon" type="image/png" href="SummitLogo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Summit — Smarter Cycling Training</title>
-  <meta name="description" content="<span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span> Smarter training. Better fueling. Real results." />
+  <meta name="description" content="Built for cyclists who take training seriously. Smarter training. Better fueling. Real results." />
 
   <!-- Open Graph / WhatsApp / iMessage -->
   <meta property="og:type" content="website" />
@@ -135,21 +135,53 @@
     .nav-cta:hover { opacity: 0.85; }
 
 
-    /* ── LANG SWITCHER ── */
-    .lang-switcher {
-      display: flex; align-items: center; gap: 6px; flex-shrink: 0;
-    }
-    .lang-btn {
-      background: none; border: none; cursor: pointer;
+    /* ── LANG SWITCHER (dropdown) ── */
+    .lang-switcher { position: relative; flex-shrink: 0; }
+
+    .lang-selected {
+      display: flex; align-items: center; gap: 6px;
+      background: none; border: 1px solid rgba(245,238,224,0.20);
+      border-radius: 8px; padding: 6px 10px;
+      cursor: pointer;
       font-family: var(--font-mono);
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      color: rgba(245,238,224,0.35); padding: 0;
-      transition: color 0.15s;
+      color: #F5EEE0;
+      transition: border-color 0.15s;
     }
-    .lang-btn.active, .lang-btn:hover { color: #F5EEE0; }
-    .lang-sep { color: rgba(245,238,224,0.18); font-size: 10px; }
+    .lang-selected:hover { border-color: rgba(245,238,224,0.45); }
+    .lang-selected svg { transition: transform 0.2s; }
+    .lang-switcher.open .lang-selected svg { transform: rotate(180deg); }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: #2A241C;
+      border: 1px solid rgba(245,238,224,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+      z-index: 200;
+    }
+    .lang-switcher.open .lang-dropdown { display: block; }
+
+    .lang-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.10em;
+      color: rgba(245,238,224,0.50);
+      cursor: pointer;
+      border: none; background: none; width: 100%; text-align: left;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
+    .lang-option.active { color: #E8834A; }
+    .lang-option .lang-flag { font-size: 14px; }
+
+    /* Mobile dropdown */
     .nav-mobile .lang-switcher-mobile {
-      display: flex; gap: 12px; padding: 16px 0 4px;
+      display: flex; gap: 8px; padding: 16px 0 4px;
       border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px;
     }
     .nav-mobile .lang-btn-mobile {
@@ -161,6 +193,7 @@
     }
     .nav-mobile .lang-btn-mobile.active,
     .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
+
 
     /* ── HAMBURGER ── */
     .nav-hamburger {
@@ -835,12 +868,18 @@
     <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
     <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
   </ul>
-  <div class="lang-switcher">
-    <button class="lang-btn" data-lang="en">EN</button>
-    <span class="lang-sep">·</span>
-    <button class="lang-btn" data-lang="es">ES</button>
-    <span class="lang-sep">·</span>
-    <button class="lang-btn" data-lang="ca">CA</button>
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
+      <span id="lang-label">ES</span>
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="#F5EEE0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lang-dropdown">
+      <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+      <button class="lang-option" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
+      <button class="lang-option" data-lang="ca"><span class="lang-flag">🏴󠁥󠁳󠁣󠁴󠁿</span> Català</button>
+    </div>
   </div>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
@@ -1295,7 +1334,7 @@
 <script src="translations.js"></script>
 <script>
 (function() {
-  var lang = localStorage.getItem('summit-lang') || 'en';
+  var lang = localStorage.getItem('summit-lang') || 'es';
 
   function applyLang(l) {
     if (!TRANSLATIONS[l]) return;
@@ -1304,7 +1343,15 @@
       var key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) el.textContent = t[key];
     });
-    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+    // Update dropdown label
+    var lbl = document.getElementById('lang-label');
+    if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
+    // Update active option
+    document.querySelectorAll('.lang-option').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
+    });
+    // Update mobile buttons
+    document.querySelectorAll('.lang-btn-mobile').forEach(function(btn) {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
     });
     document.documentElement.lang = l;
@@ -1313,9 +1360,26 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     applyLang(lang);
-    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
-      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+    document.querySelectorAll('.lang-option, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        applyLang(btn.getAttribute('data-lang'));
+        if (langSwitcher) langSwitcher.classList.remove('open');
+      });
     });
+    // Lang dropdown
+    var langSwitcher = document.getElementById('lang-switcher');
+    var langSelectedBtn = document.getElementById('lang-selected-btn');
+    var langLabel = document.getElementById('lang-label');
+    if (langSwitcher && langSelectedBtn) {
+      langSelectedBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        langSwitcher.classList.toggle('open');
+      });
+      document.addEventListener('click', function() {
+        langSwitcher.classList.remove('open');
+      });
+    }
+
   });
 })();
 </script>
