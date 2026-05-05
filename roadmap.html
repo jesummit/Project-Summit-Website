@@ -41,7 +41,7 @@
       min-height: 100vh;
     }
 
-    .topbar { display: none; }
+        .topbar { display: none; }
 
     /* ── SITE HEADER (sticky) ── */
     .site-header {
@@ -49,38 +49,19 @@
       background: var(--ink);
     }
 
-    .site-header::before {
+    /* Always-visible hairline track */
+    .site-header::after {
       content: '';
       display: block;
-      height: 3px;
-      background: var(--ink);
-    }
-
-    /* ── NAV ── */
-    nav {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 16px 48px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      height: 2px;
+      background: rgba(245,238,224,0.12);
       position: relative;
     }
 
-    /* Nav scroll progress */
-    nav::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      height: 2px;
-      width: 100%;
-      background: rgba(245,238,224,0.10);
-    }
-
+    /* Ember progress bar on top of hairline */
     .nav-progress {
       position: absolute;
-      bottom: -2px; left: 0;
+      bottom: 0; left: 0;
       height: 2px;
       width: 0%;
       background: #E8834A;
@@ -88,7 +69,22 @@
       z-index: 1;
     }
 
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    /* ── NAV ── */
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    nav::after { display: none; }
+
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
 
     .nav-logo {
       width: 32px; height: 32px;
@@ -123,7 +119,7 @@
     .nav-cta {
       display: inline-flex; align-items: center;
       padding: 0 22px; height: 40px;
-      background: #F5EEE0; color: var(--ink);
+      background: #D66A2D; color: #F5EEE0;
       font-family: var(--font-ui);
       font-size: 12px; font-weight: 800;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -136,7 +132,7 @@
     .page-header {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px 64px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
 
@@ -414,8 +410,8 @@
 <body>
 
 <header class="site-header">
-<nav>
   <div class="nav-progress" id="nav-progress"></div>
+<nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
     <span class="nav-name">Summit<span class="nav-dot">.</span></span>
