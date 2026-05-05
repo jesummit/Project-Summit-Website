@@ -400,7 +400,66 @@
       .timeline { padding-left: 24px; padding-right: 24px; }
       .timeline::before { left: calc(24px + 15px); }
       .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
     }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer; padding: 0; flex-shrink: 0;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #F5EEE0;
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--ink);
+      padding: 0 24px 24px;
+      gap: 4px;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: var(--font-ui);
+      font-size: 16px; font-weight: 400;
+      color: rgba(245,238,224,0.60);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(245,238,224,0.08);
+      transition: color 0.15s;
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover, .nav-mobile a.active { color: #F5EEE0; }
+    .nav-mobile a.active { font-weight: 500; }
+
+    .nav-mobile .nav-mobile-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-top: 12px;
+      height: 48px;
+      background: #D66A2D; color: #F5EEE0;
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 14px;
+      border-bottom: none;
+    }
+    .nav-mobile .nav-mobile-cta:hover { opacity: 0.9; color: #F5EEE0; }
 
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
@@ -422,7 +481,16 @@
     <li><a href="/privacy-policy.html">Privacy Policy</a></li>
   </ul>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/">Home</a>
+  <a href="/roadmap.html" class="active">Roadmap</a>
+  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta">Join Waitlist</a>
+</div>
 </header>
 
 <div class="page-header">
@@ -609,6 +677,20 @@
   </div>
 </footer>
 <script>
+  // Hamburger menu
+  var hamburger = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
   var navProgress = document.getElementById('nav-progress');
   window.addEventListener('scroll', function() {
     var scrollTop = window.scrollY;
