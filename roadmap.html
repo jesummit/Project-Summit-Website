@@ -385,6 +385,34 @@
       .footer-desc { max-width: 100%; }
     }
 
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(245,238,224,0.35); padding: 0;
+      transition: color 0.15s;
+    }
+    .lang-btn.active, .lang-btn:hover { color: #F5EEE0; }
+    .lang-sep { color: rgba(245,238,224,0.18); font-size: 10px; }
+    .nav-mobile .lang-switcher-mobile {
+      display: flex; gap: 12px; padding: 16px 0 4px;
+      border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px;
+    }
+    .nav-mobile .lang-btn-mobile {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(245,238,224,0.35);
+      background: none; border: none; cursor: pointer; padding: 0;
+      transition: color 0.15s;
+    }
+    .nav-mobile .lang-btn-mobile.active,
+    .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
+
     /* ── HAMBURGER ── */
     .nav-hamburger {
       display: none;
@@ -468,10 +496,17 @@
     <span class="nav-name">Summit<span class="nav-dot">.</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="/roadmap.html" class="active">Roadmap</a></li>
-    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
   </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" data-lang="ca">CA</button>
+  </div>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -486,9 +521,9 @@
 </header>
 
 <div class="page-header">
-  <p class="page-eyebrow">What's being built</p>
-  <h1 class="page-title">A platform that keeps <em>getting smarter.</em></h1>
-  <p class="page-sub">Here's where Project Summit stands today, and where it's headed. No vague promises — just a clear picture of the plan.</p>
+  <p class="page-eyebrow" data-i18n="roadmap.eyebrow">What's being built</p>
+  <h1 class="page-title"><span data-i18n="roadmap.title.main">A platform that keeps</span> <em data-i18n="roadmap.title.drop">getting smarter.</em></h1>
+  <p class="page-sub" data-i18n="roadmap.sub">Here's where Project Summit stands today, and where it's headed. No vague promises — just a clear picture of the plan.</p>
 </div>
 
 <div class="timeline">
@@ -496,11 +531,11 @@
   <div class="phase phase--now">
     <div class="phase-dot">→</div>
     <div class="phase-meta">
-      <span class="phase-badge">In Development</span>
-      <span class="phase-date">Launch: Summer 2026</span>
+      <span class="phase-badge" data-i18n="phase1.badge">In Development</span>
+      <span class="phase-date" data-i18n="phase1.date">Launch: Summer 2026</span>
     </div>
-    <h2 class="phase-title">iOS App — v1.0</h2>
-    <p class="phase-desc">The full core platform. Adaptive load management, intelligent recovery, nutrition planning, and structured workouts — all in one place.</p>
+    <h2 class="phase-title" data-i18n="phase1.title">iOS App — v1.0</h2>
+    <p class="phase-desc" data-i18n="phase1.desc">The full core platform. Adaptive load management, intelligent recovery, nutrition planning, and structured workouts — all in one place.</p>
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">🫀</span>
@@ -553,11 +588,11 @@
   <div class="phase phase--next">
     <div class="phase-dot">◦</div>
     <div class="phase-meta">
-      <span class="phase-badge">Coming Next</span>
-      <span class="phase-date">Late 2026</span>
+      <span class="phase-badge" data-i18n="phase2.badge">Coming Next</span>
+      <span class="phase-date" data-i18n="phase2.date">Late 2026</span>
     </div>
-    <h2 class="phase-title">Wearables, Pacing &amp; Wellness</h2>
-    <p class="phase-desc">Bringing the platform closer to your wrist, your race strategy, and your overall health picture.</p>
+    <h2 class="phase-title" data-i18n="phase2.title">Wearables, Pacing &amp; Wellness</h2>
+    <p class="phase-desc" data-i18n="phase2.desc">Bringing the platform closer to your wrist, your race strategy, and your overall health picture.</p>
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">📆</span>
@@ -585,11 +620,11 @@
   <div class="phase phase--later">
     <div class="phase-dot">·</div>
     <div class="phase-meta">
-      <span class="phase-badge">On the Horizon</span>
-      <span class="phase-date">2027 &amp; beyond</span>
+      <span class="phase-badge" data-i18n="phase3.badge">On the Horizon</span>
+      <span class="phase-date" data-i18n="phase3.date">2027 &amp; beyond</span>
     </div>
-    <h2 class="phase-title">Beyond Cycling</h2>
-    <p class="phase-desc">More platforms, more sports, and deeper integrations. The engine stays the same — the reach grows.</p>
+    <h2 class="phase-title" data-i18n="phase3.title">Beyond Cycling</h2>
+    <p class="phase-desc" data-i18n="phase3.desc">More platforms, more sports, and deeper integrations. The engine stays the same — the reach grows.</p>
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">🤖</span>
@@ -629,22 +664,22 @@
         <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
         <span class="footer-name">Summit<span class="dot">.</span></span>
       </a>
-      <p class="footer-tagline">Train harder. Smarter.</p>
-      <p class="footer-desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
     </div>
 
     <div class="footer-col">
-      <h3>Navigate</h3>
+      <h3 data-i18n="footer.nav.title">Navigate</h3>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/roadmap.html">Roadmap</a></li>
-        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener">Join Waitlist</a></li>
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h3>Contact</h3>
+      <h3 data-i18n="footer.contact.title">Contact</h3>
       <ul>
         <li>
           <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
@@ -665,7 +700,7 @@
 
   <div class="footer-bottom">
     <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
-    <span class="footer-bottom-copy">Built for cyclists who take training seriously.</span>
+    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
 <script>
@@ -692,5 +727,32 @@
   }, { passive: true });
 </script>
 
+<script src="translations.js"></script>
+<script>
+(function() {
+  var lang = localStorage.getItem('summit-lang') || 'en';
+
+  function applyLang(l) {
+    if (!TRANSLATIONS[l]) return;
+    var t = TRANSLATIONS[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
+    });
+    document.documentElement.lang = l;
+    localStorage.setItem('summit-lang', l);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(lang);
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+    });
+  });
+})();
+</script>
 </body>
 </html>

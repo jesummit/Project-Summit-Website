@@ -367,6 +367,34 @@
       .footer-desc { max-width: 100%; }
     }
 
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(245,238,224,0.35); padding: 0;
+      transition: color 0.15s;
+    }
+    .lang-btn.active, .lang-btn:hover { color: #F5EEE0; }
+    .lang-sep { color: rgba(245,238,224,0.18); font-size: 10px; }
+    .nav-mobile .lang-switcher-mobile {
+      display: flex; gap: 12px; padding: 16px 0 4px;
+      border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px;
+    }
+    .nav-mobile .lang-btn-mobile {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(245,238,224,0.35);
+      background: none; border: none; cursor: pointer; padding: 0;
+      transition: color 0.15s;
+    }
+    .nav-mobile .lang-btn-mobile.active,
+    .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
+
     /* ── HAMBURGER ── */
     .nav-hamburger {
       display: none;
@@ -453,10 +481,17 @@
     <span class="nav-name">Summit<span class="nav-dot">.</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/roadmap.html">Roadmap</a></li>
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
+    <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
     <li><a href="/privacy-policy.html" class="active">Privacy Policy</a></li>
   </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" data-lang="ca">CA</button>
+  </div>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -471,18 +506,18 @@
 </header>
 
 <div class="page-header">
-  <p class="page-eyebrow">Legal &nbsp;·&nbsp; Project Summit</p>
-  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-eyebrow" data-i18n="privacy.eyebrow">Legal &nbsp;·&nbsp; Project Summit</p>
+  <h1 class="page-title" data-i18n="privacy.title">Privacy Policy</h1>
   <p class="page-meta">
     Effective date: <strong>March 2026</strong>
     &nbsp;·&nbsp;
-    Last updated: <strong>March 2026</strong>
+    <span data-i18n="privacy.meta.updated">Last updated:</span> <strong>March 2026</strong>
   </p>
 </div>
 
 <nav class="toc">
   <div class="toc-inner">
-    <h2>Contents</h2>
+    <h2 data-i18n="privacy.toc.title">Contents</h2>
     <ol>
       <li><a href="#s1">Who we are</a></li>
       <li><a href="#s2">Data we collect</a></li>
@@ -499,14 +534,14 @@
 </nav>
 
 <div class="policy-section" id="s1">
-  <h2><span class="num">01</span> Who we are</h2>
+  <h2><span class="num">01</span> <span data-i18n="s1.title"> Who we are</h2>
   <p><strong>Jordi Espanyol</strong> ("I", "me", or "Developer"), operating as an independent developer, is the controller of the personal data collected through the <strong>Project Summit</strong> iOS application ("the App").</p>
   <p>The App is an adaptive cycling training platform for iOS.</p>
   <p>Contact email: <strong>privacy@projectsummit.app</strong></p>
 </div>
 
 <div class="policy-section" id="s2">
-  <h2><span class="num">02</span> Data we collect</h2>
+  <h2><span class="num">02</span> <span data-i18n="s2.title"> Data we collect</h2>
   <p>The App collects data in the following categories:</p>
   <table class="data-table">
     <thead>
@@ -526,7 +561,7 @@
 </div>
 
 <div class="policy-section" id="s3">
-  <h2><span class="num">03</span> How we use your data</h2>
+  <h2><span class="num">03</span> <span data-i18n="s3.title"> How we use your data</h2>
   <p>Data is used solely to provide and improve the App's core functionality:</p>
   <ul>
     <li>Generate and adapt personalised cycling training plans</li>
@@ -540,7 +575,7 @@
 </div>
 
 <div class="policy-section" id="s4">
-  <h2><span class="num">04</span> Third-party integrations</h2>
+  <h2><span class="num">04</span> <span data-i18n="s4.title"> Third-party integrations</h2>
   <p>Project Summit connects to the following external services. Each operates under its own privacy policy.</p>
   <table class="data-table">
     <thead>
@@ -557,14 +592,14 @@
 </div>
 
 <div class="policy-section" id="s5">
-  <h2><span class="num">05</span> Data storage &amp; security</h2>
+  <h2><span class="num">05</span> <span data-i18n="s5.title"> Data storage &amp; security</h2>
   <p>Your data is stored on Supabase infrastructure hosted in the <strong>EU (West Europe)</strong> region. Data in transit is encrypted using TLS 1.2+. Data at rest is encrypted at the storage layer by Supabase.</p>
   <p>Access to backend services is protected by row-level security policies. Only your authenticated user account can read or modify your personal training data.</p>
   <p>HealthKit data is queried locally on-device and transmitted to the backend only as a unique aggregated recovery metric. Raw biometric samples are never uploaded.</p>
 </div>
 
 <div class="policy-section" id="s6">
-  <h2><span class="num">06</span> Data retention</h2>
+  <h2><span class="num">06</span> <span data-i18n="s6.title"> Data retention</h2>
   <p>Your data is retained for as long as your account is active. If you request account deletion:</p>
   <ul>
     <li>Your personal data will be permanently deleted within <strong>30 days</strong></li>
@@ -574,7 +609,7 @@
 </div>
 
 <div class="policy-section" id="s7">
-  <h2><span class="num">07</span> Your rights</h2>
+  <h2><span class="num">07</span> <span data-i18n="s7.title"> Your rights</h2>
   <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
   <ul>
     <li><strong>Access</strong> — request a copy of the data held about you</li>
@@ -589,18 +624,18 @@
 </div>
 
 <div class="policy-section" id="s8">
-  <h2><span class="num">08</span> Children's privacy</h2>
+  <h2><span class="num">08</span> <span data-i18n="s8.title"> Children's privacy</h2>
   <p>Project Summit is not directed at children under the age of 13 (or 16 in the EU). We do not knowingly collect personal data from children. If you believe a child has provided personal data to the App, please contact us and we will delete it promptly.</p>
 </div>
 
 <div class="policy-section" id="s9">
-  <h2><span class="num">09</span> Changes to this policy</h2>
+  <h2><span class="num">09</span> <span data-i18n="s9.title"> Changes to this policy</h2>
   <p>We may update this Privacy Policy from time to time. Material changes will be communicated via in-app notification at least 7 days before taking effect. The "Last updated" date at the top of this page reflects the most recent revision.</p>
   <p>Continued use of the App after the effective date constitutes acceptance of the updated policy.</p>
 </div>
 
 <div class="policy-section" id="s10">
-  <h2><span class="num">10</span> Contact</h2>
+  <h2><span class="num">10</span> <span data-i18n="s10.title"> Contact</h2>
   <p>For privacy-related questions, requests, or complaints:</p>
   <div class="callout">
     <strong>Jordi Espanyol</strong><br/>
@@ -617,22 +652,22 @@
         <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
         <span class="footer-name">Summit<span class="dot">.</span></span>
       </a>
-      <p class="footer-tagline">Train harder. Smarter.</p>
-      <p class="footer-desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
     </div>
 
     <div class="footer-col">
-      <h3>Navigate</h3>
+      <h3 data-i18n="footer.nav.title">Navigate</h3>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/roadmap.html">Roadmap</a></li>
-        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener">Join Waitlist</a></li>
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h3>Contact</h3>
+      <h3 data-i18n="footer.contact.title">Contact</h3>
       <ul>
         <li>
           <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
@@ -653,7 +688,7 @@
 
   <div class="footer-bottom">
     <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
-    <span class="footer-bottom-copy">Built for cyclists who take training seriously.</span>
+    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
 <script>
@@ -680,5 +715,32 @@
   }, { passive: true });
 </script>
 
+<script src="translations.js"></script>
+<script>
+(function() {
+  var lang = localStorage.getItem('summit-lang') || 'en';
+
+  function applyLang(l) {
+    if (!TRANSLATIONS[l]) return;
+    var t = TRANSLATIONS[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
+    });
+    document.documentElement.lang = l;
+    localStorage.setItem('summit-lang', l);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(lang);
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+    });
+  });
+})();
+</script>
 </body>
 </html>

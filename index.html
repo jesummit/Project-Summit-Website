@@ -5,7 +5,7 @@
   <link rel="icon" type="image/png" href="SummitLogo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Summit — Smarter Cycling Training</title>
-  <meta name="description" content="Built for cyclists who take training seriously. Smarter training. Better fueling. Real results." />
+  <meta name="description" content="<span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span> Smarter training. Better fueling. Real results." />
 
   <!-- Open Graph / WhatsApp / iMessage -->
   <meta property="og:type" content="website" />
@@ -133,6 +133,34 @@
       transition: opacity 0.2s; flex-shrink: 0;
     }
     .nav-cta:hover { opacity: 0.85; }
+
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(245,238,224,0.35); padding: 0;
+      transition: color 0.15s;
+    }
+    .lang-btn.active, .lang-btn:hover { color: #F5EEE0; }
+    .lang-sep { color: rgba(245,238,224,0.18); font-size: 10px; }
+    .nav-mobile .lang-switcher-mobile {
+      display: flex; gap: 12px; padding: 16px 0 4px;
+      border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px;
+    }
+    .nav-mobile .lang-btn-mobile {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(245,238,224,0.35);
+      background: none; border: none; cursor: pointer; padding: 0;
+      transition: color 0.15s;
+    }
+    .nav-mobile .lang-btn-mobile.active,
+    .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
 
     /* ── HAMBURGER ── */
     .nav-hamburger {
@@ -803,41 +831,53 @@
     <span class="nav-name">Summit<span class="nav-dot">.</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="/" class="active">Home</a></li>
-    <li><a href="/roadmap.html">Roadmap</a></li>
-    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="/" class="active" data-i18n="nav.home">Home</a></li>
+    <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+    <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
   </ul>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" data-lang="ca">CA</button>
+  </div>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/" class="active">Home</a>
-  <a href="/roadmap.html">Roadmap</a>
-  <a href="/privacy-policy.html">Privacy Policy</a>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta">Join Waitlist</a>
+  <a href="/" class="active" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <div class="lang-switcher-mobile">
+    <button class="lang-btn-mobile" data-lang="en">EN</button>
+    <button class="lang-btn-mobile" data-lang="es">ES</button>
+    <button class="lang-btn-mobile" data-lang="ca">CA</button>
+  </div>
 </div>
 </header>
 
 <section class="hero">
-  <p class="hero-eyebrow">iOS App &nbsp;·&nbsp; Coming Summer 2026</p>
+  <p class="hero-eyebrow" data-i18n="hero.eyebrow">iOS App &nbsp;·&nbsp; Coming Summer 2026</p>
   <h1 class="hero-headline">
-    Built for cyclists who take training
-    <span class="drop">seriously.</span>
+    <span data-i18n="hero.headline.main">Built for cyclists who take training</span>
+    <span class="drop" data-i18n="hero.headline.drop">seriously.</span>
   </h1>
-  <p class="hero-sub">Track your load. Read your recovery. Fuel your performance. Built around your body, not a generic plan.</p>
+  <p class="hero-sub" data-i18n="hero.sub">Track your load. Read your recovery. Fuel your performance. Built around your body, not a generic plan.</p>
   <div class="hero-actions">
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent">Join the Waitlist</a>
-    <span class="hero-note"><strong>+30 cyclists</strong> already on the list</span>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta">Join the Waitlist</a>
+    <span class="hero-note"><strong>+30 cyclists</strong> <span data-i18n="hero.note">already on the list</span></span>
   </div>
 </section>
 
 <section class="screenshots">
   <div class="screenshots-header">
     <div class="screenshots-header-left">
-      <h2 class="screenshots-title">See it in action</h2>
-      <span class="screenshots-hint">Scroll to explore →</span>
+      <h2 class="screenshots-title" data-i18n="screenshots.title">See it in action</h2>
+      <span class="screenshots-hint" data-i18n="screenshots.hint">Scroll to explore →</span>
     </div>
     <div class="carousel-arrows">
       <button class="carousel-arrow" id="arrow-prev" aria-label="Previous">&#8592;</button>
@@ -852,8 +892,8 @@
         <img src="screenshot-today.png" alt="Today view" />
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Today</div>
-        <div class="cap-title">Your day at a glance</div>
+        <div class="cap-eyebrow" data-i18n="cap.today.eyebrow">Today</div>
+        <div class="cap-title" data-i18n="cap.today.title">Your day at a glance</div>
       </div>
     </div>
 
@@ -864,8 +904,8 @@
         </div>
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Training Load</div>
-        <div class="cap-title">CTL / ATL / TSB live</div>
+        <div class="cap-eyebrow" data-i18n="cap.load.eyebrow">Training Load</div>
+        <div class="cap-title" data-i18n="cap.load.title">CTL / ATL / TSB live</div>
       </div>
     </div>
 
@@ -874,8 +914,8 @@
         <img src="screenshot-workout.png" alt="Workout view" />
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Workout</div>
-        <div class="cap-title">Structured sessions ready to ride</div>
+        <div class="cap-eyebrow" data-i18n="cap.workout.eyebrow">Workout</div>
+        <div class="cap-title" data-i18n="cap.workout.title">Structured sessions ready to ride</div>
       </div>
     </div>
 
@@ -884,8 +924,8 @@
         <img src="screenshot-recovery.png" alt="Recovery view" />
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Recovery</div>
-        <div class="cap-title">HRV. Sleep. Readiness.</div>
+        <div class="cap-eyebrow" data-i18n="cap.recovery.eyebrow">Recovery</div>
+        <div class="cap-title" data-i18n="cap.recovery.title">HRV. Sleep. Readiness.</div>
       </div>
     </div>
 
@@ -894,8 +934,8 @@
         <img src="screenshot-calendar.png" alt="Calendar view" />
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Calendar</div>
-        <div class="cap-title">Your plan, week by week</div>
+        <div class="cap-eyebrow" data-i18n="cap.calendar.eyebrow">Calendar</div>
+        <div class="cap-title" data-i18n="cap.calendar.title">Your plan, week by week</div>
       </div>
     </div>
 
@@ -904,8 +944,8 @@
         <img src="screenshot-activity.png" alt="Activity analysis view" />
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Activity</div>
-        <div class="cap-title">Power. HR. Elevation. Zones.</div>
+        <div class="cap-eyebrow" data-i18n="cap.activity.eyebrow">Activity</div>
+        <div class="cap-title" data-i18n="cap.activity.title">Power. HR. Elevation. Zones.</div>
       </div>
     </div>
 
@@ -916,8 +956,8 @@
         </div>
       </div>
       <div class="carousel-caption">
-        <div class="cap-eyebrow">Nutrition</div>
-        <div class="cap-title">Race day fueling plan</div>
+        <div class="cap-eyebrow" data-i18n="cap.nutrition.eyebrow">Nutrition</div>
+        <div class="cap-title" data-i18n="cap.nutrition.title">Race day fueling plan</div>
       </div>
     </div>
 
@@ -935,74 +975,74 @@
 </section>
 
 <section class="features">
-  <p class="section-label">What's in v1.0</p>
+  <p class="section-label" data-i18n="features.label">What's in v1.0</p>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-num">01</div>
-      <h2 class="feature-title">CTL / ATL / TSB — Real Time</h2>
-      <p class="feature-desc">Training load, fatigue, and form tracked live across every session. The numbers that serious cyclists actually use, always current.</p>
+      <h2 class="feature-title" data-i18n="f1.title">CTL / ATL / TSB — Real Time</h2>
+      <p class="feature-desc" data-i18n="f1.desc">Training load, fatigue, and form tracked live across every session. The numbers that serious cyclists actually use, always current.</p>
     </div>
     <div class="feature-card">
       <div class="feature-num">02</div>
-      <h2 class="feature-title">HRV-Driven Recovery</h2>
-      <p class="feature-desc">Reads your HRV, resting heart rate, and sleep from Apple Health. Intensity adjusts before you even open the app.</p>
+      <h2 class="feature-title" data-i18n="f2.title">HRV-Driven Recovery</h2>
+      <p class="feature-desc" data-i18n="f2.desc">Reads your HRV, resting heart rate, and sleep from Apple Health. Intensity adjusts before you even open the app.</p>
     </div>
     <div class="feature-card">
       <div class="feature-num">03</div>
-      <h2 class="feature-title">eFTP &amp; Power Curve</h2>
-      <p class="feature-desc">Continuous estimation via the CP2 model. No manual tests needed — your ride history does the work.</p>
+      <h2 class="feature-title" data-i18n="f3.title">eFTP &amp; Power Curve</h2>
+      <p class="feature-desc" data-i18n="f3.desc">Continuous estimation via the CP2 model. No manual tests needed — your ride history does the work.</p>
     </div>
     <div class="feature-card">
       <div class="feature-num">04</div>
-      <h2 class="feature-title">Advanced Periodisation</h2>
-      <p class="feature-desc">Base, build, peak, and taper blocks structured around your target events — with full adaptation to your real-life availability.</p>
+      <h2 class="feature-title" data-i18n="f4.title">Advanced Periodisation</h2>
+      <p class="feature-desc" data-i18n="f4.desc">Base, build, peak, and taper blocks structured around your target events — with full adaptation to your real-life availability.</p>
     </div>
     <div class="feature-card">
       <div class="feature-num">05</div>
-      <h2 class="feature-title">Plan Cascading</h2>
-      <p class="feature-desc">Miss a session. Get sick. Change plans. Summit rewrites your week.</p>
+      <h2 class="feature-title" data-i18n="f5.title">Plan Cascading</h2>
+      <p class="feature-desc" data-i18n="f5.desc">Miss a session. Get sick. Change plans. Summit rewrites your week.</p>
     </div>
     <div class="feature-card">
       <div class="feature-num">06</div>
-      <h2 class="feature-title">Push Workouts via intervals.icu</h2>
-      <p class="feature-desc">Structured sessions distributed to Garmin, Zwift, and MyWhoosh in one tap. Rides imported automatically from Strava.</p>
+      <h2 class="feature-title" data-i18n="f6.title">Push Workouts via intervals.icu</h2>
+      <p class="feature-desc" data-i18n="f6.desc">Structured sessions distributed to Garmin, Zwift, and MyWhoosh in one tap. Rides imported automatically from Strava.</p>
     </div>
   </div>
 </section>
 
 <section class="nutrition">
-  <p class="section-label">Built-in nutrition</p>
+  <p class="section-label" data-i18n="nutrition.label">Built-in nutrition</p>
   <div class="nutrition-inner">
     <div class="nutrition-block">
       <span class="nutrition-icon">🍽️</span>
-      <p class="nutrition-label">Race Day</p>
-      <h2 class="nutrition-title">Race Day Nutrition Planner</h2>
-      <p class="nutrition-desc">Carb, fluid, and electrolyte targets built around your race duration and bodyweight. Know what to eat, and when.</p>
+      <p class="nutrition-label" data-i18n="nutrition.race.label">Race Day</p>
+      <h2 class="nutrition-title" data-i18n="nutrition.race.title">Race Day Nutrition Planner</h2>
+      <p class="nutrition-desc" data-i18n="nutrition.race.desc">Carb, fluid, and electrolyte targets built around your race duration and bodyweight. Know what to eat, and when.</p>
     </div>
     <div class="nutrition-block">
       <span class="nutrition-icon">🥗</span>
       <p class="nutrition-label">Daily <span class="badge-beta">Beta</span></p>
-      <h2 class="nutrition-title">Daily Nutrition Planning</h2>
-      <p class="nutrition-desc">Day-by-day fueling targets matched to your training load. High-carb on hard days, recovery-focused on easy ones — automatically adjusted as your plan evolves.</p>
+      <h2 class="nutrition-title" data-i18n="nutrition.daily.title">Daily Nutrition Planning</h2>
+      <p class="nutrition-desc" data-i18n="nutrition.daily.desc">Day-by-day fueling targets matched to your training load. High-carb on hard days, recovery-focused on easy ones — automatically adjusted as your plan evolves.</p>
     </div>
   </div>
 </section>
 
 <section class="who-for">
-  <p class="section-label">Is this for you?</p>
+  <p class="section-label" data-i18n="whofor.label">Is this for you?</p>
   <div class="who-for-inner">
     <div>
-      <h2 class="who-for-title">Made for the <em>serious amateur.</em></h2>
-      <p class="who-for-sub">Opinionated by design. Real training science. No shortcuts.</p>
+      <h2 class="who-for-title"><span data-i18n="whofor.title.main">Made for the</span> <em data-i18n="whofor.title.drop">serious amateur.</em></h2>
+      <p class="who-for-sub" data-i18n="whofor.sub">Opinionated by design. Real training science. No shortcuts.</p>
     </div>
     <div>
       <ul class="who-for-list">
-        <li>You train with a power meter and take your FTP seriously</li>
-        <li>You already use Strava and want your data to actually work for you</li>
-        <li>You've outgrown generic plans and want something that adapts to your life</li>
-        <li>You care about recovery as much as volume</li>
-        <li>You have a target event and want to peak for it</li>
-        <li>You want nutrition integrated into your training, not bolted on</li>
+        <li data-i18n="whofor.li1">You train with a power meter and take your FTP seriously</li>
+        <li data-i18n="whofor.li2">You already use Strava and want your data to actually work for you</li>
+        <li data-i18n="whofor.li3">You've outgrown generic plans and want something that adapts to your life</li>
+        <li data-i18n="whofor.li4">You care about recovery as much as volume</li>
+        <li data-i18n="whofor.li5">You have a target event and want to peak for it</li>
+        <li data-i18n="whofor.li6">You want nutrition integrated into your training, not bolted on</li>
       </ul>
     </div>
   </div>
@@ -1090,27 +1130,27 @@
 
 <section class="integrations">
   <div class="integrations-intro">
-    <h2 class="integrations-title">Connects with your kit</h2>
-    <p class="integrations-sub">Works with the platforms you already use. No manual imports.</p>
+    <h2 class="integrations-title" data-i18n="integrations.title">Connects with your kit</h2>
+    <p class="integrations-sub" data-i18n="integrations.sub">Works with the platforms you already use. No manual imports.</p>
   </div>
   <div class="integrations-list">
-    <div class="integration-item"><span>Import</span>Strava</div>
-    <div class="integration-item"><span>Distribute</span>intervals.icu</div>
-    <div class="integration-item"><span>Health</span>Apple HealthKit</div>
-    <div class="integration-item"><span>Train</span>Zwift</div>
-    <div class="integration-item"><span>Train</span>MyWhoosh</div>
+    <div class="integration-item"><span data-i18n="int.strava.label">Import</span>Strava</div>
+    <div class="integration-item"><span data-i18n="int.icu.label">Distribute</span>intervals.icu</div>
+    <div class="integration-item"><span data-i18n="int.health.label">Health</span>Apple HealthKit</div>
+    <div class="integration-item"><span data-i18n="int.zwift.label">Train</span>Zwift</div>
+    <div class="integration-item"><span data-i18n="int.whoosh.label">Train</span>MyWhoosh</div>
   </div>
 </section>
 
 <section class="cta-section">
   <div class="cta-text">
-    <h2 class="cta-title">Be first to ride <em>smarter.</em></h2>
-    <p class="cta-body">Pre-launch. Join the waitlist. Get early access.</p>
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary">Reserve Your Spot</a>
+    <h2 class="cta-title"><span data-i18n="cta.title.main">Be first to ride</span> <em data-i18n="cta.title.drop">smarter.</em></h2>
+    <p class="cta-body" data-i18n="cta.body">Pre-launch. Join the waitlist. Get early access.</p>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta.btn">Reserve Your Spot</a>
   </div>
   <div class="cta-aside">
     <div class="waitlist-count">+30</div>
-    <div class="waitlist-label">on the waitlist</div>
+    <div class="waitlist-label" data-i18n="cta.count.label">on the waitlist</div>
   </div>
 </section>
 
@@ -1122,22 +1162,22 @@
         <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
         <span class="footer-name">Summit<span class="dot">.</span></span>
       </a>
-      <p class="footer-tagline">Train harder. Smarter.</p>
-      <p class="footer-desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
     </div>
 
     <div class="footer-col">
-      <h3>Navigate</h3>
+      <h3 data-i18n="footer.nav.title">Navigate</h3>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/roadmap.html">Roadmap</a></li>
-        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener">Join Waitlist</a></li>
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h3>Contact</h3>
+      <h3 data-i18n="footer.contact.title">Contact</h3>
       <ul>
         <li>
           <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
@@ -1252,5 +1292,32 @@
   updateUI();
 </script>
 
+<script src="translations.js"></script>
+<script>
+(function() {
+  var lang = localStorage.getItem('summit-lang') || 'en';
+
+  function applyLang(l) {
+    if (!TRANSLATIONS[l]) return;
+    var t = TRANSLATIONS[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
+    });
+    document.documentElement.lang = l;
+    localStorage.setItem('summit-lang', l);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(lang);
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+    });
+  });
+})();
+</script>
 </body>
 </html>
