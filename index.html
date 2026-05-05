@@ -59,6 +59,13 @@
 
     /* ── NAV ── */
     nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(246,241,232,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding-bottom: 20px;
+      border-bottom: none;
+      position: relative;
       max-width: 900px;
       margin: 0 auto;
       padding: 28px 48px 0;
@@ -68,7 +75,25 @@
       gap: 20px;
     }
 
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    /* Nav scroll progress */
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      width: 100%;
+      background: var(--ink-hair);
+    }
+
+    .nav-progress {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.1s linear;
+      z-index: 1;
+    }
 
     .nav-logo {
       width: 32px; height: 32px;
@@ -118,7 +143,8 @@
     .hero {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px 88px;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
     }
 
     .hero-eyebrow {
@@ -200,7 +226,8 @@
     .features {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
     }
 
     .section-label {
@@ -246,7 +273,8 @@
     /* ── SCREENSHOTS ── */
     .screenshots {
       padding: 80px 0;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
       overflow: hidden;
     }
 
@@ -416,7 +444,8 @@
     .nutrition {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
     }
 
     .nutrition-inner {
@@ -466,7 +495,8 @@
     .who-for {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
     }
 
     .who-for-inner {
@@ -494,7 +524,8 @@
     .who-for-list { list-style: none; padding: 0; }
     .who-for-list li {
       font-size: 14px; color: var(--ink-soft);
-      padding: 13px 0; border-bottom: 1px solid var(--ink-hair);
+      padding: 13px 0; border-bottom: none;
+      position: relative;
       display: flex; align-items: flex-start; gap: 12px;
       line-height: 1.6;
     }
@@ -509,7 +540,8 @@
     .integrations {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
     }
 
     .integrations-intro {
@@ -713,6 +745,7 @@
 <div class="topbar"></div>
 
 <nav>
+  <div class="nav-progress" id="nav-progress"></div>
   <a href="/" class="nav-brand">
     <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
     <span class="nav-name">Summit<span class="nav-dot">.</span></span>
@@ -923,7 +956,8 @@
     .mockup {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: 1px solid var(--ink-hair);
+      border-bottom: none;
+      position: relative;
     }
     .mockup-intro {
       display: flex; align-items: baseline;
@@ -1067,6 +1101,15 @@
 </footer>
 
 <script>
+  // Scroll progress bar
+  var navProgress = document.getElementById('nav-progress');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    navProgress.style.width = pct + '%';
+  }, { passive: true });
+
   var cards = document.querySelectorAll('.feature-card');
   var delays = [0, 0.08, 0.16, 0.24, 0.32, 0.40];
   var observer = new IntersectionObserver(function(entries) {
