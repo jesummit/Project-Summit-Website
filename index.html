@@ -55,53 +55,48 @@
       line-height: 1.75;
     }
 
-    .topbar { display: none; } /* absorbed into site-header */
+    .topbar { display: none; }
 
     /* ── SITE HEADER (sticky) ── */
     .site-header {
       position: sticky; top: 0; z-index: 100;
       background: var(--ink);
-      border-bottom: none;
     }
 
-    .site-header::before {
+    /* Always-visible hairline track */
+    .site-header::after {
       content: '';
       display: block;
-      height: 3px;
-      background: var(--ink);
-    }
-
-    /* ── NAV ── */
-    nav {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 16px 48px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      height: 2px;
+      background: rgba(245,238,224,0.12);
       position: relative;
     }
 
-    /* Nav scroll progress */
-    nav::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      height: 2px;
-      width: 100%;
-      background: rgba(245,238,224,0.10);
-    }
-
+    /* Ember progress bar on top of hairline */
     .nav-progress {
       position: absolute;
-      bottom: -2px; left: 0;
+      bottom: 0; left: 0;
       height: 2px;
       width: 0%;
       background: #E8834A;
       transition: width 0.1s linear;
       z-index: 1;
     }
+
+    /* ── NAV ── */
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    nav::after { display: none; }
+
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
 
     .nav-logo {
       width: 32px; height: 32px;
@@ -138,7 +133,7 @@
     .nav-cta {
       display: inline-flex; align-items: center;
       padding: 0 22px; height: 40px;
-      background: #F5EEE0; color: var(--ink);
+      background: #D66A2D; color: #F5EEE0;
       font-family: var(--font-ui);
       font-size: 12px; font-weight: 800;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -151,7 +146,7 @@
     .hero {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px 88px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
 
@@ -234,7 +229,7 @@
     .features {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
 
@@ -281,7 +276,7 @@
     /* ── SCREENSHOTS ── */
     .screenshots {
       padding: 80px 0;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
       overflow: hidden;
     }
@@ -452,7 +447,7 @@
     .nutrition {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
 
@@ -503,7 +498,7 @@
     .who-for {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
 
@@ -532,12 +527,12 @@
     .who-for-list { list-style: none; padding: 0; }
     .who-for-list li {
       font-size: 14px; color: var(--ink-soft);
-      padding: 13px 0; border-bottom: none;
+      padding: 13px 0; border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
       display: flex; align-items: flex-start; gap: 12px;
       line-height: 1.6;
     }
-    .who-for-list li:last-child { border-bottom: none; }
+    .who-for-list li:last-child { border-bottom: 2px solid rgba(245,238,224,0.12); }
     .who-for-list li::before {
       content: '✓';
       color: var(--accent); font-weight: 700;
@@ -548,7 +543,7 @@
     .integrations {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
 
@@ -751,8 +746,8 @@
 <body>
 
 <header class="site-header">
-<nav>
   <div class="nav-progress" id="nav-progress"></div>
+<nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
     <span class="nav-name">Summit<span class="nav-dot">.</span></span>
@@ -964,7 +959,7 @@
     .mockup {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
-      border-bottom: none;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
       position: relative;
     }
     .mockup-intro {
