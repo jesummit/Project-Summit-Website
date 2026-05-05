@@ -601,31 +601,98 @@
     }
 
     /* ── FOOTER ── */
-    footer {
+    .site-footer {
+      background: var(--ink);
+      margin-top: 0;
+    }
+
+    .site-footer-inner {
       max-width: 900px; margin: 0 auto;
-      padding: 28px 48px 48px;
-      border-top: 1px solid var(--ink-hair);
-      font-size: 13px; color: var(--ink-soft);
-      display: flex; justify-content: space-between;
-      flex-wrap: wrap; gap: 8px; align-items: center;
+      padding: 64px 48px 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+
+    .footer-wordmark {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
     }
 
     .footer-logo {
-      width: 22px; height: 22px; border-radius: 5px;
-      overflow: hidden; display: inline-block;
-      vertical-align: middle; margin-right: 8px;
-      box-shadow: 0 1px 4px rgba(31,26,20,0.12);
-      position: relative; top: -1px;
+      width: 32px; height: 32px; border-radius: 7px;
+      overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
     }
     .footer-logo img { width: 100%; display: block; }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #F5EEE0;
+    }
+    .footer-name .dot { color: #E8834A; }
+
+    .footer-tagline {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(245,238,224,0.38);
+    }
+
+    .footer-desc {
+      font-size: 14px; color: rgba(245,238,224,0.60);
+      line-height: 1.7; max-width: 280px;
+    }
+
+    .footer-col h3 {
+      font-family: var(--font-mono);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #E8834A;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+
+    .footer-col a {
+      font-size: 14px; color: rgba(245,238,224,0.60);
+      text-decoration: none; transition: color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .footer-col a:hover { color: #F5EEE0; }
+
+    .footer-bottom {
+      max-width: 900px; margin: 0 auto;
+      padding: 20px 48px 32px;
+      border-top: 1px solid rgba(245,238,224,0.10);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 8px;
+    }
+
+    .footer-bottom-copy {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 400;
+      color: rgba(245,238,224,0.30);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-bottom-copy strong { font-weight: 700; color: rgba(245,238,224,0.50); }
+
+    @media (max-width: 640px) {
+      .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+      .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
+      .footer-desc { max-width: 100%; }
+    }
 
     @keyframes fadeUp { to { opacity: 1; transform: none; } }
 
     @media (max-width: 640px) {
       nav, .hero, .features, .nutrition, .who-for,
-      .integrations, .cta-section, footer { padding-left: 24px; padding-right: 24px; }
+      .integrations, .cta-section { padding-left: 24px; padding-right: 24px; }
       .features-grid { grid-template-columns: 1fr; }
       .nutrition-inner { grid-template-columns: 1fr; }
       .who-for-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -951,18 +1018,52 @@
   </div>
 </section>
 
-<footer>
-  <span>
-    <span class="footer-logo"><img src="SummitLogo.png" alt="" /></span>
-    &copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong>
-  </span>
-  <span>
-    <a href="/roadmap.html">Roadmap</a>
-    &nbsp;·&nbsp;
-    <a href="/privacy-policy.html">Privacy Policy</a>
-    &nbsp;·&nbsp;
-    <a href="mailto:team@projectsummit.app">team@projectsummit.app</a>
-  </span>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+
+    <div class="footer-brand">
+      <a href="/" class="footer-wordmark">
+        <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline">Train harder. Smarter.</p>
+      <p class="footer-desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/roadmap.html">Roadmap</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener">Join Waitlist</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <ul>
+        <li>
+          <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @projectsummit.app
+          </a>
+        </li>
+        <li>
+          <a href="mailto:team@projectsummit.app">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            team@projectsummit.app
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
+    <span class="footer-bottom-copy">Built for cyclists who take training seriously.</span>
+  </div>
 </footer>
 
 <script>
