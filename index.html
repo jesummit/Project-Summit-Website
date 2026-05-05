@@ -61,26 +61,18 @@
     .site-header {
       position: sticky; top: 0; z-index: 100;
       background: var(--ink);
-    }
-
-    /* Always-visible hairline track */
-    .site-header::after {
-      content: '';
-      display: block;
-      height: 2px;
-      background: rgba(245,238,224,0.12);
-      position: relative;
+      border-bottom: 2px solid rgba(245,238,224,0.12);
     }
 
     /* Ember progress bar on top of hairline */
     .nav-progress {
       position: absolute;
-      bottom: 0; left: 0;
+      bottom: -2px; left: 0;
       height: 2px;
       width: 0%;
       background: #E8834A;
       transition: width 0.1s linear;
-      z-index: 1;
+      z-index: 101;
     }
 
     /* ── NAV ── */
