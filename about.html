@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Project Summit</title>
+  <meta name="description" content="Why Jordi Espanyol built Summit — and the problem it's solving for serious amateur cyclists." />
+  <link rel="icon" type="image/png" href="SummitLogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #F6F1E8;
+      --bg-soft:     #EFE7D6;
+      --card:        #FFFFFF;
+      --ink:         #1F1A14;
+      --ink-soft:    rgba(31,26,20,0.60);
+      --ink-faint:   rgba(31,26,20,0.38);
+      --ink-hair:    rgba(31,26,20,0.10);
+      --accent:      #D66A2D;
+      --accent-soft: rgba(214,106,45,0.10);
+      --accent-line: rgba(214,106,45,0.30);
+      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
+      --font-display: -apple-system, "SF Pro Display", system-ui, sans-serif;
+      --font-serif:   "Instrument Serif", Georgia, serif;
+      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image: radial-gradient(ellipse 55% 45% at 92% -5%, rgba(214,106,45,0.28) 0%, transparent 100%);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-weight: 400;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .topbar { display: none; }
+
+    /* ── SITE HEADER ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--ink);
+      border-bottom: 2px solid rgba(245,238,224,0.12);
+    }
+
+    .nav-progress {
+      position: absolute;
+      bottom: -2px; left: 0;
+      height: 2px; width: 0%;
+      background: #E8834A;
+      transition: width 0.1s linear;
+      z-index: 101;
+    }
+
+    nav {
+      max-width: 900px; margin: 0 auto;
+      padding: 14px 48px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    nav::after { display: none; }
+
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+    .nav-logo img { width: 100%; display: block; }
+    .nav-name { font-family: var(--font-display); font-size: 30px; font-weight: 900; letter-spacing: -0.04em; color: #F5EEE0; }
+    .nav-dot { color: #E8834A; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 400; color: rgba(245,238,224,0.55); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: #F5EEE0; }
+    .nav-links a.active { color: #F5EEE0; font-weight: 500; }
+
+    /* Lang switcher */
+    .lang-switcher { position: relative; flex-shrink: 0; }
+    .lang-selected { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(245,238,224,0.20); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #F5EEE0; transition: border-color 0.15s; }
+    .lang-selected:hover { border-color: rgba(245,238,224,0.45); }
+    .lang-selected svg { transition: transform 0.2s; }
+    .lang-switcher.open .lang-selected svg { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #2A241C; border: 1px solid rgba(245,238,224,0.12); border-radius: 10px; overflow: hidden; min-width: 120px; box-shadow: 0 8px 24px rgba(0,0,0,0.30); z-index: 200; }
+    .lang-switcher.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.10em; color: rgba(245,238,224,0.50); cursor: pointer; border: none; background: none; width: 100%; text-align: left; transition: background 0.15s, color 0.15s; }
+    .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
+    .lang-option.active { color: #E8834A; }
+    .lang-flag { font-size: 14px; }
+
+    .nav-cta { display: inline-flex; align-items: center; padding: 0 22px; height: 40px; background: #D66A2D; color: #F5EEE0; font-family: var(--font-ui); font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; flex-shrink: 0; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #F5EEE0; border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile { display: none; flex-direction: column; background: var(--ink); padding: 0 24px 24px; gap: 4px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-family: var(--font-ui); font-size: 16px; font-weight: 400; color: rgba(245,238,224,0.60); text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(245,238,224,0.08); transition: color 0.15s; }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover, .nav-mobile a.active { color: #F5EEE0; }
+    .nav-mobile .nav-mobile-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; height: 48px; background: #D66A2D; color: #F5EEE0; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; border-bottom: none; }
+    .nav-mobile .lang-switcher-mobile { display: flex; gap: 8px; padding: 16px 0 4px; border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px; }
+    .nav-mobile .lang-btn-mobile { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: rgba(245,238,224,0.35); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+    .nav-mobile .lang-btn-mobile.active, .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 48px 64px;
+      border-bottom: 1px solid var(--ink-hair);
+    }
+    .page-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards; }
+    .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; max-width: 600px; margin-bottom: 20px; color: var(--ink); opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards; }
+    .page-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .page-sub { font-size: 16px; color: var(--ink-soft); max-width: 520px; line-height: 1.7; opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards; }
+
+    /* ── FOUNDER ── */
+    .founder {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 56px; align-items: start;
+      opacity: 0; animation: fadeUp 0.5s ease 0.1s forwards;
+    }
+
+    .founder-photo-wrap {
+      display: flex; flex-direction: column; gap: 16px; align-items: center;
+    }
+
+    .founder-photo {
+      width: 200px; height: 200px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--bg-soft);
+      border: 1px solid var(--ink-hair);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Uncomment when photo is ready:
+    .founder-photo img { width: 100%; height: 100%; object-fit: cover; display: block; } */
+
+    .founder-photo-placeholder {
+      font-family: var(--font-mono);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-faint); text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .founder-social { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+    .founder-social a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); text-decoration: none; transition: color 0.15s; }
+    .founder-social a:hover { color: var(--accent); }
+
+    .founder-text {}
+    .founder-name { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 4px; }
+    .founder-role { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    .founder-bio { font-size: 15px; color: var(--ink-soft); line-height: 1.8; }
+    .founder-bio p { margin-bottom: 14px; }
+    .founder-bio p:last-child { margin-bottom: 0; }
+
+    /* ── PROBLEM ── */
+    .problem {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+      opacity: 0; animation: fadeUp 0.5s ease 0.15s forwards;
+    }
+
+    .section-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 32px; }
+
+    .problem-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--ink-hair);
+      border: 1px solid var(--ink-hair);
+      border-radius: 2px;
+    }
+
+    .problem-block {
+      background: var(--bg); padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .problem-block:hover { background: var(--card); }
+
+    .problem-block-label {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .problem-block-label--problem { color: var(--accent); }
+    .problem-block-label--solution { color: #3DB76F; }
+
+    .problem-block-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--ink); }
+    .problem-block-body { font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
+    .problem-block-body p { margin-bottom: 10px; }
+    .problem-block-body p:last-child { margin-bottom: 0; }
+
+    .apps-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .app-chip { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--ink-hair); border-radius: 4px; color: var(--ink-faint); }
+
+    /* ── PRINCIPLES ── */
+    .principles {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+      opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards;
+    }
+
+    .principles-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--ink-hair);
+      border: 1px solid var(--ink-hair); border-radius: 2px;
+      margin-top: 40px;
+    }
+
+    .principle-card { background: var(--bg); padding: 32px 28px; transition: background 0.2s; }
+    .principle-card:hover { background: var(--card); }
+
+    .principle-num { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 16px; }
+    .principle-title { font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--ink); }
+    .principle-body { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+    /* ── CTA ── */
+    .about-cta {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.5s ease 0.25s forwards;
+    }
+
+    .about-cta-text {}
+    .about-cta-title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; color: var(--ink); }
+    .about-cta-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .about-cta-body { font-size: 15px; color: var(--ink-soft); margin-bottom: 28px; max-width: 400px; }
+
+    .btn-accent { display: inline-flex; align-items: center; padding: 0 32px; height: 54px; background: var(--accent); color: #fff; font-family: var(--font-ui); font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; box-shadow: 0 4px 16px rgba(214,106,45,0.30); transition: opacity 0.2s; }
+    .btn-accent:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ink); }
+    .site-footer-inner { max-width: 900px; margin: 0 auto; padding: 64px 48px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+    .footer-wordmark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+    .footer-logo img { width: 100%; display: block; }
+    .footer-name { font-family: var(--font-display); font-size: 22px; font-weight: 900; letter-spacing: -0.04em; color: #F5EEE0; }
+    .footer-name .dot { color: #E8834A; }
+    .footer-tagline { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,238,224,0.38); }
+    .footer-desc { font-size: 14px; color: rgba(245,238,224,0.60); line-height: 1.7; max-width: 280px; }
+    .footer-col h3 { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E8834A; margin-bottom: 20px; }
+    .footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 14px; color: rgba(245,238,224,0.60); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 8px; }
+    .footer-col a:hover { color: #F5EEE0; }
+    .footer-bottom { max-width: 900px; margin: 0 auto; padding: 20px 48px 32px; border-top: 1px solid rgba(245,238,224,0.10); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom-copy { font-family: var(--font-mono); font-size: 11px; font-weight: 400; color: rgba(245,238,224,0.30); letter-spacing: 0.04em; }
+    .footer-bottom-copy strong { font-weight: 700; color: rgba(245,238,224,0.50); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 640px) {
+      nav, .page-header, .founder, .problem, .principles, .about-cta { padding-left: 24px; padding-right: 24px; }
+      .founder { grid-template-columns: 1fr; }
+      .founder-photo-wrap { align-items: flex-start; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .about-cta { flex-direction: column; }
+      .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+      .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.20); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
+    <span class="nav-name">Summit<span class="nav-dot">.</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
+    <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+    <li><a href="/about.html" class="active">About</a></li>
+  </ul>
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
+      <span id="lang-label">ES</span>
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="#F5EEE0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lang-dropdown">
+      <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+      <button class="lang-option" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
+      <button class="lang-option" data-lang="ca"><span class="lang-flag">🏴󠁥󠁳󠁣󠁴󠁿</span> Català</button>
+    </div>
+  </div>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/about.html" class="active">About</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <div class="lang-switcher-mobile">
+    <button class="lang-btn-mobile" data-lang="en">EN</button>
+    <button class="lang-btn-mobile" data-lang="es">ES</button>
+    <button class="lang-btn-mobile" data-lang="ca">CA</button>
+  </div>
+</div>
+</header>
+
+<div class="page-header">
+  <p class="page-eyebrow">The story behind Summit</p>
+  <h1 class="page-title">Built by a cyclist,<br>for cyclists who train <em>seriously.</em></h1>
+  <p class="page-sub">Summit didn't start as a startup idea. It started as a training problem — one that too many serious amateurs know by heart.</p>
+</div>
+
+<div class="founder">
+  <div class="founder-photo-wrap">
+    <div class="founder-photo">
+      <!-- Replace with: <img src="jordi.jpg" alt="Jordi Espanyol" /> -->
+      <p class="founder-photo-placeholder">Photo<br>coming<br>soon</p>
+    </div>
+    <div class="founder-social">
+      <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @projectsummit.app
+      </a>
+      <a href="mailto:jordi@projectsummit.app">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        jordi@projectsummit.app
+      </a>
+    </div>
+  </div>
+  <div class="founder-text">
+    <h2 class="founder-name">Jordi Espanyol</h2>
+    <p class="founder-role">Founder · Project Summit</p>
+    <div class="founder-bio">
+      <p>I'm an amateur cyclist and software developer based in Barcelona. Like many serious amateurs, I train consistently, race occasionally, and take my performance seriously — without the budget or time of a professional.</p>
+      <p>For years I managed my training across Strava, TrainingPeaks, Bevel, and a handful of other apps. Each one did its thing reasonably well. None of them talked to each other. At the end of every week I had data everywhere and clarity nowhere.</p>
+      <p>I knew what I had trained. I rarely knew what I should do next — or why.</p>
+      <p>Summit is my answer to that problem. Not a theoretical one, but the platform I wished existed when I was training for my first Gran Fondo and staring at a TSB chart I couldn't act on.</p>
+    </div>
+  </div>
+</div>
+
+<div class="problem">
+  <p class="section-eyebrow">The problem · The solution</p>
+  <div class="problem-grid">
+    <div class="problem-block">
+      <p class="problem-block-label problem-block-label--problem">The problem</p>
+      <h2 class="problem-block-title">Too many apps. Too little clarity.</h2>
+      <div class="problem-block-body">
+        <p>Serious amateurs use an average of 3–5 fitness apps simultaneously. Each captures part of the picture — activities, health metrics, nutrition, training load — but none synthesizes it into a decision.</p>
+        <p>You end up knowing what happened. Not what to do.</p>
+        <div class="apps-list">
+          <span class="app-chip">Strava</span>
+          <span class="app-chip">TrainingPeaks</span>
+          <span class="app-chip">Bevel</span>
+          <span class="app-chip">Indya</span>
+          <span class="app-chip">MyFitnessPal</span>
+          <span class="app-chip">intervals.icu</span>
+        </div>
+      </div>
+    </div>
+    <div class="problem-block">
+      <p class="problem-block-label problem-block-label--solution">The solution</p>
+      <h2 class="problem-block-title">One platform. Clear decisions.</h2>
+      <div class="problem-block-body">
+        <p>Summit integrates training load, HRV-driven recovery, power analysis, and nutrition into a single adaptive engine. It doesn't just show you data — it tells you what to do tomorrow and why.</p>
+        <p>The plan rewrites itself around your life. Missed a session. Got sick. Travelled. Summit adjusts without you having to think about it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="principles">
+  <p class="section-eyebrow">Design principles</p>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="principle-num">01</div>
+      <h3 class="principle-title">Data to decisions</h3>
+      <p class="principle-body">Every metric in Summit exists to produce a recommendation. If a number doesn't change what you do, it shouldn't be on the screen.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">02</div>
+      <h3 class="principle-title">Adapts to real life</h3>
+      <p class="principle-body">Athletes get sick, travel, and miss sessions. The plan that doesn't account for this isn't a plan — it's a wishlist. Summit rewrites around reality.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">03</div>
+      <h3 class="principle-title">Serious, not complicated</h3>
+      <p class="principle-body">Professional-grade science shouldn't require a sports science degree to interpret. Summit speaks in training terms, not in jargon.</p>
+    </div>
+  </div>
+</div>
+
+<div class="about-cta">
+  <div class="about-cta-text">
+    <h2 class="about-cta-title">Ready to train <em>smarter?</em></h2>
+    <p class="about-cta-body">Summit launches Summer 2026 on iOS. Join the waitlist and be first to ride with a plan that actually knows you.</p>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="nav.cta">Join Waitlist</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-wordmark">
+        <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h3 data-i18n="footer.nav.title">Navigate</h3>
+      <ul>
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 data-i18n="footer.contact.title">Contact</h3>
+      <ul>
+        <li>
+          <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @projectsummit.app
+          </a>
+        </li>
+        <li>
+          <a href="mailto:team@projectsummit.app">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            team@projectsummit.app
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
+    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
+  </div>
+</footer>
+
+<script>
+  var hamburger = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  var navProgress = document.getElementById('nav-progress');
+  window.addEventListener('scroll', function() {
+    var pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    navProgress.style.width = pct + '%';
+  }, { passive: true });
+</script>
+<script src="translations.js"></script>
+<script>
+(function() {
+  var lang = localStorage.getItem('summit-lang') || 'es';
+  function applyLang(l) {
+    if (!TRANSLATIONS[l]) return;
+    var t = TRANSLATIONS[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    var lbl = document.getElementById('lang-label');
+    if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
+    document.querySelectorAll('.lang-option').forEach(function(btn) { btn.classList.toggle('active', btn.getAttribute('data-lang') === l); });
+    document.querySelectorAll('.lang-btn-mobile').forEach(function(btn) { btn.classList.toggle('active', btn.getAttribute('data-lang') === l); });
+    document.documentElement.lang = l;
+    localStorage.setItem('summit-lang', l);
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(lang);
+    document.querySelectorAll('.lang-option, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); if (langSwitcher) langSwitcher.classList.remove('open'); });
+    });
+    var langSwitcher = document.getElementById('lang-switcher');
+    var langSelectedBtn = document.getElementById('lang-selected-btn');
+    if (langSwitcher && langSelectedBtn) {
+      langSelectedBtn.addEventListener('click', function(e) { e.stopPropagation(); langSwitcher.classList.toggle('open'); });
+      document.addEventListener('click', function() { langSwitcher.classList.remove('open'); });
+    }
+  });
+})();
+</script>
+</body>
+</html>
