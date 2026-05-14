@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambassadors — Project Summit</title>
+  <meta name="description" content="Ride with Summit. Share it with your community. We're looking for cyclists who train seriously and love talking about it." />
+  <link rel="icon" type="image/png" href="SummitLogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #F6F1E8;
+      --bg-soft:     #EFE7D6;
+      --card:        #FFFFFF;
+      --ink:         #1F1A14;
+      --ink-soft:    rgba(31,26,20,0.60);
+      --ink-faint:   rgba(31,26,20,0.38);
+      --ink-hair:    rgba(31,26,20,0.10);
+      --accent:      #D66A2D;
+      --accent-soft: rgba(214,106,45,0.10);
+      --accent-line: rgba(214,106,45,0.30);
+      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
+      --font-display: -apple-system, "SF Pro Display", system-ui, sans-serif;
+      --font-serif:   "Instrument Serif", Georgia, serif;
+      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image: radial-gradient(ellipse 55% 45% at 92% -5%, rgba(214,106,45,0.28) 0%, transparent 100%);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-weight: 400;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .topbar { display: none; }
+
+    /* ── SITE HEADER ── */
+    .site-header { position: sticky; top: 0; z-index: 100; background: var(--ink); border-bottom: 2px solid rgba(245,238,224,0.12); }
+    .nav-progress { position: absolute; bottom: -2px; left: 0; height: 2px; width: 0%; background: #E8834A; transition: width 0.1s linear; z-index: 101; }
+    nav { max-width: 900px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    nav::after { display: none; }
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+    .nav-logo img { width: 100%; display: block; }
+    .nav-name { font-family: var(--font-display); font-size: 30px; font-weight: 900; letter-spacing: -0.04em; color: #F5EEE0; }
+    .nav-dot { color: #E8834A; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 400; color: rgba(245,238,224,0.55); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: #F5EEE0; }
+    .nav-links a.active { color: #F5EEE0; font-weight: 500; }
+    .lang-switcher { position: relative; flex-shrink: 0; }
+    .lang-selected { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(245,238,224,0.20); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #F5EEE0; transition: border-color 0.15s; }
+    .lang-selected:hover { border-color: rgba(245,238,224,0.45); }
+    .lang-selected svg { transition: transform 0.2s; }
+    .lang-switcher.open .lang-selected svg { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #2A241C; border: 1px solid rgba(245,238,224,0.12); border-radius: 10px; overflow: hidden; min-width: 120px; box-shadow: 0 8px 24px rgba(0,0,0,0.30); z-index: 200; }
+    .lang-switcher.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.10em; color: rgba(245,238,224,0.50); cursor: pointer; border: none; background: none; width: 100%; text-align: left; transition: background 0.15s, color 0.15s; }
+    .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
+    .lang-option.active { color: #E8834A; }
+    .lang-flag { font-size: 14px; }
+    .nav-cta { display: inline-flex; align-items: center; padding: 0 22px; height: 40px; background: #D66A2D; color: #F5EEE0; font-family: var(--font-ui); font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; flex-shrink: 0; }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #F5EEE0; border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; flex-direction: column; background: var(--ink); padding: 0 24px 24px; gap: 4px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-family: var(--font-ui); font-size: 16px; font-weight: 400; color: rgba(245,238,224,0.60); text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(245,238,224,0.08); transition: color 0.15s; }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover, .nav-mobile a.active { color: #F5EEE0; }
+    .nav-mobile .nav-mobile-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; height: 48px; background: #D66A2D; color: #F5EEE0; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; border-bottom: none; }
+    .nav-mobile .lang-switcher-mobile { display: flex; gap: 8px; padding: 16px 0 4px; border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px; }
+    .nav-mobile .lang-btn-mobile { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: rgba(245,238,224,0.35); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+    .nav-mobile .lang-btn-mobile.active, .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { max-width: 900px; margin: 0 auto; padding: 80px 48px 64px; border-bottom: 1px solid var(--ink-hair); }
+    .page-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards; }
+    .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; max-width: 640px; margin-bottom: 20px; color: var(--ink); opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards; }
+    .page-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .page-sub { font-size: 16px; color: var(--ink-soft); max-width: 520px; line-height: 1.7; opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards; }
+
+    /* ── WHO WE LOOK FOR ── */
+    .amb-who {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px; align-items: start;
+      opacity: 0; animation: fadeUp 0.5s ease 0.1s forwards;
+    }
+
+    .amb-who-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; line-height: 1.1; }
+    .amb-who-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .amb-who-body { font-size: 15px; color: var(--ink-soft); line-height: 1.8; }
+
+    .amb-checklist { list-style: none; padding: 0; }
+    .amb-checklist li {
+      font-size: 14px; color: var(--ink-soft);
+      padding: 13px 0; border-bottom: 1px solid var(--ink-hair);
+      display: flex; align-items: flex-start; gap: 12px; line-height: 1.6;
+    }
+    .amb-checklist li:last-child { border-bottom: none; }
+    .amb-checklist li::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 3px; }
+
+    /* ── WHAT YOU GET ── */
+    .amb-offer {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+      opacity: 0; animation: fadeUp 0.5s ease 0.15s forwards;
+    }
+
+    .amb-offer-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 40px; }
+
+    .offer-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--ink-hair);
+      border: 1px solid var(--ink-hair); border-radius: 2px;
+    }
+
+    .offer-card { background: var(--bg); padding: 32px 28px; transition: background 0.2s; }
+    .offer-card:hover { background: var(--card); }
+
+    .offer-icon { font-size: 24px; margin-bottom: 16px; display: block; }
+    .offer-title { font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; color: var(--ink); }
+    .offer-body { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    .amb-how {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+      opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards;
+    }
+
+    .amb-how-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 40px; }
+
+    .steps { display: flex; flex-direction: column; gap: 0; max-width: 600px; }
+    .step { display: flex; gap: 28px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--ink-hair); }
+    .step:last-child { border-bottom: none; }
+
+    .step-num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); flex-shrink: 0; padding-top: 4px; width: 32px; }
+    .step-content {}
+    .step-title { font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; color: var(--ink); }
+    .step-body { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+    .step-body a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .step-body a:hover { text-decoration: underline; }
+
+    /* ── CTA ── */
+    .amb-cta {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 48px 80px;
+      opacity: 0; animation: fadeUp 0.5s ease 0.25s forwards;
+    }
+
+    .amb-cta-inner {
+      background: var(--ink);
+      border-radius: 2px; padding: 56px 48px;
+      text-align: center;
+    }
+
+    .amb-cta-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E8834A; margin-bottom: 20px; }
+    .amb-cta-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; color: #F5EEE0; margin-bottom: 12px; line-height: 1.1; }
+    .amb-cta-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #E8834A; }
+    .amb-cta-sub { font-size: 15px; color: rgba(245,238,224,0.55); margin-bottom: 36px; max-width: 420px; margin-left: auto; margin-right: auto; }
+
+    .btn-amb { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; height: 54px; background: #E8834A; color: #F5EEE0; font-family: var(--font-ui); font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; }
+    .btn-amb:hover { opacity: 0.9; }
+
+    .amb-cta-note { margin-top: 16px; font-family: var(--font-mono); font-size: 11px; color: rgba(245,238,224,0.28); letter-spacing: 0.06em; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ink); }
+    .site-footer-inner { max-width: 900px; margin: 0 auto; padding: 64px 48px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+    .footer-wordmark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+    .footer-logo img { width: 100%; display: block; }
+    .footer-name { font-family: var(--font-display); font-size: 22px; font-weight: 900; letter-spacing: -0.04em; color: #F5EEE0; }
+    .footer-name .dot { color: #E8834A; }
+    .footer-tagline { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,238,224,0.38); }
+    .footer-desc { font-size: 14px; color: rgba(245,238,224,0.60); line-height: 1.7; max-width: 280px; }
+    .footer-col h3 { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E8834A; margin-bottom: 20px; }
+    .footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 14px; color: rgba(245,238,224,0.60); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 8px; }
+    .footer-col a:hover { color: #F5EEE0; }
+    .footer-bottom { max-width: 900px; margin: 0 auto; padding: 20px 48px 32px; border-top: 1px solid rgba(245,238,224,0.10); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom-copy { font-family: var(--font-mono); font-size: 11px; font-weight: 400; color: rgba(245,238,224,0.30); letter-spacing: 0.04em; }
+    .footer-bottom-copy strong { font-weight: 700; color: rgba(245,238,224,0.50); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 640px) {
+      nav, .page-header, .amb-who, .amb-offer, .amb-how, .amb-cta { padding-left: 24px; padding-right: 24px; }
+      .amb-who { grid-template-columns: 1fr; gap: 32px; }
+      .offer-grid { grid-template-columns: 1fr; }
+      .amb-cta-inner { padding: 40px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+      .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.20); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
+    <span class="nav-name">Summit<span class="nav-dot">.</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
+    <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+    <li><a href="/ambassadors.html" class="active">Ambassadors</a></li>
+  </ul>
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
+      <span id="lang-label">ES</span>
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="#F5EEE0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lang-dropdown">
+      <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+      <button class="lang-option" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
+      <button class="lang-option" data-lang="ca"><span class="lang-flag">🏴󠁥󠁳󠁣󠁴󠁿</span> Català</button>
+    </div>
+  </div>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/ambassadors.html" class="active">Ambassadors</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <div class="lang-switcher-mobile">
+    <button class="lang-btn-mobile" data-lang="en">EN</button>
+    <button class="lang-btn-mobile" data-lang="es">ES</button>
+    <button class="lang-btn-mobile" data-lang="ca">CA</button>
+  </div>
+</div>
+</header>
+
+<div class="page-header">
+  <p class="page-eyebrow">Summit Ambassadors</p>
+  <h1 class="page-title">Ride it. Train with it. Tell the world it <em>works.</em></h1>
+  <p class="page-sub">We're looking for cyclists who take their training seriously and aren't shy about sharing it. This is a new programme — small, personal, and built around real athletes.</p>
+</div>
+
+<div class="amb-who">
+  <div>
+    <h2 class="amb-who-title">Cyclists who train <em>seriously</em> and talk about it.</h2>
+    <p class="amb-who-body">We're not looking for influencers with a product-placement mindset. We're looking for athletes who genuinely care about performance — and whose communities trust them because of it.</p>
+  </div>
+  <div>
+    <ul class="amb-checklist">
+      <li>You train consistently and track your performance</li>
+      <li>You have an active presence on social media — Instagram, Strava, YouTube, or similar</li>
+      <li>Your audience is made up of cyclists who take riding seriously</li>
+      <li>You talk honestly about your training — the good sessions and the hard ones</li>
+      <li>You're interested in testing a product that's still being built and giving real feedback</li>
+    </ul>
+  </div>
+</div>
+
+<div class="amb-offer">
+  <p class="amb-offer-label">What you get</p>
+  <div class="offer-grid">
+    <div class="offer-card">
+      <span class="offer-icon">🚀</span>
+      <h3 class="offer-title">Early access</h3>
+      <p class="offer-body">You'll use Summit before anyone else. First in, with a direct line to the team while the app is still being shaped.</p>
+    </div>
+    <div class="offer-card">
+      <span class="offer-icon">⭐</span>
+      <h3 class="offer-title">Free Elite account</h3>
+      <p class="offer-body">Full access to Summit Premium Elite — every feature, for as long as you're part of the programme.</p>
+    </div>
+    <div class="offer-card">
+      <span class="offer-icon">🤝</span>
+      <h3 class="offer-title">Collaboration</h3>
+      <p class="offer-body">Content collaboration, mentions, and the chance to shape how Summit is communicated to the cycling community.</p>
+    </div>
+  </div>
+</div>
+
+<div class="amb-how">
+  <p class="amb-how-label">How it works</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <div class="step-content">
+        <h3 class="step-title">Write to us</h3>
+        <p class="step-body">Send a short email to <a href="mailto:jordi@projectsummit.app">jordi@projectsummit.app</a> introducing yourself. Tell us who you are, how you train, and where your community lives. No forms, no decks — just a real message.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div class="step-content">
+        <h3 class="step-title">We'll have a conversation</h3>
+        <p class="step-body">If it looks like a good fit, we'll reply and get to know each other. This is a small programme — we'd rather have five great ambassadors than fifty nominal ones.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div class="step-content">
+        <h3 class="step-title">Get access and start training</h3>
+        <p class="step-body">You'll get early access to the app, an Elite account, and a direct channel with the team. Use it for your real training, share honestly, and help us build something worth talking about.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="amb-cta">
+  <div class="amb-cta-inner">
+    <p class="amb-cta-eyebrow">Ready to ride with Summit?</p>
+    <h2 class="amb-cta-title">Introduce <em>yourself.</em></h2>
+    <p class="amb-cta-sub">A short email is all it takes. Tell us how you train and where your community is — we'll take it from there.</p>
+    <a href="mailto:jordi@projectsummit.app?subject=Ambassador%20programme%20%E2%80%94%20[Your%20name]" class="btn-amb">
+      Write to Jordi
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <p class="amb-cta-note">jordi@projectsummit.app</p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-wordmark">
+        <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h3 data-i18n="footer.nav.title">Navigate</h3>
+      <ul>
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/ambassadors.html">Ambassadors</a></li>
+        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 data-i18n="footer.contact.title">Contact</h3>
+      <ul>
+        <li>
+          <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @projectsummit.app
+          </a>
+        </li>
+        <li>
+          <a href="mailto:team@projectsummit.app">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            team@projectsummit.app
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
+    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
+  </div>
+</footer>
+
+<script>
+  var hamburger = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); });
+  });
+  var navProgress = document.getElementById('nav-progress');
+  window.addEventListener('scroll', function() {
+    navProgress.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+  }, { passive: true });
+</script>
+<script src="translations.js"></script>
+<script>
+(function() {
+  var lang = localStorage.getItem('summit-lang') || 'es';
+  function applyLang(l) {
+    if (!TRANSLATIONS[l]) return;
+    var t = TRANSLATIONS[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) { var k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.textContent = t[k]; });
+    var lbl = document.getElementById('lang-label');
+    if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
+    document.querySelectorAll('.lang-option').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    document.querySelectorAll('.lang-btn-mobile').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    document.documentElement.lang = l;
+    localStorage.setItem('summit-lang', l);
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(lang);
+    document.querySelectorAll('.lang-option, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); if (langSwitcher) langSwitcher.classList.remove('open'); });
+    });
+    var langSwitcher = document.getElementById('lang-switcher');
+    if (langSwitcher) {
+      document.getElementById('lang-selected-btn').addEventListener('click', function(e) { e.stopPropagation(); langSwitcher.classList.toggle('open'); });
+      document.addEventListener('click', function() { langSwitcher.classList.remove('open'); });
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Project Summit</title>
+  <meta name="description" content="Frequent questions about Summit — the adaptive cycling training app." />
+  <link rel="icon" type="image/png" href="SummitLogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #F6F1E8;
+      --bg-soft:     #EFE7D6;
+      --card:        #FFFFFF;
+      --ink:         #1F1A14;
+      --ink-soft:    rgba(31,26,20,0.60);
+      --ink-faint:   rgba(31,26,20,0.38);
+      --ink-hair:    rgba(31,26,20,0.10);
+      --accent:      #D66A2D;
+      --accent-soft: rgba(214,106,45,0.10);
+      --accent-line: rgba(214,106,45,0.30);
+      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
+      --font-display: -apple-system, "SF Pro Display", system-ui, sans-serif;
+      --font-serif:   "Instrument Serif", Georgia, serif;
+      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image: radial-gradient(ellipse 55% 45% at 92% -5%, rgba(214,106,45,0.28) 0%, transparent 100%);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-weight: 400;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .topbar { display: none; }
+
+    /* ── SITE HEADER ── */
+    .site-header { position: sticky; top: 0; z-index: 100; background: var(--ink); border-bottom: 2px solid rgba(245,238,224,0.12); }
+    .nav-progress { position: absolute; bottom: -2px; left: 0; height: 2px; width: 0%; background: #E8834A; transition: width 0.1s linear; z-index: 101; }
+    nav { max-width: 900px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    nav::after { display: none; }
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+    .nav-logo img { width: 100%; display: block; }
+    .nav-name { font-family: var(--font-display); font-size: 30px; font-weight: 900; letter-spacing: -0.04em; color: #F5EEE0; }
+    .nav-dot { color: #E8834A; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 400; color: rgba(245,238,224,0.55); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: #F5EEE0; }
+    .nav-links a.active { color: #F5EEE0; font-weight: 500; }
+    .lang-switcher { position: relative; flex-shrink: 0; }
+    .lang-selected { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(245,238,224,0.20); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #F5EEE0; transition: border-color 0.15s; }
+    .lang-selected:hover { border-color: rgba(245,238,224,0.45); }
+    .lang-selected svg { transition: transform 0.2s; }
+    .lang-switcher.open .lang-selected svg { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #2A241C; border: 1px solid rgba(245,238,224,0.12); border-radius: 10px; overflow: hidden; min-width: 120px; box-shadow: 0 8px 24px rgba(0,0,0,0.30); z-index: 200; }
+    .lang-switcher.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.10em; color: rgba(245,238,224,0.50); cursor: pointer; border: none; background: none; width: 100%; text-align: left; transition: background 0.15s, color 0.15s; }
+    .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
+    .lang-option.active { color: #E8834A; }
+    .lang-flag { font-size: 14px; }
+    .nav-cta { display: inline-flex; align-items: center; padding: 0 22px; height: 40px; background: #D66A2D; color: #F5EEE0; font-family: var(--font-ui); font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; flex-shrink: 0; }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #F5EEE0; border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; flex-direction: column; background: var(--ink); padding: 0 24px 24px; gap: 4px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-family: var(--font-ui); font-size: 16px; font-weight: 400; color: rgba(245,238,224,0.60); text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(245,238,224,0.08); transition: color 0.15s; }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover, .nav-mobile a.active { color: #F5EEE0; }
+    .nav-mobile .nav-mobile-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; height: 48px; background: #D66A2D; color: #F5EEE0; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; border-bottom: none; }
+    .nav-mobile .lang-switcher-mobile { display: flex; gap: 8px; padding: 16px 0 4px; border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px; }
+    .nav-mobile .lang-btn-mobile { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: rgba(245,238,224,0.35); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+    .nav-mobile .lang-btn-mobile.active, .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { max-width: 900px; margin: 0 auto; padding: 80px 48px 64px; border-bottom: 1px solid var(--ink-hair); }
+    .page-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards; }
+    .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; max-width: 600px; margin-bottom: 20px; color: var(--ink); opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards; }
+    .page-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .page-sub { font-size: 16px; color: var(--ink-soft); max-width: 520px; line-height: 1.7; opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards; }
+
+    /* ── FAQ CATEGORIES ── */
+    .faq-body {
+      max-width: 900px; margin: 0 auto;
+      padding: 64px 48px 80px;
+    }
+
+    .faq-category { margin-bottom: 64px; }
+    .faq-category:last-child { margin-bottom: 0; }
+
+    .faq-cat-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-faint); margin-bottom: 24px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--ink-hair);
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item {
+      border-bottom: 1px solid var(--ink-hair);
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    .faq-item:nth-child(1) { animation-delay: 0.05s; }
+    .faq-item:nth-child(2) { animation-delay: 0.10s; }
+    .faq-item:nth-child(3) { animation-delay: 0.15s; }
+    .faq-item:nth-child(4) { animation-delay: 0.20s; }
+    .faq-item:nth-child(5) { animation-delay: 0.25s; }
+    .faq-item:nth-child(6) { animation-delay: 0.30s; }
+
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 22px 0; cursor: pointer;
+      list-style: none; user-select: none;
+    }
+    .faq-question::-webkit-details-marker { display: none; }
+
+    .faq-q-text {
+      font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+      letter-spacing: -0.01em; color: var(--ink); line-height: 1.3;
+    }
+
+    .faq-icon {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border-radius: 50%; border: 1px solid var(--ink-hair);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 16px; font-weight: 300;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    details[open] .faq-icon { transform: rotate(45deg); background: var(--accent-soft); }
+    details[open] .faq-question .faq-q-text { color: var(--accent); }
+
+    .faq-answer {
+      padding: 0 0 24px;
+      font-size: 15px; color: var(--ink-soft); line-height: 1.8;
+      max-width: 680px;
+    }
+
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer strong { font-weight: 600; color: var(--ink); }
+    .faq-answer a { color: var(--accent); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    .faq-tag {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 4px; margin-left: 8px;
+      vertical-align: middle; position: relative; top: -2px;
+    }
+    .faq-tag--roadmap { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-line); }
+
+    /* ── CTA ── */
+    .faq-cta {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .faq-cta-inner {
+      background: var(--ink);
+      border-radius: 2px;
+      padding: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+
+    .faq-cta-text { }
+    .faq-cta-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8834A; margin-bottom: 12px; }
+    .faq-cta-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em; color: #F5EEE0; margin-bottom: 8px; }
+    .faq-cta-sub { font-size: 14px; color: rgba(245,238,224,0.55); }
+
+    .btn-cta-light { display: inline-flex; align-items: center; padding: 0 28px; height: 48px; background: #E8834A; color: #F5EEE0; font-family: var(--font-ui); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; flex-shrink: 0; }
+    .btn-cta-light:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ink); }
+    .site-footer-inner { max-width: 900px; margin: 0 auto; padding: 64px 48px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+    .footer-wordmark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+    .footer-logo img { width: 100%; display: block; }
+    .footer-name { font-family: var(--font-display); font-size: 22px; font-weight: 900; letter-spacing: -0.04em; color: #F5EEE0; }
+    .footer-name .dot { color: #E8834A; }
+    .footer-tagline { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,238,224,0.38); }
+    .footer-desc { font-size: 14px; color: rgba(245,238,224,0.60); line-height: 1.7; max-width: 280px; }
+    .footer-col h3 { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E8834A; margin-bottom: 20px; }
+    .footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 14px; color: rgba(245,238,224,0.60); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 8px; }
+    .footer-col a:hover { color: #F5EEE0; }
+    .footer-bottom { max-width: 900px; margin: 0 auto; padding: 20px 48px 32px; border-top: 1px solid rgba(245,238,224,0.10); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom-copy { font-family: var(--font-mono); font-size: 11px; font-weight: 400; color: rgba(245,238,224,0.30); letter-spacing: 0.04em; }
+    .footer-bottom-copy strong { font-weight: 700; color: rgba(245,238,224,0.50); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 640px) {
+      nav, .page-header, .faq-body, .faq-cta { padding-left: 24px; padding-right: 24px; }
+      .faq-cta-inner { padding: 32px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+      .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.20); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
+    <span class="nav-name">Summit<span class="nav-dot">.</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
+    <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+    <li><a href="/faq.html" class="active">FAQ</a></li>
+  </ul>
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
+      <span id="lang-label">ES</span>
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="#F5EEE0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lang-dropdown">
+      <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+      <button class="lang-option" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
+      <button class="lang-option" data-lang="ca"><span class="lang-flag">🏴󠁥󠁳󠁣󠁴󠁿</span> Català</button>
+    </div>
+  </div>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/faq.html" class="active">FAQ</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <div class="lang-switcher-mobile">
+    <button class="lang-btn-mobile" data-lang="en">EN</button>
+    <button class="lang-btn-mobile" data-lang="es">ES</button>
+    <button class="lang-btn-mobile" data-lang="ca">CA</button>
+  </div>
+</div>
+</header>
+
+<div class="page-header">
+  <p class="page-eyebrow">Frequently asked questions</p>
+  <h1 class="page-title">Everything you want to know about <em>Summit.</em></h1>
+  <p class="page-sub">Can't find what you're looking for? Write to us at <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> and we'll answer directly.</p>
+</div>
+
+<div class="faq-body">
+
+  <!-- CATEGORY: The app -->
+  <div class="faq-category">
+    <p class="faq-cat-label">The app</p>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Where do the training plans come from?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Summit's plans are generated by a proprietary periodisation engine — not by AI or a chatbot. The engine applies established sports science methodology (polarised training, CTL/ATL/TSB load management) and produces the same type of decisions a human coach would make: when to load, when to recover, when to taper.</p>
+          <p>The difference is that Summit runs these calculations continuously, in real time, and adapts them to your actual data — not to an idealised version of your schedule.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Is Summit an AI app?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Depends on how you define AI. There's no large language model, no chatbot, and no generative content. Summit's engine is a deterministic algorithmic system: it follows codified sports science rules and produces predictable, explainable recommendations.</p>
+          <p>We think "algorithm" is more honest than "AI" here. Every decision Summit makes can be traced back to a specific rule or calculation — not a black box.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">What happens when I miss a session?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Summit detects it automatically and recalculates your plan. This is called plan cascading — skipped sessions, completed sessions, illness, travel, or any change in availability all trigger an automatic adjustment of what comes next.</p>
+          <p>You'll never be stuck following a plan that stopped making sense three days ago.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Can I record other types of training — gym, running, hiking?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Yes. Activities from other disciplines are imported and contribute to your overall training load calculation. Summit accounts for the fatigue they generate.</p>
+          <p>That said, Summit doesn't structure or analyse non-cycling activities in detail. The training plan is built around cycling. Cross-training is acknowledged, not coached.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <!-- CATEGORY: Devices & integrations -->
+  <div class="faq-category">
+    <p class="faq-cat-label">Devices &amp; integrations</p>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Do I need a power meter?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>For training load calculations, no. Summit uses heart rate and perceived exertion to estimate load when power data isn't available.</p>
+          <p>For structured workouts, <strong>yes for now</strong>. Workouts are currently prescribed in power zones (% FTP), so you need a power meter to follow them precisely. <span class="faq-tag faq-tag--roadmap">Roadmap</span> Heart rate zone prescriptions are coming — this is a known priority.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Do I need an Apple Watch?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>No. Summit reads HRV, sleep, and recovery data directly from Apple Health. Any wearable that writes those metrics to Apple Health is compatible.</p>
+          <p>In practice, Apple Watch currently provides the best and most consistent data for Summit's recovery calculations. Other devices may write partial data depending on their Apple Health integration.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Does Summit work without a Strava account?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Strava is currently the main way Summit imports completed activities. Without Strava, you'd need to log activities manually, which means you'd lose the automatic plan adaptation.</p>
+          <p>Direct integrations with additional platforms are on the roadmap. For now, Strava is strongly recommended for the full experience.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">How do workouts get to my Garmin or Zwift?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Summit pushes structured workouts to your devices via intervals.icu, which acts as a distribution layer. From there, workouts sync automatically to Garmin Connect, Zwift, and MyWhoosh.</p>
+          <p>You connect intervals.icu once in Summit's settings — after that it's automatic.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Can I import my existing Strava history?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Yes. When you connect Strava, Summit imports your recent activity history automatically. This gives the engine real data to work with from day one — your eFTP estimation and load baselines are calculated from your actual rides, not from scratch.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <!-- CATEGORY: Platform & pricing -->
+  <div class="faq-category">
+    <p class="faq-cat-label">Platform &amp; pricing</p>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Is Summit available on Android?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Not yet. Summit is iOS-first. Android is on the roadmap for 2027, but iOS is the focus for the initial launch.</p>
+          <p>If you're on Android, join the waitlist anyway — Android users will be the first to know when it's ready.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Does it work for running or swimming?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Not in v1.0. Summit is built exclusively for cycling in its first release. Running and swimming support are planned for 2027 — the training engine will expand to multi-sport once the cycling platform is solid.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">How much does Summit cost?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Pricing hasn't been announced yet. Summit Premium will have two tiers: <strong>Pro</strong> (detailed training analysis) and <strong>Elite</strong> (full platform access including advanced nutrition, pacing, and priority support).</p>
+          <p>Waitlist members will get priority access and will be among the first to know pricing when it goes live.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">When does Summit launch?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Summer 2026 on the App Store. The app is currently in closed beta with a group of cyclists helping test and refine it.</p>
+          <p>Join the waitlist to get early access when doors open.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-question">
+          <span class="faq-q-text">Can I export my data?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>Yes. Your data belongs to you. You can request an export of your training data at any time, and you can delete your account — and all associated data — directly from within the app.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="faq-cta">
+  <div class="faq-cta-inner">
+    <div class="faq-cta-text">
+      <p class="faq-cta-eyebrow">Still have questions?</p>
+      <h2 class="faq-cta-title">Ask directly.</h2>
+      <p class="faq-cta-sub">Write to team@projectsummit.app — we read and reply to every message.</p>
+    </div>
+    <a href="mailto:team@projectsummit.app" class="btn-cta-light">Send a message</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-wordmark">
+        <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h3 data-i18n="footer.nav.title">Navigate</h3>
+      <ul>
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/ambassadors.html">Ambassadors</a></li>
+        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 data-i18n="footer.contact.title">Contact</h3>
+      <ul>
+        <li>
+          <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @projectsummit.app
+          </a>
+        </li>
+        <li>
+          <a href="mailto:team@projectsummit.app">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            team@projectsummit.app
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
+    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
+  </div>
+</footer>
+
+<script>
+  var hamburger = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); });
+  });
+  var navProgress = document.getElementById('nav-progress');
+  window.addEventListener('scroll', function() {
+    navProgress.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+  }, { passive: true });
+</script>
+<script src="translations.js"></script>
+<script>
+(function() {
+  var lang = localStorage.getItem('summit-lang') || 'es';
+  function applyLang(l) {
+    if (!TRANSLATIONS[l]) return;
+    var t = TRANSLATIONS[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) { var k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.textContent = t[k]; });
+    var lbl = document.getElementById('lang-label');
+    if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
+    document.querySelectorAll('.lang-option').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    document.querySelectorAll('.lang-btn-mobile').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    document.documentElement.lang = l;
+    localStorage.setItem('summit-lang', l);
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(lang);
+    document.querySelectorAll('.lang-option, .lang-btn-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); if (langSwitcher) langSwitcher.classList.remove('open'); });
+    });
+    var langSwitcher = document.getElementById('lang-switcher');
+    if (langSwitcher) {
+      document.getElementById('lang-selected-btn').addEventListener('click', function(e) { e.stopPropagation(); langSwitcher.classList.toggle('open'); });
+      document.addEventListener('click', function() { langSwitcher.classList.remove('open'); });
+    }
+  });
+})();
+</script>
+</body>
+</html>
