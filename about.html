@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="SummitLogo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -90,6 +91,7 @@
     .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
     .lang-option.active { color: #E8834A; }
     .lang-flag { font-size: 14px; }
+    .lang-option .fi { width: 18px; height: 14px; border-radius: 2px; flex-shrink: 0; }
 
     .nav-cta { display: inline-flex; align-items: center; padding: 0 22px; height: 40px; background: #D66A2D; color: #F5EEE0; font-family: var(--font-ui); font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; flex-shrink: 0; }
     .nav-cta:hover { opacity: 0.85; }
@@ -307,9 +309,9 @@
       </svg>
     </button>
     <div class="lang-dropdown">
-      <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
-      <button class="lang-option" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
-      <button class="lang-option" data-lang="ca"><span class="lang-flag">🏴󠁥󠁳󠁣󠁴󠁿</span> Català</button>
+      <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+      <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+      <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
     </div>
   </div>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
@@ -432,6 +434,8 @@
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
         <li><a href="/about.html">About</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/ambassadors.html">Ambassadors</a></li>
         <li><a href="/terms.html">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
         <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
