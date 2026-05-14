@@ -91,7 +91,7 @@
     .page-header { max-width: 900px; margin: 0 auto; padding: 80px 48px 64px; border-bottom: 1px solid var(--ink-hair); }
     .page-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards; }
     .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; max-width: 600px; margin-bottom: 20px; color: var(--ink); opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards; }
-    .page-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .page-title .dot { color: var(--accent); }
     .page-sub { font-size: 16px; color: var(--ink-soft); max-width: 520px; line-height: 1.7; opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards; }
 
     /* ── FAQ CATEGORIES ── */
@@ -334,7 +334,7 @@
 
 <div class="page-header">
   <p class="page-eyebrow" data-i18n="faq.eyebrow">Frequently asked questions</p>
-  <h1 class="page-title" data-i18n="faq.title">Everything you want to know about <em>Summit.</em></h1>
+  <h1 class="page-title" data-i18n="faq.title">Everything you want to know about Summit<span class="dot">.</span></h1>
   <p class="page-sub" data-i18n="faq.sub">Can't find what you're looking for? Write to us at <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> and we'll answer directly.</p>
 </div>
 

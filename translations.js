@@ -217,7 +217,7 @@ const TRANSLATIONS = {
 
     /* ── FAQ ── */
     'faq.eyebrow':   'Frequently asked questions',
-    'faq.title':     'Everything you want to know about <em>Summit.</em>',
+    'faq.title':     'Everything you want to know about Summit<span class="dot">.</span>',
     'faq.sub':       'Can\'t find what you\'re looking for? Write to us at <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> and we\'ll answer directly.',
     'faq.cat.app':       'The app',
     'faq.cat.devices':   'Devices &amp; integrations',
@@ -529,7 +529,7 @@ const TRANSLATIONS = {
 
     /* ── FAQ ── */
     'faq.eyebrow':   'Preguntas frecuentes',
-    'faq.title':     'Todo lo que quieres saber sobre <em>Summit.</em>',
+    'faq.title':     'Todo lo que quieres saber sobre Summit<span class="dot">.</span>',
     'faq.sub':       '¿No encuentras lo que buscas? Escríbenos a <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> y te responderemos directamente.',
     'faq.cat.app':       'La app',
     'faq.cat.devices':   'Dispositivos e integraciones',
@@ -841,7 +841,7 @@ const TRANSLATIONS = {
 
     /* ── FAQ ── */
     'faq.eyebrow':   'Preguntes freqüents',
-    'faq.title':     'Tot el que vols saber sobre <em>Summit.</em>',
+    'faq.title':     'Tot el que vols saber sobre Summit<span class="dot">.</span>',
     'faq.sub':       'No trobes el que busques? Escriu-nos a <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> i et respondrem directament.',
     'faq.cat.app':       "L'app",
     'faq.cat.devices':   'Dispositius i integracions',
