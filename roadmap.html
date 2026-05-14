@@ -516,6 +516,48 @@
       .nav-hamburger { display: flex; }
     }
 
+
+    /* ── MORE DROPDOWN ── */
+    .nav-more { position: relative; flex-shrink: 0; }
+
+    .nav-more-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-ui); font-size: 13px; font-weight: 400;
+      color: rgba(245,238,224,0.55);
+      transition: color 0.15s; padding: 0;
+    }
+    .nav-more-btn:hover { color: #F5EEE0; }
+    .nav-more-btn svg { transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn { color: #F5EEE0; }
+    .nav-more.open .nav-more-btn svg { transform: rotate(180deg); }
+
+    .nav-more-dropdown {
+      display: none;
+      position: absolute; top: calc(100% + 12px); left: 50%;
+      transform: translateX(-50%);
+      background: #2A241C;
+      border: 1px solid rgba(245,238,224,0.12);
+      border-radius: 10px; overflow: hidden;
+      min-width: 180px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+      z-index: 200;
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+
+    .nav-more-option {
+      display: block; width: 100%;
+      padding: 11px 18px;
+      font-family: var(--font-ui); font-size: 13px; font-weight: 400;
+      color: rgba(245,238,224,0.60);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      border-bottom: 1px solid rgba(245,238,224,0.06);
+    }
+    .nav-more-option:last-child { border-bottom: none; }
+    .nav-more-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
+    .nav-more-option.active { color: #E8834A; font-weight: 500; }
+
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.20); border-radius: 2px; }
@@ -532,9 +574,23 @@
   </a>
   <ul class="nav-links">
     <li><a href="/" data-i18n="nav.home">Home</a></li>
-    <li><a href="/roadmap.html" class="active">Roadmap</a></li>
-    <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+    <li><a href="/roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
   </ul>
+  <div class="nav-more" id="nav-more">
+    <button class="nav-more-btn" id="nav-more-btn">
+      More
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="nav-more-dropdown">
+      <a href="/about.html" class="nav-more-option">About</a>
+      <a href="/ambassadors.html" class="nav-more-option">Ambassadors</a>
+      <a href="/terms.html" class="nav-more-option">Terms</a>
+      <a href="/privacy-policy.html" class="nav-more-option">Privacy Policy</a>
+    </div>
+  </div>
   <div class="lang-switcher" id="lang-switcher">
     <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
       <span id="lang-label">ES</span>
@@ -556,6 +612,10 @@
 <div class="nav-mobile" id="nav-mobile">
   <a href="/">Home</a>
   <a href="/roadmap.html" class="active">Roadmap</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/about.html">About</a>
+  <a href="/ambassadors.html">Ambassadors</a>
+  <a href="/terms.html">Terms</a>
   <a href="/privacy-policy.html">Privacy Policy</a>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta">Join Waitlist</a>
 </div>
@@ -749,7 +809,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong></span>
+    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
     <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
@@ -813,7 +873,19 @@
       });
     });
     // Lang dropdown
-    var langSwitcher = document.getElementById('lang-switcher');
+    var langSwitcherEl = document.getElementById('lang-switcher');
+    var langSwitcher = langSwitcherEl;
+  // More dropdown
+  var moreWrap = document.getElementById('nav-more');
+  if (moreWrap) {
+    document.getElementById('nav-more-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      moreWrap.classList.toggle('open');
+      if (langSwitcherEl) langSwitcherEl.classList.remove('open');
+    });
+    document.addEventListener('click', function() { moreWrap.classList.remove('open'); });
+  }
+
     var langSelectedBtn = document.getElementById('lang-selected-btn');
     var langLabel = document.getElementById('lang-label');
     if (langSwitcher && langSelectedBtn) {
