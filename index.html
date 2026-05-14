@@ -911,20 +911,20 @@
   <ul class="nav-links">
     <li><a href="/" class="active" data-i18n="nav.home">Home</a></li>
     <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
   </ul>
   <div class="nav-more" id="nav-more">
     <button class="nav-more-btn" id="nav-more-btn">
-      More
+      <span data-i18n="nav.more">More</span>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option">About</a>
-      <a href="/ambassadors.html" class="nav-more-option">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option">Privacy Policy</a>
+      <a href="/about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+      <a href="/ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+      <a href="/privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="lang-switcher" id="lang-switcher">
@@ -946,13 +946,13 @@
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/" class="active">Home</a>
-  <a href="/roadmap.html">Roadmap</a>
-  <a href="/faq.html">FAQ</a>
-  <a href="/about.html">About</a>
-  <a href="/ambassadors.html">Ambassadors</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="/" class="active" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
+  <a href="/about.html" data-i18n="nav.about">About</a>
+  <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
+  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
   <div class="lang-switcher-mobile">
     <button class="lang-btn-mobile" data-lang="en">EN</button>
@@ -1119,7 +1119,7 @@
     </div>
     <div class="nutrition-block">
       <span class="nutrition-icon">🥗</span>
-      <p class="nutrition-label">Daily <span class="badge-beta">Beta</span></p>
+      <p class="nutrition-label" data-i18n="nutrition.daily.label">Daily <span class="badge-beta">Beta</span></p>
       <h2 class="nutrition-title" data-i18n="nutrition.daily.title">Daily Nutrition Planning</h2>
       <p class="nutrition-desc" data-i18n="nutrition.daily.desc">Day-by-day fueling targets matched to your training load. High-carb on hard days, recovery-focused on easy ones — automatically adjusted as your plan evolves.</p>
     </div>
@@ -1269,10 +1269,10 @@
       <ul>
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/ambassadors.html">Ambassadors</a></li>
-        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
         <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
@@ -1299,7 +1299,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
+    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
     <span class="footer-bottom-copy">Built for cyclists who take training seriously.</span>
   </div>
 </footer>
@@ -1404,7 +1404,7 @@
     var t = TRANSLATIONS[l];
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      if (t[key] !== undefined) el.innerHTML = t[key];
     });
     // Update dropdown label
     var lbl = document.getElementById('lang-label');
