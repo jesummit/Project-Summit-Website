@@ -241,7 +241,7 @@
 
     .about-cta-text {}
     .about-cta-title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; color: var(--ink); }
-    .about-cta-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .about-cta-title em { font-style: italic; color: var(--accent); }
     .about-cta-body { font-size: 15px; color: var(--ink-soft); margin-bottom: 28px; max-width: 400px; }
 
     .btn-accent { display: inline-flex; align-items: center; padding: 0 32px; height: 54px; background: var(--accent); color: #fff; font-family: var(--font-ui); font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 14px; box-shadow: 0 4px 16px rgba(214,106,45,0.30); transition: opacity 0.2s; }
@@ -278,6 +278,7 @@
       .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
       .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
       .nav-links { display: none; }
+      .nav-more { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
     }
@@ -341,20 +342,20 @@
   <ul class="nav-links">
     <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
   </ul>
   <div class="nav-more" id="nav-more">
     <button class="nav-more-btn" id="nav-more-btn">
-      More
+      <span data-i18n="nav.more">More</span>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option active">About</a>
-      <a href="/ambassadors.html" class="nav-more-option">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option">Privacy Policy</a>
+      <a href="/about.html" class="nav-more-option active" data-i18n="nav.about">About</a>
+      <a href="/ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+      <a href="/privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="lang-switcher" id="lang-switcher">
@@ -376,13 +377,13 @@
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/">Home</a>
-  <a href="/roadmap.html">Roadmap</a>
-  <a href="/faq.html">FAQ</a>
-  <a href="/about.html" class="active">About</a>
-  <a href="/ambassadors.html">Ambassadors</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
+  <a href="/about.html" class="active" data-i18n="nav.about">About</a>
+  <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
+  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
   <div class="lang-switcher-mobile">
     <button class="lang-btn-mobile" data-lang="en">EN</button>
@@ -393,16 +394,16 @@
 </header>
 
 <div class="page-header">
-  <p class="page-eyebrow">The story behind Summit</p>
-  <h1 class="page-title">Built by a cyclist,<br>for cyclists who train <em>seriously.</em></h1>
-  <p class="page-sub">Summit didn't start as a startup idea. It started as a training problem — one that too many serious amateurs know by heart.</p>
+  <p class="page-eyebrow" data-i18n="about.eyebrow">The story behind Summit</p>
+  <h1 class="page-title" data-i18n="about.title">Built by a cyclist,<br>for cyclists who train <em>seriously.</em></h1>
+  <p class="page-sub" data-i18n="about.sub">Summit didn't start as a startup idea. It started as a training problem — one that too many serious amateurs know by heart.</p>
 </div>
 
 <div class="founder">
   <div class="founder-photo-wrap">
     <div class="founder-photo">
       <!-- Replace with: <img src="jordi.jpg" alt="Jordi Espanyol" /> -->
-      <p class="founder-photo-placeholder">Photo<br>coming<br>soon</p>
+      <p class="founder-photo-placeholder" data-i18n="about.photo.placeholder">Photo<br>coming<br>soon</p>
     </div>
     <div class="founder-social">
       <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
@@ -417,63 +418,63 @@
   </div>
   <div class="founder-text">
     <h2 class="founder-name">Jordi Espanyol</h2>
-    <p class="founder-role">Founder · Project Summit</p>
+    <p class="founder-role" data-i18n="about.founder.role">Founder · Project Summit</p>
     <div class="founder-bio">
-      <p>I'm an amateur cyclist and software developer based in Barcelona. Like many serious amateurs, I train consistently, race occasionally, and take my performance seriously — without the budget or time of a professional.</p>
-      <p>For years I managed my training across four or five different apps. Each one did its thing reasonably well. None of them talked to each other. At the end of every week I had data everywhere and clarity nowhere.</p>
-      <p>I knew what I had trained. I rarely knew what I should do next — or why.</p>
-      <p>Summit is my answer to that problem. Not a theoretical one, but the platform I wished existed when I was training for my first Gran Fondo and staring at a TSB chart I couldn't act on.</p>
+      <p data-i18n="about.bio.p1">I'm an amateur cyclist and software developer based in Barcelona. Like many serious amateurs, I train consistently, race occasionally, and take my performance seriously — without the budget or time of a professional.</p>
+      <p data-i18n="about.bio.p2">For years I managed my training across four or five different apps. Each one did its thing reasonably well. None of them talked to each other. At the end of every week I had data everywhere and clarity nowhere.</p>
+      <p data-i18n="about.bio.p3">I knew what I had trained. I rarely knew what I should do next — or why.</p>
+      <p data-i18n="about.bio.p4">Summit is my answer to that problem. Not a theoretical one, but the platform I wished existed when I was training for my first Gran Fondo and staring at a TSB chart I couldn't act on.</p>
     </div>
   </div>
 </div>
 
 <div class="problem">
-  <p class="section-eyebrow">The problem · The solution</p>
+  <p class="section-eyebrow" data-i18n="about.problem.eyebrow">The problem · The solution</p>
   <div class="problem-grid">
     <div class="problem-block">
-      <p class="problem-block-label problem-block-label--problem">The problem</p>
-      <h2 class="problem-block-title">Too many apps. Too little clarity.</h2>
+      <p class="problem-block-label problem-block-label--problem" data-i18n="about.problem.label">The problem</p>
+      <h2 class="problem-block-title" data-i18n="about.problem.title">Too many apps. Too little clarity.</h2>
       <div class="problem-block-body">
-        <p>Serious amateurs juggle an average of three to five fitness apps simultaneously. Each captures part of the picture — activities, health metrics, nutrition, training load — but none synthesises it into a clear decision.</p>
-        <p>You end up knowing what happened. Not what to do.</p>
+        <p data-i18n="about.problem.p1">Serious amateurs juggle an average of three to five fitness apps simultaneously. Each captures part of the picture — activities, health metrics, nutrition, training load — but none synthesises it into a clear decision.</p>
+        <p data-i18n="about.problem.p2">You end up knowing what happened. Not what to do.</p>
       </div>
     </div>
     <div class="problem-block">
-      <p class="problem-block-label problem-block-label--solution">The solution</p>
-      <h2 class="problem-block-title">One platform. Clear decisions.</h2>
+      <p class="problem-block-label problem-block-label--solution" data-i18n="about.solution.label">The solution</p>
+      <h2 class="problem-block-title" data-i18n="about.solution.title">One platform. Clear decisions.</h2>
       <div class="problem-block-body">
-        <p>Summit integrates training load, HRV-driven recovery, power analysis, and nutrition into a single adaptive engine. It doesn't just show you data — it tells you what to do tomorrow and why.</p>
-        <p>The plan rewrites itself around your life. Missed a session. Got sick. Travelled. Summit adjusts without you having to think about it.</p>
+        <p data-i18n="about.solution.p1">Summit integrates training load, HRV-driven recovery, power analysis, and nutrition into a single adaptive engine. It doesn't just show you data — it tells you what to do tomorrow and why.</p>
+        <p data-i18n="about.solution.p2">The plan rewrites itself around your life. Missed a session. Got sick. Travelled. Summit adjusts without you having to think about it.</p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="principles">
-  <p class="section-eyebrow">Design principles</p>
+  <p class="section-eyebrow" data-i18n="about.principles.eyebrow">Design principles</p>
   <div class="principles-grid">
     <div class="principle-card">
       <div class="principle-num">01</div>
-      <h3 class="principle-title">Data to decisions</h3>
-      <p class="principle-body">Every metric in Summit exists to produce a recommendation. If a number doesn't change what you do, it shouldn't be on the screen.</p>
+      <h3 class="principle-title" data-i18n="about.p1.title">Data to decisions</h3>
+      <p class="principle-body" data-i18n="about.p1.body">Every metric in Summit exists to produce a recommendation. If a number doesn't change what you do, it shouldn't be on the screen.</p>
     </div>
     <div class="principle-card">
       <div class="principle-num">02</div>
-      <h3 class="principle-title">Adapts to real life</h3>
-      <p class="principle-body">Athletes get sick, travel, and miss sessions. The plan that doesn't account for this isn't a plan — it's a wishlist. Summit rewrites around reality.</p>
+      <h3 class="principle-title" data-i18n="about.p2.title">Adapts to real life</h3>
+      <p class="principle-body" data-i18n="about.p2.body">Athletes get sick, travel, and miss sessions. The plan that doesn't account for this isn't a plan — it's a wishlist. Summit rewrites around reality.</p>
     </div>
     <div class="principle-card">
       <div class="principle-num">03</div>
-      <h3 class="principle-title">Serious, not complicated</h3>
-      <p class="principle-body">Professional-grade science shouldn't require a sports science degree to interpret. Summit speaks in training terms, not in jargon.</p>
+      <h3 class="principle-title" data-i18n="about.p3.title">Serious, not complicated</h3>
+      <p class="principle-body" data-i18n="about.p3.body">Professional-grade science shouldn't require a sports science degree to interpret. Summit speaks in training terms, not in jargon.</p>
     </div>
   </div>
 </div>
 
 <div class="about-cta">
   <div class="about-cta-text">
-    <h2 class="about-cta-title">Ready to train <em>smarter?</em></h2>
-    <p class="about-cta-body">Summit launches Summer 2026 on iOS. Join the waitlist and be first to ride with a plan that actually knows you.</p>
+    <h2 class="about-cta-title" data-i18n="about.cta.title">Ready to train <em>smarter?</em></h2>
+    <p class="about-cta-body" data-i18n="about.cta.body">Summit launches Summer 2026 on iOS. Join the waitlist and be first to ride with a plan that actually knows you.</p>
     <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="nav.cta">Join Waitlist</a>
   </div>
 </div>
@@ -493,10 +494,10 @@
       <ul>
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/ambassadors.html">Ambassadors</a></li>
-        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
         <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
@@ -520,7 +521,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
+    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
     <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
@@ -554,7 +555,7 @@
     var t = TRANSLATIONS[l];
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      if (t[key] !== undefined) el.innerHTML = t[key];
     });
     var lbl = document.getElementById('lang-label');
     if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();

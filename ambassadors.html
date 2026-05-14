@@ -105,7 +105,7 @@
     }
 
     .amb-who-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; line-height: 1.1; }
-    .amb-who-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .amb-who-title em { font-style: italic; color: var(--accent); }
     .amb-who-body { font-size: 15px; color: var(--ink-soft); line-height: 1.8; }
 
     .amb-checklist { list-style: none; padding: 0; }
@@ -176,7 +176,7 @@
 
     .amb-cta-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E8834A; margin-bottom: 20px; }
     .amb-cta-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; color: #F5EEE0; margin-bottom: 12px; line-height: 1.1; }
-    .amb-cta-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #E8834A; }
+    .amb-cta-title em { font-style: italic; color: #E8834A; }
     .amb-cta-sub { font-size: 15px; color: rgba(245,238,224,0.55); margin-bottom: 36px; max-width: 420px; margin-left: auto; margin-right: auto; }
 
     .btn-amb { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; height: 54px; background: #E8834A; color: #F5EEE0; font-family: var(--font-ui); font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 14px; transition: opacity 0.2s; }
@@ -211,6 +211,7 @@
       .offer-grid { grid-template-columns: 1fr; }
       .amb-cta-inner { padding: 40px 24px; }
       .nav-links { display: none; }
+      .nav-more { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
@@ -276,20 +277,20 @@
   <ul class="nav-links">
     <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
   </ul>
   <div class="nav-more" id="nav-more">
     <button class="nav-more-btn" id="nav-more-btn">
-      More
+      <span data-i18n="nav.more">More</span>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option">About</a>
-      <a href="/ambassadors.html" class="nav-more-option active">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option">Privacy Policy</a>
+      <a href="/about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+      <a href="/ambassadors.html" class="nav-more-option active" data-i18n="nav.ambassadors">Ambassadors</a>
+      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+      <a href="/privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="lang-switcher" id="lang-switcher">
@@ -311,13 +312,13 @@
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/">Home</a>
-  <a href="/roadmap.html">Roadmap</a>
-  <a href="/faq.html">FAQ</a>
-  <a href="/about.html">About</a>
-  <a href="/ambassadors.html" class="active">Ambassadors</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
+  <a href="/about.html" data-i18n="nav.about">About</a>
+  <a href="/ambassadors.html" class="active" data-i18n="nav.ambassadors">Ambassadors</a>
+  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
+  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
   <div class="lang-switcher-mobile">
     <button class="lang-btn-mobile" data-lang="en">EN</button>
@@ -328,70 +329,70 @@
 </header>
 
 <div class="page-header">
-  <p class="page-eyebrow">Summit Ambassadors</p>
-  <h1 class="page-title">Ride it. Train with it. Tell the world it <em>works.</em></h1>
-  <p class="page-sub">We're looking for cyclists who take their training seriously and aren't shy about sharing it. This is a new programme — small, personal, and built around real athletes.</p>
+  <p class="page-eyebrow" data-i18n="amb.eyebrow">Summit Ambassadors</p>
+  <h1 class="page-title" data-i18n="amb.title">Ride it. Train with it. Tell the world it <em>works.</em></h1>
+  <p class="page-sub" data-i18n="amb.sub">We're looking for cyclists who take their training seriously and aren't shy about sharing it. This is a new programme — small, personal, and built around real athletes.</p>
 </div>
 
 <div class="amb-who">
   <div>
-    <h2 class="amb-who-title">Cyclists who train <em>seriously</em> and talk about it.</h2>
-    <p class="amb-who-body">We're not looking for influencers with a product-placement mindset. We're looking for athletes who genuinely care about performance — and whose communities trust them because of it.</p>
+    <h2 class="amb-who-title" data-i18n="amb.who.title">Cyclists who train <em>seriously</em> and talk about it.</h2>
+    <p class="amb-who-body" data-i18n="amb.who.body">We're not looking for influencers with a product-placement mindset. We're looking for athletes who genuinely care about performance — and whose communities trust them because of it.</p>
   </div>
   <div>
     <ul class="amb-checklist">
-      <li>You train consistently and track your performance</li>
-      <li>You have an active presence on social media — Instagram, Strava, YouTube, or similar</li>
-      <li>Your audience is made up of cyclists who take riding seriously</li>
-      <li>You talk honestly about your training — the good sessions and the hard ones</li>
-      <li>You're interested in testing a product that's still being built and giving real feedback</li>
+      <li data-i18n="amb.check.1">You train consistently and track your performance</li>
+      <li data-i18n="amb.check.2">You have an active presence on social media — Instagram, Strava, YouTube, or similar</li>
+      <li data-i18n="amb.check.3">Your audience is made up of cyclists who take riding seriously</li>
+      <li data-i18n="amb.check.4">You talk honestly about your training — the good sessions and the hard ones</li>
+      <li data-i18n="amb.check.5">You're interested in testing a product that's still being built and giving real feedback</li>
     </ul>
   </div>
 </div>
 
 <div class="amb-offer">
-  <p class="amb-offer-label">What you get</p>
+  <p class="amb-offer-label" data-i18n="amb.offer.label">What you get</p>
   <div class="offer-grid">
     <div class="offer-card">
       <span class="offer-icon">🚀</span>
-      <h3 class="offer-title">Early access</h3>
-      <p class="offer-body">You'll use Summit before anyone else. First in, with a direct line to the team while the app is still being shaped.</p>
+      <h3 class="offer-title" data-i18n="amb.offer.1.title">Early access</h3>
+      <p class="offer-body" data-i18n="amb.offer.1.body">You'll use Summit before anyone else. First in, with a direct line to the team while the app is still being shaped.</p>
     </div>
     <div class="offer-card">
       <span class="offer-icon">⭐</span>
-      <h3 class="offer-title">Free Elite account</h3>
-      <p class="offer-body">Full access to Summit Premium Elite — every feature, for as long as you're part of the programme.</p>
+      <h3 class="offer-title" data-i18n="amb.offer.2.title">Free Elite account</h3>
+      <p class="offer-body" data-i18n="amb.offer.2.body">Full access to Summit Premium Elite — every feature, for as long as you're part of the programme.</p>
     </div>
     <div class="offer-card">
       <span class="offer-icon">🤝</span>
-      <h3 class="offer-title">Collaboration</h3>
-      <p class="offer-body">Content collaboration, mentions, and the chance to shape how Summit is communicated to the cycling community.</p>
+      <h3 class="offer-title" data-i18n="amb.offer.3.title">Collaboration</h3>
+      <p class="offer-body" data-i18n="amb.offer.3.body">Content collaboration, mentions, and the chance to shape how Summit is communicated to the cycling community.</p>
     </div>
   </div>
 </div>
 
 <div class="amb-how">
-  <p class="amb-how-label">How it works</p>
+  <p class="amb-how-label" data-i18n="amb.how.label">How it works</p>
   <div class="steps">
     <div class="step">
       <span class="step-num">01</span>
       <div class="step-content">
-        <h3 class="step-title">Write to us</h3>
-        <p class="step-body">Send a short email to <a href="mailto:jordi@projectsummit.app">jordi@projectsummit.app</a> introducing yourself. Tell us who you are, how you train, and where your community lives. No forms, no decks — just a real message.</p>
+        <h3 class="step-title" data-i18n="amb.step.1.title">Write to us</h3>
+        <p class="step-body" data-i18n="amb.step.1.body">Send a short email to <a href="mailto:jordi@projectsummit.app">jordi@projectsummit.app</a> introducing yourself. Tell us who you are, how you train, and where your community lives. No forms, no decks — just a real message.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-num">02</span>
       <div class="step-content">
-        <h3 class="step-title">We'll have a conversation</h3>
-        <p class="step-body">If it looks like a good fit, we'll reply and get to know each other. This is a small programme — we'd rather have five great ambassadors than fifty nominal ones.</p>
+        <h3 class="step-title" data-i18n="amb.step.2.title">We'll have a conversation</h3>
+        <p class="step-body" data-i18n="amb.step.2.body">If it looks like a good fit, we'll reply and get to know each other. This is a small programme — we'd rather have five great ambassadors than fifty nominal ones.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-num">03</span>
       <div class="step-content">
-        <h3 class="step-title">Get access and start training</h3>
-        <p class="step-body">You'll get early access to the app, an Elite account, and a direct channel with the team. Use it for your real training, share honestly, and help us build something worth talking about.</p>
+        <h3 class="step-title" data-i18n="amb.step.3.title">Get access and start training</h3>
+        <p class="step-body" data-i18n="amb.step.3.body">You'll get early access to the app, an Elite account, and a direct channel with the team. Use it for your real training, share honestly, and help us build something worth talking about.</p>
       </div>
     </div>
   </div>
@@ -399,11 +400,11 @@
 
 <div class="amb-cta">
   <div class="amb-cta-inner">
-    <p class="amb-cta-eyebrow">Ready to ride with Summit?</p>
-    <h2 class="amb-cta-title">Introduce <em>yourself.</em></h2>
-    <p class="amb-cta-sub">A short email is all it takes. Tell us how you train and where your community is — we'll take it from there.</p>
+    <p class="amb-cta-eyebrow" data-i18n="amb.cta.eyebrow">Ready to ride with Summit?</p>
+    <h2 class="amb-cta-title" data-i18n="amb.cta.title">Introduce <em>yourself.</em></h2>
+    <p class="amb-cta-sub" data-i18n="amb.cta.sub">A short email is all it takes. Tell us how you train and where your community is — we'll take it from there.</p>
     <a href="mailto:jordi@projectsummit.app?subject=Ambassador%20programme%20%E2%80%94%20[Your%20name]" class="btn-amb">
-      Write to Jordi
+      <span data-i18n="amb.cta.btn">Write to Jordi</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <p class="amb-cta-note">jordi@projectsummit.app</p>
@@ -425,10 +426,10 @@
       <ul>
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/ambassadors.html">Ambassadors</a></li>
-        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
         <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
@@ -452,7 +453,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
+    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
     <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
@@ -479,7 +480,7 @@
   function applyLang(l) {
     if (!TRANSLATIONS[l]) return;
     var t = TRANSLATIONS[l];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) { var k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.textContent = t[k]; });
+    document.querySelectorAll('[data-i18n]').forEach(function(el) { var k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.innerHTML = t[k]; });
     var lbl = document.getElementById('lang-label');
     if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
     document.querySelectorAll('.lang-option').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });

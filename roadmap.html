@@ -512,6 +512,7 @@
       .timeline { padding-left: 24px; padding-right: 24px; }
       .timeline::before { left: calc(24px + 15px); }
       .nav-links { display: none; }
+      .nav-more { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
     }
@@ -575,20 +576,20 @@
   <ul class="nav-links">
     <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="/roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
   </ul>
   <div class="nav-more" id="nav-more">
     <button class="nav-more-btn" id="nav-more-btn">
-      More
+      <span data-i18n="nav.more">More</span>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option">About</a>
-      <a href="/ambassadors.html" class="nav-more-option">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option">Privacy Policy</a>
+      <a href="/about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+      <a href="/ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+      <a href="/privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="lang-switcher" id="lang-switcher">
@@ -604,20 +605,20 @@
       <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
     </div>
   </div>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/">Home</a>
-  <a href="/roadmap.html" class="active">Roadmap</a>
-  <a href="/faq.html">FAQ</a>
-  <a href="/about.html">About</a>
-  <a href="/ambassadors.html">Ambassadors</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/privacy-policy.html">Privacy Policy</a>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta">Join Waitlist</a>
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
+  <a href="/about.html" data-i18n="nav.about">About</a>
+  <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
+  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
 </div>
 </header>
 
@@ -640,48 +641,48 @@
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">🫀</span>
-        <div class="feature-name">HRV-Driven Recovery</div>
-        <div class="feature-detail">Reads HRV, resting HR &amp; sleep from Apple Health. Adjusts daily intensity before you open the app.</div>
+        <div class="feature-name" data-i18n="rm.p1.f1.name">HRV-Driven Recovery</div>
+        <div class="feature-detail" data-i18n="rm.p1.f1.detail">Reads HRV, resting HR &amp; sleep from Apple Health. Adjusts daily intensity before you open the app.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🗓</span>
-        <div class="feature-name">Advanced Periodisation</div>
-        <div class="feature-detail">Base, build, peak and taper blocks structured around your target events.</div>
+        <div class="feature-name" data-i18n="rm.p1.f2.name">Advanced Periodisation</div>
+        <div class="feature-detail" data-i18n="rm.p1.f2.detail">Base, build, peak and taper blocks structured around your target events.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🔁</span>
-        <div class="feature-name">Plan Cascading</div>
-        <div class="feature-detail">Skipped and completed sessions automatically trigger plan adjustments.</div>
+        <div class="feature-name" data-i18n="rm.p1.f3.name">Plan Cascading</div>
+        <div class="feature-detail" data-i18n="rm.p1.f3.detail">Skipped and completed sessions automatically trigger plan adjustments.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🧩</span>
-        <div class="feature-name">Adaptation to Availability</div>
-        <div class="feature-detail">Illness, injury, mental readiness, and schedule changes reshape the plan in real time.</div>
+        <div class="feature-name" data-i18n="rm.p1.f4.name">Adaptation to Availability</div>
+        <div class="feature-detail" data-i18n="rm.p1.f4.detail">Illness, injury, mental readiness, and schedule changes reshape the plan in real time.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">⚡</span>
-        <div class="feature-name">eFTP &amp; Power Curve</div>
-        <div class="feature-detail">Continuous estimation via the CP2 model. No manual tests — your rides do the work.</div>
+        <div class="feature-name" data-i18n="rm.p1.f5.name">eFTP &amp; Power Curve</div>
+        <div class="feature-detail" data-i18n="rm.p1.f5.detail">Continuous estimation via the CP2 model. No manual tests — your rides do the work.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">📈</span>
-        <div class="feature-name">CTL / ATL / TSB Real Time</div>
-        <div class="feature-detail">Training load, fatigue, and form tracked live across every session.</div>
+        <div class="feature-name" data-i18n="rm.p1.f6.name">CTL / ATL / TSB Real Time</div>
+        <div class="feature-detail" data-i18n="rm.p1.f6.detail">Training load, fatigue, and form tracked live across every session.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🔗</span>
-        <div class="feature-name">Strava Sync &amp; intervals.icu</div>
-        <div class="feature-detail">Activities imported from Strava. Workouts distributed via intervals.icu to Garmin, Zwift &amp; MyWhoosh.</div>
+        <div class="feature-name" data-i18n="rm.p1.f7.name">Strava Sync &amp; intervals.icu</div>
+        <div class="feature-detail" data-i18n="rm.p1.f7.detail">Activities imported from Strava. Workouts distributed via intervals.icu to Garmin, Zwift &amp; MyWhoosh.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🍽️</span>
-        <div class="feature-name">Race Day Nutrition Planner</div>
-        <div class="feature-detail">Carb, fluid and electrolyte targets built around your race duration and intensity.</div>
+        <div class="feature-name" data-i18n="rm.p1.f8.name">Race Day Nutrition Planner</div>
+        <div class="feature-detail" data-i18n="rm.p1.f8.detail">Carb, fluid and electrolyte targets built around your race duration and intensity.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🥗</span>
-        <div class="feature-name">Daily Nutrition Planning <span style="font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-left:4px;border:1px solid var(--accent-line);border-radius:3px;padding:1px 5px;">Beta</span></div>
-        <div class="feature-detail">Day-by-day fueling targets matched to your training load.</div>
+        <div class="feature-name" data-i18n="rm.p1.f9.name">Daily Nutrition Planning <span style="font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-left:4px;border:1px solid var(--accent-line);border-radius:3px;padding:1px 5px;">Beta</span></div>
+        <div class="feature-detail" data-i18n="rm.p1.f9.detail">Day-by-day fueling targets matched to your training load.</div>
       </div>
     </div>
   </div>
@@ -697,28 +698,28 @@
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">❤️</span>
-        <div class="feature-name">HR-Only Training Zones</div>
-        <div class="feature-detail">Structured workouts prescribed in heart rate zones for athletes without a power meter.</div>
+        <div class="feature-name" data-i18n="rm.p2.f1.name">HR-Only Training Zones</div>
+        <div class="feature-detail" data-i18n="rm.p2.f1.detail">Structured workouts prescribed in heart rate zones for athletes without a power meter.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">📆</span>
-        <div class="feature-name">Weekly Nutrition Planning</div>
-        <div class="feature-detail">Full-week fueling plans that adapt as your training load changes day to day.</div>
+        <div class="feature-name" data-i18n="rm.p2.f2.name">Weekly Nutrition Planning</div>
+        <div class="feature-detail" data-i18n="rm.p2.f2.detail">Full-week fueling plans that adapt as your training load changes day to day.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">⌚</span>
-        <div class="feature-name">Apple Watch App &amp; Complication</div>
-        <div class="feature-detail">Recovery score, today's load, and workout summary right on your wrist.</div>
+        <div class="feature-name" data-i18n="rm.p2.f3.name">Apple Watch App &amp; Complication</div>
+        <div class="feature-detail" data-i18n="rm.p2.f3.detail">Recovery score, today's load, and workout summary right on your wrist.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🏁</span>
-        <div class="feature-name">Race-Day Pacing Strategies</div>
-        <div class="feature-detail">Power targets and segment breakdowns tailored to your current fitness and race profile.</div>
+        <div class="feature-name" data-i18n="rm.p2.f4.name">Race-Day Pacing Strategies</div>
+        <div class="feature-detail" data-i18n="rm.p2.f4.detail">Power targets and segment breakdowns tailored to your current fitness and race profile.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">💊</span>
-        <div class="feature-name">Wellness Tracking</div>
-        <div class="feature-detail">Log sleep quality, mood, soreness, and stress alongside your training data.</div>
+        <div class="feature-name" data-i18n="rm.p2.f5.name">Wellness Tracking</div>
+        <div class="feature-detail" data-i18n="rm.p2.f5.detail">Log sleep quality, mood, soreness, and stress alongside your training data.</div>
       </div>
     </div>
   </div>
@@ -734,28 +735,28 @@
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">🤖</span>
-        <div class="feature-name">Android App</div>
-        <div class="feature-detail">Full feature parity for Android athletes.</div>
+        <div class="feature-name" data-i18n="rm.p3.f1.name">Android App</div>
+        <div class="feature-detail" data-i18n="rm.p3.f1.detail">Full feature parity for Android athletes.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🏊</span>
-        <div class="feature-name">Swimming Support</div>
-        <div class="feature-detail">CSS, pace zones, and load tracking for pool and open water.</div>
+        <div class="feature-name" data-i18n="rm.p3.f2.name">Swimming Support</div>
+        <div class="feature-detail" data-i18n="rm.p3.f2.detail">CSS, pace zones, and load tracking for pool and open water.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🏃</span>
-        <div class="feature-name">Running Support</div>
-        <div class="feature-detail">Pace-based training plans with running power integration.</div>
+        <div class="feature-name" data-i18n="rm.p3.f3.name">Running Support</div>
+        <div class="feature-detail" data-i18n="rm.p3.f3.detail">Pace-based training plans with running power integration.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🔌</span>
-        <div class="feature-name">Direct Third-Party Integrations</div>
-        <div class="feature-detail">Native connections to more platforms — no middleware required.</div>
+        <div class="feature-name" data-i18n="rm.p3.f4.name">Direct Third-Party Integrations</div>
+        <div class="feature-detail" data-i18n="rm.p3.f4.detail">Native connections to more platforms — no middleware required.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🤝</span>
-        <div class="feature-name">Community Features</div>
-        <div class="feature-detail">Connect with other athletes and share training insights.</div>
+        <div class="feature-name" data-i18n="rm.p3.f5.name">Community Features</div>
+        <div class="feature-detail" data-i18n="rm.p3.f5.detail">Connect with other athletes and share training insights.</div>
       </div>
     </div>
   </div>
@@ -779,10 +780,10 @@
       <ul>
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/ambassadors.html">Ambassadors</a></li>
-        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
         <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
@@ -809,7 +810,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
+    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
     <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
@@ -847,7 +848,7 @@
     var t = TRANSLATIONS[l];
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      if (t[key] !== undefined) el.innerHTML = t[key];
     });
     // Update dropdown label
     var lbl = document.getElementById('lang-label');

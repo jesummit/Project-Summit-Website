@@ -91,7 +91,7 @@
     .page-header { max-width: 900px; margin: 0 auto; padding: 80px 48px 64px; border-bottom: 1px solid var(--ink-hair); }
     .page-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards; }
     .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; max-width: 600px; margin-bottom: 20px; color: var(--ink); opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards; }
-    .page-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .page-title .dot { color: var(--accent); }
     .page-sub { font-size: 16px; color: var(--ink-soft); max-width: 520px; line-height: 1.7; opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards; }
 
     /* ── FAQ CATEGORIES ── */
@@ -215,6 +215,7 @@
       nav, .page-header, .faq-body, .faq-cta { padding-left: 24px; padding-right: 24px; }
       .faq-cta-inner { padding: 32px 24px; }
       .nav-links { display: none; }
+      .nav-more { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
@@ -280,20 +281,20 @@
   <ul class="nav-links">
     <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html" class="active">FAQ</a></li>
+    <li><a href="/faq.html" class="active" data-i18n="nav.faq">FAQ</a></li>
   </ul>
   <div class="nav-more" id="nav-more">
     <button class="nav-more-btn" id="nav-more-btn">
-      More
+      <span data-i18n="nav.more">More</span>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option">About</a>
-      <a href="/ambassadors.html" class="nav-more-option">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option">Privacy Policy</a>
+      <a href="/about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+      <a href="/ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+      <a href="/privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="lang-switcher" id="lang-switcher">
@@ -315,13 +316,13 @@
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="/">Home</a>
-  <a href="/roadmap.html">Roadmap</a>
-  <a href="/faq.html" class="active">FAQ</a>
-  <a href="/about.html">About</a>
-  <a href="/ambassadors.html">Ambassadors</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/faq.html" class="active" data-i18n="nav.faq">FAQ</a>
+  <a href="/about.html" data-i18n="nav.about">About</a>
+  <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
+  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
   <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
   <div class="lang-switcher-mobile">
     <button class="lang-btn-mobile" data-lang="en">EN</button>
@@ -332,24 +333,24 @@
 </header>
 
 <div class="page-header">
-  <p class="page-eyebrow">Frequently asked questions</p>
-  <h1 class="page-title">Everything you want to know about <em>Summit.</em></h1>
-  <p class="page-sub">Can't find what you're looking for? Write to us at <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> and we'll answer directly.</p>
+  <p class="page-eyebrow" data-i18n="faq.eyebrow">Frequently asked questions</p>
+  <h1 class="page-title" data-i18n="faq.title">Everything you want to know about Summit<span class="dot">.</span></h1>
+  <p class="page-sub" data-i18n="faq.sub">Can't find what you're looking for? Write to us at <a href="mailto:team@projectsummit.app" style="color:var(--accent);text-decoration:none;">team@projectsummit.app</a> and we'll answer directly.</p>
 </div>
 
 <div class="faq-body">
 
   <!-- CATEGORY: The app -->
   <div class="faq-category">
-    <p class="faq-cat-label">The app</p>
+    <p class="faq-cat-label" data-i18n="faq.cat.app">The app</p>
 
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Where do the training plans come from?</span>
+          <span class="faq-q-text" data-i18n="faq.q1.q">Where do the training plans come from?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q1.a">
           <p>Summit's plans are generated by a proprietary periodisation engine — not by AI or a chatbot. The engine applies established sports science methodology (polarised training, CTL/ATL/TSB load management) and produces the same type of decisions a human coach would make: when to load, when to recover, when to taper.</p>
           <p>The difference is that Summit runs these calculations continuously, in real time, and adapts them to your actual data — not to an idealised version of your schedule.</p>
         </div>
@@ -359,10 +360,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Is Summit an AI app?</span>
+          <span class="faq-q-text" data-i18n="faq.q2.q">Is Summit an AI app?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q2.a">
           <p>Depends on how you define AI. There's no large language model, no chatbot, and no generative content. Summit's engine is a deterministic algorithmic system: it follows codified sports science rules and produces predictable, explainable recommendations.</p>
           <p>We think "algorithm" is more honest than "AI" here. Every decision Summit makes can be traced back to a specific rule or calculation — not a black box.</p>
         </div>
@@ -372,10 +373,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">What happens when I miss a session?</span>
+          <span class="faq-q-text" data-i18n="faq.q3.q">What happens when I miss a session?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q3.a">
           <p>Summit detects it automatically and recalculates your plan. This is called plan cascading — skipped sessions, completed sessions, illness, travel, or any change in availability all trigger an automatic adjustment of what comes next.</p>
           <p>You'll never be stuck following a plan that stopped making sense three days ago.</p>
         </div>
@@ -385,10 +386,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Can I record other types of training — gym, running, hiking?</span>
+          <span class="faq-q-text" data-i18n="faq.q4.q">Can I record other types of training — gym, running, hiking?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q4.a">
           <p>Yes. Activities from other disciplines are imported and contribute to your overall training load calculation. Summit accounts for the fatigue they generate.</p>
           <p>That said, Summit doesn't structure or analyse non-cycling activities in detail. The training plan is built around cycling. Cross-training is acknowledged, not coached.</p>
         </div>
@@ -399,15 +400,15 @@
 
   <!-- CATEGORY: Devices & integrations -->
   <div class="faq-category">
-    <p class="faq-cat-label">Devices &amp; integrations</p>
+    <p class="faq-cat-label" data-i18n="faq.cat.devices">Devices &amp; integrations</p>
 
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Do I need a power meter?</span>
+          <span class="faq-q-text" data-i18n="faq.q5.q">Do I need a power meter?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q5.a">
           <p>For training load calculations, no. Summit uses heart rate and perceived exertion to estimate load when power data isn't available.</p>
           <p>For structured workouts, <strong>yes for now</strong>. Workouts are currently prescribed in power zones (% FTP), so you need a power meter to follow them precisely. <span class="faq-tag faq-tag--roadmap">Roadmap</span> Heart rate zone prescriptions are coming — this is a known priority.</p>
         </div>
@@ -417,10 +418,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Do I need an Apple Watch?</span>
+          <span class="faq-q-text" data-i18n="faq.q6.q">Do I need an Apple Watch?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q6.a">
           <p>No. Summit reads HRV, sleep, and recovery data directly from Apple Health. Any wearable that writes those metrics to Apple Health is compatible.</p>
           <p>In practice, Apple Watch currently provides the best and most consistent data for Summit's recovery calculations. Other devices may write partial data depending on their Apple Health integration.</p>
         </div>
@@ -430,10 +431,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Does Summit work without a Strava account?</span>
+          <span class="faq-q-text" data-i18n="faq.q7.q">Does Summit work without a Strava account?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q7.a">
           <p>Strava is currently the main way Summit imports completed activities. Without Strava, you'd need to log activities manually, which means you'd lose the automatic plan adaptation.</p>
           <p>Direct integrations with additional platforms are on the roadmap. For now, Strava is strongly recommended for the full experience.</p>
         </div>
@@ -443,10 +444,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">How do workouts get to my Garmin or Zwift?</span>
+          <span class="faq-q-text" data-i18n="faq.q8.q">How do workouts get to my Garmin or Zwift?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q8.a">
           <p>Summit pushes structured workouts to your devices via intervals.icu, which acts as a distribution layer. From there, workouts sync automatically to Garmin Connect, Zwift, and MyWhoosh.</p>
           <p>You connect intervals.icu once in Summit's settings — after that it's automatic.</p>
         </div>
@@ -456,10 +457,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Can I import my existing Strava history?</span>
+          <span class="faq-q-text" data-i18n="faq.q9.q">Can I import my existing Strava history?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q9.a">
           <p>Yes. When you connect Strava, Summit imports your recent activity history automatically. This gives the engine real data to work with from day one — your eFTP estimation and load baselines are calculated from your actual rides, not from scratch.</p>
         </div>
       </details>
@@ -469,15 +470,15 @@
 
   <!-- CATEGORY: Platform & pricing -->
   <div class="faq-category">
-    <p class="faq-cat-label">Platform &amp; pricing</p>
+    <p class="faq-cat-label" data-i18n="faq.cat.platform">Platform &amp; pricing</p>
 
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Is Summit available on Android?</span>
+          <span class="faq-q-text" data-i18n="faq.q10.q">Is Summit available on Android?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q10.a">
           <p>Not yet. Summit is iOS-first. Android is on the roadmap for 2027, but iOS is the focus for the initial launch.</p>
           <p>If you're on Android, join the waitlist anyway — Android users will be the first to know when it's ready.</p>
         </div>
@@ -487,10 +488,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Does it work for running or swimming?</span>
+          <span class="faq-q-text" data-i18n="faq.q11.q">Does it work for running or swimming?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q11.a">
           <p>Not in v1.0. Summit is built exclusively for cycling in its first release. Running and swimming support are planned for 2027 — the training engine will expand to multi-sport once the cycling platform is solid.</p>
         </div>
       </details>
@@ -499,10 +500,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">How much does Summit cost?</span>
+          <span class="faq-q-text" data-i18n="faq.q12.q">How much does Summit cost?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q12.a">
           <p>Pricing hasn't been announced yet. Summit Premium will have two tiers: <strong>Pro</strong> (detailed training analysis) and <strong>Elite</strong> (full platform access including advanced nutrition, pacing, and priority support).</p>
           <p>Waitlist members will get priority access and will be among the first to know pricing when it goes live.</p>
         </div>
@@ -512,10 +513,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">When does Summit launch?</span>
+          <span class="faq-q-text" data-i18n="faq.q13.q">When does Summit launch?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q13.a">
           <p>Summer 2026 on the App Store. The app is currently in closed beta with a group of cyclists helping test and refine it.</p>
           <p>Join the waitlist to get early access when doors open.</p>
         </div>
@@ -525,10 +526,10 @@
     <div class="faq-item">
       <details>
         <summary class="faq-question">
-          <span class="faq-q-text">Can I export my data?</span>
+          <span class="faq-q-text" data-i18n="faq.q14.q">Can I export my data?</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq.q14.a">
           <p>Yes. Your data belongs to you. You can request an export of your training data at any time, and you can delete your account — and all associated data — directly from within the app.</p>
         </div>
       </details>
@@ -541,11 +542,11 @@
 <div class="faq-cta">
   <div class="faq-cta-inner">
     <div class="faq-cta-text">
-      <p class="faq-cta-eyebrow">Still have questions?</p>
-      <h2 class="faq-cta-title">Ask directly.</h2>
-      <p class="faq-cta-sub">Write to team@projectsummit.app — we read and reply to every message.</p>
+      <p class="faq-cta-eyebrow" data-i18n="faq.cta.eyebrow">Still have questions?</p>
+      <h2 class="faq-cta-title" data-i18n="faq.cta.title">Ask directly.</h2>
+      <p class="faq-cta-sub" data-i18n="faq.cta.sub">Write to team@projectsummit.app — we read and reply to every message.</p>
     </div>
-    <a href="mailto:team@projectsummit.app" class="btn-cta-light">Send a message</a>
+    <a href="mailto:team@projectsummit.app" class="btn-cta-light" data-i18n="faq.cta.btn">Send a message</a>
   </div>
 </div>
 
@@ -564,10 +565,10 @@
       <ul>
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/ambassadors.html">Ambassadors</a></li>
-        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
         <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
       </ul>
@@ -591,7 +592,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-bottom-copy">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
+    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
     <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
   </div>
 </footer>
@@ -618,7 +619,7 @@
   function applyLang(l) {
     if (!TRANSLATIONS[l]) return;
     var t = TRANSLATIONS[l];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) { var k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.textContent = t[k]; });
+    document.querySelectorAll('[data-i18n]').forEach(function(el) { var k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.innerHTML = t[k]; });
     var lbl = document.getElementById('lang-label');
     if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
     document.querySelectorAll('.lang-option').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
