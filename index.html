@@ -951,7 +951,7 @@
       <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
     </div>
   </div>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_signup', { source: 'nav' })">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -964,7 +964,7 @@
   <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
   <a href="/terms.html" data-i18n="nav.terms">Terms</a>
   <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_signup', { source: 'nav_mobile' })">Join Waitlist</a>
   <div class="lang-switcher-mobile">
     <button class="lang-btn-mobile" data-lang="en">EN</button>
     <button class="lang-btn-mobile" data-lang="es">ES</button>
@@ -1255,7 +1255,7 @@
   <div class="cta-text">
     <h2 class="cta-title"><span data-i18n="cta.title.main">Be first to ride</span> <em data-i18n="cta.title.drop">smarter.</em></h2>
     <p class="cta-body" data-i18n="cta.body">Pre-launch. Join the waitlist. Get early access.</p>
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta.btn">Reserve Your Spot</a>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta.btn" onclick="posthog.capture('waitlist_signup', { source: 'cta_section' })">Reserve Your Spot</a>
   </div>
   <div class="cta-aside">
     <div class="waitlist-count">+40</div>
@@ -1285,7 +1285,7 @@
         <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
         <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta" onclick="posthog.capture('waitlist_signup', { source: 'footer' })">Join Waitlist</a></li>
       </ul>
     </div>
 
