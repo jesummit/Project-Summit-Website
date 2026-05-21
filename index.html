@@ -981,7 +981,7 @@
   </h1>
   <p class="hero-sub" data-i18n="hero.sub">Track your load. Read your recovery. Fuel your performance. Built around your body, not a generic plan.</p>
   <div class="hero-actions">
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta">Join the Waitlist</a>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta" onclick="posthog.capture('waitlist_signup', { source: 'hero_section' })">Join the Waitlist</a>
     <span class="hero-note"><strong>+40 cyclists</strong> <span data-i18n="hero.note">already on the list</span></span>
   </div>
 </section>
