@@ -3,12 +3,11 @@
 <head>
   <!-- PostHog Analytics -->
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","ui.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(a!==void 0?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init ph_is_identified ph_distinct_id capture alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_nx6HJowbqHyMpAZRwfBAa4UjTBRJhtvrKECSD9WDRp8E', {
       api_host: 'https://eu.i.posthog.com',
+      defaults: '2026-01-30',
       person_profiles: 'identified_only',
-      capture_pageview: true,
-      capture_pageleave: true,
     });
   </script>
   <meta charset="UTF-8" />
@@ -951,7 +950,7 @@
       <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
     </div>
   </div>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_signup', { source: 'nav' })">Join Waitlist</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -964,7 +963,7 @@
   <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
   <a href="/terms.html" data-i18n="nav.terms">Terms</a>
   <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta">Join Waitlist</a>
+  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_signup', { source: 'nav_mobile' })">Join Waitlist</a>
   <div class="lang-switcher-mobile">
     <button class="lang-btn-mobile" data-lang="en">EN</button>
     <button class="lang-btn-mobile" data-lang="es">ES</button>
@@ -981,7 +980,7 @@
   </h1>
   <p class="hero-sub" data-i18n="hero.sub">Track your load. Read your recovery. Fuel your performance. Built around your body, not a generic plan.</p>
   <div class="hero-actions">
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta">Join the Waitlist</a>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta" onclick="posthog.capture('waitlist_signup', { source: 'hero_section' })">Join the Waitlist</a>
     <span class="hero-note"><strong>+40 cyclists</strong> <span data-i18n="hero.note">already on the list</span></span>
   </div>
 </section>
@@ -1255,7 +1254,7 @@
   <div class="cta-text">
     <h2 class="cta-title"><span data-i18n="cta.title.main">Be first to ride</span> <em data-i18n="cta.title.drop">smarter.</em></h2>
     <p class="cta-body" data-i18n="cta.body">Pre-launch. Join the waitlist. Get early access.</p>
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta.btn">Reserve Your Spot</a>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta.btn" onclick="posthog.capture('waitlist_signup', { source: 'cta_section' })">Reserve Your Spot</a>
   </div>
   <div class="cta-aside">
     <div class="waitlist-count">+40</div>
@@ -1285,7 +1284,7 @@
         <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
         <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta">Join Waitlist</a></li>
+        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta" onclick="posthog.capture('waitlist_signup', { source: 'footer' })">Join Waitlist</a></li>
       </ul>
     </div>
 
@@ -1467,6 +1466,53 @@
     }
 
   });
+})();
+</script>
+
+<script>
+(function() {
+  // Carousel navigation
+  var btnPrev = document.getElementById('arrow-prev');
+  var btnNext = document.getElementById('arrow-next');
+  if (btnPrev) btnPrev.addEventListener('click', function() { posthog.capture('carousel_navigated', { direction: 'prev' }); });
+  if (btnNext) btnNext.addEventListener('click', function() { posthog.capture('carousel_navigated', { direction: 'next' }); });
+  document.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
+    dot.addEventListener('click', function() { posthog.capture('carousel_dot_clicked', { slide_index: i }); });
+  });
+
+  // Mobile menu
+  var ham = document.getElementById('nav-hamburger');
+  var mob = document.getElementById('nav-mobile');
+  if (ham && mob) ham.addEventListener('click', function() { if (!mob.classList.contains('open')) posthog.capture('mobile_menu_opened', { page: 'home' }); });
+
+  // Language change
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-lang]');
+    if (btn) posthog.capture('language_changed', { language: btn.getAttribute('data-lang') });
+  });
+
+  // Sections viewed (once each)
+  var sectionMap = [['.hero','hero'],['.features','features'],['.nutrition','nutrition'],['.who-for','who_for'],['.integrations','integrations'],['.cta-section','cta']];
+  var sectionObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { posthog.capture('section_viewed', { section: e.target.dataset.phSection, page: 'home' }); sectionObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  sectionMap.forEach(function(s) {
+    var el = document.querySelector(s[0]);
+    if (el) { el.dataset.phSection = s[1]; sectionObs.observe(el); }
+  });
+
+  // Scroll depth milestones
+  var depthReached = {};
+  window.addEventListener('scroll', function() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    var pct = window.scrollY / max * 100;
+    [25, 50, 75, 90].forEach(function(m) {
+      if (!depthReached[m] && pct >= m) { depthReached[m] = true; posthog.capture('scroll_depth', { percent: m, page: 'home' }); }
+    });
+  }, { passive: true });
 })();
 </script>
 </body>
