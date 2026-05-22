@@ -488,13 +488,13 @@
       position: relative;
     }
 
-    /* dynamic island */
+    /* dynamic island — pixel-matched to iPhone 16 Pro simulator screenshots (1206×2622px) */
     .iphone-frame::before {
       content: '';
       position: absolute;
-      top: 12px; left: 50%;
+      top: 10px; left: 50%;
       transform: translateX(-50%);
-      width: 90px; height: 26px;
+      width: 87px; height: 26px;
       background: var(--ink);
       border-radius: 20px;
       z-index: 2;
@@ -563,6 +563,7 @@
       .carousel-track { padding-left: 24px; padding-right: 24px; }
       .carousel-item { width: 220px; }
       .iphone-frame { width: 220px; border-radius: 36px; }
+      .iphone-frame::before { width: 68px; height: 20px; top: 8px; }
     }
 
     /* ── NUTRITION ── */
