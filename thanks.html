@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- PostHog Analytics -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_nx6HJowbqHyMpAZRwfBAa4UjTBRJhtvrKECSD9WDRp8E', {
+      api_host: 'https://projectsummit.app/ingest',
+      ui_host: 'https://eu.posthog.com',
+      defaults: '2026-01-30',
+      person_profiles: 'identified_only',
+      enable_heatmaps: true,
+      capture_dead_clicks: true,
+    });
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- This is a post-conversion landing page; keep it out of search results. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="SummitLogo.png" />
+  <title>You're on the list — Project Summit</title>
+  <meta name="description" content="Thanks for joining the Project Summit waitlist." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #F6F1E8;
+      --card:        #FFFFFF;
+      --ink:         #1F1A14;
+      --ink-soft:    rgba(31,26,20,0.60);
+      --ink-hair:    rgba(31,26,20,0.10);
+      --accent:      #D66A2D;
+      --accent-soft: rgba(214,106,45,0.10);
+      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
+      --font-serif:   "Instrument Serif", Georgia, serif;
+      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      line-height: 1.55;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--ink-hair);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 24px 60px -32px rgba(31,26,20,0.35);
+    }
+
+    .badge {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    p.lead {
+      color: var(--ink-soft);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 26px;
+      border-radius: 12px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); opacity: 0.92; }
+
+    .links {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .links a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-hair); }
+    .links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    @media (max-width: 480px) {
+      .card { padding: 40px 24px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="badge" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Project Summit</p>
+    <h1>You're on the list</h1>
+    <p class="lead">Thanks for joining the waitlist. We'll email you the moment Project Summit is ready — iOS app coming Summer 2026.</p>
+    <a class="btn" href="/">Back to home</a>
+    <div class="links">
+      Follow along on
+      <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </main>
+
+  <script>
+    // Fire the real conversion event once per session (a page refresh shouldn't
+    // double-count the same completed signup).
+    (function () {
+      try {
+        if (sessionStorage.getItem('ps_waitlist_completed') === '1') return;
+        sessionStorage.setItem('ps_waitlist_completed', '1');
+      } catch (e) { /* sessionStorage unavailable: still capture once per load */ }
+      if (window.posthog) posthog.capture('waitlist_completed');
+    })();
+  </script>
+  <script src="analytics.js"></script>
+</body>
+</html>

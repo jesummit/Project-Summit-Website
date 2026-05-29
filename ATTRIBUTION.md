@@ -51,18 +51,33 @@ Para que tus propias visitas (y las de tu equipo) no contaminen los datos:
 - En PostHog, el filtro **"internal & test accounts"** ya excluye `is_internal = true`
   (configurado por defecto en el proyecto), además de la cohorte de test existente.
 
-## 4. Cerrar el bucle de conversión real (pendiente — recomendado)
+## 4. Bucle de conversión real (implementado ✅)
 
-Hoy el evento `waitlist_signup` mide **clics en el CTA**, no registros completados
-(el formulario se completa dentro de Tally). Para medir la conversión real:
+El embudo completo ya está cerrado:
 
-1. **Opción A — Página de gracias:** configurar Tally para redirigir tras el envío
-   a `https://projectsummit.app/thanks.html`, página que dispare
-   `posthog.capture('waitlist_completed')`. Los UTM reenviados por `analytics.js`
-   llegan a esa URL y mantienen la atribución.
-2. **Opción B — Webhook de Tally → PostHog:** enviar el submit de Tally a PostHog
-   vía webhook (Capture API), incluyendo el `distinct_id` como campo oculto del
-   formulario para unir la identidad del visitante con la conversión.
+```
+$pageview  →  waitlist_cta_clicked  →  waitlist_completed
+ (visita)        (clic en el CTA)        (registro real)
+```
 
-Una vez exista `waitlist_completed`, el funnel de "Waitlist Conversion" debe
-actualizarse a: pageview → `waitlist_cta_clicked` → `waitlist_completed`.
+- **Clic en CTA** → evento `waitlist_cta_clicked` (con `source`: `hero_section`,
+  `nav`, `footer`, etc.). *Antes se llamaba `waitlist_signup`.*
+- **Registro completado** → Tally redirige tras el envío a
+  `https://projectsummit.app/thanks.html`, que dispara
+  `posthog.capture('waitlist_completed')` (una vez por sesión). Solo quien
+  finaliza el formulario aterriza ahí.
+
+El dashboard **🎯 Waitlist Conversion** ya refleja este embudo de 3 pasos, más
+"Waitlist completados (tendencia)" y "…por source de campaña".
+
+> Nota: la atribución se conserva porque el visitante vuelve al mismo dominio en
+> el mismo navegador (cookie de PostHog intacta). Para que el desglose por
+> campaña en `waitlist_completed` tenga datos, conviene que Tally **conserve los
+> parámetros de query** en la redirección (Settings → After submission).
+
+### Transición a producción (post-Tally)
+
+Cuando se sustituya el formulario por enlaces a la App Store / Play Store, el
+patrón se recicla: el evento terminal medible pasa a ser el clic de descarga
+`app_store_clicked { store, source }` (no se puede rastrear después de salir
+hacia Apple/Google), y `thanks.html` queda obsoleta.
