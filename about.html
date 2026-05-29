@@ -9,6 +9,8 @@
       ui_host: 'https://eu.posthog.com',
       defaults: '2026-01-30',
       person_profiles: 'identified_only',
+      enable_heatmaps: true,
+      capture_dead_clicks: true,
     });
   </script>
   <meta charset="UTF-8" />
@@ -555,6 +557,7 @@
   }, { passive: true });
 </script>
 <script src="translations.js"></script>
+<script src="analytics.js"></script>
 <script>
 (function() {
   var lang = localStorage.getItem('summit-lang') || 'es';
