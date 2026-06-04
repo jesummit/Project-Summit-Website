@@ -12,12 +12,21 @@ const TRANSLATIONS = {
     'nav.cta':          'Join Waitlist',
 
     /* ── INDEX · Hero ── */
-    'hero.eyebrow':         'iOS App · Coming Summer 2026',
-    'hero.headline.main':   'Built for cyclists who take training',
-    'hero.headline.drop':   'seriously.',
-    'hero.sub':             'Track your load. Read your recovery. Fuel your performance. Built around your body, not a generic plan.',
-    'hero.cta':             'Join the Waitlist',
-    'hero.note':            'already on the list',
+    'hero.eyebrow':         'iOS App · Early Access · Summer 2026',
+    'hero.headline.main':   'A training plan that adapts to your body',
+    'hero.headline.drop':   'and your life.',
+    'hero.sub':             'Summit reads your recovery and your real-world availability, then rewrites your plan like a coach would. No AI, no chatbots — just deterministic sport science you can trace.',
+    'hero.cta':             'Get Early Access',
+    'hero.note':            'already on the list · early-access spots limited',
+
+    /* ── INDEX · How Summit thinks ── */
+    'think.label':       'Not AI. Not a chatbot. A coach in the shape of an algorithm.',
+    'think.body.label':  'Adapts to your body',
+    'think.body.title':  'It reads your recovery — both ways',
+    'think.body.desc':   "Summit reads your HRV, resting heart rate and sleep from Apple Health. It eases the load when you're run down — and pushes it when you're primed, to catch your best recovery windows. Both directions, like a good coach.",
+    'think.life.label':  'Adapts to your life',
+    'think.life.title':  'You set the time, Summit sets the plan',
+    'think.life.desc':   'Tell Summit how much time you have each day. No window today? Nothing breaks. One opens up? It replans. And every recommendation traces back to a sport-science rule and your real data — never a black box.',
 
     /* ── INDEX · Screenshots ── */
     'screenshots.title': 'See it in action',
@@ -56,7 +65,7 @@ const TRANSLATIONS = {
     'nutrition.label':        'Built-in nutrition',
     'nutrition.race.label':   'Race Day',
     'nutrition.race.title':   'Race Day Nutrition Planner',
-    'nutrition.race.desc':    'Carb, fluid, and electrolyte targets built around your race duration and bodyweight. Know what to eat, and when.',
+    'nutrition.race.desc':    'Carb, fluid, and electrolyte targets matched to your race duration and bodyweight — built around the gels and drinks you actually use, not generic products. Know what to eat, and when.',
     'nutrition.daily.label':  'Daily <span class="badge-beta">Beta</span>',
     'nutrition.daily.title':  'Daily Nutrition Planning',
     'nutrition.daily.desc':   'Day-by-day fueling targets matched to your training load. High-carb on hard days, recovery-focused on easy ones — automatically adjusted as your plan evolves.',
@@ -70,7 +79,7 @@ const TRANSLATIONS = {
     'whofor.li2': 'You already use Strava and want your data to actually work for you',
     'whofor.li3': "You've outgrown generic plans and want something that adapts to your life",
     'whofor.li4': 'You care about recovery as much as volume',
-    'whofor.li5': 'You have a target event and want to peak for it',
+    'whofor.li5': 'You want to peak for a target event — or simply keep getting faster, race or not',
     'whofor.li6': 'You want nutrition integrated into your training, not bolted on',
 
     /* ── INDEX · Integrations ── */
@@ -85,7 +94,7 @@ const TRANSLATIONS = {
     /* ── INDEX · CTA ── */
     'cta.title.main':   'Be first to ride',
     'cta.title.drop':   'smarter.',
-    'cta.body':         'Pre-launch. Join the waitlist. Get early access.',
+    'cta.body':         'Summit launches Summer 2026 on iOS. Join now and be among the first to ride with a plan that actually knows you.',
     'cta.btn':          'Reserve Your Spot',
     'cta.count.label':  'on the waitlist',
 
@@ -163,9 +172,9 @@ const TRANSLATIONS = {
     'about.photo.placeholder':'Photo<br>coming<br>soon',
     'about.founder.role':     'Founder · Project Summit',
     'about.bio.p1':           "I'm an amateur cyclist and software developer based in Barcelona. Like many serious amateurs, I train consistently, race occasionally, and take my performance seriously — without the budget or time of a professional.",
-    'about.bio.p2':           'For years I managed my training across four or five different apps. Each one did its thing reasonably well. None of them talked to each other. At the end of every week I had data everywhere and clarity nowhere.',
+    'about.bio.p2':           'I prepared The Traka 360 — 360 km of gravel in a single day — across three separate apps: one for training, one for recovery, one for nutrition. None of them talked to each other. I copied numbers by hand, paid three subscriptions, and at the end of every week I had data everywhere and clarity nowhere.',
     'about.bio.p3':           'I knew what I had trained. I rarely knew what I should do next — or why.',
-    'about.bio.p4':           "Summit is my answer to that problem. Not a theoretical one, but the platform I wished existed when I was training for my first Gran Fondo and staring at a TSB chart I couldn't act on.",
+    'about.bio.p4':           "Summit is my answer to that problem. Not a theoretical one — it's the platform I used to prepare 100% of my Gran Diagonal, and the one I wish I'd had when I was staring at a TSB chart I couldn't act on.",
     'about.problem.eyebrow':  'The problem · The solution',
     'about.problem.label':    'The problem',
     'about.problem.title':    'Too many apps. Too little clarity.',
@@ -225,7 +234,7 @@ const TRANSLATIONS = {
     'faq.q1.q': 'Where do the training plans come from?',
     'faq.q1.a': "<p>Summit's plans are generated by a proprietary periodisation engine — not by AI or a chatbot. The engine applies established sports science methodology (polarised training, CTL/ATL/TSB load management) and produces the same type of decisions a human coach would make: when to load, when to recover, when to taper.</p><p>The difference is that Summit runs these calculations continuously, in real time, and adapts them to your actual data — not to an idealised version of your schedule.</p>",
     'faq.q2.q': 'Is Summit an AI app?',
-    'faq.q2.a': '<p>Depends on how you define AI. There\'s no large language model, no chatbot, and no generative content. Summit\'s engine is a deterministic algorithmic system: it follows codified sports science rules and produces predictable, explainable recommendations.</p><p>We think "algorithm" is more honest than "AI" here. Every decision Summit makes can be traced back to a specific rule or calculation — not a black box.</p>',
+    'faq.q2.a': '<p>The part that matters most isn\'t. Summit\'s <strong>training and adaptation engine</strong> — the one that decides when to load, recover, and taper — is a deterministic algorithmic system. No language model, no chatbot, no generative content: it follows codified sports science rules and produces predictable, explainable recommendations you can trace back to a specific calculation, not a black box.</p><p>The one exception is <strong>daily nutrition</strong>, currently in Beta, which uses Apple Intelligence to generate meal suggestions. We\'d rather be upfront about that than hide it under a blanket "no AI" claim. Your training plan is never generated by AI.</p>',
     'faq.q3.q': 'What happens when I miss a session?',
     'faq.q3.a': "<p>Summit detects it automatically and recalculates your plan. This is called plan cascading — skipped sessions, completed sessions, illness, travel, or any change in availability all trigger an automatic adjustment of what comes next.</p><p>You'll never be stuck following a plan that stopped making sense three days ago.</p>",
     'faq.q4.q': 'Can I record other types of training — gym, running, hiking?',
@@ -324,12 +333,21 @@ const TRANSLATIONS = {
     'nav.cta':         'Únete a la lista',
 
     /* ── Hero ── */
-    'hero.eyebrow':       'App iOS · Verano 2026',
-    'hero.headline.main': 'Para ciclistas que se toman el entrenamiento',
-    'hero.headline.drop': 'en serio.',
-    'hero.sub':           'Controla tu carga. Lee tu recuperación. Alimenta tu rendimiento. Construido alrededor de tu cuerpo, no de un plan genérico.',
-    'hero.cta':           'Únete a la lista',
-    'hero.note':          'ya en la lista',
+    'hero.eyebrow':       'App iOS · Acceso anticipado · Verano 2026',
+    'hero.headline.main': 'Un plan de entrenamiento que se adapta a tu cuerpo',
+    'hero.headline.drop': 'y a tu vida.',
+    'hero.sub':           'Summit lee tu recuperación y tu disponibilidad real, y reescribe tu plan como lo haría un entrenador. Sin IA ni chatbots: ciencia del deporte determinista que puedes rastrear.',
+    'hero.cta':           'Consigue acceso anticipado',
+    'hero.note':          'ya en la lista · plazas de acceso anticipado limitadas',
+
+    /* ── Cómo piensa Summit ── */
+    'think.label':       'No es IA. No es un chatbot. Un entrenador en forma de algoritmo.',
+    'think.body.label':  'Se adapta a tu cuerpo',
+    'think.body.title':  'Lee tu recuperación — en ambos sentidos',
+    'think.body.desc':   'Summit lee tu VFC, tu frecuencia cardíaca en reposo y tu sueño desde Apple Health. Baja la carga cuando vienes tocado — y la sube cuando estás fino, para aprovechar tus mejores ventanas de recuperación. En ambas direcciones, como haría un buen entrenador.',
+    'think.life.label':  'Se adapta a tu vida',
+    'think.life.title':  'Tú pones el tiempo, Summit pone el plan',
+    'think.life.desc':   'Dile a Summit cuánto tiempo tienes cada día. ¿Hoy no hay hueco? No pasa nada. ¿Aparece uno? Replanifica. Y cada recomendación se puede rastrear hasta una regla de ciencia del deporte y tus datos reales — nunca una caja negra.',
 
     /* ── Screenshots ── */
     'screenshots.title': 'Velo en acción',
@@ -368,7 +386,7 @@ const TRANSLATIONS = {
     'nutrition.label':       'Nutrición integrada',
     'nutrition.race.label':  'Día de carrera',
     'nutrition.race.title':  'Planificador de nutrición para carrera',
-    'nutrition.race.desc':   'Objetivos de carbohidratos, líquidos y electrolitos adaptados a la duración de tu carrera y tu peso. Sabe qué comer y cuándo.',
+    'nutrition.race.desc':   'Objetivos de carbohidratos, líquidos y electrolitos adaptados a la duración de tu carrera y tu peso — con los geles y bebidas que tú usas de verdad, no productos genéricos. Sabe qué comer y cuándo.',
     'nutrition.daily.label': 'Diario <span class="badge-beta">Beta</span>',
     'nutrition.daily.title': 'Planificación nutricional diaria',
     'nutrition.daily.desc':  'Objetivos de alimentación día a día adaptados a tu carga de entrenamiento. Más carbohidratos en días duros, recuperación en los fáciles.',
@@ -382,7 +400,7 @@ const TRANSLATIONS = {
     'whofor.li2': 'Ya usas Strava y quieres que tus datos trabajen de verdad para ti',
     'whofor.li3': 'Has superado los planes genéricos y quieres algo que se adapte a tu vida',
     'whofor.li4': 'Te importa la recuperación tanto como el volumen',
-    'whofor.li5': 'Tienes un evento objetivo y quieres llegar al pico para él',
+    'whofor.li5': 'Quieres llegar al pico para un evento — o simplemente seguir mejorando, compitas o no',
     'whofor.li6': 'Quieres la nutrición integrada en tu entrenamiento, no añadida aparte',
 
     /* ── Integrations ── */
@@ -397,7 +415,7 @@ const TRANSLATIONS = {
     /* ── CTA ── */
     'cta.title.main':  'Sé el primero en rodar',
     'cta.title.drop':  'más inteligente.',
-    'cta.body':        'Prelanzamiento. Únete a la lista. Consigue acceso anticipado.',
+    'cta.body':        'Summit se lanza en verano de 2026 en iOS. Entra ahora y sé de los primeros en rodar con un plan que de verdad te conoce.',
     'cta.btn':         'Reserva tu plaza',
     'cta.count.label': 'en la lista de espera',
 
@@ -475,9 +493,9 @@ const TRANSLATIONS = {
     'about.photo.placeholder':'Foto<br>en<br>camino',
     'about.founder.role':     'Fundador · Project Summit',
     'about.bio.p1':           'Soy ciclista amateur y desarrollador de software, con base en Barcelona. Como muchos amateurs serios, entreno con constancia, compito de vez en cuando y me tomo el rendimiento en serio — sin el presupuesto ni el tiempo de un profesional.',
-    'about.bio.p2':           'Durante años gestioné mi entrenamiento entre cuatro o cinco apps distintas. Cada una hacía lo suyo razonablemente bien. Ninguna se comunicaba con las demás. Al final de cada semana tenía datos por todas partes y claridad en ninguna.',
+    'about.bio.p2':           'Preparé La Traka 360 —360 km de gravel en un solo día— con tres apps separadas: una para el entrenamiento, otra para la recuperación, otra para la nutrición. Ninguna se hablaba con las demás. Copiaba números a mano, pagaba tres suscripciones y, al final de cada semana, tenía datos por todas partes y claridad en ninguna.',
     'about.bio.p3':           'Sabía lo que había entrenado. Rara vez sabía qué debía hacer a continuación — o por qué.',
-    'about.bio.p4':           'Summit es mi respuesta a ese problema. No una teórica, sino la plataforma que me habría gustado tener cuando entrenaba para mi primera Gran Fondo mirando un gráfico de TSB sin saber qué hacer con él.',
+    'about.bio.p4':           'Summit es mi respuesta a ese problema. No una teórica: es la plataforma con la que preparé al 100% mi Gran Diagonal, y la que me habría gustado tener cuando miraba un gráfico de TSB sin saber qué hacer con él.',
     'about.problem.eyebrow':  'El problema · La solución',
     'about.problem.label':    'El problema',
     'about.problem.title':    'Demasiadas apps. Demasiada poca claridad.',
@@ -537,7 +555,7 @@ const TRANSLATIONS = {
     'faq.q1.q': '¿De dónde vienen los planes de entrenamiento?',
     'faq.q1.a': '<p>Los planes de Summit los genera un motor de periodización propio — no una IA ni un chatbot. El motor aplica metodología establecida de ciencias del deporte (entrenamiento polarizado, gestión de carga CTL/ATL/TSB) y produce el mismo tipo de decisiones que tomaría un entrenador humano: cuándo cargar, cuándo recuperar, cuándo descargar.</p><p>La diferencia es que Summit ejecuta estos cálculos de forma continua, en tiempo real, y los adapta a tus datos reales — no a una versión idealizada de tu agenda.</p>',
     'faq.q2.q': '¿Es Summit una app de IA?',
-    'faq.q2.a': '<p>Depende de cómo definas IA. No hay modelo de lenguaje, ni chatbot, ni contenido generativo. El motor de Summit es un sistema algorítmico determinista: sigue reglas codificadas de ciencias del deporte y produce recomendaciones predecibles y explicables.</p><p>Creemos que "algoritmo" es más honesto que "IA" aquí. Cada decisión de Summit se puede rastrear hasta una regla o un cálculo concreto — no a una caja negra.</p>',
+    'faq.q2.a': '<p>La parte que más importa, no. El <strong>motor de entrenamiento y adaptación</strong> de Summit —el que decide cuándo cargar, recuperar y descargar— es un sistema algorítmico determinista. Sin modelo de lenguaje, sin chatbot, sin contenido generativo: sigue reglas codificadas de ciencias del deporte y produce recomendaciones predecibles y explicables, que puedes rastrear hasta un cálculo concreto y no a una caja negra.</p><p>La única excepción es la <strong>nutrición diaria</strong>, hoy en Beta, que usa Apple Intelligence para generar sugerencias de comidas. Preferimos decirlo claramente antes que esconderlo bajo un "sin IA" genérico. Tu plan de entrenamiento nunca lo genera una IA.</p>',
     'faq.q3.q': '¿Qué pasa si me salto una sesión?',
     'faq.q3.a': '<p>Summit lo detecta automáticamente y recalcula tu plan. A esto le llamamos cascada de plan — sesiones saltadas, sesiones completadas, enfermedad, viajes o cualquier cambio en tu disponibilidad activan un ajuste automático de lo que viene a continuación.</p><p>Nunca te quedarás atascado siguiendo un plan que dejó de tener sentido hace tres días.</p>',
     'faq.q4.q': '¿Puedo registrar otros tipos de entrenamiento — gimnasio, carrera, senderismo?',
@@ -636,12 +654,21 @@ const TRANSLATIONS = {
     'nav.cta':         'Uneix-te a la llista',
 
     /* ── Hero ── */
-    'hero.eyebrow':       'App iOS · Estiu 2026',
-    'hero.headline.main': "Per a ciclistes que es prenen l'entrenament",
-    'hero.headline.drop': 'seriosament.',
-    'hero.sub':           "Controla la teva càrrega. Llegeix la teva recuperació. Alimenta el teu rendiment. Construït al voltant del teu cos, no d'un pla genèric.",
-    'hero.cta':           'Uneix-te a la llista',
-    'hero.note':          'ja a la llista',
+    'hero.eyebrow':       'App iOS · Accés anticipat · Estiu 2026',
+    'hero.headline.main': "Un pla d'entrenament que s'adapta al teu cos",
+    'hero.headline.drop': 'i a la teva vida.',
+    'hero.sub':           "Summit llegeix la teva recuperació i la teva disponibilitat real, i reescriu el teu pla com ho faria un entrenador. Sense IA ni chatbots: ciència de l'esport determinista que pots rastrejar.",
+    'hero.cta':           'Aconsegueix accés anticipat',
+    'hero.note':          'ja a la llista · places d\'accés anticipat limitades',
+
+    /* ── Com pensa Summit ── */
+    'think.label':       "No és IA. No és un chatbot. Un entrenador en forma d'algoritme.",
+    'think.body.label':  "S'adapta al teu cos",
+    'think.body.title':  'Llegeix la teva recuperació — en tots dos sentits',
+    'think.body.desc':   "Summit llegeix la teva VFC, la teva freqüència cardíaca en repòs i el teu son des d'Apple Health. Abaixa la càrrega quan véns tocat — i la puja quan estàs fi, per aprofitar les teves millors finestres de recuperació. En totes dues direccions, com ho faria un bon entrenador.",
+    'think.life.label':  "S'adapta a la teva vida",
+    'think.life.title':  'Tu poses el temps, Summit posa el pla',
+    'think.life.desc':   "Digues a Summit quant de temps tens cada dia. Avui no hi ha forat? No passa res. N'apareix un? Replanifica. I cada recomanació es pot rastrejar fins a una regla de ciència de l'esport i les teves dades reals — mai una caixa negra.",
 
     /* ── Screenshots ── */
     'screenshots.title': "Veu-ho en acció",
@@ -680,7 +707,7 @@ const TRANSLATIONS = {
     'nutrition.label':       'Nutrició integrada',
     'nutrition.race.label':  'Dia de cursa',
     'nutrition.race.title':  'Planificador de nutrició per a cursa',
-    'nutrition.race.desc':   "Objectius de carbohidrats, líquids i electròlits adaptats a la durada de la teva cursa i el teu pes. Sap què menjar i quan.",
+    'nutrition.race.desc':   "Objectius de carbohidrats, líquids i electròlits adaptats a la durada de la teva cursa i el teu pes — amb els gels i begudes que tu fas servir de debò, no productes genèrics. Sap què menjar i quan.",
     'nutrition.daily.label': 'Diari <span class="badge-beta">Beta</span>',
     'nutrition.daily.title': 'Planificació nutricional diària',
     'nutrition.daily.desc':  "Objectius d'alimentació dia a dia adaptats a la teva càrrega d'entrenament. Més carbohidrats els dies durs, recuperació els fàcils.",
@@ -694,7 +721,7 @@ const TRANSLATIONS = {
     'whofor.li2': "Ja fas servir Strava i vols que les teves dades treballin de veritat per a tu",
     'whofor.li3': "Has superat els plans genèrics i vols alguna cosa que s'adapti a la teva vida",
     'whofor.li4': "Et importa la recuperació tant com el volum",
-    'whofor.li5': "Tens un event objectiu i vols arribar al pic per a ell",
+    'whofor.li5': "Vols arribar al pic per a un event — o simplement seguir millorant, competeixis o no",
     'whofor.li6': "Vols la nutrició integrada al teu entrenament, no afegida a posteriori",
 
     /* ── Integrations ── */
@@ -709,7 +736,7 @@ const TRANSLATIONS = {
     /* ── CTA ── */
     'cta.title.main':  'Sigues el primer a rodar',
     'cta.title.drop':  "més intel·ligent.",
-    'cta.body':        "Prellançament. Uneix-te a la llista. Aconsegueix accés anticipat.",
+    'cta.body':        "Summit s'estrena l'estiu del 2026 a iOS. Entra ara i sigues dels primers a rodar amb un pla que de debò et coneix.",
     'cta.btn':         'Reserva el teu lloc',
     'cta.count.label': "a la llista d'espera",
 
@@ -787,9 +814,9 @@ const TRANSLATIONS = {
     'about.photo.placeholder':'Foto<br>en<br>camí',
     'about.founder.role':     'Fundador · Project Summit',
     'about.bio.p1':           'Sóc ciclista amateur i desenvolupador de programari, amb base a Barcelona. Com molts amateurs seriosos, entreno amb constància, competeixo de tant en tant i em prenc el rendiment seriosament — sense el pressupost ni el temps d\'un professional.',
-    'about.bio.p2':           "Durant anys vaig gestionar el meu entrenament entre quatre o cinc apps diferents. Cadascuna feia el seu raonablement bé. Cap es comunicava amb les altres. Al final de cada setmana tenia dades arreu i claredat enlloc.",
+    'about.bio.p2':           "Vaig preparar La Traka 360 —360 km de gravel en un sol dia— amb tres apps separades: una per a l'entrenament, una per a la recuperació, una per a la nutrició. Cap es parlava amb les altres. Copiava números a mà, pagava tres subscripcions i, al final de cada setmana, tenia dades arreu i claredat enlloc.",
     'about.bio.p3':           'Sabia què havia entrenat. Poques vegades sabia què havia de fer a continuació — o per què.',
-    'about.bio.p4':           "Summit és la meva resposta a aquest problema. No una de teòrica, sinó la plataforma que m'hauria agradat tenir quan entrenava per a la meva primera Gran Fondo mirant un gràfic de TSB sense saber què fer-hi.",
+    'about.bio.p4':           "Summit és la meva resposta a aquest problema. No una de teòrica: és la plataforma amb què vaig preparar al 100% la meva Gran Diagonal, i la que m'hauria agradat tenir quan mirava un gràfic de TSB sense saber què fer-hi.",
     'about.problem.eyebrow':  'El problema · La solució',
     'about.problem.label':    'El problema',
     'about.problem.title':    'Massa apps. Massa poca claredat.',
@@ -849,7 +876,7 @@ const TRANSLATIONS = {
     'faq.q1.q': "D'on vénen els plans d'entrenament?",
     'faq.q1.a': "<p>Els plans de Summit els genera un motor de periodització propi — no una IA ni un chatbot. El motor aplica metodologia establerta de ciències de l'esport (entrenament polaritzat, gestió de càrrega CTL/ATL/TSB) i produeix el mateix tipus de decisions que prendria un entrenador humà: quan carregar, quan recuperar, quan descarregar.</p><p>La diferència és que Summit executa aquests càlculs de manera contínua, en temps real, i els adapta a les teves dades reals — no a una versió idealitzada de la teva agenda.</p>",
     'faq.q2.q': 'És Summit una app d\'IA?',
-    'faq.q2.a': '<p>Depèn de com defineixis IA. No hi ha model de llenguatge, ni chatbot, ni contingut generatiu. El motor de Summit és un sistema algorítmic determinista: segueix regles codificades de ciències de l\'esport i produeix recomanacions predictibles i explicables.</p><p>Pensem que "algoritme" és més honest que "IA" aquí. Cada decisió de Summit es pot rastrejar fins a una regla o un càlcul concret — no a una caixa negra.</p>',
+    'faq.q2.a': '<p>La part que més importa, no. El <strong>motor d\'entrenament i adaptació</strong> de Summit —el que decideix quan carregar, recuperar i descarregar— és un sistema algorítmic determinista. Sense model de llenguatge, sense chatbot, sense contingut generatiu: segueix regles codificades de ciències de l\'esport i produeix recomanacions predictibles i explicables, que pots rastrejar fins a un càlcul concret i no a una caixa negra.</p><p>L\'única excepció és la <strong>nutrició diària</strong>, avui en Beta, que fa servir Apple Intelligence per generar suggeriments d\'àpats. Preferim dir-ho clarament abans que amagar-ho sota un "sense IA" genèric. El teu pla d\'entrenament mai no el genera una IA.</p>',
     'faq.q3.q': 'Què passa si em salto una sessió?',
     'faq.q3.a': "<p>Summit ho detecta automàticament i recalcula el teu pla. A això li diem cascada de pla — sessions saltades, sessions completades, malaltia, viatges o qualsevol canvi en la teva disponibilitat activen un ajust automàtic del que ve a continuació.</p><p>Mai et quedaràs atrapat seguint un pla que va deixar de tenir sentit fa tres dies.</p>",
     'faq.q4.q': "Puc registrar altres tipus d'entrenament — gimnàs, córrer, senderisme?",

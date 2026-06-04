@@ -17,21 +17,21 @@
   <link rel="icon" type="image/png" href="SummitLogo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Summit — Smarter Cycling Training</title>
-  <meta name="description" content="Built for cyclists who take training seriously. Smarter training. Better fueling. Real results." />
+  <meta name="description" content="A cycling training plan that adapts to your body and your life — like a coach, not a chatbot. Deterministic sport science. iOS app, early access Summer 2026." />
 
   <!-- Open Graph / WhatsApp / iMessage -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://projectsummit.app/" />
-  <meta property="og:title" content="Project Summit — Smarter Cycling Training" />
-  <meta property="og:description" content="Track your load. Read your recovery. Fuel your performance. iOS app coming Summer 2026." />
+  <meta property="og:title" content="Project Summit — A plan that adapts to your body and your life" />
+  <meta property="og:description" content="Adapts to your body and your life like a coach would. No AI, no chatbots — deterministic sport science. iOS app, early access Summer 2026." />
   <meta property="og:image" content="https://projectsummit.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Project Summit — Smarter Cycling Training" />
-  <meta name="twitter:description" content="Track your load. Read your recovery. Fuel your performance. iOS app coming Summer 2026." />
+  <meta name="twitter:title" content="Project Summit — A plan that adapts to your body and your life" />
+  <meta name="twitter:description" content="Adapts to your body and your life like a coach would. No AI, no chatbots — deterministic sport science. iOS app, early access Summer 2026." />
   <meta name="twitter:image" content="https://projectsummit.app/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -569,7 +569,7 @@
     }
 
     /* ── NUTRITION ── */
-    .nutrition {
+    .nutrition, .how-think {
       max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
       border-bottom: 2px solid rgba(245,238,224,0.12);
@@ -851,7 +851,7 @@
     @keyframes fadeUp { to { opacity: 1; transform: none; } }
 
     @media (max-width: 640px) {
-      nav, .hero, .features, .nutrition, .who-for,
+      nav, .hero, .features, .nutrition, .how-think, .who-for,
       .integrations, .cta-section { padding-left: 24px; padding-right: 24px; }
       .features-grid { grid-template-columns: 1fr; }
       .nutrition-inner { grid-template-columns: 1fr; }
@@ -977,15 +977,15 @@
 </header>
 
 <section class="hero">
-  <p class="hero-eyebrow" data-i18n="hero.eyebrow">iOS App &nbsp;·&nbsp; Coming Summer 2026</p>
+  <p class="hero-eyebrow" data-i18n="hero.eyebrow">iOS App &nbsp;·&nbsp; Early Access &nbsp;·&nbsp; Summer 2026</p>
   <h1 class="hero-headline">
-    <span data-i18n="hero.headline.main">Built for cyclists who take training</span>
-    <span class="drop" data-i18n="hero.headline.drop">seriously.</span>
+    <span data-i18n="hero.headline.main">A training plan that adapts to your body</span>
+    <span class="drop" data-i18n="hero.headline.drop">and your life.</span>
   </h1>
-  <p class="hero-sub" data-i18n="hero.sub">Track your load. Read your recovery. Fuel your performance. Built around your body, not a generic plan.</p>
+  <p class="hero-sub" data-i18n="hero.sub">Summit reads your recovery and your real-world availability, then rewrites your plan like a coach would. No AI, no chatbots — just deterministic sport science you can trace.</p>
   <div class="hero-actions">
-    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'hero_section' })">Join the Waitlist</a>
-    <span class="hero-note"><strong>+40 cyclists</strong> <span data-i18n="hero.note">already on the list</span></span>
+    <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-accent" data-i18n="hero.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'hero_section' })">Get Early Access</a>
+    <span class="hero-note"><strong>+40 cyclists</strong> <span data-i18n="hero.note">already on the list · early-access spots limited</span></span>
   </div>
 </section>
 
@@ -1086,6 +1086,24 @@
   </div>
 </section>
 
+<section class="how-think">
+  <p class="section-label" data-i18n="think.label">Not AI. Not a chatbot. A coach in the shape of an algorithm.</p>
+  <div class="nutrition-inner">
+    <div class="nutrition-block">
+      <span class="nutrition-icon">🫀</span>
+      <p class="nutrition-label" data-i18n="think.body.label">Adapts to your body</p>
+      <h2 class="nutrition-title" data-i18n="think.body.title">It reads your recovery — both ways</h2>
+      <p class="nutrition-desc" data-i18n="think.body.desc">Summit reads your HRV, resting heart rate and sleep from Apple Health. It eases the load when you're run down — and pushes it when you're primed, to catch your best recovery windows. Both directions, like a good coach.</p>
+    </div>
+    <div class="nutrition-block">
+      <span class="nutrition-icon">📅</span>
+      <p class="nutrition-label" data-i18n="think.life.label">Adapts to your life</p>
+      <h2 class="nutrition-title" data-i18n="think.life.title">You set the time, Summit sets the plan</h2>
+      <p class="nutrition-desc" data-i18n="think.life.desc">Tell Summit how much time you have each day. No window today? Nothing breaks. One opens up? It replans. And every recommendation traces back to a sport-science rule and your real data — never a black box.</p>
+    </div>
+  </div>
+</section>
+
 <section class="features">
   <p class="section-label" data-i18n="features.label">What's in v1.0</p>
   <div class="features-grid">
@@ -1129,7 +1147,7 @@
       <span class="nutrition-icon">🍽️</span>
       <p class="nutrition-label" data-i18n="nutrition.race.label">Race Day</p>
       <h2 class="nutrition-title" data-i18n="nutrition.race.title">Race Day Nutrition Planner</h2>
-      <p class="nutrition-desc" data-i18n="nutrition.race.desc">Carb, fluid, and electrolyte targets built around your race duration and bodyweight. Know what to eat, and when.</p>
+      <p class="nutrition-desc" data-i18n="nutrition.race.desc">Carb, fluid, and electrolyte targets matched to your race duration and bodyweight — built around the gels and drinks you actually use, not generic products. Know what to eat, and when.</p>
     </div>
     <div class="nutrition-block">
       <span class="nutrition-icon">🥗</span>
@@ -1153,7 +1171,7 @@
         <li data-i18n="whofor.li2">You already use Strava and want your data to actually work for you</li>
         <li data-i18n="whofor.li3">You've outgrown generic plans and want something that adapts to your life</li>
         <li data-i18n="whofor.li4">You care about recovery as much as volume</li>
-        <li data-i18n="whofor.li5">You have a target event and want to peak for it</li>
+        <li data-i18n="whofor.li5">You want to peak for a target event — or simply keep getting faster, race or not</li>
         <li data-i18n="whofor.li6">You want nutrition integrated into your training, not bolted on</li>
       </ul>
     </div>
@@ -1257,7 +1275,7 @@
 <section class="cta-section">
   <div class="cta-text">
     <h2 class="cta-title"><span data-i18n="cta.title.main">Be first to ride</span> <em data-i18n="cta.title.drop">smarter.</em></h2>
-    <p class="cta-body" data-i18n="cta.body">Pre-launch. Join the waitlist. Get early access.</p>
+    <p class="cta-body" data-i18n="cta.body">Summit launches Summer 2026 on iOS. Join now and be among the first to ride with a plan that actually knows you.</p>
     <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta.btn" onclick="posthog.capture('waitlist_cta_clicked', { source: 'cta_section' })">Reserve Your Spot</a>
   </div>
   <div class="cta-aside">
@@ -1497,7 +1515,7 @@
   });
 
   // Sections viewed (once each)
-  var sectionMap = [['.hero','hero'],['.features','features'],['.nutrition','nutrition'],['.who-for','who_for'],['.integrations','integrations'],['.cta-section','cta']];
+  var sectionMap = [['.hero','hero'],['.how-think','how_summit_thinks'],['.features','features'],['.nutrition','nutrition'],['.who-for','who_for'],['.integrations','integrations'],['.cta-section','cta']];
   var sectionObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) { posthog.capture('section_viewed', { section: e.target.dataset.phSection, page: 'home' }); sectionObs.unobserve(e.target); }
