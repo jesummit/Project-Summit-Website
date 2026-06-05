@@ -1,0 +1,49 @@
+name: Build static shell
+
+# Keeps the generated header/footer in every page in sync with partials/.
+# Runs on every push: regenerates the shell with build.js and, if the committed
+# HTML drifted from the partials, commits the rebuild back to the branch. The
+# auto-commit carries [skip ci] so it never re-triggers this workflow.
+#
+# Note: this can only push back to branches in THIS repo (not forks). For a fork
+# PR the step is a no-op; run `npm run build` locally instead.
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-shell-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # build.js is dependency-free — no npm install needed.
+      - name: Build static shell from partials
+        run: node build.js
+
+      - name: Commit rebuild if the shell drifted
+        run: |
+          if [ -z "$(git status --porcelain -- '*.html')" ]; then
+            echo "Shell is in sync with partials/ — nothing to commit."
+            exit 0
+          fi
+          echo "Shell drifted from partials/ — committing rebuild:"
+          git --no-pager diff --stat -- '*.html'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html'
+          git commit -m "chore: rebuild static shell from partials [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
