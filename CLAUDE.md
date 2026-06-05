@@ -4,6 +4,49 @@ Operational notes for future Claude sessions working on this repo. Read this
 first; it captures how the site is wired and the gotchas that aren't obvious
 from the file tree.
 
+## Hardening done 2026-06-05 (current state)
+
+A privacy/security/SEO pass landed on branch `claude/practical-curie-UpinE`
+(PR). What exists now:
+
+- **Self-hosted fonts + flag icons** — no Google Fonts / cdnjs at runtime. Faces
+  live in `assets/fonts/` (+ `@font-face` in `summit.css`); the 3 used flags in
+  `assets/img/flags/`. (Enables the strict CSP; no SRI needed.)
+- **Cookie consent (GDPR opt-in)** — PostHog inits `opt_out_capturing_by_default:
+  true`; nothing is captured until the visitor accepts. `assets/js/consent.js`
+  (banner, EN/ES/CA), choice in `localStorage.summit_consent`, footer "Cookie
+  settings" link reopens it.
+- **CI hardening** — Actions pinned to commit SHAs + Dependabot; `verify`
+  workflow (i18n coverage, internal links, shell-in-sync) via `tools/check-*.js`
+  / `npm run check`.
+- **SEO** — real favicons (`favicon-16/32`, `apple-touch-icon`, `icon-192/512`,
+  generated from the logo — replaced the 1.4 MB full-logo favicon),
+  `site.webmanifest`, `robots.txt`, `sitemap.xml`, styled `404.html`, and
+  per-page canonical + OpenGraph/Twitter on every page.
+
+**Cloudflare (live now, applied via API — see `docs/cloudflare-security.md`):**
+- ✅ Security response headers active on `projectsummit.app`: HSTS
+  (`max-age=31536000`, no includeSubDomains/preload yet), `X-Content-Type-Options`,
+  `Referrer-Policy`, `X-Frame-Options: DENY`, `Permissions-Policy`,
+  `Cross-Origin-Opener-Policy`.
+- ✅ Rate-limit on `/ingest`: action `block`, 40 req / 10 s per IP (Free-plan caps).
+- 🟡 **CSP is in `Report-Only`** (rule id `680eae136b4f4e0aad7626991b8c714b`,
+  `http_response_headers_transform` phase). **It is NOT enforcing** because
+  **production still serves the OLD site** (loads cdnjs + Google Fonts, which the
+  strict CSP would block). Flip to enforcing **only after the self-hosted redesign
+  is deployed to the Pages branch** — re-PUT the entrypoint renaming the header
+  `Content-Security-Policy-Report-Only` → `Content-Security-Policy`.
+
+**Still manual (the session API token only had Rulesets access):** dashboard
+toggles (strengthen HSTS, min TLS 1.2, DNSSEC, Bot Fight) and email DNS
+(SPF/DKIM/DMARC — needs DNS perms + your ESP). **BIMI** intentionally skipped (paid
+VMC). The temporary API token used this session should be revoked.
+
+> ⚠️ **Deploy gap:** the live site at `projectsummit.app` is still the pre-redesign
+> version (references `translations.js`, `SummitLogo.png`, root screenshots,
+> cdnjs). This whole repo (the "V4 Momentum" redesign) has **not** been deployed
+> to the branch GitHub Pages serves. Until it is, keep the CSP in Report-Only.
+
 ## What this is
 A **static** marketing site for the Project Summit iOS cycling app, served by
 **GitHub Pages** on the custom domain **projectsummit.app** (`CNAME` at repo

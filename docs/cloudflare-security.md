@@ -19,8 +19,12 @@ Applied **via the Cloudflare API** (Rulesets) and verified live:
   `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`,
   `Cross-Origin-Opener-Policy`.
 - ✅ **CSP deployed in `Content-Security-Policy-Report-Only` mode** — it reports
-  but does **not** block, so it cannot break the site. Flip it to enforcing once
-  you've confirmed no violations (see §1).
+  but does **not** block, so it cannot break the site.
+  ⚠️ **Do not flip to enforcing yet.** Production (the GitHub Pages branch) is
+  still serving the **old** site, which loads `cdnjs` (flag-icons) and Google
+  Fonts — the strict `'self'` CSP would block those. Flip to enforcing (§1) only
+  **after the self-hosted redesign is the version deployed to production.** It was
+  briefly enforced during this session and reverted for exactly this reason.
 - ✅ Rate-limit on `/ingest` (§3) — Free-plan limits: action `block`, 40 requests
   / 10 s per IP (per colo).
 
