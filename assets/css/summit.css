@@ -404,9 +404,55 @@ a { color: inherit; }
 .hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.7; }
 .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 
-.fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s cubic-bezier(.2,.8,.2,1) forwards; }
-@keyframes fadeUp { to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .fade-up { animation: none; opacity: 1; transform: none; } }
+.fade-up { opacity: 1; transform: none; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s cubic-bezier(.2,.8,.2,1) forwards; }
+}
+
+/* Hero stage cascade — opacity only, so it never clobbers the phones'
+   rotate()/translate() fan transforms. Each child sets its own --pop-delay. */
+.hero-pop { opacity: 1; }
+@keyframes heroPop { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-pop { opacity: 0; animation: heroPop 0.62s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: var(--pop-delay, 0s); }
+}
+
+/* Stage container lifts as a unit (transform only — keeps child opacity free
+   for the per-element cascade above). */
+.hero-rise { transform: none; }
+@keyframes heroRise { from { transform: translateY(22px); } to { transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rise { animation: heroRise 0.6s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: 0.26s; }
+}
+
+/* Callouts slide in from their nearest edge (--co-from) — quick, with a slight
+   overshoot/rebound — once the phones have settled. */
+.hp-callout.co-in { opacity: 1; }
+@keyframes coIn {
+  from { opacity: 0; transform: translateX(var(--co-from, -28px)); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hp-callout.co-in {
+    opacity: 0;
+    animation: coIn 0.44s cubic-bezier(.34,1.56,.64,1) forwards;
+    animation-delay: var(--pop-delay, 0s);
+  }
+}
+
+/* ── Scroll reveal ──────────────────────────────────────────────────
+   Staggered reveal as a section enters the viewport. The visible
+   end-state is the base style; we only animate FROM hidden when motion
+   is allowed, so reduced-motion + no-JS always show content. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(34px); }
+  .reveal.is-visible {
+    opacity: 1; transform: none;
+    transition: opacity 0.66s cubic-bezier(.2,.8,.2,1), transform 0.66s cubic-bezier(.2,.8,.2,1);
+    transition-delay: calc(var(--reveal-i, 0) * 170ms);
+  }
+}
 
 /* Hero (Product is the only direction) */
 #hero-product { display: block; }

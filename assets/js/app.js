@@ -198,6 +198,58 @@
     else if (mq.addListener) mq.addListener(handler);
   }
 
+  /* ---------- Scroll reveal ---------- */
+  function initReveal() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Per-section ordered reveal targets (the hero animates on load instead).
+    var map = {
+      screens: ['.showcase-top', '.carousel-track', '.carousel-dots'],
+      how: ['.section-head', '.split-block'],
+      features: ['.section-head', '.feature-card'],
+      nutrition: ['.section-head', '.split-block'],
+      whofor: ['.whofor-grid > div:first-child', '.whofor-list li'],
+      integrations: ['.section-head', '.integ-card', '.integ-row-2'],
+      download: ['.cta-inner']
+    };
+
+    var sections = [];
+    Object.keys(map).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      var i = 0;
+      map[id].forEach(function (sel) {
+        sec.querySelectorAll(sel).forEach(function (el) {
+          el.classList.add('reveal');
+          el.style.setProperty('--reveal-i', i++);
+        });
+      });
+      if (i > 0) sections.push(sec);
+    });
+
+    // Scroll-driven: reveal once a section's top has entered ~10% into view.
+    // (Plain rect math — reliable across browsers and sandboxed previews.)
+    var raf;
+    function check() {
+      var trigger = window.innerHeight * 0.7;
+      for (var k = sections.length - 1; k >= 0; k--) {
+        var sec = sections[k];
+        if (sec.getBoundingClientRect().top < trigger) {
+          sec.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+          sections.splice(k, 1);
+        }
+      }
+      if (!sections.length) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    }
+    function onScroll() { cancelAnimationFrame(raf); raf = requestAnimationFrame(check); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    check();
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     apply();
@@ -205,5 +257,6 @@
     initCarousel();
     initNav();
     initSystemTheme();
+    initReveal();
   });
 })();
