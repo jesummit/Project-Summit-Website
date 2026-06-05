@@ -9,6 +9,7 @@
       ui_host: 'https://eu.posthog.com',
       defaults: '2026-01-30',
       person_profiles: 'identified_only',
+      opt_out_capturing_by_default: true,
       enable_heatmaps: true,
       capture_dead_clicks: true,
     });
@@ -475,12 +476,14 @@
   <div class="footer-bottom">
     <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
     <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
   </div>
 </footer>
 
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/analytics.js"></script>
+  <script src="assets/js/consent.js"></script>
 
 </body>
 </html>

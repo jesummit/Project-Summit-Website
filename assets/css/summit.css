@@ -632,3 +632,39 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
   .cta-aside { align-items: flex-start; }
 }
+
+/* =====================================================================
+   COOKIE CONSENT BANNER
+   ===================================================================== */
+.consent {
+  position: fixed; z-index: 300; left: 16px; right: 16px; bottom: 16px;
+  max-width: 720px; margin: 0 auto;
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--ink-hair); border-radius: var(--r-card);
+  box-shadow: var(--e3);
+  padding: 16px 18px;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.consent-text { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); flex: 1 1 320px; }
+.consent-text a { color: var(--accent); text-decoration: none; }
+.consent-text a:hover { text-decoration: underline; }
+.consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.consent-btn {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+  border-radius: var(--r-button); padding: 9px 18px; cursor: pointer;
+  border: 1px solid var(--ink-hair); background: none; color: var(--ink);
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+.consent-reject:hover { background: var(--bg-soft); border-color: var(--ink-faint); }
+.consent-accept { background: var(--accent); border-color: var(--accent); color: #fff; }
+.consent-accept:hover { opacity: 0.9; }
+.footer-cookies {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em;
+  color: rgba(245,238,224,0.32); background: none; border: none; cursor: pointer; padding: 0;
+  text-align: left;
+}
+.footer-cookies:hover { color: rgba(245,238,224,0.6); }
+@media (max-width: 520px) {
+  .consent { flex-direction: column; align-items: stretch; }
+  .consent-actions { justify-content: flex-end; }
+}
