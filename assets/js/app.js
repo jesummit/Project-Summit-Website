@@ -198,48 +198,100 @@
     else if (mq.addListener) mq.addListener(handler);
   }
 
-  /* ---------- Scroll reveal ---------- */
+  /* ---------- Scroll reveal ----------
+     Same criterio across the whole site: as a block scrolls ~30% into view, its
+     children reveal with a stagger. Per page (body[data-page]) we map a trigger
+     container to the items to stagger. A rule is either { trigger, items } (the
+     first match) or { each, items } (every match becomes its own trigger). With
+     no `items`, the container reveals itself. The hidden state only exists once
+     JS adds .reveal, so no-JS / reduced-motion always show everything. */
+  var REVEAL_MAPS = {
+    home: [
+      { trigger: '#screens',      items: ['.showcase-top', '.carousel-track', '.carousel-dots'] },
+      { trigger: '#how',          items: ['.section-head', '.split-block'] },
+      { trigger: '#features',     items: ['.section-head', '.feature-card'] },
+      { trigger: '#nutrition',    items: ['.section-head', '.split-block'] },
+      { trigger: '#whofor',       items: ['.whofor-grid > div:first-child', '.whofor-list li'] },
+      { trigger: '#integrations', items: ['.section-head', '.integ-card', '.integ-row-2'] },
+      { trigger: '#download',     items: ['.cta-inner'] }
+    ],
+    about: [
+      { trigger: '.founder',    items: ['.founder-photo-wrap', '.founder-text'] },
+      { trigger: '.problem',    items: ['.section-eyebrow', '.problem-block'] },
+      { trigger: '.principles', items: ['.section-eyebrow', '.principle-card'] },
+      { trigger: '.about-cta',  items: ['.about-cta-inner'] }
+    ],
+    roadmap: [
+      { each: '.phase',     items: ['.phase-meta', '.feature-item'] },
+      { trigger: '.rm-cta', items: ['.rm-cta-inner'] }
+    ],
+    faq: [
+      { each: '.faq-category', items: ['.faq-cat-label', '.faq-item'] },
+      { trigger: '.faq-cta',   items: ['.faq-cta-inner'] }
+    ],
+    ambassadors: [
+      { trigger: '.amb-who',   items: ['.amb-who-title', '.amb-who-body'] },
+      { trigger: '.amb-offer', items: ['.amb-offer-label', '.offer-card'] },
+      { trigger: '.amb-how',   items: ['.amb-how-label', '.step'] },
+      { trigger: '.amb-cta',   items: ['.amb-cta-inner'] }
+    ],
+    terms: [
+      { trigger: '.toc-inner' },
+      { each: '.terms-section' }
+    ],
+    privacy: [
+      { trigger: '.toc-block' },
+      { each: '.policy-section' }
+    ]
+  };
+
   function initReveal() {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var page = (document.body && document.body.getAttribute('data-page')) || 'home';
+    var rules = REVEAL_MAPS[page];
+    if (!rules) return;
 
-    // Per-section ordered reveal targets (the hero animates on load instead).
-    var map = {
-      screens: ['.showcase-top', '.carousel-track', '.carousel-dots'],
-      how: ['.section-head', '.split-block'],
-      features: ['.section-head', '.feature-card'],
-      nutrition: ['.section-head', '.split-block'],
-      whofor: ['.whofor-grid > div:first-child', '.whofor-list li'],
-      integrations: ['.section-head', '.integ-card', '.integ-row-2'],
-      download: ['.cta-inner']
-    };
-
-    var sections = [];
-    Object.keys(map).forEach(function (id) {
-      var sec = document.getElementById(id);
-      if (!sec) return;
-      var i = 0;
-      map[id].forEach(function (sel) {
-        sec.querySelectorAll(sel).forEach(function (el) {
-          el.classList.add('reveal');
-          el.style.setProperty('--reveal-i', i++);
+    var groups = [];
+    function addGroup(container, itemSels) {
+      var items = [], i = 0;
+      if (itemSels && itemSels.length) {
+        itemSels.forEach(function (sel) {
+          container.querySelectorAll(sel).forEach(function (el) {
+            el.classList.add('reveal');
+            el.style.setProperty('--reveal-i', i++);
+            items.push(el);
+          });
         });
-      });
-      if (i > 0) sections.push(sec);
-    });
+      } else {
+        container.classList.add('reveal');
+        container.style.setProperty('--reveal-i', 0);
+        items.push(container);
+      }
+      if (items.length) groups.push({ trigger: container, items: items });
+    }
 
-    // Scroll-driven: reveal once a section's top has entered ~10% into view.
+    rules.forEach(function (rule) {
+      if (rule.each) {
+        document.querySelectorAll(rule.each).forEach(function (c) { addGroup(c, rule.items); });
+      } else {
+        var c = document.querySelector(rule.trigger);
+        if (c) addGroup(c, rule.items);
+      }
+    });
+    if (!groups.length) return;
+
+    // Scroll-driven: reveal once a trigger's top has entered ~30% into view.
     // (Plain rect math — reliable across browsers and sandboxed previews.)
     var raf;
     function check() {
       var trigger = window.innerHeight * 0.7;
-      for (var k = sections.length - 1; k >= 0; k--) {
-        var sec = sections[k];
-        if (sec.getBoundingClientRect().top < trigger) {
-          sec.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
-          sections.splice(k, 1);
+      for (var k = groups.length - 1; k >= 0; k--) {
+        if (groups[k].trigger.getBoundingClientRect().top < trigger) {
+          groups[k].items.forEach(function (el) { el.classList.add('is-visible'); });
+          groups.splice(k, 1);
         }
       }
-      if (!sections.length) {
+      if (!groups.length) {
         window.removeEventListener('scroll', onScroll);
         window.removeEventListener('resize', onScroll);
       }
