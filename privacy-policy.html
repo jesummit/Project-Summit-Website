@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <!-- PostHog Analytics -->
   <script>
@@ -13,180 +13,63 @@
       capture_dead_clicks: true,
     });
   </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="assets/img/summit-logo.png" />
   <title>Privacy Policy — Project Summit</title>
-  <link rel="icon" type="image/png" href="SummitLogo.png" />
+  <meta name="description" content="Privacy Policy for Project Summit — the adaptive iOS cycling training platform. Learn how we collect, use, and protect your personal data." />
+  <meta name="robots" content="noindex, follow" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/summit.css" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── Privacy Policy — scoped component styles ── */
 
-    :root {
-      --bg:          #F6F1E8;
-      --bg-soft:     #EFE7D6;
-      --card:        #FFFFFF;
-      --ink:         #1F1A14;
-      --ink-soft:    rgba(31,26,20,0.60);
-      --ink-faint:   rgba(31,26,20,0.38);
-      --ink-hair:    rgba(31,26,20,0.10);
-      --accent:      #D66A2D;
-      --accent-soft: rgba(214,106,45,0.10);
-      --accent-line: rgba(214,106,45,0.30);
-      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
-      --font-display: -apple-system, "SF Pro Display", system-ui, sans-serif;
-      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      background-image: radial-gradient(ellipse 55% 45% at 92% -5%, rgba(214,106,45,0.28) 0%, transparent 100%);
-      color: var(--ink);
-      font-family: var(--font-ui);
-      font-weight: 400;
-      line-height: 1.75;
-      min-height: 100vh;
-    }
-
-        .topbar { display: none; }
-
-    /* ── SITE HEADER (sticky) ── */
-    .site-header {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--ink);
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-    }
-
-    /* Ember progress bar on top of hairline */
-    .nav-progress {
-      position: absolute;
-      bottom: -2px; left: 0;
-      height: 2px;
-      width: 0%;
-      background: #E8834A;
-      transition: width 0.1s linear;
-      z-index: 101;
-    }
-
-    /* ── NAV ── */
-    nav {
-      max-width: 900px;
+    /* Page layout */
+    .privacy-wrap {
+      max-width: 780px;
       margin: 0 auto;
-      padding: 14px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      padding-left: 48px;
+      padding-right: 48px;
     }
 
-    nav::after { display: none; }
-
-    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-
-    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-
-    .nav-logo {
-      width: 32px; height: 32px;
-      border-radius: 7px; overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
-    }
-    .nav-logo img { width: 100%; display: block; }
-
-    .nav-name {
-      font-family: var(--font-display);
-      font-size: 30px; font-weight: 900;
-      letter-spacing: -0.04em;
-      color: #F5EEE0;
-      text-decoration: none;
-    }
-    .nav-dot { color: #E8834A; }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-ui);
-      font-size: 13px; font-weight: 400;
-      letter-spacing: 0.02em;
-      color: rgba(245,238,224,0.55); text-decoration: none;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover { color: #F5EEE0; }
-    .nav-links a.active { color: #F5EEE0; font-weight: 500; }
-
-    .nav-cta {
-      display: inline-flex; align-items: center;
-      padding: 0 22px; height: 40px;
-      background: #D66A2D; color: #F5EEE0;
-      font-family: var(--font-ui);
-      font-size: 12px; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; border-radius: 14px;
-      transition: opacity 0.2s; flex-shrink: 0;
-    }
-    .nav-cta:hover { opacity: 0.85; }
-
-    /* ── PAGE HEADER ── */
-    .page-header {
-      max-width: 900px; margin: 0 auto;
-      padding: 80px 48px 64px;
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-      position: relative;
+    /* Page header overrides for this page */
+    .page-header.privacy-header {
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--ink-hair);
     }
 
-    .page-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 24px;
-      opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards;
-    }
-
-    .page-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -0.035em;
-      max-width: 600px; margin-bottom: 20px;
-      color: var(--ink);
-      opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards;
-    }
-
-    .page-meta {
-      font-family: var(--font-mono);
-      font-size: 12px; font-weight: 400;
-      color: var(--ink-faint); letter-spacing: 0.04em;
-      opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards;
-    }
-    .page-meta strong { font-weight: 700; color: var(--ink-soft); }
-
-    /* ── TOC ── */
-    nav.toc {
-      max-width: 900px; margin: 0 auto;
+    /* TOC */
+    .toc-block {
+      max-width: 780px;
+      margin: 0 auto;
       padding: 40px 48px 0;
-      opacity: 0; animation: fadeUp 0.5s ease 0.25s forwards;
     }
 
-    nav.toc .toc-inner {
+    .toc-inner {
       background: var(--card);
       border: 1px solid var(--ink-hair);
-      border-radius: 14px;
+      border-radius: var(--r-card);
       padding: 24px 28px;
+      box-shadow: var(--e1);
     }
 
-    nav.toc h2 {
+    .toc-inner h2 {
       font-family: var(--font-mono);
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-faint); margin-bottom: 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 16px;
     }
 
-    nav.toc ol {
+    .toc-inner ol {
       list-style: none;
       counter-reset: toc;
       display: grid;
@@ -194,442 +77,284 @@
       gap: 6px 32px;
     }
 
-    nav.toc li { counter-increment: toc; }
-
-    nav.toc a {
-      font-size: 14px; color: var(--ink-soft);
-      text-decoration: none; transition: color 0.15s;
+    .toc-inner li {
+      counter-increment: toc;
     }
 
-    nav.toc a::before {
+    .toc-inner a {
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .toc-inner a::before {
       content: counter(toc, decimal-leading-zero) ".";
       font-family: var(--font-mono);
       color: var(--accent);
-      font-size: 10px; font-weight: 700;
+      font-size: 10px;
+      font-weight: 700;
       margin-right: 6px;
     }
 
-    nav.toc a:hover { color: var(--ink); }
-
-    /* ── CONTENT SECTIONS ── */
-    .policy-section {
-      max-width: 900px; margin: 0 auto;
-      padding: 52px 48px;
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-      position: relative;
-      opacity: 0; transform: translateY(12px);
-      animation: fadeUp 0.45s ease forwards;
+    .toc-inner a:hover {
+      color: var(--ink);
     }
 
-    .policy-section:last-of-type { border-bottom: 2px solid rgba(245,238,224,0.12); }
-    .policy-section:nth-child(1)  { animation-delay: 0.10s; }
-    .policy-section:nth-child(2)  { animation-delay: 0.15s; }
-    .policy-section:nth-child(3)  { animation-delay: 0.20s; }
-    .policy-section:nth-child(4)  { animation-delay: 0.25s; }
-    .policy-section:nth-child(5)  { animation-delay: 0.30s; }
-    .policy-section:nth-child(6)  { animation-delay: 0.35s; }
-    .policy-section:nth-child(7)  { animation-delay: 0.40s; }
-    .policy-section:nth-child(8)  { animation-delay: 0.45s; }
-    .policy-section:nth-child(9)  { animation-delay: 0.50s; }
-    .policy-section:nth-child(10) { animation-delay: 0.55s; }
+    /* Policy sections */
+    .policy-section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 52px 48px;
+      border-bottom: 1px solid var(--ink-hair);
+    }
+
+    .policy-section:last-of-type {
+      border-bottom: 1px solid var(--ink-hair);
+      margin-bottom: 56px;
+    }
 
     .policy-section h2 {
       font-family: var(--font-display);
-      font-size: 1.35rem; font-weight: 800;
+      font-size: 1.35rem;
+      font-weight: 800;
       letter-spacing: -0.025em;
-      margin-bottom: 20px; color: var(--ink);
-      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 20px;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
     }
 
     .policy-section h2 .num {
       font-family: var(--font-mono);
-      font-size: 10px; font-weight: 700;
-      color: var(--accent); letter-spacing: 0.1em;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
       flex-shrink: 0;
     }
 
-    .policy-section p { margin-bottom: 14px; font-size: 15px; line-height: 1.75; }
-    .policy-section p:last-child { margin-bottom: 0; }
-    .policy-section ul, .policy-section ol { padding-left: 20px; margin-bottom: 14px; }
-    .policy-section li { font-size: 15px; margin-bottom: 6px; line-height: 1.7; }
-    .policy-section strong { font-weight: 600; }
+    /* Policy body prose */
+    .policy-body p {
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
 
-    /* ── TABLE ── */
+    .policy-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-body strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .policy-body ul,
+    .policy-body ol {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    .policy-body li {
+      font-size: 15px;
+      margin-bottom: 6px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .policy-body li strong {
+      color: var(--ink);
+    }
+
+    .policy-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .policy-body a:hover {
+      text-decoration: underline;
+    }
+
+    /* Data table */
     .data-table {
-      width: 100%; border-collapse: collapse;
-      margin: 20px 0; font-size: 14px;
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
       border: 1px solid var(--ink-hair);
-      border-radius: 8px; overflow: hidden;
+      border-radius: var(--r-chip);
+      overflow: hidden;
     }
 
     .data-table th {
       text-align: left;
-      font-family: var(--font-mono); font-weight: 700;
-      font-size: 10px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
       padding: 10px 16px;
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-      position: relative;
+      border-bottom: 1px solid var(--ink-hair);
       background: var(--accent-soft);
     }
 
     .data-table td {
       padding: 10px 16px;
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-      position: relative;
-      vertical-align: top; color: var(--ink-soft);
-      font-size: 14px; line-height: 1.6;
+      border-bottom: 1px solid var(--ink-hair);
+      vertical-align: top;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    .data-table tr:last-child td { border-bottom: 2px solid rgba(245,238,224,0.12); }
-    .data-table tr:hover td { background: var(--accent-soft); color: var(--ink); }
+    .data-table td strong {
+      color: var(--ink);
+    }
 
-    /* ── CALLOUT / BANNER ── */
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:hover td {
+      background: var(--accent-soft);
+      color: var(--ink);
+    }
+
+    /* Callout / banner */
     .callout {
       background: var(--accent-soft);
       border: 1px solid var(--accent-line);
-      border-radius: 14px;
-      padding: 16px 20px; margin: 20px 0;
-      font-size: 14px; line-height: 1.7; color: var(--ink-soft);
-    }
-    .callout strong { color: var(--accent); font-weight: 700; }
-
-    /* ── FOOTER ── */
-    .site-footer {
-      background: var(--ink);
+      border-radius: var(--r-button);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-soft);
     }
 
-    .site-footer-inner {
-      max-width: 900px; margin: 0 auto;
-      padding: 64px 48px 40px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
+    .callout strong {
+      color: var(--accent);
+      font-weight: 700;
     }
 
-    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
-
-    .footer-wordmark {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
+    .callout br + strong {
+      color: var(--ink-soft);
     }
 
-    .footer-logo {
-      width: 32px; height: 32px; border-radius: 7px;
-      overflow: hidden; flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
-    }
-    .footer-logo img { width: 100%; display: block; }
-
-    .footer-name {
-      font-family: var(--font-display);
-      font-size: 22px; font-weight: 900;
-      letter-spacing: -0.04em;
-      color: #F5EEE0;
-    }
-    .footer-name .dot { color: #E8834A; }
-
-    .footer-tagline {
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(245,238,224,0.38);
-    }
-
-    .footer-desc {
-      font-size: 14px; color: rgba(245,238,224,0.60);
-      line-height: 1.7; max-width: 280px;
-    }
-
-    .footer-col h3 {
-      font-family: var(--font-mono);
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: #E8834A;
-      margin-bottom: 20px;
-    }
-
-    .footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-
-    .footer-col a {
-      font-size: 14px; color: rgba(245,238,224,0.60);
-      text-decoration: none; transition: color 0.15s;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .footer-col a:hover { color: #F5EEE0; }
-
-    .footer-bottom {
-      max-width: 900px; margin: 0 auto;
-      padding: 20px 48px 32px;
-      border-top: 1px solid rgba(245,238,224,0.10);
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 8px;
-    }
-
-    .footer-bottom-copy {
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 400;
-      color: rgba(245,238,224,0.30);
-      letter-spacing: 0.04em;
-    }
-    .footer-bottom-copy strong { font-weight: 700; color: rgba(245,238,224,0.50); }
-
+    /* Responsive */
     @media (max-width: 640px) {
-      .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
-      .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
-      .footer-desc { max-width: 100%; }
+      .privacy-wrap,
+      .toc-block,
+      .policy-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .toc-inner ol {
+        grid-template-columns: 1fr;
+      }
+
+      .data-table {
+        font-size: 13px;
+      }
+
+      .data-table th,
+      .data-table td {
+        padding: 8px 12px;
+      }
     }
-
-
-    /* ── LANG SWITCHER (dropdown) ── */
-    .lang-switcher { position: relative; flex-shrink: 0; }
-
-    .lang-selected {
-      display: flex; align-items: center; gap: 6px;
-      background: none; border: 1px solid rgba(245,238,224,0.20);
-      border-radius: 8px; padding: 6px 10px;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      color: #F5EEE0;
-      transition: border-color 0.15s;
-    }
-    .lang-selected:hover { border-color: rgba(245,238,224,0.45); }
-    .lang-selected svg { transition: transform 0.2s; }
-    .lang-switcher.open .lang-selected svg { transform: rotate(180deg); }
-
-    .lang-dropdown {
-      display: none;
-      position: absolute; top: calc(100% + 8px); right: 0;
-      background: #2A241C;
-      border: 1px solid rgba(245,238,224,0.12);
-      border-radius: 10px;
-      overflow: hidden;
-      min-width: 120px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.30);
-      z-index: 200;
-    }
-    .lang-switcher.open .lang-dropdown { display: block; }
-
-    .lang-option {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 14px;
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.10em;
-      color: rgba(245,238,224,0.50);
-      cursor: pointer;
-      border: none; background: none; width: 100%; text-align: left;
-      transition: background 0.15s, color 0.15s;
-    }
-    .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
-    .lang-option.active { color: #E8834A; }
-    .lang-option .lang-flag { font-size: 14px; }
-    .lang-option .fi { width: 18px; height: 14px; border-radius: 2px; flex-shrink: 0; }
-
-    /* Mobile dropdown */
-    .nav-mobile .lang-switcher-mobile {
-      display: flex; gap: 8px; padding: 16px 0 4px;
-      border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px;
-    }
-    .nav-mobile .lang-btn-mobile {
-      font-family: var(--font-mono);
-      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
-      color: rgba(245,238,224,0.35);
-      background: none; border: none; cursor: pointer; padding: 0;
-      transition: color 0.15s;
-    }
-    .nav-mobile .lang-btn-mobile.active,
-    .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
-
-
-    /* ── HAMBURGER ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column; justify-content: center; align-items: center;
-      gap: 5px;
-      width: 40px; height: 40px;
-      background: none; border: none;
-      cursor: pointer; padding: 0; flex-shrink: 0;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 22px; height: 2px;
-      background: #F5EEE0;
-      border-radius: 2px;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .nav-mobile {
-      display: none;
-      flex-direction: column;
-      background: var(--ink);
-      padding: 0 24px 24px;
-      gap: 4px;
-    }
-
-    .nav-mobile.open { display: flex; }
-
-    .nav-mobile a {
-      font-family: var(--font-ui);
-      font-size: 16px; font-weight: 400;
-      color: rgba(245,238,224,0.60);
-      text-decoration: none;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(245,238,224,0.08);
-      transition: color 0.15s;
-    }
-    .nav-mobile a:last-child { border-bottom: none; }
-    .nav-mobile a:hover, .nav-mobile a.active { color: #F5EEE0; }
-    .nav-mobile a.active { font-weight: 500; }
-
-    .nav-mobile .nav-mobile-cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      margin-top: 12px;
-      height: 48px;
-      background: #D66A2D; color: #F5EEE0;
-      font-size: 13px; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; border-radius: 14px;
-      border-bottom: none;
-    }
-    .nav-mobile .nav-mobile-cta:hover { opacity: 0.9; color: #F5EEE0; }
-
-    @keyframes fadeUp { to { opacity: 1; transform: none; } }
-
-    @media (max-width: 640px) {
-      nav, .page-header, footer { padding-left: 24px; padding-right: 24px; }
-      nav.toc { padding-left: 24px; padding-right: 24px; }
-      .policy-section { padding-left: 24px; padding-right: 24px; }
-      nav.toc ol { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .nav-more { display: none; }
-      .nav-cta { display: none; }
-      .nav-hamburger { display: flex; }
-      .data-table { font-size: 13px; }
-      .data-table th, .data-table td { padding: 8px 12px; }
-    }
-
-
-    /* ── MORE DROPDOWN ── */
-    .nav-more { position: relative; flex-shrink: 0; }
-
-    .nav-more-btn {
-      display: flex; align-items: center; gap: 5px;
-      background: none; border: none; cursor: pointer;
-      font-family: var(--font-ui); font-size: 13px; font-weight: 400;
-      color: rgba(245,238,224,0.55);
-      transition: color 0.15s; padding: 0;
-    }
-    .nav-more-btn:hover { color: #F5EEE0; }
-    .nav-more-btn svg { transition: transform 0.2s; }
-    .nav-more.open .nav-more-btn { color: #F5EEE0; }
-    .nav-more.open .nav-more-btn svg { transform: rotate(180deg); }
-
-    .nav-more-dropdown {
-      display: none;
-      position: absolute; top: calc(100% + 12px); left: 50%;
-      transform: translateX(-50%);
-      background: #2A241C;
-      border: 1px solid rgba(245,238,224,0.12);
-      border-radius: 10px; overflow: hidden;
-      min-width: 180px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.30);
-      z-index: 200;
-    }
-    .nav-more.open .nav-more-dropdown { display: block; }
-
-    .nav-more-option {
-      display: block; width: 100%;
-      padding: 11px 18px;
-      font-family: var(--font-ui); font-size: 13px; font-weight: 400;
-      color: rgba(245,238,224,0.60);
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-      border-bottom: 1px solid rgba(245,238,224,0.06);
-    }
-    .nav-more-option:last-child { border-bottom: none; }
-    .nav-more-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
-    .nav-more-option.active { color: #E8834A; font-weight: 500; }
-
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.20); border-radius: 2px; }
   </style>
 </head>
-<body>
+<body data-vibe="product" data-page="privacy">
 
+<!-- ====================== HEADER ====================== -->
 <header class="site-header">
   <div class="nav-progress" id="nav-progress"></div>
-<nav>
-  <a href="/" class="nav-brand">
-    <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
-    <span class="nav-name">Summit<span class="nav-dot">.</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/" data-i18n="nav.home">Home</a></li>
-    <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
-  </ul>
-  <div class="nav-more" id="nav-more">
-    <button class="nav-more-btn" id="nav-more-btn">
-      <span data-i18n="nav.more">More</span>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option" data-i18n="nav.about">About</a>
-      <a href="/ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option active" data-i18n="nav.privacy">Privacy Policy</a>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="privacy-policy.html" class="nav-more-option active" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <!-- PLACEHOLDER: replace href="#" with the real App Store listing URL on launch -->
+      <a href="#" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store">
+        <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span class="as-text"><span class="as-small" data-i18n="as.small">Download on the</span><span class="as-big">App Store</span></span>
+      </a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="privacy-policy.html" class="active" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <!-- PLACEHOLDER: replace href="#" with the real App Store listing URL on launch -->
+      <a href="#" data-source="nav_mobile" class="appstore appstore--white">
+        <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span class="as-text"><span class="as-small" data-i18n="as.small">Download on the</span><span class="as-big">App Store</span></span>
+      </a>
     </div>
   </div>
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
-      <span id="lang-label">ES</span>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-        <path d="M2 3.5L5 6.5L8 3.5" stroke="#F5EEE0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="lang-dropdown">
-      <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
-      <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
-      <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
-    </div>
-  </div>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'nav' })">Join Waitlist</a>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="/" data-i18n="nav.home">Home</a>
-  <a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
-  <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
-  <a href="/about.html" data-i18n="nav.about">About</a>
-  <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
-  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
-  <a href="/privacy-policy.html" class="active" data-i18n="nav.privacy">Privacy Policy</a>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'nav_mobile' })">Join Waitlist</a>
-</div>
 </header>
 
-<div class="page-header">
-  <p class="page-eyebrow" data-i18n="privacy.eyebrow">Legal &nbsp;·&nbsp; Project Summit</p>
-  <h1 class="page-title" data-i18n="privacy.title">Privacy Policy</h1>
-  <p class="page-meta" data-i18n="privacy.meta">
-    Effective date: <strong>March 2026</strong>
-    &nbsp;·&nbsp;
-    Last updated: <strong>March 2026</strong>
-  </p>
+<main id="top">
+
+<!-- ====================== PAGE HEADER ====================== -->
+<div class="page-header privacy-header">
+  <div class="privacy-wrap" style="padding-left:0;padding-right:0">
+    <p class="page-eyebrow" data-i18n="privacy.eyebrow">Legal &nbsp;·&nbsp; Project Summit</p>
+    <h1 class="page-title" data-i18n="privacy.title">Privacy Policy</h1>
+    <p class="page-meta" data-i18n="privacy.meta">
+      Effective date: <strong>March 2026</strong>
+      &nbsp;·&nbsp;
+      Last updated: <strong>March 2026</strong>
+    </p>
+  </div>
 </div>
 
-<nav class="toc">
+<!-- ====================== TABLE OF CONTENTS ====================== -->
+<div class="toc-block">
   <div class="toc-inner">
     <h2 data-i18n="privacy.toc.title">Contents</h2>
     <ol>
@@ -645,8 +370,9 @@
       <li><a href="#s10" data-i18n="s10.title">Contact</a></li>
     </ol>
   </div>
-</nav>
+</div>
 
+<!-- ====================== POLICY SECTIONS ====================== -->
 <div class="policy-section" id="s1">
   <h2><span class="num">01</span> <span data-i18n="s1.title">Who we are</span></h2>
   <div class="policy-body" data-i18n="privacy.s1.body">
@@ -778,176 +504,48 @@
   </div>
 </div>
 
-<footer class="site-footer">
-  <div class="site-footer-inner">
+</main>
 
+<!-- ====================== FOOTER ====================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
     <div class="footer-brand">
-      <a href="/" class="footer-wordmark">
-        <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
+      <a href="index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
         <span class="footer-name">Summit<span class="dot">.</span></span>
       </a>
-      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
-      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+      <p class="footer-tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
     </div>
-
     <div class="footer-col">
-      <h3 data-i18n="footer.nav.title">Navigate</h3>
+      <h4 data-i18n="foot.nav">Navigate</h4>
       <ul>
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
-        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
-        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
-        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'footer' })">Join Waitlist</a></li>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
-      <h3 data-i18n="footer.contact.title">Contact</h3>
+      <h4 data-i18n="foot.contact">Contact</h4>
       <ul>
-        <li>
-          <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            @projectsummit.app
-          </a>
-        </li>
-        <li>
-          <a href="mailto:team@projectsummit.app">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-            team@projectsummit.app
-          </a>
-        </li>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
       </ul>
     </div>
-
   </div>
-
   <div class="footer-bottom">
-    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
-    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
   </div>
 </footer>
-<script>
-  // Hamburger menu
-  var hamburger = document.getElementById('nav-hamburger');
-  var mobileMenu = document.getElementById('nav-mobile');
-  hamburger.addEventListener('click', function() {
-    var open = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-  });
-  mobileMenu.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-    });
-  });
 
-  var navProgress = document.getElementById('nav-progress');
-  window.addEventListener('scroll', function() {
-    var scrollTop = window.scrollY;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    navProgress.style.width = pct + '%';
-  }, { passive: true });
-</script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/analytics.js"></script>
 
-<script src="translations.js"></script>
-<script src="analytics.js"></script>
-<script>
-(function() {
-  var lang = localStorage.getItem('summit-lang') || 'es';
-
-  function applyLang(l) {
-    if (!TRANSLATIONS[l]) return;
-    var t = TRANSLATIONS[l];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.innerHTML = t[key];
-    });
-    // Update dropdown label
-    var lbl = document.getElementById('lang-label');
-    if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
-    // Update active option
-    document.querySelectorAll('.lang-option').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
-    });
-    // Update mobile buttons
-    document.querySelectorAll('.lang-btn-mobile').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
-    });
-    document.documentElement.lang = l;
-    localStorage.setItem('summit-lang', l);
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    applyLang(lang);
-    document.querySelectorAll('.lang-option, .lang-btn-mobile').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        applyLang(btn.getAttribute('data-lang'));
-        if (langSwitcher) langSwitcher.classList.remove('open');
-      });
-    });
-    // Lang dropdown
-    var langSwitcherEl = document.getElementById('lang-switcher');
-    var langSwitcher = langSwitcherEl;
-  // More dropdown
-  var moreWrap = document.getElementById('nav-more');
-  if (moreWrap) {
-    document.getElementById('nav-more-btn').addEventListener('click', function(e) {
-      e.stopPropagation();
-      moreWrap.classList.toggle('open');
-      if (langSwitcherEl) langSwitcherEl.classList.remove('open');
-    });
-    document.addEventListener('click', function() { moreWrap.classList.remove('open'); });
-  }
-
-    var langSelectedBtn = document.getElementById('lang-selected-btn');
-    var langLabel = document.getElementById('lang-label');
-    if (langSwitcher && langSelectedBtn) {
-      langSelectedBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        langSwitcher.classList.toggle('open');
-      });
-      document.addEventListener('click', function() {
-        langSwitcher.classList.remove('open');
-      });
-    }
-
-  });
-})();
-</script>
-
-<script>
-(function() {
-  // Table of contents navigation — which section users jump to
-  document.querySelectorAll('.toc a[href^="#"]').forEach(function(link) {
-    link.addEventListener('click', function() { posthog.capture('toc_section_clicked', { section: link.textContent.trim(), page: 'privacy' }); });
-  });
-
-  // Mobile menu
-  var ham = document.getElementById('nav-hamburger');
-  var mob = document.getElementById('nav-mobile');
-  if (ham && mob) ham.addEventListener('click', function() { if (!mob.classList.contains('open')) posthog.capture('mobile_menu_opened', { page: 'privacy' }); });
-
-  // Language change
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-lang]');
-    if (btn) posthog.capture('language_changed', { language: btn.getAttribute('data-lang') });
-  });
-
-  // Scroll depth
-  var depthReached = {};
-  window.addEventListener('scroll', function() {
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    if (max <= 0) return;
-    var pct = window.scrollY / max * 100;
-    [25, 50, 75, 90].forEach(function(m) {
-      if (!depthReached[m] && pct >= m) { depthReached[m] = true; posthog.capture('scroll_depth', { percent: m, page: 'privacy' }); }
-    });
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>
