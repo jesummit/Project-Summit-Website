@@ -18,13 +18,21 @@ partials/header.html       single source of truth for the site header
 partials/footer.html       single source of truth for the site footer
 build.js                   injects the partials into every page
 package.json               `npm run build` -> node build.js
-assets/css/summit.css      design system (light + dark, all shared components)
+assets/css/summit.css      design system (light + dark, @font-face, all components)
 assets/js/app.js           controller: theme, language, carousel, nav, analytics hooks
 assets/js/i18n.js          translations (English in HTML; ES + CA overrides here)
 assets/js/analytics.js     PostHog helpers (internal-user flag; legacy UTM code now inert)
-assets/img/                logo, og-image, founder photo
+assets/js/consent.js       cookie-consent banner (PostHog opt-in gating)
+assets/fonts/              self-hosted Instrument Serif + JetBrains Mono (woff2)
+assets/img/                logo, og-image, founder photo, favicons, flags/
 assets/screenshots/        app screenshots used in the home carousel
+tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
+tools/check-links.js       CI/local check: internal links/assets/anchors resolve
+docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
+.github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: PostHog reverse proxy at /ingest
+robots.txt, sitemap.xml    SEO (indexable pages only)
+404.html, site.webmanifest standalone error page / PWA manifest
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
 CNAME, ATTRIBUTION.md      site config / credits
 ```
@@ -52,13 +60,18 @@ How it works:
 **Do NOT hand-edit the `<header>`/`<footer>` blocks inside the pages** — they are
 generated and will be overwritten on the next build. Edit the partials instead.
 
-### CI: auto-rebuild on push
+### CI: auto-rebuild + verify
 `.github/workflows/build-shell.yml` runs on every push: it runs `build.js` and,
 if the committed HTML drifted from the partials, commits the rebuild back to the
 branch with `[skip ci]` (so it doesn't loop). This means you normally don't have
 to remember to build — but **still run `npm run build` locally** before
 committing partial changes so the diff is clean and reviewable. The auto-commit
 only works on branches in this repo, not forks.
+
+`.github/workflows/verify.yml` is a read-only quality gate on push/PR: i18n
+coverage (`tools/check-i18n.js`), internal links (`tools/check-links.js`), and a
+shell-in-sync check. Run both checks locally with **`npm run check`**. Actions
+are pinned to commit SHAs and kept current by Dependabot.
 
 ## Internationalization
 - **English is the source** and lives directly in the HTML (every translatable
@@ -111,7 +124,11 @@ To add/change a translatable string:
   (the same three screens already appear in the carousel). Swap in dedicated hero
   art when available.
 
-## Analytics
+## Analytics & consent
+- PostHog is **opt-in**: each page inits with `opt_out_capturing_by_default: true`
+  and nothing is captured until the visitor accepts in the consent banner
+  (`assets/js/consent.js`, choice stored in `localStorage.summit_consent`). The
+  footer "Cookie settings" link reopens it (`SummitConsent.reopen()`).
 - The PostHog snippet is inlined in each page's `<head>` (and `thanks.html`).
 - `assets/js/analytics.js` flags internal/test browsers (`?internal=1`) and used
   to forward UTM params to a Tally waitlist link. The waitlist is gone, so that
@@ -122,11 +139,21 @@ To add/change a translatable string:
   `infra/cloudflare-worker.js`.
 
 ## SEO / social
-- Full SEO + OpenGraph + Twitter meta lives on `index.html` only (inner pages
-  never had per-page OG cards — adding them is optional future work).
-- `og:image` / `twitter:image` point to the **absolute** URL
+- Every page has `canonical` + OpenGraph + Twitter meta. `og:image` /
+  `twitter:image` point to the **absolute** URL
   `https://projectsummit.app/assets/img/og-image.png`. If you move that file,
   update those meta tags.
+- `robots.txt` + `sitemap.xml` (indexable pages only — legal pages and
+  `thanks.html`/`404.html` are `noindex`). Favicons + `site.webmanifest` are
+  generated from the logo; regenerate with an image tool if the logo changes.
+
+## Security / privacy
+- Fonts and flag icons are **self-hosted** (no Google Fonts / cdnjs) — privacy
+  (no third-party IP logging), speed, and it allows a strict CSP. There are no
+  hot-linked third-party scripts/styles, so no SRI is needed.
+- Headers (CSP/HSTS/etc.), `/ingest` rate-limiting, and email auth
+  (SPF/DKIM/DMARC/BIMI) are applied at **Cloudflare**, not in the repo. The exact
+  copy/paste config is in **`docs/cloudflare-security.md`**.
 
 ## Gotchas
 - **`SummitLogo-Mail.png` stays at the repo root.** It's hotlinked by email
