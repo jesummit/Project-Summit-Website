@@ -11,6 +11,25 @@ the Cloudflare dashboard.
 > lets the CSP be strict (`'self'`). No third-party script/style/font origins are
 > needed, and Subresource Integrity is no longer relevant (nothing is hot-linked).
 
+## Applied state (2026-06)
+
+Applied **via the Cloudflare API** (Rulesets) and verified live:
+
+- ✅ Security response headers (§1) — HSTS, `X-Content-Type-Options`,
+  `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`,
+  `Cross-Origin-Opener-Policy`.
+- ✅ **CSP deployed in `Content-Security-Policy-Report-Only` mode** — it reports
+  but does **not** block, so it cannot break the site. Flip it to enforcing once
+  you've confirmed no violations (see §1).
+- ✅ Rate-limit on `/ingest` (§3) — Free-plan limits: action `block`, 40 requests
+  / 10 s per IP (per colo).
+
+Still **manual / not done** (this API token only had Rulesets access):
+
+- ⬜ Dashboard toggles (§2): HSTS strengthening, min TLS, DNSSEC, Bot Fight.
+- ⬜ Email DNS (§4): SPF/DKIM/DMARC — needs DNS-edit permission **and** your ESP.
+- ⬜ BIMI — not pursued (needs a paid VMC).
+
 ---
 
 ## 1. Response security headers
@@ -47,6 +66,9 @@ Notes:
   stop proxying, add the PostHog hosts here.
 - Validate after enabling: open the site, check the console for CSP violations,
   and confirm PostHog still ingests (Network tab → `/ingest`).
+- **Currently deployed in Report-Only.** To enforce, re-PUT the
+  `http_response_headers_transform` entrypoint changing the header name from
+  `Content-Security-Policy-Report-Only` to `Content-Security-Policy` (same value).
 
 ### Optional Worker variant
 If you prefer code over Transform Rules, the existing `infra/cloudflare-worker.js`
@@ -71,10 +93,9 @@ response. Transform Rules are simpler and recommended.
 
 The Worker forwards `/ingest/*` to PostHog. Rate-limit it so it can't be abused.
 
-**Security → WAF → Rate limiting rules:**
-- Match: `URI Path starts with "/ingest"`
-- Rate: e.g. **200 requests / 1 minute** per **client IP**
-- Action: *Managed Challenge* (or Block)
+**Applied via API** (Free plan constraints): action **block**, **40 requests /
+10 s** per IP (per colo), matching `URI Path starts with "/ingest"`. On a paid
+plan you can use *Managed Challenge* and longer windows (e.g. 200 req / 1 min).
 
 Tune the threshold to real traffic — PostHog batches events, and heatmaps/replay
 can be chatty, so start generous and tighten using the analytics in WAF.
@@ -103,14 +124,9 @@ v=DMARC1; p=none; rua=mailto:dmarc@projectsummit.app; ruf=mailto:dmarc@projectsu
 After a couple of weeks of clean aggregate reports (`rua`), move `p=none` →
 `p=quarantine`, then `p=reject`.
 
-**BIMI** (optional, after DMARC is at quarantine/reject) — shows your logo in
-Gmail/Apple Mail. TXT at `default._bimi`:
-```
-v=BIMI1; l=https://projectsummit.app/assets/img/bimi-logo.svg; a=https://projectsummit.app/assets/img/bimi-vmc.pem
-```
-Requirements: a **square SVG** in the *SVG Tiny Portable/Secure* profile (the
-current `SummitLogo-Mail.png` is PNG — a dedicated SVG is needed), and a **VMC**
-(Verified Mark Certificate, paid) for Gmail/Apple to actually render it.
+**BIMI** — **not pursued.** It would show your logo in Gmail/Apple Mail, but
+those clients require a paid **VMC** (Verified Mark Certificate, ~€1k/yr) on top
+of a square *SVG Tiny PS* logo. Decision: skip unless the VMC is worth it later.
 
 **Optional (inbound):** `MTA-STS` + `TLS-RPT` if you also receive mail and want to
 enforce TLS for incoming messages.
