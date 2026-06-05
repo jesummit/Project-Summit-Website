@@ -1,0 +1,36 @@
+name: Verify
+
+# Quality gate on every push / PR: i18n coverage, internal links, and that the
+# generated shell is in sync with partials/. Read-only (no writes).
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20'
+
+      - name: i18n coverage (every data-i18n key has ES + CA)
+        run: node tools/check-i18n.js
+
+      - name: Internal links, assets and anchors resolve
+        run: node tools/check-links.js
+
+      - name: Shell is in sync with partials/
+        run: |
+          node build.js
+          if [ -n "$(git status --porcelain -- '*.html')" ]; then
+            echo "::error::Generated shell is stale — run 'npm run build' and commit."
+            git --no-pager diff -- '*.html'
+            exit 1
+          fi
+          echo "Shell is in sync."

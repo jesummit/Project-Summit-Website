@@ -4,6 +4,7 @@
   "private": true,
   "description": "Project Summit marketing site (static, GitHub Pages).",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "check": "node tools/check-i18n.js && node tools/check-links.js"
   }
 }
