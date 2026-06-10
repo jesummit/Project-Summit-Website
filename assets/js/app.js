@@ -301,6 +301,30 @@
     check();
   }
 
+  /* ---------- Live App Store rating badge (home only) ----------
+     Fetches the rating same-origin from the Cloudflare Worker proxy
+     (/appstore-rating → itunes lookup; Apple sends no CORS, so the proxy does
+     the cross-origin call). Stays hidden unless the proxy returns a real rating
+     with count > 0 — any failure leaves the page exactly as it is. */
+  function initRatingBadge() {
+    var badge = document.getElementById('rating-badge');
+    if (!badge) return;
+    fetch('/appstore-rating', { headers: { Accept: 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !(d.count > 0) || !(d.rating >= 0)) return;   // no usable rating → stay hidden
+        var filled = Math.round(d.rating), s = '';
+        for (var i = 1; i <= 5; i++) s += '<span class="rstar' + (i <= filled ? ' on' : '') + '">★</span>';
+        document.getElementById('rating-stars').innerHTML = s;
+        document.getElementById('rating-text').textContent =
+          d.rating.toFixed(1) + ' · ' + d.count + ' ' + (d.count === 1 ? 'valoración' : 'valoraciones') + ' en App Store';
+        // Drop the placeholder star rows so we don't show two ratings.
+        document.querySelectorAll('.avail .stars').forEach(function (el) { el.style.display = 'none'; });
+        badge.hidden = false;
+      })
+      .catch(function () {});   // network/parse error → stay hidden
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     apply();
@@ -309,5 +333,6 @@
     initNav();
     initSystemTheme();
     initReveal();
+    initRatingBadge();
   });
 })();

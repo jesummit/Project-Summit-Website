@@ -714,3 +714,13 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   .consent { flex-direction: column; align-items: stretch; }
   .consent-actions { justify-content: flex-end; }
 }
+
+/* =====================================================================
+   LIVE APP STORE RATING BADGE (hero) — hidden until JS confirms a rating
+   ===================================================================== */
+.rating-badge { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+.rating-badge[hidden] { display: none; }            /* beat the inline-flex rule above */
+.rating-stars { display: inline-flex; gap: 1px; font-size: 14px; line-height: 1; }
+.rating-stars .rstar { color: var(--ink-hair); }    /* empty star */
+.rating-stars .rstar.on { color: var(--accent); }   /* filled star */
+.rating-text { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-soft); }

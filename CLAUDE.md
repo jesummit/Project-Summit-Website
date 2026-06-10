@@ -73,7 +73,7 @@ tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
 tools/check-links.js       CI/local check: internal links/assets/anchors resolve
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
-infra/cloudflare-worker.js Cloudflare Worker: PostHog reverse proxy at /ingest
+infra/cloudflare-worker.js Cloudflare Worker: PostHog proxy at /ingest + App Store rating at /appstore-rating
 robots.txt, sitemap.xml    SEO (indexable pages only)
 404.html, site.webmanifest standalone error page / PWA manifest
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
@@ -163,7 +163,13 @@ To add/change a translatable string:
   badges) and inline on each page (hero/CTA) + `thanks.html`; update the ID in all
   of them if the listing ever changes.
 - **Rating**: the star rows (`#stars-prod`, `#stars-cta`) are filled by
-  `app.js renderStars()` and are a placeholder until real reviews exist.
+  `app.js renderStars()` and are a placeholder until real reviews exist. The home
+  hero also has a **live** rating badge (`#rating-badge`): `app.js
+  initRatingBadge()` fetches `/appstore-rating` (the Worker proxies the iTunes
+  lookup — Apple sends no CORS), and only un-hides the badge if the App Store has
+  ≥1 rating (otherwise the page is unchanged; it also hides the placeholder stars
+  when it shows). Needs the `/appstore-rating` Worker route deployed (see
+  `infra/cloudflare-worker.js`).
 - **Hero phones**: the three phones in the home hero are `.ph-ph` placeholders
   (the same three screens already appear in the carousel). Swap in dedicated hero
   art when available.

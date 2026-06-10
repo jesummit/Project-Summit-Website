@@ -127,6 +127,11 @@
           </a>
           <!-- PLACEHOLDER: star rating shown until real App Store reviews exist -->
           <span class="avail"><span class="stars" id="stars-prod"></span><span class="avail-text" data-i18n="avail.now.iphone"><b>Available now</b> · iPhone</span></span>
+          <!-- Live App Store rating — hidden until the /appstore-rating proxy returns a real rating (count > 0). -->
+          <a id="rating-badge" class="rating-badge" href="https://apps.apple.com/es/app/id6754172654" target="_blank" rel="noopener" hidden>
+            <span class="rating-stars" id="rating-stars" aria-hidden="true"></span>
+            <span class="rating-text" id="rating-text"></span>
+          </a>
         </div>
       </div>
       <div class="hp-stage hero-rise">

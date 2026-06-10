@@ -143,4 +143,8 @@ enforce TLS for incoming messages.
   no SRI needed, no Google Fonts GDPR exposure.
 - PostHog is **opt-in** (cookie-consent banner; `opt_out_capturing_by_default`),
   proxied via `/ingest`.
+- The home page's live App Store rating badge fetches `/appstore-rating`
+  **same-origin** (the Worker does the cross-origin iTunes call, since Apple sends
+  no CORS), so `connect-src 'self'` already covers it — no CSP change needed. Add
+  the `projectsummit.app/appstore-rating` Worker route when deploying.
 - `robots.txt` + `sitemap.xml`; legal pages and `thanks.html` are `noindex`.
