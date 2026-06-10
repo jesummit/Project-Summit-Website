@@ -157,10 +157,11 @@ To add/change a translatable string:
   doesn't load `app.js`.
 
 ## Placeholders (swap these when the real values exist)
-- **App Store links**: every `.appstore` badge is `href="#"` with a
-  `<!-- PLACEHOLDER … -->` comment and a `data-source="…"` (used for analytics).
-  Replace `#` with the real App Store listing URL across the partials (nav badges)
-  and the relevant pages (hero/CTA badges, `thanks.html`).
+- **App Store links**: ✅ done — every `.appstore` badge points to
+  `https://apps.apple.com/app/id6754172654` (Apple ID `6754172654`). They keep
+  their `data-source="…"` for analytics. The link lives in the header partial (nav
+  badges) and inline on each page (hero/CTA) + `thanks.html`; update the ID in all
+  of them if the listing ever changes.
 - **Rating**: the star rows (`#stars-prod`, `#stars-cta`) are filled by
   `app.js renderStars()` and are a placeholder until real reviews exist.
 - **Hero phones**: the three phones in the home hero are `.ph-ph` placeholders

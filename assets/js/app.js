@@ -236,7 +236,6 @@
       { trigger: '.amb-cta',   items: ['.amb-cta-inner'] }
     ],
     terms: [
-      { trigger: '.toc-inner' },
       { each: '.terms-section' }
     ],
     privacy: [
