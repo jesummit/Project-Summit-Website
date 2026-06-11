@@ -521,6 +521,8 @@ a { color: inherit; }
 .split-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
 .split-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--ink); }
 .split-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; }
+.split-link { display: inline-block; margin-top: 14px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.split-link:hover { text-decoration: underline; }
 .badge-beta { display: inline-block; font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-line); border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; position: relative; top: -2px; }
 
 /* =====================================================================
