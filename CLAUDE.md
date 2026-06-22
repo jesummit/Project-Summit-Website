@@ -158,10 +158,14 @@ To add/change a translatable string:
 
 ## Placeholders (swap these when the real values exist)
 - **App Store links**: ✅ done — every `.appstore` badge points to
-  `https://apps.apple.com/app/id6754172654` (Apple ID `6754172654`). They keep
-  their `data-source="…"` for analytics. The link lives in the header partial (nav
-  badges) and inline on each page (hero/CTA) + `thanks.html`; update the ID in all
-  of them if the listing ever changes.
+  `https://apps.apple.com/app/id6754172654` (Apple ID `6754172654`) and keeps its
+  `data-source="…"` for analytics. The badge artwork is Apple's **official SVG
+  lockup** (`assets/img/appstore-badges/`, en/es/ca × black/white): each badge is
+  an `<img class="appstore-img">` and `app.js updateBadges()` swaps the file by
+  language + surface (white on dark surfaces/`appstore--white`/dark mode, black
+  otherwise) on every theme/lang change. `thanks.html` is standalone so it sets
+  its badge with a small inline script. Update the Apple ID in all badge anchors
+  if the listing changes.
 - **Rating**: the star rows (`#stars-prod`, `#stars-cta`) are filled by
   `app.js renderStars()` and are a placeholder until real reviews exist. The home
   hero also has a **live** rating badge (`#rating-badge`): `app.js

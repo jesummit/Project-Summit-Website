@@ -202,32 +202,14 @@ a { color: inherit; }
 .section-title em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
 .section-sub { font-size: 16px; color: var(--ink-soft); max-width: 46ch; margin-top: 16px; line-height: 1.7; }
 
-/* ── App Store badge (official black) ─────────────────────────────── */
-.appstore {
-  display: inline-flex; align-items: center; gap: 12px;
-  height: 56px; padding: 0 22px 0 18px;
-  background: #000; color: #fff;
-  border-radius: 13px; text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.16);
-  transition: transform var(--m-quick), box-shadow var(--m-quick);
-  box-shadow: var(--e2);
-}
-.appstore:hover { transform: translateY(-2px); box-shadow: var(--e3); }
-.appstore svg { width: 26px; height: 26px; flex-shrink: 0; fill: #fff; }
-.appstore .as-text { display: flex; flex-direction: column; line-height: 1; text-align: left; }
-.appstore .as-small { font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 0.02em; opacity: 0.92; margin-bottom: 3px; }
-.appstore .as-big { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
-.appstore--sm { height: 42px; padding: 0 15px 0 13px; border-radius: 10px; gap: 9px; box-shadow: none; }
-.appstore--sm svg { width: 19px; height: 19px; }
-.appstore--sm .as-small { font-size: 9px; margin-bottom: 2px; }
-.appstore--sm .as-big { font-size: 15px; }
-.appstore--white { background: #fff; color: #14110D; border-color: rgba(0,0,0,0.10); }
-.appstore--white svg { fill: #14110D; }
-.appstore--white .as-small { opacity: 0.8; }
-/* Beat .nav-mobile a (which would tint the badge text cream on white) */
-.nav-mobile-foot .appstore--white,
-.nav-mobile-foot .appstore--white .as-small,
-.nav-mobile-foot .appstore--white .as-big { color: #14110D; }
+/* ── App Store badge (official Apple lockups) ─────────────────────────
+   The badge is an <img> of Apple's official SVG; app.js swaps the file by
+   language (en/es/ca) and colour (white on dark surfaces / dark mode, black
+   otherwise). These rules only size it. */
+.appstore { display: inline-flex; text-decoration: none; transition: transform var(--m-quick); }
+.appstore:hover { transform: translateY(-2px); }
+.appstore-img { height: 52px; width: auto; display: block; }
+.appstore--sm .appstore-img { height: 40px; }
 
 /* Availability badge */
 .avail {
@@ -370,7 +352,8 @@ a { color: inherit; }
 .nav-mobile a { font-size: 16px; color: rgba(245,238,224,0.62); text-decoration: none; padding: 13px 0; border-bottom: 1px solid rgba(245,238,224,0.08); }
 .nav-mobile a:hover, .nav-mobile a.active { color: var(--header-ink); }
 .nav-mobile-foot { display: flex; margin-top: 16px; padding-top: 20px; border-top: 1px solid rgba(245,238,224,0.08); }
-.nav-mobile-foot .appstore { align-self: flex-start; width: auto; height: 50px; padding: 0 20px 0 16px; box-shadow: none; }
+.nav-mobile-foot .appstore { align-self: flex-start; }
+.nav-mobile-foot .appstore-img { height: 46px; }
 
 /* =====================================================================
    HERO — shared scaffold
@@ -714,12 +697,3 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
 .rating-stars .rstar { color: var(--ink-hair); }    /* empty star */
 .rating-stars .rstar.on { color: var(--accent); }   /* filled star */
 .rating-text { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-soft); }
-
-/* In dark mode the default (black) App Store badge sits on a dark page and loses
-   contrast — switch it to the light variant. Badges already marked --white
-   (nav, and the faq/ambassadors dark cards) are left untouched. */
-[data-theme="dark"] .appstore:not(.appstore--white) {
-  background: #fff; color: #14110D; border-color: rgba(0,0,0,0.10);
-}
-[data-theme="dark"] .appstore:not(.appstore--white) svg { fill: #14110D; }
-[data-theme="dark"] .appstore:not(.appstore--white) .as-small { opacity: 0.8; }
