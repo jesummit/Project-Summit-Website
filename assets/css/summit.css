@@ -265,21 +265,6 @@ a { color: inherit; }
 }
 .phone img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Screenshot placeholder — used where a real screenshot is duplicated
-   elsewhere on the page (e.g. the hero phones reuse carousel shots). */
-.phone .ph-ph {
-  width: 100%; height: 100%;
-  background:
-    repeating-linear-gradient(45deg, var(--bg-soft) 0 14px, var(--bg) 14px 28px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; padding: 24px; text-align: center;
-}
-.phone .ph-ph svg { width: 34px; height: 34px; color: var(--ink-faint); }
-.phone .ph-ph span {
-  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
-}
-
 /* =====================================================================
    HEADER
    ===================================================================== */
@@ -713,7 +698,10 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
 }
 .footer-cookies:hover { color: rgba(245,238,224,0.6); }
 @media (max-width: 520px) {
-  .consent { flex-direction: column; align-items: stretch; }
+  .consent { flex-direction: column; align-items: stretch; gap: 14px; }
+  /* In column layout the 320px flex-basis becomes height — reset it so the text
+     block collapses to its natural height (no giant gap above the buttons). */
+  .consent-text { flex: 0 0 auto; }
   .consent-actions { justify-content: flex-end; }
 }
 
@@ -726,3 +714,12 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
 .rating-stars .rstar { color: var(--ink-hair); }    /* empty star */
 .rating-stars .rstar.on { color: var(--accent); }   /* filled star */
 .rating-text { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-soft); }
+
+/* In dark mode the default (black) App Store badge sits on a dark page and loses
+   contrast — switch it to the light variant. Badges already marked --white
+   (nav, and the faq/ambassadors dark cards) are left untouched. */
+[data-theme="dark"] .appstore:not(.appstore--white) {
+  background: #fff; color: #14110D; border-color: rgba(0,0,0,0.10);
+}
+[data-theme="dark"] .appstore:not(.appstore--white) svg { fill: #14110D; }
+[data-theme="dark"] .appstore:not(.appstore--white) .as-small { opacity: 0.8; }

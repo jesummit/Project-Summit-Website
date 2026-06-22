@@ -219,7 +219,9 @@
     }
 
     .amb-cta-inner {
-      background: var(--ink);
+      /* Always-dark spotlight card — use the fixed dark token, NOT --ink
+         (which inverts to a light colour in dark mode and hid the title). */
+      background: var(--header-bg);
       border-radius: var(--r-data);
       padding: 56px 48px;
       text-align: center;
@@ -468,7 +470,7 @@
         <span class="footer-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
         <span class="footer-name">Summit<span class="dot">.</span></span>
       </a>
-      <p class="footer-tagline">Train harder. Smarter.</p>
+      <p class="footer-tagline" data-i18n="foot.tagline">Train harder. Smarter.</p>
       <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
     </div>
     <div class="footer-col">
