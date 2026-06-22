@@ -726,3 +726,12 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
 .rating-stars .rstar { color: var(--ink-hair); }    /* empty star */
 .rating-stars .rstar.on { color: var(--accent); }   /* filled star */
 .rating-text { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-soft); }
+
+/* In dark mode the default (black) App Store badge sits on a dark page and loses
+   contrast — switch it to the light variant. Badges already marked --white
+   (nav, and the faq/ambassadors dark cards) are left untouched. */
+[data-theme="dark"] .appstore:not(.appstore--white) {
+  background: #fff; color: #14110D; border-color: rgba(0,0,0,0.10);
+}
+[data-theme="dark"] .appstore:not(.appstore--white) svg { fill: #14110D; }
+[data-theme="dark"] .appstore:not(.appstore--white) .as-small { opacity: 0.8; }
