@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <!-- PostHog Analytics -->
   <script>
@@ -9,199 +9,66 @@
       ui_host: 'https://eu.posthog.com',
       defaults: '2026-01-30',
       person_profiles: 'identified_only',
+      opt_out_capturing_by_default: true,
       enable_heatmaps: true,
       capture_dead_clicks: true,
     });
   </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
   <title>Roadmap — Project Summit</title>
   <meta name="description" content="What's built, what's coming, and where Project Summit is headed." />
-  <link rel="icon" type="image/png" href="SummitLogo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="canonical" href="https://projectsummit.app/roadmap.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://projectsummit.app/roadmap.html" />
+  <meta property="og:title" content="Roadmap — Project Summit" />
+  <meta property="og:description" content="What's built, what's coming, and where Project Summit is headed." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roadmap — Project Summit" />
+  <meta name="twitter:description" content="What's built, what's coming, and where Project Summit is headed." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
+
+  <link rel="stylesheet" href="assets/css/summit.css" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── Roadmap page: scoped component styles ── */
 
-    :root {
-      --bg:          #F6F1E8;
-      --bg-soft:     #EFE7D6;
-      --card:        #FFFFFF;
-      --ink:         #1F1A14;
-      --ink-soft:    rgba(31,26,20,0.60);
-      --ink-faint:   rgba(31,26,20,0.38);
-      --ink-hair:    rgba(31,26,20,0.10);
-      --accent:      #D66A2D;
-      --accent-soft: rgba(214,106,45,0.10);
-      --accent-line: rgba(214,106,45,0.30);
-      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
-      --font-display: -apple-system, "SF Pro Display", system-ui, sans-serif;
-      --font-serif:   "Instrument Serif", Georgia, serif;
-      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      background-image: radial-gradient(ellipse 55% 45% at 92% -5%, rgba(214,106,45,0.28) 0%, transparent 100%);
-      color: var(--ink);
-      font-family: var(--font-ui);
-      font-weight: 400;
-      line-height: 1.75;
-      min-height: 100vh;
-    }
-
-        .topbar { display: none; }
-
-    /* ── SITE HEADER (sticky) ── */
-    .site-header {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--ink);
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-    }
-
-    /* Ember progress bar on top of hairline */
-    .nav-progress {
-      position: absolute;
-      bottom: -2px; left: 0;
-      height: 2px;
-      width: 0%;
-      background: #E8834A;
-      transition: width 0.1s linear;
-      z-index: 101;
-    }
-
-    /* ── NAV ── */
-    nav {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 14px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    nav::after { display: none; }
-
-    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-
-    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-
-    .nav-logo {
-      width: 32px; height: 32px;
-      border-radius: 7px; overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
-    }
-    .nav-logo img { width: 100%; display: block; }
-
-    .nav-name {
-      font-family: var(--font-display);
-      font-size: 30px; font-weight: 900;
-      letter-spacing: -0.04em;
-      color: #F5EEE0;
-      text-decoration: none;
-    }
-    .nav-dot { color: #E8834A; }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-ui);
-      font-size: 13px; font-weight: 400;
-      letter-spacing: 0.02em;
-      color: rgba(245,238,224,0.55); text-decoration: none;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover { color: #F5EEE0; }
-    .nav-links a.active { color: #F5EEE0; font-weight: 500; }
-
-    .nav-cta {
-      display: inline-flex; align-items: center;
-      padding: 0 22px; height: 40px;
-      background: #D66A2D; color: #F5EEE0;
-      font-family: var(--font-ui);
-      font-size: 12px; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; border-radius: 14px;
-      transition: opacity 0.2s; flex-shrink: 0;
-    }
-    .nav-cta:hover { opacity: 0.85; }
-
-    /* ── PAGE HEADER ── */
-    .page-header {
-      max-width: 900px; margin: 0 auto;
-      padding: 80px 48px 64px;
-      border-bottom: 2px solid rgba(245,238,224,0.12);
-      position: relative;
-    }
-
-    .page-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 24px;
-      opacity: 0; animation: fadeUp 0.5s ease 0.05s forwards;
-    }
-
-    .page-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -0.035em;
-      max-width: 600px; margin-bottom: 20px;
-      color: var(--ink);
-      opacity: 0; animation: fadeUp 0.5s ease 0.12s forwards;
-    }
-
-    /* Drop-line: Instrument Serif italic moment for this page */
-    .page-title em {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 400;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-    }
-
-    .page-sub {
-      font-size: 16px; color: var(--ink-soft);
-      max-width: 500px; line-height: 1.7;
-      opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards;
-    }
-
-    /* ── TIMELINE ── */
+    /* Timeline vertical rule */
     .timeline {
-      max-width: 900px; margin: 0 auto;
-      padding: 72px 48px 96px;
       position: relative;
+      z-index: 1;
+      padding-top: 72px;
+      padding-bottom: 96px;
     }
 
     .timeline::before {
       content: '';
       position: absolute;
       left: calc(48px + 15px);
-      top: 72px; bottom: 96px;
+      top: 72px;
+      bottom: 96px;
       width: 1px;
       background: var(--ink-hair);
+      pointer-events: none;
     }
 
+    /* Phase block — content reveals on scroll (app.js initReveal / .reveal) */
     .phase {
       position: relative;
       padding-left: 56px;
       margin-bottom: 72px;
-      opacity: 0; transform: translateY(16px);
-      animation: fadeUp 0.5s ease forwards;
     }
-    .phase:nth-child(1) { animation-delay: 0.10s; }
-    .phase:nth-child(2) { animation-delay: 0.22s; }
-    .phase:nth-child(3) { animation-delay: 0.34s; }
     .phase:last-child   { margin-bottom: 0; }
 
+    /* Phase dot */
     .phase-dot {
       position: absolute;
       left: 0; top: 6px;
@@ -227,16 +94,19 @@
       color: var(--ink);
     }
 
+    /* Phase meta row */
     .phase-meta {
       display: flex; align-items: center; gap: 14px;
       margin-bottom: 16px;
     }
 
+    /* Phase badge */
     .phase-badge {
       font-family: var(--font-mono);
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: var(--r-data);
     }
 
     .phase--now .phase-badge {
@@ -246,7 +116,7 @@
     }
 
     .phase--next .phase-badge {
-      background: rgba(31,26,20,0.07);
+      background: var(--ink-hair);
       color: var(--ink);
       border: 1px solid var(--ink-hair);
     }
@@ -257,6 +127,7 @@
       color: var(--ink-faint);
     }
 
+    /* Phase date */
     .phase-date {
       font-family: var(--font-mono);
       font-size: 11px; font-weight: 400;
@@ -264,28 +135,33 @@
       letter-spacing: 0.08em;
     }
 
+    /* Phase title */
     .phase-title {
       font-family: var(--font-display);
       font-size: clamp(1.4rem, 3vw, 1.9rem);
       font-weight: 900; line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 10px; color: var(--ink);
+      margin-bottom: 10px;
+      color: var(--ink);
     }
 
+    /* Phase description */
     .phase-desc {
       font-size: 14px; color: var(--ink-soft);
       max-width: 520px; margin-bottom: 28px;
       line-height: 1.7;
     }
 
-    .features-grid {
+    /* Feature grid (inside phase — narrower variant) */
+    .rm-features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 1px;
       background: var(--ink-hair);
       border: 1px solid var(--ink-hair);
-      border-radius: 2px;
-      max-width: 620px;
+      border-radius: var(--r-data);
+      overflow: hidden;
+      max-width: 640px;
     }
 
     .feature-item {
@@ -312,345 +188,139 @@
 
     .phase--later .feature-item { opacity: 0.65; }
 
-    /* ── FOOTER ── */
-    .site-footer {
-      background: var(--ink);
+    /* Roadmap CTA block */
+    .rm-cta {
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+      border-top: 1px solid var(--ink-hair);
     }
 
-    .site-footer-inner {
-      max-width: 900px; margin: 0 auto;
-      padding: 64px 48px 40px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-    }
-
-    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
-
-    .footer-wordmark {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
-    }
-
-    .footer-logo {
-      width: 32px; height: 32px; border-radius: 7px;
-      overflow: hidden; flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
-    }
-    .footer-logo img { width: 100%; display: block; }
-
-    .footer-name {
-      font-family: var(--font-display);
-      font-size: 22px; font-weight: 900;
-      letter-spacing: -0.04em;
-      color: #F5EEE0;
-    }
-    .footer-name .dot { color: #E8834A; }
-
-    .footer-tagline {
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(245,238,224,0.38);
-    }
-
-    .footer-desc {
-      font-size: 14px; color: rgba(245,238,224,0.60);
-      line-height: 1.7; max-width: 280px;
-    }
-
-    .footer-col h3 {
-      font-family: var(--font-mono);
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: #E8834A;
-      margin-bottom: 20px;
-    }
-
-    .footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-
-    .footer-col a {
-      font-size: 14px; color: rgba(245,238,224,0.60);
-      text-decoration: none; transition: color 0.15s;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .footer-col a:hover { color: #F5EEE0; }
-
-    .footer-bottom {
-      max-width: 900px; margin: 0 auto;
-      padding: 20px 48px 32px;
-      border-top: 1px solid rgba(245,238,224,0.10);
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 8px;
-    }
-
-    .footer-bottom-copy {
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 400;
-      color: rgba(245,238,224,0.30);
-      letter-spacing: 0.04em;
-    }
-    .footer-bottom-copy strong { font-weight: 700; color: rgba(245,238,224,0.50); }
-
-    @media (max-width: 640px) {
-      .site-footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
-      .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
-      .footer-desc { max-width: 100%; }
-    }
-
-
-    /* ── LANG SWITCHER (dropdown) ── */
-    .lang-switcher { position: relative; flex-shrink: 0; }
-
-    .lang-selected {
-      display: flex; align-items: center; gap: 6px;
-      background: none; border: 1px solid rgba(245,238,224,0.20);
-      border-radius: 8px; padding: 6px 10px;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      color: #F5EEE0;
-      transition: border-color 0.15s;
-    }
-    .lang-selected:hover { border-color: rgba(245,238,224,0.45); }
-    .lang-selected svg { transition: transform 0.2s; }
-    .lang-switcher.open .lang-selected svg { transform: rotate(180deg); }
-
-    .lang-dropdown {
-      display: none;
-      position: absolute; top: calc(100% + 8px); right: 0;
-      background: #2A241C;
-      border: 1px solid rgba(245,238,224,0.12);
-      border-radius: 10px;
-      overflow: hidden;
-      min-width: 120px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.30);
-      z-index: 200;
-    }
-    .lang-switcher.open .lang-dropdown { display: block; }
-
-    .lang-option {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 14px;
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.10em;
-      color: rgba(245,238,224,0.50);
-      cursor: pointer;
-      border: none; background: none; width: 100%; text-align: left;
-      transition: background 0.15s, color 0.15s;
-    }
-    .lang-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
-    .lang-option.active { color: #E8834A; }
-    .lang-option .lang-flag { font-size: 14px; }
-    .lang-option .fi { width: 18px; height: 14px; border-radius: 2px; flex-shrink: 0; }
-
-    /* Mobile dropdown */
-    .nav-mobile .lang-switcher-mobile {
-      display: flex; gap: 8px; padding: 16px 0 4px;
-      border-top: 1px solid rgba(245,238,224,0.08); margin-top: 4px;
-    }
-    .nav-mobile .lang-btn-mobile {
-      font-family: var(--font-mono);
-      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
-      color: rgba(245,238,224,0.35);
-      background: none; border: none; cursor: pointer; padding: 0;
-      transition: color 0.15s;
-    }
-    .nav-mobile .lang-btn-mobile.active,
-    .nav-mobile .lang-btn-mobile:hover { color: #F5EEE0; }
-
-
-    /* ── HAMBURGER ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column; justify-content: center; align-items: center;
-      gap: 5px;
-      width: 40px; height: 40px;
-      background: none; border: none;
-      cursor: pointer; padding: 0; flex-shrink: 0;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 22px; height: 2px;
-      background: #F5EEE0;
-      border-radius: 2px;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .nav-mobile {
-      display: none;
+    .rm-cta-inner {
+      display: flex;
       flex-direction: column;
-      background: var(--ink);
-      padding: 0 24px 24px;
-      gap: 4px;
+      gap: 28px;
+      max-width: 540px;
     }
 
-    .nav-mobile.open { display: flex; }
-
-    .nav-mobile a {
-      font-family: var(--font-ui);
-      font-size: 16px; font-weight: 400;
-      color: rgba(245,238,224,0.60);
-      text-decoration: none;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(245,238,224,0.08);
-      transition: color 0.15s;
+    .rm-cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+      font-weight: 900; line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-wrap: balance;
     }
-    .nav-mobile a:last-child { border-bottom: none; }
-    .nav-mobile a:hover, .nav-mobile a.active { color: #F5EEE0; }
-    .nav-mobile a.active { font-weight: 500; }
 
-    .nav-mobile .nav-mobile-cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      margin-top: 12px;
-      height: 48px;
-      background: #D66A2D; color: #F5EEE0;
-      font-size: 13px; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; border-radius: 14px;
-      border-bottom: none;
+    .rm-cta-title em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      color: var(--accent);
     }
-    .nav-mobile .nav-mobile-cta:hover { opacity: 0.9; color: #F5EEE0; }
 
-    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+    .rm-cta-sub {
+      font-size: 16px; color: var(--ink-soft);
+      line-height: 1.7; max-width: 44ch;
+    }
 
+    /* Responsive */
     @media (max-width: 640px) {
-      nav, .page-header, footer { padding-left: 24px; padding-right: 24px; }
       .timeline { padding-left: 24px; padding-right: 24px; }
       .timeline::before { left: calc(24px + 15px); }
-      .nav-links { display: none; }
-      .nav-more { display: none; }
-      .nav-cta { display: none; }
-      .nav-hamburger { display: flex; }
+      .rm-cta { padding-left: 24px; padding-right: 24px; }
     }
-
-
-    /* ── MORE DROPDOWN ── */
-    .nav-more { position: relative; flex-shrink: 0; }
-
-    .nav-more-btn {
-      display: flex; align-items: center; gap: 5px;
-      background: none; border: none; cursor: pointer;
-      font-family: var(--font-ui); font-size: 13px; font-weight: 400;
-      color: rgba(245,238,224,0.55);
-      transition: color 0.15s; padding: 0;
-    }
-    .nav-more-btn:hover { color: #F5EEE0; }
-    .nav-more-btn svg { transition: transform 0.2s; }
-    .nav-more.open .nav-more-btn { color: #F5EEE0; }
-    .nav-more.open .nav-more-btn svg { transform: rotate(180deg); }
-
-    .nav-more-dropdown {
-      display: none;
-      position: absolute; top: calc(100% + 12px); left: 50%;
-      transform: translateX(-50%);
-      background: #2A241C;
-      border: 1px solid rgba(245,238,224,0.12);
-      border-radius: 10px; overflow: hidden;
-      min-width: 180px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.30);
-      z-index: 200;
-    }
-    .nav-more.open .nav-more-dropdown { display: block; }
-
-    .nav-more-option {
-      display: block; width: 100%;
-      padding: 11px 18px;
-      font-family: var(--font-ui); font-size: 13px; font-weight: 400;
-      color: rgba(245,238,224,0.60);
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-      border-bottom: 1px solid rgba(245,238,224,0.06);
-    }
-    .nav-more-option:last-child { border-bottom: none; }
-    .nav-more-option:hover { background: rgba(245,238,224,0.06); color: #F5EEE0; }
-    .nav-more-option.active { color: #E8834A; font-weight: 500; }
-
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.20); border-radius: 2px; }
   </style>
 </head>
-<body>
+<body data-vibe="product" data-page="roadmap">
 
+<!-- ====================== HEADER ====================== -->
 <header class="site-header">
   <div class="nav-progress" id="nav-progress"></div>
-<nav>
-  <a href="/" class="nav-brand">
-    <div class="nav-logo"><img src="SummitLogo.png" alt="Project Summit" /></div>
-    <span class="nav-name">Summit<span class="nav-dot">.</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/" data-i18n="nav.home">Home</a></li>
-    <li><a href="/roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a></li>
-    <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
-  </ul>
-  <div class="nav-more" id="nav-more">
-    <button class="nav-more-btn" id="nav-more-btn">
-      <span data-i18n="nav.more">More</span>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="nav-more-dropdown">
-      <a href="/about.html" class="nav-more-option" data-i18n="nav.about">About</a>
-      <a href="/ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
-      <a href="/terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
-      <a href="/privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="https://apps.apple.com/app/id6754172654" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store">
+        <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span class="as-text"><span class="as-small" data-i18n="as.small">Download on the</span><span class="as-big">App Store</span></span>
+      </a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <a href="https://apps.apple.com/app/id6754172654" data-source="nav_mobile" class="appstore appstore--white">
+        <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span class="as-text"><span class="as-small" data-i18n="as.small">Download on the</span><span class="as-big">App Store</span></span>
+      </a>
     </div>
   </div>
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-selected" id="lang-selected-btn" aria-label="Language">
-      <span id="lang-label">ES</span>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-        <path d="M2 3.5L5 6.5L8 3.5" stroke="#F5EEE0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="lang-dropdown">
-      <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
-      <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
-      <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
-    </div>
-  </div>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'nav' })">Join Waitlist</a>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="/" data-i18n="nav.home">Home</a>
-  <a href="/roadmap.html" class="active" data-i18n="nav.roadmap">Roadmap</a>
-  <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
-  <a href="/about.html" data-i18n="nav.about">About</a>
-  <a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
-  <a href="/terms.html" data-i18n="nav.terms">Terms</a>
-  <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
-  <a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" class="nav-mobile-cta" data-i18n="nav.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'nav_mobile' })">Join Waitlist</a>
-</div>
 </header>
 
+<main id="top">
+
+<!-- ====================== PAGE HEADER ====================== -->
 <div class="page-header">
-  <p class="page-eyebrow" data-i18n="roadmap.eyebrow">What's being built</p>
-  <h1 class="page-title"><span data-i18n="roadmap.title.main">A platform that keeps</span> <em data-i18n="roadmap.title.drop">getting smarter.</em></h1>
-  <p class="page-sub" data-i18n="roadmap.sub">Here's where Project Summit stands today, and where it's headed. No vague promises — just a clear picture of the plan.</p>
+  <div class="wrap">
+    <p class="page-eyebrow" data-i18n="roadmap.eyebrow">What's being built</p>
+    <h1 class="page-title"><span data-i18n="roadmap.title.main">A platform that keeps</span> <em data-i18n="roadmap.title.drop">getting smarter.</em></h1>
+    <p class="page-sub" data-i18n="roadmap.sub">Here's where Project Summit stands today, and where it's headed. No vague promises — just a clear picture of the plan.</p>
+  </div>
 </div>
 
-<div class="timeline">
+<!-- ====================== TIMELINE ====================== -->
+<div class="timeline wrap">
 
   <div class="phase phase--now">
     <div class="phase-dot">→</div>
     <div class="phase-meta">
-      <span class="phase-badge" data-i18n="phase1.badge">In Development</span>
-      <span class="phase-date" data-i18n="phase1.date">Launch: Summer 2026</span>
+      <span class="phase-badge" data-i18n="phase1.badge">Now available</span>
+      <span class="phase-date" data-i18n="phase1.date">On the App Store</span>
     </div>
     <h2 class="phase-title" data-i18n="phase1.title">iOS App — v1.0</h2>
-    <p class="phase-desc" data-i18n="phase1.desc">The full core platform. Adaptive load management, intelligent recovery, nutrition planning, and structured workouts — all in one place.</p>
-    <div class="features-grid">
+    <p class="phase-desc" data-i18n="phase1.desc">The full core platform. Adaptive load management, intelligent recovery, race-day nutrition, and structured workouts — all in one place.</p>
+    <div class="rm-features-grid">
       <div class="feature-item">
         <span class="feature-icon">🫀</span>
         <div class="feature-name" data-i18n="rm.p1.f1.name">HRV-Driven Recovery</div>
@@ -691,11 +361,6 @@
         <div class="feature-name" data-i18n="rm.p1.f8.name">Race Day Nutrition Planner</div>
         <div class="feature-detail" data-i18n="rm.p1.f8.detail">Carb, fluid and electrolyte targets built around your race duration and intensity.</div>
       </div>
-      <div class="feature-item">
-        <span class="feature-icon">🥗</span>
-        <div class="feature-name" data-i18n="rm.p1.f9.name">Daily Nutrition Planning <span style="font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-left:4px;border:1px solid var(--accent-line);border-radius:3px;padding:1px 5px;">Beta</span></div>
-        <div class="feature-detail" data-i18n="rm.p1.f9.detail">Day-by-day fueling targets matched to your training load.</div>
-      </div>
     </div>
   </div>
 
@@ -707,7 +372,7 @@
     </div>
     <h2 class="phase-title" data-i18n="phase2.title">Wearables, Pacing &amp; Wellness</h2>
     <p class="phase-desc" data-i18n="phase2.desc">Bringing the platform closer to your wrist, your race strategy, and your overall health picture.</p>
-    <div class="features-grid">
+    <div class="rm-features-grid">
       <div class="feature-item">
         <span class="feature-icon">❤️</span>
         <div class="feature-name" data-i18n="rm.p2.f1.name">HR-Only Training Zones</div>
@@ -715,8 +380,8 @@
       </div>
       <div class="feature-item">
         <span class="feature-icon">📆</span>
-        <div class="feature-name" data-i18n="rm.p2.f2.name">Weekly Nutrition Planning</div>
-        <div class="feature-detail" data-i18n="rm.p2.f2.detail">Full-week fueling plans that adapt as your training load changes day to day.</div>
+        <div class="feature-name" data-i18n="rm.p2.f2.name">Training-Driven Nutrition Plan</div>
+        <div class="feature-detail" data-i18n="rm.p2.f2.detail">Daily fueling built from your planned and completed workouts — carb targets that rise on hard days and ease on recovery days — with daily recipes and an auto-generated shopping list.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">⌚</span>
@@ -744,7 +409,7 @@
     </div>
     <h2 class="phase-title" data-i18n="phase3.title">Beyond Cycling</h2>
     <p class="phase-desc" data-i18n="phase3.desc">More platforms, more sports, and deeper integrations. The engine stays the same — the reach grows.</p>
-    <div class="features-grid">
+    <div class="rm-features-grid">
       <div class="feature-item">
         <span class="feature-icon">🤖</span>
         <div class="feature-name" data-i18n="rm.p3.f1.name">Android App</div>
@@ -775,188 +440,67 @@
 
 </div>
 
-<footer class="site-footer">
-  <div class="site-footer-inner">
+<!-- ====================== ROADMAP CTA ====================== -->
+<section class="rm-cta">
+  <div class="wrap">
+    <div class="rm-cta-inner">
+      <p class="eyebrow"><span class="ember">●</span>&nbsp; Available now · iOS</p>
+      <h2 class="rm-cta-title">Download Summit. <em>Start training smarter.</em></h2>
+      <p class="rm-cta-sub">Summit is on the App Store now. Download it, connect Strava, and let the plan start learning you.</p>
+      <div>
+        <a href="https://apps.apple.com/app/id6754172654" data-source="roadmap" class="appstore">
+          <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span class="as-text"><span class="as-small" data-i18n="as.small">Download on the</span><span class="as-big">App Store</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
+</main>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
     <div class="footer-brand">
-      <a href="/" class="footer-wordmark">
-        <div class="footer-logo"><img src="SummitLogo.png" alt="Summit" /></div>
+      <a href="index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
         <span class="footer-name">Summit<span class="dot">.</span></span>
       </a>
-      <p class="footer-tagline" data-i18n="footer.tagline">Train harder. Smarter.</p>
-      <p class="footer-desc" data-i18n="footer.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Coming Summer 2026.</p>
+      <p class="footer-tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
     </div>
-
     <div class="footer-col">
-      <h3 data-i18n="footer.nav.title">Navigate</h3>
+      <h4 data-i18n="foot.nav">Navigate</h4>
       <ul>
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li><a href="/roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
-        <li><a href="/faq.html" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="/ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
-        <li><a href="/terms.html" data-i18n="nav.terms">Terms</a></li>
-        <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
-        <li><a href="https://tally.so/r/vG4LNv" target="_blank" rel="noopener" data-i18n="nav.cta" onclick="posthog.capture('waitlist_cta_clicked', { source: 'footer' })">Join Waitlist</a></li>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
-      <h3 data-i18n="footer.contact.title">Contact</h3>
+      <h4 data-i18n="foot.contact">Contact</h4>
       <ul>
-        <li>
-          <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            @projectsummit.app
-          </a>
-        </li>
-        <li>
-          <a href="mailto:team@projectsummit.app">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-            team@projectsummit.app
-          </a>
-        </li>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
       </ul>
     </div>
-
   </div>
-
   <div class="footer-bottom">
-    <span class="footer-bottom-copy" data-i18n="footer.copyright">&copy; 2026 Project Summit &nbsp;·&nbsp; <strong>Jordi Espanyol</strong> &nbsp;·&nbsp; All rights reserved.</span>
-    <span class="footer-bottom-copy"><span data-i18n="footer.bottom.right">Built for cyclists who take training seriously.</span></span>
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
   </div>
 </footer>
-<script>
-  // Hamburger menu
-  var hamburger = document.getElementById('nav-hamburger');
-  var mobileMenu = document.getElementById('nav-mobile');
-  hamburger.addEventListener('click', function() {
-    var open = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-  });
-  mobileMenu.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-    });
-  });
 
-  var navProgress = document.getElementById('nav-progress');
-  window.addEventListener('scroll', function() {
-    var scrollTop = window.scrollY;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    navProgress.style.width = pct + '%';
-  }, { passive: true });
-</script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/analytics.js"></script>
+  <script src="assets/js/consent.js"></script>
 
-<script src="translations.js"></script>
-<script src="analytics.js"></script>
-<script>
-(function() {
-  var lang = localStorage.getItem('summit-lang') || 'es';
-
-  function applyLang(l) {
-    if (!TRANSLATIONS[l]) return;
-    var t = TRANSLATIONS[l];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.innerHTML = t[key];
-    });
-    // Update dropdown label
-    var lbl = document.getElementById('lang-label');
-    if (lbl) lbl.textContent = {'en':'EN','es':'ES','ca':'CA'}[l] || l.toUpperCase();
-    // Update active option
-    document.querySelectorAll('.lang-option').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
-    });
-    // Update mobile buttons
-    document.querySelectorAll('.lang-btn-mobile').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
-    });
-    document.documentElement.lang = l;
-    localStorage.setItem('summit-lang', l);
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    applyLang(lang);
-    document.querySelectorAll('.lang-option, .lang-btn-mobile').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        applyLang(btn.getAttribute('data-lang'));
-        if (langSwitcher) langSwitcher.classList.remove('open');
-      });
-    });
-    // Lang dropdown
-    var langSwitcherEl = document.getElementById('lang-switcher');
-    var langSwitcher = langSwitcherEl;
-  // More dropdown
-  var moreWrap = document.getElementById('nav-more');
-  if (moreWrap) {
-    document.getElementById('nav-more-btn').addEventListener('click', function(e) {
-      e.stopPropagation();
-      moreWrap.classList.toggle('open');
-      if (langSwitcherEl) langSwitcherEl.classList.remove('open');
-    });
-    document.addEventListener('click', function() { moreWrap.classList.remove('open'); });
-  }
-
-    var langSelectedBtn = document.getElementById('lang-selected-btn');
-    var langLabel = document.getElementById('lang-label');
-    if (langSwitcher && langSelectedBtn) {
-      langSelectedBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        langSwitcher.classList.toggle('open');
-      });
-      document.addEventListener('click', function() {
-        langSwitcher.classList.remove('open');
-      });
-    }
-
-  });
-})();
-</script>
-
-<script>
-(function() {
-  // Roadmap features viewed — which feature and which phase
-  var phaseNames = { 'phase--now': 'v1.0_summer_2026', 'phase--next': 'late_2026', 'phase--later': '2027_beyond' };
-  var roadmapObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var phase = entry.target.closest('.phase');
-        var phaseKey = phase ? Object.keys(phaseNames).find(function(k) { return phase.classList.contains(k); }) : null;
-        posthog.capture('roadmap_feature_viewed', {
-          phase: phaseKey ? phaseNames[phaseKey] : 'unknown',
-          feature: entry.target.textContent.trim().replace(/\s+/g, ' ').slice(0, 60)
-        });
-        roadmapObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.8 });
-  document.querySelectorAll('.feature-item').forEach(function(el) { roadmapObs.observe(el); });
-
-  // Mobile menu
-  var ham = document.getElementById('nav-hamburger');
-  var mob = document.getElementById('nav-mobile');
-  if (ham && mob) ham.addEventListener('click', function() { if (!mob.classList.contains('open')) posthog.capture('mobile_menu_opened', { page: 'roadmap' }); });
-
-  // Language change
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-lang]');
-    if (btn) posthog.capture('language_changed', { language: btn.getAttribute('data-lang') });
-  });
-
-  // Scroll depth
-  var depthReached = {};
-  window.addEventListener('scroll', function() {
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    if (max <= 0) return;
-    var pct = window.scrollY / max * 100;
-    [25, 50, 75, 90].forEach(function(m) {
-      if (!depthReached[m] && pct >= m) { depthReached[m] = true; posthog.capture('scroll_depth', { percent: m, page: 'roadmap' }); }
-    });
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>

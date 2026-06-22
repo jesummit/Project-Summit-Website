@@ -1,0 +1,10 @@
+{
+  "name": "project-summit-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project Summit marketing site (static, GitHub Pages).",
+  "scripts": {
+    "build": "node build.js",
+    "check": "node tools/check-i18n.js && node tools/check-links.js"
+  }
+}

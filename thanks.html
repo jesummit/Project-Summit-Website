@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <!-- PostHog Analytics -->
   <script>
@@ -9,152 +9,101 @@
       ui_host: 'https://eu.posthog.com',
       defaults: '2026-01-30',
       person_profiles: 'identified_only',
+      opt_out_capturing_by_default: true,
       enable_heatmaps: true,
       capture_dead_clicks: true,
     });
   </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- This is a post-conversion landing page; keep it out of search results. -->
+  <!-- Standalone confirmation page; keep it out of search results. -->
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/png" href="SummitLogo.png" />
-  <title>You're on the list — Project Summit</title>
-  <meta name="description" content="Thanks for joining the Project Summit waitlist." />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+  <title>Thanks — Project Summit</title>
+  <meta name="description" content="Thanks for reaching out to Project Summit." />
+  <link rel="canonical" href="https://projectsummit.app/thanks.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://projectsummit.app/thanks.html" />
+  <meta property="og:title" content="Thanks — Project Summit" />
+  <meta property="og:description" content="Thanks for reaching out to Project Summit." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Thanks — Project Summit" />
+  <meta name="twitter:description" content="Thanks for reaching out to Project Summit." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/summit.css" />
+
+  <!-- Follow the user's stored / system theme (no nav on this standalone page). -->
+  <script>
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('summit_site_v1') || '{}');
+        var dark = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+        var t = s.themeExplicit ? s.theme : (dark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:          #F6F1E8;
-      --card:        #FFFFFF;
-      --ink:         #1F1A14;
-      --ink-soft:    rgba(31,26,20,0.60);
-      --ink-hair:    rgba(31,26,20,0.10);
-      --accent:      #D66A2D;
-      --accent-soft: rgba(214,106,45,0.10);
-      --font-ui:      -apple-system, "SF Pro Text", system-ui, sans-serif;
-      --font-serif:   "Instrument Serif", Georgia, serif;
-      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+    body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .thanks-card {
+      position: relative; z-index: 1;
+      background: var(--card); border: 1px solid var(--ink-hair);
+      border-radius: var(--r-card); padding: 48px 40px; max-width: 480px; width: 100%;
+      text-align: center; box-shadow: var(--e3);
     }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-ui);
-      background: var(--bg);
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      line-height: 1.55;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--ink-hair);
-      border-radius: 20px;
-      padding: 48px 40px;
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 24px 60px -32px rgba(31,26,20,0.35);
-    }
-
-    .badge {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 28px;
-      border-radius: 50%;
-      background: var(--accent-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-    }
-
-    .eyebrow {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 38px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    p.lead {
-      color: var(--ink-soft);
-      font-size: 16px;
-      margin-bottom: 32px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 13px 26px;
-      border-radius: 12px;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-    .btn:hover { transform: translateY(-1px); opacity: 0.92; }
-
-    .links {
-      margin-top: 24px;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-    .links a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-hair); }
-    .links a:hover { color: var(--accent); border-color: var(--accent); }
-
-    @media (max-width: 480px) {
-      .card { padding: 40px 24px; }
-      h1 { font-size: 32px; }
-    }
+    .thanks-logo { width: 44px; height: 44px; border-radius: 10px; overflow: hidden; margin: 0 auto 26px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .thanks-badge { width: 64px; height: 64px; margin: 0 auto 26px; border-radius: 50%; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+    .thanks-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .thanks-card h1 { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 38px; line-height: 1.1; color: var(--ink); margin-bottom: 16px; }
+    .thanks-lead { color: var(--ink-soft); font-size: 16px; line-height: 1.7; margin-bottom: 30px; }
+    .thanks-actions { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    .thanks-home { font-family: var(--font-ui); font-size: 14px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-hair); transition: color 0.15s, border-color 0.15s; }
+    .thanks-home:hover { color: var(--accent); border-color: var(--accent); }
+    .thanks-follow { margin-top: 26px; font-size: 14px; color: var(--ink-soft); }
+    .thanks-follow a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-hair); }
+    .thanks-follow a:hover { color: var(--accent); border-color: var(--accent); }
+    @media (max-width: 480px) { .thanks-card { padding: 40px 24px; } .thanks-card h1 { font-size: 32px; } }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="badge" aria-hidden="true">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 6 9 17l-5-5"/>
-      </svg>
+  <main class="thanks-card">
+    <div class="thanks-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></div>
+    <div class="thanks-badge" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
     </div>
-    <p class="eyebrow">Project Summit</p>
-    <h1>You're on the list</h1>
-    <p class="lead">Thanks for joining the waitlist. We'll email you the moment Project Summit is ready — iOS app coming Summer 2026.</p>
-    <a class="btn" href="/">Back to home</a>
-    <div class="links">
-      Follow along on
-      <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">Instagram</a>
+    <p class="thanks-eyebrow">Project Summit</p>
+    <h1>Thanks — see you in the app</h1>
+    <p class="thanks-lead">We've got your message. Summit is on the App Store now — download it, connect Strava, and let the plan start learning you.</p>
+    <div class="thanks-actions">
+      <a href="https://apps.apple.com/app/id6754172654" data-source="thanks" class="appstore">
+        <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span class="as-text"><span class="as-small">Download on the</span><span class="as-big">App Store</span></span>
+      </a>
+      <a class="thanks-home" href="index.html">Back to home</a>
     </div>
+    <p class="thanks-follow">Follow along on <a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener">Instagram</a></p>
   </main>
 
   <script>
-    // Fire the real conversion event once per session (a page refresh shouldn't
-    // double-count the same completed signup).
+    // Fire a lightweight view event once per session.
     (function () {
       try {
-        if (sessionStorage.getItem('ps_waitlist_completed') === '1') return;
-        sessionStorage.setItem('ps_waitlist_completed', '1');
-      } catch (e) { /* sessionStorage unavailable: still capture once per load */ }
-      if (window.posthog) posthog.capture('waitlist_completed');
+        if (sessionStorage.getItem('ps_thanks_viewed') === '1') return;
+        sessionStorage.setItem('ps_thanks_viewed', '1');
+      } catch (e) {}
+      if (window.posthog) posthog.capture('thanks_viewed');
     })();
   </script>
-  <script src="analytics.js"></script>
+  <script src="assets/js/analytics.js"></script>
+  <script src="assets/js/consent.js"></script>
 </body>
 </html>
