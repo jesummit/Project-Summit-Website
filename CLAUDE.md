@@ -170,9 +170,11 @@ To add/change a translatable string:
   ≥1 rating (otherwise the page is unchanged; it also hides the placeholder stars
   when it shows). Needs the `/appstore-rating` Worker route deployed (see
   `infra/cloudflare-worker.js`).
-- **Hero phones**: the three home-hero phones now use real screenshots
-  (`assets/screenshots/recovery.png`, `today.png`, `training-load.png`) — the same
-  files the carousel uses, so replacing them in `assets/screenshots/` updates both.
+- **Hero phones**: the three home-hero phones use dedicated hero art
+  (`assets/screenshots/hero-recovery.png`, `hero-today.png`,
+  `hero-training-load.png`) — separate from the carousel shots, so the hero and
+  carousel can differ. (They currently start as copies of the carousel images;
+  overwrite the `hero-*` files with the final hero art.)
 
 ## Analytics & consent
 - PostHog is **opt-in**: each page inits with `opt_out_capturing_by_default: true`
