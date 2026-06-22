@@ -27,10 +27,31 @@
 
   var state = load();
 
+  /* ---------- Official App Store badges ----------
+     Apple's lockup files keyed by language + colour. The badge <img> is swapped
+     to match the current language and surface: white on dark surfaces (nav, dark
+     CTA cards — marked .appstore--white) or in dark mode, black otherwise. */
+  var BADGE_BASE = 'assets/img/appstore-badges/Download_on_the_App_Store_Badge_';
+  var BADGES = {
+    en: { black: 'US-UK_RGB_blk_092917', white: 'US-UK_RGB_wht_092917' },
+    es: { black: 'ES_RGB_blk_100217',    white: 'ES_RGB_wht_100217' },
+    ca: { black: 'CAES_blk_082124',      white: 'CAES_wht_082124' }
+  };
+  function updateBadges() {
+    var lang = BADGES[state.lang] ? state.lang : 'en';
+    document.querySelectorAll('.appstore').forEach(function (a) {
+      var img = a.querySelector('.appstore-img');
+      if (!img) return;
+      var white = a.classList.contains('appstore--white') || state.theme === 'dark';
+      img.src = BADGE_BASE + BADGES[lang][white ? 'white' : 'black'] + '.svg';
+    });
+  }
+
   function apply(partial) {
     if (partial) Object.assign(state, partial);
     document.documentElement.setAttribute('data-theme', state.theme);
     if (window.SummitLang) window.SummitLang.set(state.lang);
+    updateBadges();
     save(state);
     // keep external listeners (tweaks panel) in sync
     window.dispatchEvent(new CustomEvent('summit:state', { detail: Object.assign({}, state) }));
