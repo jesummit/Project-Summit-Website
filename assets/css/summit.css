@@ -265,21 +265,6 @@ a { color: inherit; }
 }
 .phone img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Screenshot placeholder — used where a real screenshot is duplicated
-   elsewhere on the page (e.g. the hero phones reuse carousel shots). */
-.phone .ph-ph {
-  width: 100%; height: 100%;
-  background:
-    repeating-linear-gradient(45deg, var(--bg-soft) 0 14px, var(--bg) 14px 28px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; padding: 24px; text-align: center;
-}
-.phone .ph-ph svg { width: 34px; height: 34px; color: var(--ink-faint); }
-.phone .ph-ph span {
-  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
-}
-
 /* =====================================================================
    HEADER
    ===================================================================== */
