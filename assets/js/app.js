@@ -322,6 +322,84 @@
     check();
   }
 
+  /* ---------- IntersectionObserver helper ----------
+     Fires `cb(target)` the first time each target enters the viewport, then
+     stops observing it. Used for one-shot impression events (section views,
+     CTA visibility). Bails on browsers without IO so noscript still renders. */
+  function observeOnce(targets, cb, opts) {
+    if (!('IntersectionObserver' in window) || !targets || !targets.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { cb(e.target); io.unobserve(e.target); }
+      });
+    }, opts || { threshold: 0.3 });
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
+  /* ---------- Section impression tracking ----------
+     Fires `section_viewed` once per <section id="…"> when 30% enters the
+     viewport. Powers the hero→download funnel and per-section reach insights. */
+  function initSectionTracking() {
+    var page = (document.body && document.body.getAttribute('data-page')) || '';
+    observeOnce(document.querySelectorAll('section[id]'), function (el) {
+      track('section_viewed', { section: el.id, page: page });
+    });
+  }
+
+  /* ---------- App Store CTA impression tracking ----------
+     Fires `appstore_cta_viewed` once per visible `.appstore` element (uses the
+     same `data-source` as the click event). Pairs with `appstore_cta_clicked`
+     to compute CTR per surface (nav, hero, download, thanks…). */
+  function initAppstoreImpressions() {
+    observeOnce(document.querySelectorAll('.appstore'), function (el) {
+      track('appstore_cta_viewed', { source: el.getAttribute('data-source') || 'unknown' });
+    }, { threshold: 0.5 });
+  }
+
+  /* ---------- Scroll depth ----------
+     Fires `scroll_depth` once per page-load when the visitor crosses 25/50/75/
+     100% of the page. Replaces the legacy event (whose `depth` property was
+     never set). Detaches after 100%. */
+  function initScrollDepth() {
+    var page = (document.body && document.body.getAttribute('data-page')) || '';
+    var thresholds = [25, 50, 75, 100];
+    var fired = {};
+    function onScroll() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h <= 0) return;
+      var pct = Math.min(100, Math.round((window.scrollY / h) * 100));
+      thresholds.forEach(function (t) {
+        if (pct >= t && !fired[t]) { fired[t] = true; track('scroll_depth', { depth: t, page: page }); }
+      });
+      if (fired[100]) window.removeEventListener('scroll', onScroll);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- External link & mailto tracking ----------
+     Fires `external_link_clicked` on outbound links (different host) and
+     mailto:. Skips `.appstore` (already covered by `appstore_cta_clicked`)
+     and internal anchors. Used as a generic outbound funnel + email CTR. */
+  function initExternalLinkTracking() {
+    var page = (document.body && document.body.getAttribute('data-page')) || '';
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest && e.target.closest('a[href]');
+      if (!a || a.classList.contains('appstore')) return;
+      var href = a.getAttribute('href') || '';
+      var host = '';
+      if (href.indexOf('mailto:') === 0) {
+        host = 'mailto';
+      } else if (/^https?:\/\//i.test(href)) {
+        try { host = new URL(href, location.href).hostname; } catch (_) { return; }
+        if (!host || host === location.hostname) return;
+      } else {
+        return;
+      }
+      track('external_link_clicked', { host: host, href: href, page: page });
+    }, true);
+  }
+
   /* ---------- Live App Store rating badge (home only) ----------
      Fetches the rating same-origin from the Cloudflare Worker proxy
      (/appstore-rating → itunes lookup; Apple sends no CORS, so the proxy does
@@ -342,6 +420,7 @@
         // Drop the placeholder star rows so we don't show two ratings.
         document.querySelectorAll('.avail .stars').forEach(function (el) { el.style.display = 'none'; });
         badge.hidden = false;
+        track('rating_badge_shown', { rating: d.rating, count: d.count });
       })
       .catch(function () {});   // network/parse error → stay hidden
   }
@@ -355,5 +434,9 @@
     initSystemTheme();
     initReveal();
     initRatingBadge();
+    initSectionTracking();
+    initAppstoreImpressions();
+    initScrollDepth();
+    initExternalLinkTracking();
   });
 })();
