@@ -181,11 +181,19 @@ To add/change a translatable string:
   overwrite the `hero-*` files with the final hero art.)
 
 ## Analytics & consent
-- PostHog is **opt-in**: each page inits with `opt_out_capturing_by_default: true`
-  and nothing is captured until the visitor accepts in the consent banner
-  (`assets/js/consent.js`, choice stored in `localStorage.summit_consent`). The
-  footer "Cookie settings" link reopens it (`SummitConsent.reopen()`).
-- The PostHog snippet is inlined in each page's `<head>` (and `thanks.html`).
+- PostHog is **lazy-initialised** for real opt-in: each page's `<head>` only has
+  the PostHog *stub* (queues calls into `window.posthog`); the actual
+  `posthog.init(...)` lives in `assets/js/consent.js` and runs only when
+  `localStorage.summit_consent === 'granted'`. If the visitor rejects or never
+  decides, the lib script is never fetched and nothing hits `/ingest`. The
+  legacy `opt_out_capturing_by_default: true` flag did **not** block
+  autocapture / `$pageview` on the modern `defaults: '2026-01-30'` preset — the
+  earlier setup was leaking ~95% of events without consent.
+- The PostHog **config lives in one place** — `POSTHOG_CONFIG` inside
+  `consent.js`. Update it there, not per-page.
+- The footer "Cookie settings" link reopens the banner
+  (`SummitConsent.reopen()`); choice is stored in
+  `localStorage.summit_consent` as `granted` / `denied`.
 - `assets/js/analytics.js` flags internal/test browsers (`?internal=1`) and used
   to forward UTM params to a Tally waitlist link. The waitlist is gone, so that
   forwarding is now a harmless no-op; it can be trimmed.
