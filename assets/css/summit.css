@@ -533,12 +533,14 @@ a { color: inherit; }
 .integ-mini-name { font-family: var(--font-display); font-weight: 800; font-size: 0.98rem; color: var(--ink); letter-spacing: -0.01em; }
 .integ-mini-role { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-top: 2px; }
 
-/* Featured integration (headline launch feature, e.g. Hammerhead Karoo direct) */
-.integ-featured { display: flex; align-items: flex-start; gap: 18px; background: var(--card); border: 1px solid var(--accent-line); border-radius: var(--r-card); padding: 24px 26px; margin-bottom: 16px; box-shadow: var(--e1); }
-.integ-featured-body { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.integ-featured-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+/* Featured integration (headline launch feature, e.g. Hammerhead Karoo direct).
+   Mirrors .integ-card's column layout/padding so its content left-aligns with
+   the cards in the grid below — only full-width + accent border set it apart. */
+.integ-featured { display: flex; flex-direction: column; gap: 14px; background: var(--card); border: 1px solid var(--accent-line); border-radius: var(--r-card); padding: 26px 24px; margin-bottom: 16px; box-shadow: var(--e1); }
+.integ-featured-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.integ-featured-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .integ-new { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: var(--r-data); padding: 3px 8px; }
-.integ-featured .integ-desc { max-width: 62ch; }
+.integ-featured .integ-desc { max-width: 70ch; }
 
 /* =====================================================================
    FINAL CTA
