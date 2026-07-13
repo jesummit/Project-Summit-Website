@@ -1,21 +1,29 @@
 # Trazabilidad y atribución de tráfico (PostHog)
 
-Guía operativa para atribuir correctamente el tráfico web y las conversiones de
-la waitlist. Complementa la instrumentación de `analytics.js`.
+Guía operativa para atribuir correctamente el tráfico web a los clics al App
+Store. Complementa la instrumentación de `analytics.js` / `app.js` y los
+dashboards de `tools/posthog-dashboards.js`.
 
 ## 1. Cómo funciona la atribución de extremo a extremo
 
 1. **Etiquetas UTM en los enlaces externos** (Instagram bio, posts, Facebook,
    newsletter…). Estos enlaces viven *fuera* del repo — hay que pegarlos
    manualmente en cada plataforma usando las URLs de la tabla de abajo.
-2. PostHog captura automáticamente `utm_source/medium/campaign/content/term`,
+2. PostHog solo se inicializa cuando el visitante acepta el banner de cookies
+   (`consent.js` — lazy-init, opt-in real). A partir de ahí captura
+   automáticamente `utm_source/medium/campaign/content/term`,
    `$referring_domain` y el referrer inicial en el primer pageview.
-3. `analytics.js` **reenvía** esos UTM (y `gclid`/`fbclid`) a los enlaces del
-   formulario de Tally, de modo que la atribución sobrevive al salto
-   website → Tally y se conserva en la conversión.
+3. El resto del recorrido se sigue por evento propio: `appstore_cta_viewed`
+   (impresión de un botón de App Store) y `appstore_cta_clicked` (clic, con
+   `source`: `nav`, `hero`, `cta`, `about`, `faq`, `roadmap`, `thanks`…) son
+   los eventos terminales medibles. No hay backend propio ni redirección
+   externa que confirme la conversión real — la instalación ocurre en la App
+   Store, fuera de nuestro alcance.
 
-> ⚠️ Sin UTM, todo el tráfico social entra como `l.instagram.com` /
-> `$direct` y **no se puede saber qué publicación concreta convierte**.
+> ⚠️ Sin UTM, el tráfico social entra como `l.instagram.com` / `$direct` y
+> **no se puede saber qué publicación concreta convierte**. Y sin opt-in al
+> banner de cookies no se captura nada en absoluto (PostHog nunca se carga si
+> el visitante rechaza o no decide).
 
 ## 2. URLs listas para usar
 
@@ -51,33 +59,32 @@ Para que tus propias visitas (y las de tu equipo) no contaminen los datos:
 - En PostHog, el filtro **"internal & test accounts"** ya excluye `is_internal = true`
   (configurado por defecto en el proyecto), además de la cohorte de test existente.
 
-## 4. Bucle de conversión real (implementado ✅)
+## 4. Bucle de conversión real (App Store)
 
-El embudo completo ya está cerrado:
+El embudo medible hoy es:
 
 ```
-$pageview  →  waitlist_cta_clicked  →  waitlist_completed
- (visita)        (clic en el CTA)        (registro real)
+$pageview  →  appstore_cta_viewed  →  appstore_cta_clicked
+ (visita)        (ve un botón)          (clic real)
 ```
 
-- **Clic en CTA** → evento `waitlist_cta_clicked` (con `source`: `hero_section`,
-  `nav`, `footer`, etc.). *Antes se llamaba `waitlist_signup`.*
-- **Registro completado** → Tally redirige tras el envío a
-  `https://projectsummit.app/thanks.html`, que dispara
-  `posthog.capture('waitlist_completed')` (una vez por sesión). Solo quien
-  finaliza el formulario aterriza ahí.
+- El objetivo terminal medible es el **clic al badge de App Store**
+  (`appstore_cta_clicked`) — no hay forma de rastrear nada después de que el
+  visitante salta a `apps.apple.com`.
+- Cada superficie manda su propio `source` (`nav`, `nav_mobile`, `hero`, `cta`,
+  `about`, `faq`, `roadmap`, `thanks`), lo que permite comparar CTR por
+  ubicación del botón.
+- El dashboard **🎯 App Store Conversion (v2)** (generado por
+  `POSTHOG_API_KEY=… node tools/posthog-dashboards.js --apply`) es la fuente
+  de la verdad: tendencia de clics, CTR por surface (impresiones vs. clics),
+  funnel `pageview → impresión → clic`, y desglose por idioma, dispositivo,
+  página y referrer.
 
-El dashboard **🎯 Waitlist Conversion** ya refleja este embudo de 3 pasos, más
-"Waitlist completados (tendencia)" y "…por source de campaña".
-
-> Nota: la atribución se conserva porque el visitante vuelve al mismo dominio en
-> el mismo navegador (cookie de PostHog intacta). Para que el desglose por
-> campaña en `waitlist_completed` tenga datos, conviene que Tally **conserve los
-> parámetros de query** en la redirección (Settings → After submission).
-
-### Transición a producción (post-Tally)
-
-Cuando se sustituya el formulario por enlaces a la App Store / Play Store, el
-patrón se recicla: el evento terminal medible pasa a ser el clic de descarga
-`app_store_clicked { store, source }` (no se puede rastrear después de salir
-hacia Apple/Google), y `thanks.html` queda obsoleta.
+> Nota histórica: antes del lanzamiento en la App Store, este documento
+> describía un funnel de waitlist con Tally (`waitlist_cta_clicked` →
+> `waitlist_completed`, con `thanks.html` como confirmación del registro). Ese
+> formulario ya no existe — el sitio enlaza directo a la ficha de la App
+> Store. `thanks.html` sigue en el repo pero **no está enlazada desde ninguna
+> página**; es un remanente sin tráfico, no parte del flujo de conversión
+> actual. El dashboard de la era waitlist fue archivado (ver la cabecera de
+> `tools/posthog-dashboards.js`).

@@ -64,7 +64,7 @@ package.json               `npm run build` -> node build.js
 assets/css/summit.css      design system (light + dark, @font-face, all components)
 assets/js/app.js           controller: theme, language, carousel, nav, analytics hooks
 assets/js/i18n.js          translations (English in HTML; ES + CA overrides here)
-assets/js/analytics.js     PostHog helpers (internal-user flag; legacy UTM code now inert)
+assets/js/analytics.js     PostHog helpers (internal-user flag)
 assets/js/consent.js       cookie-consent banner (PostHog opt-in gating)
 assets/fonts/              self-hosted Instrument Serif + JetBrains Mono (woff2)
 assets/img/                logo, og-image, founder photo, favicons, flags/
@@ -194,9 +194,9 @@ To add/change a translatable string:
 - The footer "Cookie settings" link reopens the banner
   (`SummitConsent.reopen()`); choice is stored in
   `localStorage.summit_consent` as `granted` / `denied`.
-- `assets/js/analytics.js` flags internal/test browsers (`?internal=1`) and used
-  to forward UTM params to a Tally waitlist link. The waitlist is gone, so that
-  forwarding is now a harmless no-op; it can be trimmed.
+- `assets/js/analytics.js` flags internal/test browsers (`?internal=1`). Its old
+  responsibility of forwarding UTM params to a Tally waitlist link was removed
+  once the waitlist form was replaced by direct App Store links.
 - `app.js` fires guarded events (`window.posthog` checked): theme toggle,
   language change, carousel, App Store badge clicks, mobile menu.
 - PostHog traffic is proxied through `projectsummit.app/ingest` via
