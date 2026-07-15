@@ -68,7 +68,7 @@
     el.setAttribute('aria-label', 'Cookies');
     el.innerHTML =
       '<p class="consent-text">' + t.text +
-      ' <a href="privacy-policy.html">' + t.more + '</a></p>' +
+      ' <a href="/privacy-policy.html">' + t.more + '</a></p>' +
       '<div class="consent-actions">' +
         '<button type="button" class="consent-btn consent-reject"></button>' +
         '<button type="button" class="consent-btn consent-accept"></button>' +

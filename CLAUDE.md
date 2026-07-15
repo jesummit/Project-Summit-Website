@@ -142,6 +142,25 @@ To add/change a translatable string:
    Shared nav/footer strings come from the partials, so their keys appear once in
    the partials and are translated like any other key.
 
+## Blog / Journal (`/blog/`)
+A first-party, **English-first** content section for SEO + email capture. Full
+details in **`docs/blog.md`**. Key points:
+- Pages live in `blog/` (one level deep). The shared header/footer are injected
+  by `build.js` and **re-rooted with `../`** (see `BLOG_PAGES` + `reroot()` in
+  `build.js`) — so edit `partials/` and `npm run build` as usual. Blog pages
+  load `assets/css/blog.css` after `summit.css`.
+- Two paths were made absolute so sub-dir pages don't break: `BADGE_BASE` in
+  `app.js` and the cookie-banner privacy link in `consent.js`.
+- Email capture (`assets/js/blog-signup.js`) posts to the `blog_subscribe_v1`
+  Edge Function, which upserts into the **existing** `contacts` table + sends the
+  magnet via Resend. The function is committed under `supabase/functions/` as
+  **reviewable source — deploy it manually** (`--no-verify-jwt`) and add the
+  Supabase host to the Cloudflare CSP `connect-src` before enforcing.
+- Framing stays anti-chatbot: always "the engine" / "the algorithm", never "AI"
+  or "coach".
+- Blog pages are **not** in `tools/check-links.js` (its list is the root pages);
+  verify blog internal links by hand.
+
 ## Theming (light/dark)
 - `app.js` sets `data-theme` on `<html>`. It **follows the device** color scheme
   (`prefers-color-scheme`) and live-updates on system change, until the user

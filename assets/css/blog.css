@@ -1,0 +1,188 @@
+/* ============================================================================
+   Project Summit — Blog / Journal styles
+   Loaded after summit.css on /blog/ pages. Uses the shared design tokens
+   (colours, fonts, radii) so light + dark and the brand voice stay consistent.
+   Article measure is intentionally narrower than the product pages for reading.
+   ============================================================================ */
+
+.blog-wrap { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+.article-measure { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+/* ── Article header ───────────────────────────────────────────────────────── */
+.article-head { padding: 84px 0 40px; border-bottom: 1px solid var(--ink-hair); }
+.article-kicker {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 20px;
+}
+.article-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.6vw, 3.1rem); font-weight: 900;
+  line-height: 1.05; letter-spacing: -0.035em; color: var(--ink);
+  text-wrap: balance; margin-bottom: 18px;
+}
+.article-title em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
+.article-dek { font-size: 19px; color: var(--ink-soft); line-height: 1.6; max-width: 60ch; }
+.article-meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+  margin-top: 28px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+}
+.article-meta .dot-sep { color: var(--ink-hair); }
+.article-meta b { color: var(--ink-soft); font-weight: 700; }
+
+/* ── Article body typography ──────────────────────────────────────────────── */
+.article-body { padding: 44px 0 8px; font-size: 17.5px; line-height: 1.8; color: var(--ink-soft); }
+.article-body > p { margin-bottom: 22px; }
+.article-body > p:first-child { margin-top: 0; }
+.article-body strong { color: var(--ink); font-weight: 700; }
+.article-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(214,106,45,0.35); }
+.article-body a:hover { border-bottom-color: var(--accent); }
+
+.article-body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.15; color: var(--ink);
+  margin: 52px 0 18px; text-wrap: balance;
+}
+.article-body h2 em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
+.article-body h3 {
+  font-family: var(--font-display); font-size: 1.2rem; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink); margin: 34px 0 12px;
+}
+.article-body ul, .article-body ol { margin: 0 0 22px; padding-left: 22px; }
+.article-body li { margin-bottom: 10px; }
+.article-body blockquote {
+  margin: 32px 0; padding: 4px 0 4px 24px;
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.35rem; line-height: 1.5; color: var(--ink);
+}
+.article-lead { font-size: 20px; color: var(--ink); line-height: 1.65; }
+
+/* Section eyebrow inside prose */
+.prose-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
+  margin: 52px 0 -4px;
+}
+
+/* ── Data table (real numbers) ────────────────────────────────────────────── */
+.data-table-wrap { margin: 30px 0; overflow-x: auto; border: 1px solid var(--ink-hair); border-radius: var(--r-data); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+.data-table th, .data-table td { padding: 12px 14px; text-align: right; border-bottom: 1px solid var(--ink-hair); white-space: nowrap; }
+.data-table th:first-child, .data-table td:first-child { text-align: left; }
+.data-table thead th {
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+  background: var(--bg-soft);
+}
+.data-table tbody td { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.data-table tbody td:first-child { color: var(--ink); font-weight: 600; }
+.data-table tbody tr:hover td { background: var(--card); }
+.data-table tfoot td { font-weight: 800; color: var(--ink); border-top: 2px solid var(--ink-hair); border-bottom: none; font-variant-numeric: tabular-nums; }
+.data-table .row-key td { background: rgba(214,106,45,0.06); }
+.table-note { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); line-height: 1.6; margin: -14px 0 30px; }
+
+/* ── Callout / engine note ────────────────────────────────────────────────── */
+.callout {
+  margin: 32px 0; padding: 24px 26px;
+  background: var(--card); border: 1px solid var(--ink-hair);
+  border-radius: var(--r-card); box-shadow: var(--e1);
+}
+.callout-label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 10px;
+}
+.callout p { font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
+.callout p + p { margin-top: 12px; }
+
+/* Inline stat strip */
+.stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--ink-hair); border: 1px solid var(--ink-hair); border-radius: var(--r-data); overflow: hidden; margin: 30px 0; }
+.stat-cell { background: var(--bg); padding: 20px 18px; }
+.stat-num { font-family: var(--font-display); font-size: 1.7rem; font-weight: 900; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+.stat-lbl { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
+
+/* ── Email capture ────────────────────────────────────────────────────────── */
+.email-capture {
+  margin: 40px 0; padding: 30px 30px 26px;
+  background: var(--bg-soft); border: 1px solid var(--ink-hair);
+  border-radius: var(--r-card);
+}
+.email-capture--inline { margin: 34px 0; }
+.email-capture-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+.email-capture-sub { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 18px; max-width: 52ch; }
+.email-capture-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.email-capture-input {
+  flex: 1 1 220px; min-width: 0;
+  padding: 13px 15px; font-size: 15px; font-family: inherit; color: var(--ink);
+  background: var(--card); border: 1px solid var(--ink-hair); border-radius: var(--r-button);
+  transition: border-color 0.15s;
+}
+.email-capture-input:focus { outline: none; border-color: var(--accent); }
+.email-capture-btn {
+  padding: 13px 22px; font-size: 15px; font-weight: 700; font-family: inherit;
+  color: #fff; background: var(--accent); border: none; border-radius: var(--r-button);
+  cursor: pointer; white-space: nowrap; transition: transform 0.15s, opacity 0.15s;
+}
+.email-capture-btn:hover { transform: translateY(-1px); }
+.email-capture-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+.email-capture-consent { display: flex; gap: 9px; align-items: flex-start; margin-top: 14px; font-size: 12.5px; color: var(--ink-faint); line-height: 1.5; }
+.email-capture-consent input { margin-top: 2px; accent-color: var(--accent); flex: 0 0 auto; }
+.email-capture-consent a { color: var(--ink-soft); }
+.email-capture-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.email-capture-status { font-size: 13.5px; margin-top: 12px; min-height: 1em; }
+.email-capture-status.is-ok { color: #2f9e5f; }
+.email-capture-status.is-err { color: var(--accent); }
+
+/* ── Article CTA (run your own numbers) ───────────────────────────────────── */
+.article-cta { margin: 48px 0 8px; padding: 40px 34px; background: var(--card); border: 1px solid var(--ink-hair); border-radius: var(--r-hero); box-shadow: var(--e2); text-align: center; }
+.article-cta h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 12px; }
+.article-cta h2 em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
+.article-cta p { font-size: 16px; color: var(--ink-soft); line-height: 1.7; max-width: 48ch; margin: 0 auto 24px; }
+.article-cta .appstore { justify-content: center; }
+
+/* ── Article footer nav ───────────────────────────────────────────────────── */
+.article-foot { margin-top: 8px; padding: 30px 0 10px; border-top: 1px solid var(--ink-hair); }
+.article-foot a { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; }
+.article-foot a:hover { color: var(--accent); }
+
+/* ── Blog index ───────────────────────────────────────────────────────────── */
+.blog-hero { padding: 84px 0 44px; border-bottom: 1px solid var(--ink-hair); }
+.blog-hero .article-kicker { color: var(--accent); }
+.blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 4.4vw, 2.8rem); font-weight: 900; line-height: 1.06; letter-spacing: -0.035em; color: var(--ink); max-width: 22ch; margin-bottom: 16px; }
+.blog-hero-title em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
+.blog-hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.7; max-width: 56ch; }
+
+.blog-list { padding: 48px 0; display: grid; gap: 26px; }
+.featured-post {
+  display: block; text-decoration: none; color: inherit;
+  border: 1px solid var(--ink-hair); border-radius: var(--r-card);
+  background: var(--card); box-shadow: var(--e1);
+  padding: 34px 34px 30px; transition: transform 0.18s, box-shadow 0.18s;
+}
+.featured-post:hover { transform: translateY(-3px); box-shadow: var(--e2); }
+.post-tag { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.post-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); margin: 12px 0 10px; line-height: 1.15; }
+.post-excerpt { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-width: 60ch; }
+.post-readmore { display: inline-block; margin-top: 16px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+.blog-pillars { padding: 8px 0 56px; }
+.blog-pillars h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px; }
+.blog-pillars p.lead { font-size: 15px; color: var(--ink-soft); margin-bottom: 24px; }
+.pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink-hair); border: 1px solid var(--ink-hair); border-radius: var(--r-data); overflow: hidden; }
+.pillar-cell { background: var(--bg); padding: 26px 24px; }
+.pillar-cell h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+.pillar-cell p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+.pillar-cell .soon { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); display: inline-block; margin-top: 12px; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .blog-wrap { padding: 0 24px; }
+  .article-head { padding-top: 56px; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .pillar-grid { grid-template-columns: 1fr; }
+  .article-cta { padding: 30px 22px; }
+  .email-capture { padding: 24px 22px; }
+}
