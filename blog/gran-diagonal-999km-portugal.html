@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- PostHog Analytics (queueing stub; real init is gated by consent.js) -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+
+  <title>999 km Across Portugal in 6 Days — the Data Behind the Plan | Summit</title>
+  <meta name="description" content="A worked case study: how I prepared to ride 999 km across Portugal in 6 days using training load — the 5-month CTL build, TSS per stage, and the fueling maths. Real data, not vibes." />
+  <link rel="canonical" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html" />
+  <meta property="og:title" content="999 km Across Portugal in 6 Days — the Data Behind the Plan" />
+  <meta property="og:description" content="How I prepared to cross Portugal by bike using training load: the 5-month CTL build, TSS per stage, and the fueling maths. A worked example for self-coached riders." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="999 km Across Portugal in 6 Days — the Data Behind the Plan" />
+  <meta name="twitter:description" content="How I prepared to cross Portugal by bike using training load. A worked example for self-coached riders." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "999 km Across Portugal in 6 Days — the Data Behind the Plan",
+    "description": "A worked case study on preparing for a 6-day, 999 km crossing of Portugal using training load: the CTL build, TSS per stage, and fueling maths.",
+    "image": "https://projectsummit.app/assets/img/og-image.png",
+    "datePublished": "2026-07-15",
+    "dateModified": "2026-07-15",
+    "author": { "@type": "Person", "name": "Jordi Espanyol" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Project Summit",
+      "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" }
+    },
+    "mainEntityOfPage": "https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/css/summit.css" />
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+</head>
+<body data-page="blog-article">
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+  <nav class="nav">
+    <a href="../index.html" class="nav-brand">
+      <span class="nav-logo"><img src="../assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="../faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="../blog/index.html" class="active" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="../about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="../ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="../terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="../privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="https://apps.apple.com/app/id6754172654" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../index.html" data-i18n="nav.home">Home</a>
+    <a href="../roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="../faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="../blog/index.html" class="active" data-i18n="nav.blog">Blog</a>
+    <a href="../about.html" data-i18n="nav.about">About</a>
+    <a href="../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="../terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <a href="https://apps.apple.com/app/id6754172654" data-source="nav_mobile" class="appstore appstore--white"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <article>
+    <!-- ── Article header ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <header class="article-head">
+          <p class="article-kicker">Case study · Training with data</p>
+          <h1 class="article-title">999 km across Portugal in 6 days — the <em>data</em> behind the plan</h1>
+          <p class="article-dek">I didn't train to "survive" a six-day crossing of Portugal. I planned it the way you plan a season — with numbers. Here's exactly how, start to finish.</p>
+          <div class="article-meta">
+            <span>By <b>Jordi Espanyol</b></span>
+            <span class="dot-sep">·</span>
+            <span>15 Jul 2026</span>
+            <span class="dot-sep">·</span>
+            <span>11 min read</span>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <!-- ── Body ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <div class="article-body">
+
+          <p class="article-lead">On the sixth morning I rolled down to the Guadiana, the river that marks the Portugal–Spain border in the deep south, and stopped the clock. Six days earlier I'd started in the far north, in the Gerês mountains near the Spanish border in Minho. In between: <strong>999 km, 15,841 m of climbing, and roughly 1,280 TSS</strong> stacked into a single week.</p>
+
+          <p>People asked how I "survived" it. Wrong question. I didn't survive it — I <em>arranged</em> it. Every one of those six days was a number I'd already seen months earlier, on a chart, when I reverse-engineered what a rider with my fitness could absorb day after day without falling apart on day four. This is the write-up of that process: the five-month build, the load per stage, and the fueling maths. If you coach yourself and you already know your TSS from your TSB, this is a worked example you can steal.</p>
+
+          <div class="stat-strip">
+            <div class="stat-cell"><div class="stat-num">999<span style="font-size:1rem"> km</span></div><div class="stat-lbl">Distance · 6 days</div></div>
+            <div class="stat-cell"><div class="stat-num">15,841<span style="font-size:1rem"> m</span></div><div class="stat-lbl">Total climbing</div></div>
+            <div class="stat-cell"><div class="stat-num">43:32</div><div class="stat-lbl">Moving time</div></div>
+            <div class="stat-cell"><div class="stat-num">~1,280</div><div class="stat-lbl">TSS in a week</div></div>
+          </div>
+
+          <h2>Who this is for (and what you'll actually get)</h2>
+          <p>If "CTL," "TSB," and "a negative ramp going into a taper" mean something to you, keep reading. This isn't an adventure diary. You'll get the real training-load arc that built the durability, the per-stage load table with power and heart rate, and the decision logic behind the fueling. Numbers are from my own files — FTP 309 W, 81 kg, so about 3.8 W/kg — not rounded for a nicer story.</p>
+
+          <div class="email-capture email-capture--inline" data-magnet="season-template" data-article="gran-diagonal">
+            <p class="email-capture-title">Want the season template I used?</p>
+            <p class="email-capture-sub">I'll send you the CTL-ramp + base/build/peak planning sheet, plus the Gran Diagonal fueling table. One email, then the occasional data-driven note. No spam.</p>
+            <div class="email-capture-row">
+              <input class="email-capture-input" type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email address" />
+              <button class="email-capture-btn" type="submit">Send it to me</button>
+            </div>
+            <label class="email-capture-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Email me the template and occasional training notes. I can unsubscribe anytime. <a href="/privacy-policy.html">Privacy</a>.</span>
+            </label>
+            <input class="email-capture-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <h2>The target: reverse-engineering six days from the chart</h2>
+          <p>A one-day epic is a willpower problem. Six days back-to-back is a <strong>durability</strong> problem, and durability is built, not summoned. So the planning started at the end and worked backwards: six days averaging north of 200 TSS, on rolling-to-mountainous terrain, at an intensity low enough to repeat tomorrow.</p>
+          <p>That last constraint is the whole game. Ride day one too hard and you don't pay for it on day one — you pay on day four, when the accumulated fatigue (ATL) has buried your form and a 3,000 m mountain stage is still in front of you. The plan was therefore two numbers: a chronic load (CTL) high enough that ~210 TSS/day sat only moderately above my daily average, and a stage intensity capped well below threshold so the fatigue curve stayed manageable across the week.</p>
+          <p>To make ~210 TSS/day repeatable rather than ruinous, I wanted CTL up around the high‑70s to low‑80s going in, and I wanted to arrive slightly fresh — not deep in a hole. That set the shape of the whole spring.</p>
+
+          <h2>The five-month build (what the chart actually did)</h2>
+          <p>The fitness didn't come from "putting in miles." It came from a deliberate progression I could see week to week, with the midweek sessions <strong>prescribed by the engine</strong> and the weekends spent turning granfondos into training load.</p>
+          <ul>
+            <li><strong>Winter base (Jan–Feb).</strong> Aerobic volume plus structured midweek work — endurance, tempo, sweet spot and the first VO2 touches. A block on the Costa Blanca stacked three back-to-back days early, a small rehearsal of consecutive-day load.</li>
+            <li><strong>Build (Mar–Apr).</strong> Intensity got specific. The engine's threshold and VO2 sessions two or three times a week, with long events on the weekends — a 156 km UCI granfondo in March, a 184 km day in April — pushing CTL up without wrecking the ramp.</li>
+            <li><strong>Peak load (May).</strong> The heaviest three weeks of the year: a 152 km event, then a 169 km / 3,628 m Cerdanya day, then a 123 km / 2,913 m mountain "queen stage." This is where CTL topped out and my legs were, correctly, heavy.</li>
+            <li><strong>Sharpen (early Jun).</strong> Volume came off, a little intensity stayed, and I let the fatigue drain so I'd start the crossing fresh but still fit. The day before the start was a short <em>priming</em> opener — three efforts and a sprint, 55 TSS — to wake the legs up, not to train.</li>
+          </ul>
+
+          <div class="callout">
+            <p class="callout-label">On the numbers</p>
+            <p>Every one of those midweek sessions came out of the engine with a target and a tolerance — for example a VO2 block written as <strong>TSS 47 / IF 0.83</strong>, and afterwards logged at <strong>+3% vs plan</strong>. That's the point of a deterministic model: the plan is a number before you ride, and a variance you can read after. Nothing here was a suggestion from a chatbot; it was sports-science maths I could check against reality every single day.</p>
+          </div>
+
+          <h2>Stage by stage: what the numbers demanded</h2>
+          <p>Here's the crossing itself — real files, nothing smoothed. Note how the average power stays deliberately low (IF roughly 0.50–0.56) even on the biggest days: that's not weakness, it's the intensity cap doing its job so day five doesn't cost me day six.</p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Stage</th><th>Dist</th><th>Climb</th><th>Moving</th><th>Avg&nbsp;P</th><th>Avg&nbsp;HR</th><th>kcal</th><th>TSS*</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Day 0 · Priming</td><td>39 km</td><td>460 m</td><td>1:46</td><td>—</td><td>—</td><td>840</td><td>55</td></tr>
+                <tr><td>Day 1 · Gerês → Minho</td><td>153 km</td><td>3,247 m</td><td>7:31</td><td>149 W</td><td>131</td><td>4,502</td><td>~232</td></tr>
+                <tr><td>Day 2</td><td>131 km</td><td>2,279 m</td><td>5:56</td><td>145 W</td><td>123</td><td>3,452</td><td>~172</td></tr>
+                <tr><td>Day 3</td><td>142 km</td><td>2,439 m</td><td>6:15</td><td>151 W</td><td>125</td><td>3,788</td><td>~198</td></tr>
+                <tr class="row-key"><td>Day 4 · Queen · Torre</td><td>183 km</td><td>3,191 m</td><td>8:15</td><td>144 W</td><td>123</td><td>4,774</td><td>~237</td></tr>
+                <tr><td>Day 5 · Alentejo (longest)</td><td>222 km</td><td>2,767 m</td><td>8:57</td><td>138 W</td><td>120</td><td>4,945</td><td>~235</td></tr>
+                <tr><td>Day 6 · to the Algarve</td><td>167 km</td><td>1,917 m</td><td>6:38</td><td>149 W</td><td>122</td><td>3,972</td><td>~205</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td>Total (days 1–6)</td><td>999 km</td><td>15,841 m</td><td>43:32</td><td>—</td><td>—</td><td>25,433</td><td>~1,279</td></tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="table-note">*Day 0 TSS is the exact figure from the prescribed workout. Stage TSS is estimated from average power with a variability correction (IF relative to FTP 309 W); the definitive per-stage values come from the engine's model. Everything else — distance, climbing, moving time, power, heart rate, kcal — is straight from the activity files.</p>
+
+          <p>The shape is the story. <strong>Day 1</strong> was the hardest by climbing — 3,247 m out of the Gerês, the single biggest relative effort of the week — so it demanded the most discipline to ride <em>easy</em> when the legs were fresh and wanted to go. <strong>Day 4</strong> was the queen stage: the climb to the Torre, the highest road in mainland Portugal, 19 km and nearly 1,400 m of ascent through the Serra da Estrela. <strong>Day 5</strong> was the longest at 222 km across the Alentejo — and notice the average power actually <em>drops</em> there. That's not fade; that's management. By then the job was to spend as little as possible and still cover the distance.</p>
+
+          <h2>Fueling by the numbers</h2>
+          <p>The files logged about <strong>25,400 kcal burned on the bike</strong> over six days — roughly 4,200 a day, before you count everything the body spends just being alive and recovering. Nobody eats that back. So multi-day fueling isn't about "replacing" energy; it's about <strong>minimising the deficit</strong> so tomorrow's engine still starts.</p>
+          <p>The logic I rode to:</p>
+          <ul>
+            <li><strong>On the bike:</strong> carbohydrate scaled to stage length, not appetite. The long mountain days sat at the top of what I can absorb per hour; the shorter days a notch below. Carbs are the lever because at 6–9 hours a day, fat can't cover the intensity spikes on the climbs.</li>
+            <li><strong>The moment you stop:</strong> the recovery window is real when you're doing it again in 16 hours. Carbohydrate + protein immediately, then a proper meal, then keep grazing. Every gram you get in before sleep is fatigue you don't carry into the next stage.</li>
+            <li><strong>Read the drift, not the feelings:</strong> when heart rate at a given power starts creeping up across days — cardiac drift stacking on accumulated fatigue — it's usually under-fueling before it's lost fitness. The fix is food, not heroics.</li>
+          </ul>
+
+          <h2>What the data taught me</h2>
+          <p>Three honest takeaways. First, the intensity cap worked: HR held remarkably steady day to day (120–131 average across the six), which is exactly what you want to see — no runaway drift means the load was survivable and the fueling roughly right. Second, I could have started with a touch more freshness; a slightly deeper taper would have cost nothing and bought a better day one. Third, and most important: none of this was luck. The week matched the plan because the plan was made of numbers I'd tested for five months, not a feeling I had at the start line.</p>
+
+          <div class="callout">
+            <p class="callout-label">The uncomfortable part</p>
+            <p>This is doable by any self-coached rider who's willing to treat their season as a system: a target, a ramp, a load per week, a taper. The hard bit isn't the riding — it's holding the discipline to ride easy when you're fresh, to recover when the chart says recover, and to trust a number over a mood. The chart doesn't care how good your legs feel today.</p>
+          </div>
+
+          <!-- ── CTA: run your own numbers ── -->
+          <div class="article-cta">
+            <h2>Run your <em>own</em> numbers</h2>
+            <p>The CTL curve, the weekly load target, the planned-vs-actual on every session — the engine computes all of it from your data. Not a chatbot that talks training at you: sports-science maths that projects your season, and tells you what tomorrow should be and why.</p>
+            <a href="https://apps.apple.com/app/id6754172654" data-source="blog_gran_diagonal" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" /></a>
+          </div>
+
+          <div class="email-capture" data-magnet="season-template" data-article="gran-diagonal">
+            <p class="email-capture-title">Get the season template + fueling sheet</p>
+            <p class="email-capture-sub">The exact CTL ramp and base/build/peak structure behind this crossing, plus the fueling table — free. Then a few data-driven training notes over the season. Unsubscribe anytime.</p>
+            <div class="email-capture-row">
+              <input class="email-capture-input" type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email address" />
+              <button class="email-capture-btn" type="submit">Send it to me</button>
+            </div>
+            <label class="email-capture-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Email me the template and occasional training notes. I can unsubscribe anytime. <a href="/privacy-policy.html">Privacy</a>.</span>
+            </label>
+            <input class="email-capture-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="article-foot">
+            <a href="index.html">← All articles</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="../assets/img/summit-logo.png" alt="Summit" /></span>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="foot.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.nav">Navigate</h4>
+      <ul>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="../terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <ul>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
+  </div>
+</footer>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/consent.js"></script>
+<script src="../assets/js/blog-signup.js"></script>
+
+</body>
+</html>

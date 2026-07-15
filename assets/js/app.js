@@ -31,7 +31,7 @@
      Apple's lockup files keyed by language + colour. The badge <img> is swapped
      to match the current language and surface: white on dark surfaces (nav, dark
      CTA cards — marked .appstore--white) or in dark mode, black otherwise. */
-  var BADGE_BASE = 'assets/img/appstore-badges/Download_on_the_App_Store_Badge_';
+  var BADGE_BASE = '/assets/img/appstore-badges/Download_on_the_App_Store_Badge_';
   var BADGES = {
     en: { black: 'US-UK_RGB_blk_092917', white: 'US-UK_RGB_wht_092917' },
     es: { black: 'ES_RGB_blk_100217',    white: 'ES_RGB_wht_100217' },
