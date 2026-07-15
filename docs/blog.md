@@ -12,15 +12,18 @@ Product pages stay trilingual (EN/ES/CA) as before. A native ES version of a
 post can come later at a separate URL with reciprocal `hreflang` — do **not**
 machine-translate the same article onto a second URL (duplicate-content risk).
 
-## Files
+## Files (this repo = the static site + front-end only)
 ```
 blog/index.html                         hub / article index
 blog/gran-diagonal-999km-portugal.html  hero case study (flagship)
 assets/css/blog.css                     article + index styles (loaded after summit.css)
 assets/js/blog-signup.js                email-capture front-end (posts to the Edge Function)
-supabase/functions/blog_subscribe_v1/   email-capture backend (REVIEW & DEPLOY — see below)
-supabase/migrations/20260715090000_blog_source.sql   optional 'blog' enum value
+assets/downloads/summit-season-template.pdf     the lead magnet (+ .src.html source)
 ```
+The **backend** (the `blog_subscribe_v1` Edge Function and any migration) does
+**not** live here — it belongs in the app repo **`Project-Summit-MVP`**, where all
+Supabase functions/migrations ship through the normal **git→prod sync**. This
+static-site repo has no Supabase sync of its own.
 
 ## The shared shell in a sub-directory
 Blog pages are one level deep, but the header/footer partials use root-relative
@@ -38,6 +41,9 @@ Blog pages are added to `build.js` (`BLOG_PAGES`) but **not** to
 by hand or extend the checker if the section grows.
 
 ## Email capture flow (single opt-in)
+The `blog_subscribe_v1` Edge Function lives in **`Project-Summit-MVP`** and ships
+via its git→prod sync (see that repo). This repo only calls it.
+
 1. Visitor submits `<div class="email-capture">` (a div, not a form, so it can
    sit inside `<article>` prose). `blog-signup.js` validates email + consent,
    checks the honeypot, and POSTs JSON to `blog_subscribe_v1`.
@@ -58,16 +64,21 @@ this branch is what GitHub Pages serves. Source of record:
 headless Chrome (`--print-to-pdf`, command in the file's top comment).
 
 ## Go-live checklist
+- [ ] **Backend (in `Project-Summit-MVP`):** land `blog_subscribe_v1` there and let
+      the git→prod sync deploy it (verify_jwt off, custom honeypot/validation).
+      Confirm `RESEND_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` secrets.
+      The signup `contacts` insert uses the existing `contact_source` value
+      `gran_diagonal`; a generic `blog` value is only needed for other articles.
 - [ ] **Swap the estimated per-stage TSS** in the hero article for the engine's
       exact values (the table note flags which numbers are estimated).
-- [ ] **Deploy the function:** `supabase functions deploy blog_subscribe_v1 --no-verify-jwt`.
-      Confirm `RESEND_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` secrets.
 - [ ] **Cloudflare CSP:** add `https://nzxgsopmqpvhiikcbdfo.supabase.co` to
       `connect-src` **before** flipping CSP to enforcing (see
-      `docs/cloudflare-security.md`). Without it the form POST is blocked.
-- [ ] **Cloudflare rate-limit:** add a rule on
-      `/functions/v1/blog_subscribe_v1` mirroring the `/ingest` rule.
-- [ ] Optional: apply `20260715090000_blog_source.sql` when adding more articles.
+      `docs/cloudflare-security.md`). Not needed while CSP is Report-Only, and
+      unnecessary entirely if the POST is routed same-origin via the Worker.
+- [ ] **Rate-limiting:** Cloudflare can't rate-limit the Supabase host directly
+      (it isn't proxied through CF). To get CF rate-limiting, route the POST
+      through the Worker (a `/blog-subscribe` route → the function, like `/ingest`)
+      so it's same-origin; otherwise rely on the honeypot + Supabase.
 
 ## Summer → September
 Signups are tagged `blog:<article>`, so you can segment the September

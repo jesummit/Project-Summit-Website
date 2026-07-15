@@ -153,9 +153,9 @@ details in **`docs/blog.md`**. Key points:
   `app.js` and the cookie-banner privacy link in `consent.js`.
 - Email capture (`assets/js/blog-signup.js`) posts to the `blog_subscribe_v1`
   Edge Function, which upserts into the **existing** `contacts` table + sends the
-  magnet via Resend. The function is committed under `supabase/functions/` as
-  **reviewable source — deploy it manually** (`--no-verify-jwt`) and add the
-  Supabase host to the Cloudflare CSP `connect-src` before enforcing.
+  magnet via Resend. **That function lives in the app repo `Project-Summit-MVP`**
+  and ships via its git→prod sync — Supabase functions/migrations are NOT managed
+  from this static-site repo. This repo only holds the front-end that calls it.
 - Framing stays anti-chatbot: always "the engine" / "the algorithm", never "AI"
   or "coach".
 - Blog pages are **not** in `tools/check-links.js` (its list is the root pages);
