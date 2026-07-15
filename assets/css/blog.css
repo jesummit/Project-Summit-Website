@@ -5,8 +5,10 @@
    Article measure is intentionally narrower than the product pages for reading.
    ============================================================================ */
 
-.blog-wrap { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
-.article-measure { max-width: 720px; margin-left: auto; margin-right: auto; }
+/* Match the rest of the site: same container width (--content-max, 1120 under
+   data-vibe="product") and left-aligned content — not a centred narrow column. */
+.blog-wrap { max-width: var(--content-max); margin: 0 auto; padding: 0 48px; }
+.article-measure { max-width: 760px; margin: 0; }
 
 /* ── Article header ───────────────────────────────────────────────────────── */
 .article-head { padding: 84px 0 40px; border-bottom: 1px solid var(--ink-hair); }
