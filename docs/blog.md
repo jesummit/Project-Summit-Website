@@ -48,10 +48,16 @@ by hand or extend the checker if the section grows.
    harden to double opt-in, insert `email_subscribed=false` + a token and add a
    confirm endpoint (noted in the function header).
 
+## The lead magnet
+Committed at `assets/downloads/summit-season-template.pdf` (a 3-page branded
+PDF: the season-planning framework + fillable worksheet + the Gran Diagonal
+fueling sheet with real per-stage energy). It goes live at `MAGNET_URL`
+(`https://projectsummit.app/assets/downloads/summit-season-template.pdf`) once
+this branch is what GitHub Pages serves. Source of record:
+`assets/downloads/summit-season-template.src.html` — edit it and re-render with
+headless Chrome (`--print-to-pdf`, command in the file's top comment).
+
 ## Go-live checklist
-- [ ] **Create the lead magnet** and host it at `MAGNET_URL`
-      (`https://projectsummit.app/assets/downloads/summit-season-template.pdf`),
-      or change the constant in `blog_subscribe_v1`.
 - [ ] **Swap the estimated per-stage TSS** in the hero article for the engine's
       exact values (the table note flags which numbers are estimated).
 - [ ] **Deploy the function:** `supabase functions deploy blog_subscribe_v1 --no-verify-jwt`.
