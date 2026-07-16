@@ -6,7 +6,7 @@
   // Accent is locked to ember (CSS tokens: #D66A2D light / #E8834A dark).
   // theme defaults to the system color scheme until the user overrides it.
   // Language defaults to Spanish (primary audience) until the user picks one.
-  var DEFAULTS = { theme: 'light', themeExplicit: false, lang: 'es' };
+  var DEFAULTS = { theme: 'light', themeExplicit: false, lang: 'es', langExplicit: false };
 
   function systemTheme() {
     return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -203,7 +203,7 @@
       b.addEventListener('click', function (e) {
         e.stopPropagation();
         var lang = b.getAttribute('data-lang');
-        apply({ lang: lang });
+        apply({ lang: lang, langExplicit: true });
         track('language_changed', { language: lang });
         closeMenus(null);
         if (ham && mob) { ham.classList.remove('open'); mob.classList.remove('open'); }
