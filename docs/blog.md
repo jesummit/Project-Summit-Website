@@ -71,14 +71,17 @@ headless Chrome (`--print-to-pdf`, command in the file's top comment).
       `gran_diagonal`; a generic `blog` value is only needed for other articles.
 - [ ] **Swap the estimated per-stage TSS** in the hero article for the engine's
       exact values (the table note flags which numbers are estimated).
-- [ ] **Cloudflare CSP:** add `https://nzxgsopmqpvhiikcbdfo.supabase.co` to
-      `connect-src` **before** flipping CSP to enforcing (see
-      `docs/cloudflare-security.md`). Not needed while CSP is Report-Only, and
-      unnecessary entirely if the POST is routed same-origin via the Worker.
-- [ ] **Rate-limiting:** Cloudflare can't rate-limit the Supabase host directly
-      (it isn't proxied through CF). To get CF rate-limiting, route the POST
-      through the Worker (a `/blog-subscribe` route → the function, like `/ingest`)
-      so it's same-origin; otherwise rely on the honeypot + Supabase.
+- [x] **Cloudflare CSP:** resolved 2026-07-16 by routing the POST same-origin —
+      `blog-signup.js` now posts to `/blog-subscribe` and the Worker forwards to
+      the Edge Function (`infra/cloudflare-worker.js`), so `connect-src 'self'`
+      covers it and no Supabase origin is needed in the CSP. **The Worker route
+      `projectsummit.app/blog-subscribe` must be deployed, and this branch must
+      be what GitHub Pages serves, before CSP is flipped to enforcing** —
+      otherwise the live signup form breaks.
+- [ ] **Rate-limiting:** now that the POST is same-origin, Cloudflare *can*
+      rate-limit `/blog-subscribe` — but the Free plan allows one rate-limit
+      rule and it's used by `/ingest`; either widen that rule's expression to
+      match both paths or rely on the honeypot + Supabase.
 
 ## Summer → September
 Signups are tagged `blog:<article>`, so you can segment the September
