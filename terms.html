@@ -60,7 +60,7 @@
       display: flex; align-items: flex-start; gap: 16px;
       opacity: 0; animation: fadeUp 0.5s ease 0.25s forwards;
     }
-    .plain-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .plain-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; color: var(--accent); stroke-width: 1.8; }
     .plain-text { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
     .plain-text strong { font-weight: 600; color: var(--ink); }
     .plain-text a { color: var(--accent); text-decoration: none; }
@@ -255,7 +255,7 @@
   <!-- Plain-language banner -->
   <div class="plain-banner">
     <div class="plain-inner">
-      <span class="plain-icon">👋</span>
+      <svg class="plain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></svg>
       <p class="plain-text" data-i18n="terms.banner"><strong>Written for humans.</strong> These terms are intentionally short and clear. We've avoided legal jargon wherever possible. If something isn't clear, email us at <a href="mailto:team@projectsummit.app">team@projectsummit.app</a> and we'll explain it plainly.</p>
     </div>
   </div>
