@@ -30,22 +30,23 @@ A privacy/security/SEO pass landed on branch `claude/practical-curie-UpinE`
   `Referrer-Policy`, `X-Frame-Options: DENY`, `Permissions-Policy`,
   `Cross-Origin-Opener-Policy`.
 - ✅ Rate-limit on `/ingest`: action `block`, 40 req / 10 s per IP (Free-plan caps).
-- 🟡 **CSP is in `Report-Only`** (rule id `680eae136b4f4e0aad7626991b8c714b`,
-  `http_response_headers_transform` phase). **It is NOT enforcing** because
-  **production still serves the OLD site** (loads cdnjs + Google Fonts, which the
-  strict CSP would block). Flip to enforcing **only after the self-hosted redesign
-  is deployed to the Pages branch** — re-PUT the entrypoint renaming the header
-  `Content-Security-Policy-Report-Only` → `Content-Security-Policy`.
+- 🟡 **CSP is still in `Report-Only`** (rule id `680eae136b4f4e0aad7626991b8c714b`,
+  `http_response_headers_transform` phase). As of **2026-07-16** a live check of
+  `projectsummit.app` shows the **deploy gap is closed** — production now serves
+  this redesign (self-hosted `summit.css`, no `cdnjs`/Google Fonts in the
+  response), so the original blocker for enforcing no longer applies. Flipping
+  it (re-PUT the entrypoint renaming the header
+  `Content-Security-Policy-Report-Only` → `Content-Security-Policy`) needs
+  Cloudflare API/dashboard access, which a coding session doesn't have by
+  default — do it from a session with a Cloudflare API token (Rulesets scope)
+  or the dashboard, and re-validate the console for CSP violations across all
+  pages first.
 
 **Still manual (the session API token only had Rulesets access):** dashboard
 toggles (strengthen HSTS, min TLS 1.2, DNSSEC, Bot Fight) and email DNS
 (SPF/DKIM/DMARC — needs DNS perms + your ESP). **BIMI** intentionally skipped (paid
-VMC). The temporary API token used this session should be revoked.
-
-> ⚠️ **Deploy gap:** the live site at `projectsummit.app` is still the pre-redesign
-> version (references `translations.js`, `SummitLogo.png`, root screenshots,
-> cdnjs). This whole repo (the "V4 Momentum" redesign) has **not** been deployed
-> to the branch GitHub Pages serves. Until it is, keep the CSP in Report-Only.
+VMC). The temporary API token used that session should be revoked if it hasn't
+been already.
 
 ## What this is
 A **static** marketing site for the Project Summit iOS cycling app, served by
@@ -175,6 +176,24 @@ details in **`docs/blog.md`**. Key points:
 - `thanks.html` has its own tiny inline theme bootstrap in `<head>` because it
   doesn't load `app.js`.
 
+## Scroll reveal (motion)
+Single shared mechanism across the whole site (`app.js` `initReveal()` +
+`.reveal`/`.reveal.is-visible` in `summit.css`) — see "Scroll reveal" comments
+in both files. Per page (`body[data-page]`), `REVEAL_MAPS` maps a trigger
+container to the child items that get staggered. Tunables live in exactly two
+places:
+- **Trigger point** — `app.js`, `var trigger = window.innerHeight * 0.8`
+  (fires when a group's top crosses 80% down the viewport, i.e. while it's
+  still entering from the bottom — tuned up from `0.7` because reveals felt
+  late).
+- **Speed** — `summit.css` `.reveal.is-visible`: `0.46s` transition duration,
+  `90ms` per-item stagger delay (`--reveal-i`) — tuned down from `0.66s`/`170ms`
+  because the cascade felt sluggish, especially on sections with many items
+  (FAQ, feature cards). Change both together; they're the only two dials.
+- No-JS and `prefers-reduced-motion: reduce` always show full content — the
+  hidden state only exists once `.reveal` is added by JS inside a
+  `no-preference` media query.
+
 ## Placeholders (swap these when the real values exist)
 - **App Store links**: ✅ done — every `.appstore` badge points to
   `https://apps.apple.com/app/id6754172654` (Apple ID `6754172654`) and keeps its
@@ -229,6 +248,23 @@ details in **`docs/blog.md`**. Key points:
 - `robots.txt` + `sitemap.xml` (indexable pages only — legal pages and
   `thanks.html`/`404.html` are `noindex`). Favicons + `site.webmanifest` are
   generated from the logo; regenerate with an image tool if the logo changes.
+- **Structured data (JSON-LD)** — every page has a `<script
+  type="application/ld+json">` in `<head>` (hand-authored per page, right
+  before the `summit.css` link — there's no build-time generation/dedup for
+  this, same convention as the OG/Twitter tags). Shared nodes repeated
+  verbatim on every page via `@id` (`#organization`, `#website`) so they can
+  cross-reference: `Organization` (Project Summit, founder Jordi Espanyol) +
+  `WebSite`. Page-specific on top: `SoftwareApplication` (index — deliberately
+  **no `aggregateRating`**, since the on-page stars are a placeholder; adding
+  fake review markup is a Google spam violation — only add it once
+  `initRatingBadge()`'s live App Store rating is meaningful and you're willing
+  to keep the JSON-LD in sync with it), `FAQPage` (faq.html — 15 `Question`s,
+  text must stay verbatim with the `<details>` content), `Person` + `AboutPage`
+  (about.html), `Blog`/`BlogPosting` (blog/ + posts — the posts already had
+  this before today), plus `WebPage` + `BreadcrumbList` everywhere else
+  (roadmap, ambassadors, terms, privacy-policy). Keep new pages consistent
+  with this pattern, and validate with
+  https://search.google.com/test/rich-results after edits.
 
 ## Security / privacy
 - Fonts and flag icons are **self-hosted** (no Google Fonts / cdnjs) — privacy
@@ -237,6 +273,25 @@ details in **`docs/blog.md`**. Key points:
 - Headers (CSP/HSTS/etc.), `/ingest` rate-limiting, and email auth
   (SPF/DKIM/DMARC/BIMI) are applied at **Cloudflare**, not in the repo. The exact
   copy/paste config is in **`docs/cloudflare-security.md`**.
+
+## Privacy policy (`privacy-policy.html`)
+11 numbered sections (`#s1`–`#s11`), TOC + anchors built the same way as the
+rest of the site (English in the HTML, `privacy.sN.body` + `sN.title` keys
+translated in `i18n.js`). Keep this current when integrations or website
+tracking change:
+- **s2** (data we collect) and **s4** (third-party integrations) list every
+  connected service/device by name — e.g. Strava, **Hammerhead Karoo**,
+  intervals.icu, Apple HealthKit, Supabase. Add a row in both tables whenever a
+  new integration ships (check `roadmap.html`/`faq.html`/`terms.html` for what's
+  already shipped vs. still on the roadmap).
+- **s10** ("Cookies & website analytics") documents *this website's* tracking —
+  separate from what the App collects — since PostHog/the cookie banner
+  (`assets/js/consent.js`) has its own opt-in flow. Update it if the PostHog
+  config, the proxy path, or the `localStorage` keys (`summit_consent`,
+  `summit_site_v1`) change.
+- **s11** is Contact (renumbered from s10 when the cookies section was
+  inserted — if you add/remove a section, the trailing `<span class="num">NN</span>`
+  badges and TOC entries need renumbering too, there's no build-time numbering).
 
 ## Gotchas
 - **`SummitLogo-Mail.png` stays at the repo root.** It's hotlinked by email
