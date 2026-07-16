@@ -7,16 +7,21 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
-const pages = ['index', 'roadmap', 'faq', 'about', 'ambassadors', 'terms', 'privacy-policy', 'thanks'];
+const rootPages = ['index', 'roadmap', 'faq', 'about', 'ambassadors', 'terms', 'privacy-policy', 'thanks'];
+const shellPages = ['index', 'roadmap', 'faq', 'about', 'ambassadors', 'terms', 'privacy-policy'];
+const files = [
+  ...rootPages.map((p) => p + '.html'),
+  ...['es', 'ca'].flatMap((locale) => shellPages.map((p) => locale + '/' + p + '.html')),
+];
 let problems = 0;
 const fail = (msg) => { console.error('BROKEN  ' + msg); problems++; };
 
-for (const p of pages) {
-  const file = p + '.html';
+for (const file of files) {
   const html = fs.readFileSync(path.join(ROOT, file), 'utf8');
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
 
-  // href and src references
+  // href and src references, resolved relative to this file's own directory
+  // (root pages live at ROOT; es/ca shells live one level down).
   const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
   for (const ref of refs) {
     if (/^(https?:|mailto:|tel:|data:)/.test(ref)) continue; // external
@@ -26,7 +31,7 @@ for (const p of pages) {
       continue;
     }
     const [pathPart, frag] = ref.split('#');
-    const target = path.join(ROOT, pathPart);
+    const target = path.join(ROOT, path.dirname(file), pathPart);
     if (!fs.existsSync(target)) { fail(`${file} -> ${ref} (missing file)`); continue; }
     if (frag) {
       const targetHtml = fs.readFileSync(target, 'utf8');

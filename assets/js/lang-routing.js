@@ -1,16 +1,21 @@
-/* Project Summit — blog language routing.
+/* Project Summit — language routing for pages that exist as separate,
+ * per-locale URLs (the blog, and — since these are build.js-generated — the
+ * marketing shell pages under /es/ and /ca/), as opposed to the older
+ * single-URL data-i18n DOM swap.
  *
- * On a blog page, the header language switcher should take the reader to the
- * translated version of THIS article (separate URLs + hreflang), not just swap
- * the shared-shell UI strings. Each page declares its alternates on <body> as
- * data-alt-en / data-alt-es / data-alt-ca. app.js still persists the language
- * choice; we navigate right after so the target page also loads in that UI.
+ * On these pages the header language switcher should take the reader to the
+ * translated URL, not just swap the shared-shell UI strings. Each page
+ * declares its alternates on <body> as data-alt-en / data-alt-es /
+ * data-alt-ca (see build.js). app.js still persists the language choice and
+ * swaps the current DOM as a same-page preview; we navigate right after so
+ * the target page also loads in that language.
  *
- * Entering the blog should also land on the language the visitor already
- * chose elsewhere on the site (e.g. the "Blog" nav link always points at the
- * English URL). We only act on an explicit choice (state.langExplicit, set by
- * the nav language switcher) — never on the 'es' default — so a first-time or
- * organic-search visitor still lands on the English-first blog untouched.
+ * Landing on one of these pages should also honour the language the visitor
+ * already chose elsewhere on the site (e.g. the shared header always links to
+ * the English/default URL of the target section). We only act on an explicit
+ * choice (state.langExplicit, set by the nav language switcher) — never on
+ * the 'es' default — so a first-time or organic-search visitor lands
+ * untouched on whichever URL they actually requested.
  */
 (function () {
   'use strict';

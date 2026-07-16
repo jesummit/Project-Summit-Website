@@ -21,6 +21,19 @@
     if (s.lang !== 'en' && s.lang !== 'es' && s.lang !== 'ca') s.lang = DEFAULTS.lang;
     // Until the user explicitly toggles, follow the device's system color scheme.
     if (!s.themeExplicit) s.theme = systemTheme();
+    // Pages that exist as separate per-locale URLs (data-alt-* on <body> — the
+    // marketing shell under /es//ca/, and the blog) have their language fixed
+    // by the URL. A first-time visitor (no explicit choice yet) must see THIS
+    // page's own language, not the 'es' default — otherwise app.js would swap
+    // a freshly-generated /en/ page's DOM to Spanish on load. Once the visitor
+    // has made an explicit choice (langExplicit), leave it alone: that's what
+    // lets lang-routing.js notice the mismatch and redirect to their preferred
+    // locale instead of silently overriding it here.
+    var pageLang = document.documentElement.getAttribute('lang');
+    if (!s.langExplicit && document.body && document.body.hasAttribute('data-alt-en') &&
+        (pageLang === 'en' || pageLang === 'es' || pageLang === 'ca')) {
+      s.lang = pageLang;
+    }
     return s;
   }
   function save(s) { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (e) {} }
