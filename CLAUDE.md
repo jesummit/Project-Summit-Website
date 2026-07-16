@@ -74,6 +74,8 @@ assets/img/                logo, og-image, founder photo, favicons, flags/
 assets/screenshots/        app screenshots used in the home carousel
 tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
 tools/check-links.js       CI/local check: internal links/assets/anchors resolve (incl. es//ca/)
+tools/i18n-meta.js         shared title/description/FAQ-order config for build.js + check-meta-sync.js
+tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live HTML
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: PostHog proxy at /ingest + App Store rating at /appstore-rating
@@ -115,8 +117,9 @@ committing partial changes so the diff is clean and reviewable. The auto-commit
 only works on branches in this repo, not forks.
 
 `.github/workflows/verify.yml` is a read-only quality gate on push/PR: i18n
-coverage (`tools/check-i18n.js`), internal links (`tools/check-links.js`), and a
-shell-in-sync check. Run both checks locally with **`npm run check`**. Actions
+coverage (`tools/check-i18n.js`), internal links (`tools/check-links.js`),
+title/description/FAQ-order sync (`tools/check-meta-sync.js`), and a
+shell-in-sync check. Run all of them locally with **`npm run check`**. Actions
 are pinned to commit SHAs and kept current by Dependabot.
 
 ## Internationalization
@@ -184,11 +187,21 @@ URLs — **without hand-tripling every page**, by generating them.
      those declarations.
   4. `<title>`/meta description are composed from copy that's **already
      translated and reviewed elsewhere on the page** (nav labels, the page's
-     own "sub" line — see the `META` map in build.js) — not new marketing
-     copy invented at build time. `terms.html`/`privacy-policy.html` don't
-     have a reviewed translated one-liner to reuse, so their meta description
-     stays in English until someone writes real translated legal-page copy
-     (tracked via `descKey: null` in `META`).
+     own "sub" line — see the `META` map in `tools/i18n-meta.js`) — not new
+     marketing copy invented at build time. `terms.html`/`privacy-policy.html`
+     don't have a reviewed translated one-liner to reuse, so their meta
+     description stays in English until someone writes real translated
+     legal-page copy (tracked via `descKey: null` in `META`).
+- **`tools/i18n-meta.js`** holds `META`/`TITLE_EN`/`DESC_EN`/`OG_TITLE_EN`/
+  `OG_DESC_EN`/`FAQ_KEYS` — hand-kept copies of each page's real `<title>`/
+  meta/OG/Twitter text and of the order `faq.html`'s hand-authored FAQPage
+  JSON-LD lists its questions in. `build.js` requires this module; so does
+  **`tools/check-meta-sync.js`** (run by `npm run check`), which fails loudly
+  if a page's copy changes without the matching entry being updated — without
+  it, that drift would fail silently (the es/ca build would just quietly stop
+  localizing that field, or misalign FAQ answers, with no error). If you
+  change a `<title>`/meta description/OG tag or reorder `faq.html`'s
+  questions, update `tools/i18n-meta.js` to match and re-run `npm run check`.
 - **Root = English, `/es/`, `/ca/` are the translations** (matches "English is
   the source" and the blog's existing convention — see below). `x-default` in
   every hreflang block points at the English root.
