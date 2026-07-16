@@ -5,6 +5,7 @@
  *   projectsummit.app/ingest/static/*  →  eu-assets.i.posthog.com/static/*
  *   projectsummit.app/ingest/*         →  eu.i.posthog.com/*
  *   projectsummit.app/appstore-rating  →  itunes.apple.com lookup (rating JSON)
+ *   projectsummit.app/blog-subscribe   →  blog_subscribe_v1 Supabase Edge Function
  *
  * Deploy instructions:
  *   1. Cloudflare dashboard → Workers & Pages → Create Worker
@@ -12,10 +13,16 @@
  *   3. Settings → Triggers → Add routes (same zone projectsummit.app):
  *        projectsummit.app/ingest*
  *        projectsummit.app/appstore-rating
+ *        projectsummit.app/blog-subscribe
  */
 
 const POSTHOG_API_HOST   = 'eu.i.posthog.com'
 const POSTHOG_ASSET_HOST = 'eu-assets.i.posthog.com'
+
+// blog-signup.js posts here same-origin so the strict CSP (connect-src 'self')
+// can stay; the Worker does the cross-origin hop. The function checks the
+// forwarded Origin header, so the original request headers must be passed on.
+const BLOG_SUBSCRIBE_UPSTREAM = 'https://nzxgsopmqpvhiikcbdfo.supabase.co/functions/v1/blog_subscribe_v1'
 
 const APP_ID        = '6754172654'
 const APP_STOREFRONT = 'es'
@@ -28,6 +35,13 @@ export default {
     // and hand the page a tiny same-origin JSON. Stays empty on any failure.
     if (url.pathname === '/appstore-rating') {
       return appStoreRating()
+    }
+
+    if (url.pathname === '/blog-subscribe') {
+      if (request.method !== 'POST' && request.method !== 'OPTIONS') {
+        return new Response('Method not allowed', { status: 405 })
+      }
+      return fetch(new Request(BLOG_SUBSCRIBE_UPSTREAM, request))
     }
 
     if (url.pathname.startsWith('/ingest/static/')) {

@@ -9,13 +9,14 @@
  * A <div> (not a <form>) is used so the block can live inside <article> prose
  * without nested-form issues.
  *
- * NOTE: the endpoint host must be allow-listed in the Cloudflare CSP
- * `connect-src` before enforcing (see docs/blog.md).
+ * The POST goes same-origin to /blog-subscribe (the Cloudflare Worker forwards
+ * it to the Edge Function — see infra/cloudflare-worker.js), so the strict CSP
+ * `connect-src 'self'` covers it and no third-party origin is needed.
  */
 (function () {
   'use strict';
 
-  var ENDPOINT = 'https://nzxgsopmqpvhiikcbdfo.supabase.co/functions/v1/blog_subscribe_v1';
+  var ENDPOINT = '/blog-subscribe';
 
   var MSG = {
     en: { ok: "Check your inbox — the template is on its way.", err: "Something went wrong. Try again in a moment.", bad: "Please enter a valid email and tick the box.", sending: "Sending…" },
