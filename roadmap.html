@@ -87,6 +87,20 @@
       color: var(--ink);
     }
 
+    /* Shipped versions (1.0 / 1.1) — done, but not the current highlight */
+    .phase--shipped .phase-dot {
+      background: var(--card);
+      border-color: var(--ink-hair);
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .phase--shipped .phase-badge {
+      background: var(--ink-hair);
+      color: var(--ink-soft);
+      border: 1px solid var(--ink-hair);
+    }
+
     /* Phase meta row */
     .phase-meta {
       display: flex; align-items: center; gap: 14px;
@@ -155,6 +169,11 @@
       border-radius: var(--r-data);
       overflow: hidden;
       max-width: 640px;
+    }
+
+    /* Compact single-feature grid (used by v1.1 / v1.2 update blocks) */
+    .rm-features-grid--single {
+      grid-template-columns: 1fr;
     }
 
     .feature-item {
@@ -294,66 +313,108 @@
   <div class="wrap">
     <p class="page-eyebrow" data-i18n="roadmap.eyebrow">What's being built</p>
     <h1 class="page-title"><span data-i18n="roadmap.title.main">A platform that keeps</span> <em data-i18n="roadmap.title.drop">getting smarter.</em></h1>
-    <p class="page-sub" data-i18n="roadmap.sub">Here's where Project Summit stands today, and where it's headed. No vague promises — just a clear picture of the plan.</p>
+    <p class="page-sub" data-i18n="roadmap.sub">Every version we've shipped so far — and where Project Summit is headed next. No vague promises, just the plan.</p>
   </div>
 </div>
 
 <!-- ====================== TIMELINE ====================== -->
 <div class="timeline wrap">
 
-  <div class="phase phase--now">
-    <div class="phase-dot">→</div>
+  <!-- v1.0 — the foundation (full core platform) -->
+  <div class="phase phase--shipped">
+    <div class="phase-dot">✓</div>
     <div class="phase-meta">
-      <span class="phase-badge" data-i18n="phase1.badge">Now available</span>
-      <span class="phase-date" data-i18n="phase1.date">On the App Store</span>
+      <span class="phase-badge" data-i18n="v10.badge">Shipped</span>
+      <span class="phase-date" data-i18n="v10.date">June 2026 · The foundation</span>
     </div>
-    <h2 class="phase-title" data-i18n="phase1.title">iOS App — v1.2</h2>
-    <p class="phase-desc" data-i18n="phase1.desc">The full core platform. Adaptive load management, intelligent recovery, race-day nutrition, and structured workouts — all in one place. Now with full two-way Hammerhead Karoo sync.</p>
+    <h2 class="phase-title" data-i18n="v10.title">iOS App — v1.0</h2>
+    <p class="phase-desc" data-i18n="v10.desc">The full core platform, at launch. Adaptive load management, intelligent recovery, race-day nutrition, and structured workouts — all in one place.</p>
     <div class="rm-features-grid">
       <div class="feature-item">
         <span class="feature-icon">🫀</span>
-        <div class="feature-name" data-i18n="rm.p1.f1.name">HRV-Driven Recovery</div>
-        <div class="feature-detail" data-i18n="rm.p1.f1.detail">Reads HRV, resting HR &amp; sleep from Apple Health. Adjusts daily intensity before you open the app.</div>
+        <div class="feature-name" data-i18n="rm.v10.f1.name">HRV-Driven Recovery</div>
+        <div class="feature-detail" data-i18n="rm.v10.f1.detail">Reads HRV, resting HR &amp; sleep from Apple Health. Adjusts daily intensity before you open the app.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🗓</span>
-        <div class="feature-name" data-i18n="rm.p1.f2.name">Advanced Periodisation</div>
-        <div class="feature-detail" data-i18n="rm.p1.f2.detail">Base, build, peak and taper blocks structured around your target events.</div>
+        <div class="feature-name" data-i18n="rm.v10.f2.name">Advanced Periodisation</div>
+        <div class="feature-detail" data-i18n="rm.v10.f2.detail">Base, build, peak and taper blocks structured around your target events.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🔁</span>
-        <div class="feature-name" data-i18n="rm.p1.f3.name">Plan Cascading</div>
-        <div class="feature-detail" data-i18n="rm.p1.f3.detail">Skipped and completed sessions automatically trigger plan adjustments.</div>
+        <div class="feature-name" data-i18n="rm.v10.f3.name">Plan Cascading</div>
+        <div class="feature-detail" data-i18n="rm.v10.f3.detail">Skipped and completed sessions automatically trigger plan adjustments.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🧩</span>
-        <div class="feature-name" data-i18n="rm.p1.f4.name">Adaptation to Availability</div>
-        <div class="feature-detail" data-i18n="rm.p1.f4.detail">Illness, injury, mental readiness, and schedule changes reshape the plan in real time.</div>
+        <div class="feature-name" data-i18n="rm.v10.f4.name">Adaptation to Availability</div>
+        <div class="feature-detail" data-i18n="rm.v10.f4.detail">Illness, injury, mental readiness, and schedule changes reshape the plan in real time.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">⚡</span>
-        <div class="feature-name" data-i18n="rm.p1.f5.name">eFTP &amp; Power Curve</div>
-        <div class="feature-detail" data-i18n="rm.p1.f5.detail">Continuous estimation via the CP2 model. No manual tests — your rides do the work.</div>
+        <div class="feature-name" data-i18n="rm.v10.f5.name">eFTP &amp; Power Curve</div>
+        <div class="feature-detail" data-i18n="rm.v10.f5.detail">Continuous estimation via the CP2 model. No manual tests — your rides do the work.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">📈</span>
-        <div class="feature-name" data-i18n="rm.p1.f6.name">CTL / ATL / TSB Real Time</div>
-        <div class="feature-detail" data-i18n="rm.p1.f6.detail">Training load, fatigue, and form tracked live across every session.</div>
+        <div class="feature-name" data-i18n="rm.v10.f6.name">CTL / ATL / TSB Real Time</div>
+        <div class="feature-detail" data-i18n="rm.v10.f6.detail">Training load, fatigue, and form tracked live across every session.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🔗</span>
-        <div class="feature-name" data-i18n="rm.p1.f7.name">Strava Sync &amp; intervals.icu</div>
-        <div class="feature-detail" data-i18n="rm.p1.f7.detail">Activities imported from Strava. Workouts distributed via intervals.icu to Garmin, Zwift &amp; MyWhoosh.</div>
+        <div class="feature-name" data-i18n="rm.v10.f7.name">Strava Sync &amp; intervals.icu</div>
+        <div class="feature-detail" data-i18n="rm.v10.f7.detail">Activities imported from Strava. Workouts distributed via intervals.icu to Garmin, Zwift &amp; MyWhoosh.</div>
       </div>
       <div class="feature-item">
         <span class="feature-icon">🍽️</span>
-        <div class="feature-name" data-i18n="rm.p1.f8.name">Race Day Nutrition Planner</div>
-        <div class="feature-detail" data-i18n="rm.p1.f8.detail">Carb, fluid and electrolyte targets built around your race duration and intensity.</div>
+        <div class="feature-name" data-i18n="rm.v10.f8.name">Race Day Nutrition Planner</div>
+        <div class="feature-detail" data-i18n="rm.v10.f8.detail">Carb, fluid and electrolyte targets built around your race duration and intensity.</div>
       </div>
+    </div>
+  </div>
+
+  <!-- v1.1 — Karoo arrives -->
+  <div class="phase phase--shipped">
+    <div class="phase-dot">✓</div>
+    <div class="phase-meta">
+      <span class="phase-badge" data-i18n="v11.badge">Shipped</span>
+      <span class="phase-date" data-i18n="v11.date">July 2026</span>
+    </div>
+    <h2 class="phase-title" data-i18n="v11.title">v1.1 — Hammerhead Karoo</h2>
+    <p class="phase-desc" data-i18n="v11.desc">Karoo joins the ecosystem — a direct, native connection that sends structured workouts straight to your head unit, ready to ride.</p>
+    <div class="rm-features-grid rm-features-grid--single">
       <div class="feature-item">
         <span class="feature-icon">📟</span>
-        <div class="feature-name" data-i18n="rm.p1.f9.name">Hammerhead Karoo — Full Sync</div>
-        <div class="feature-detail" data-i18n="rm.p1.f9.detail">The complete flow, just like Strava: back-fill and sync your Karoo activities — new in v1.2 — alongside the structured-workout push to the device that's been live since v1.1.</div>
+        <div class="feature-name" data-i18n="rm.v11.f1.name">Hammerhead Karoo — Direct</div>
+        <div class="feature-detail" data-i18n="rm.v11.f1.detail">A native link to the Karoo — no middleware — plan a session in Summit and it lands on the device, ready to ride.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- v1.2 — Karoo full sync + activity redesign + interval matching (current release) -->
+  <div class="phase phase--now">
+    <div class="phase-dot">→</div>
+    <div class="phase-meta">
+      <span class="phase-badge" data-i18n="v12.badge">Now available</span>
+      <span class="phase-date" data-i18n="v12.date">July 2026 · On the App Store</span>
+    </div>
+    <h2 class="phase-title" data-i18n="v12.title">v1.2 — Karoo, Maps &amp; Matching</h2>
+    <p class="phase-desc" data-i18n="v12.desc">The latest release. Full two-way Karoo sync, a redesigned activity view with maps, and a clear read on how you executed every interval.</p>
+    <div class="rm-features-grid">
+      <div class="feature-item">
+        <span class="feature-icon">📟</span>
+        <div class="feature-name" data-i18n="rm.v12.f1.name">Hammerhead Karoo — Full Sync</div>
+        <div class="feature-detail" data-i18n="rm.v12.f1.detail">The complete flow, just like Strava: back-fill and sync your Karoo activities — new in v1.2 — alongside the structured-workout push to the device that's been live since v1.1.</div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🗺️</span>
+        <div class="feature-name" data-i18n="rm.v12.f2.name">Redesigned Activity View</div>
+        <div class="feature-detail" data-i18n="rm.v12.f2.detail">A rebuilt activity detail view — now with a full map — so every ride reads clearly at a glance.</div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🎯</span>
+        <div class="feature-name" data-i18n="rm.v12.f3.name">Interval Matching</div>
+        <div class="feature-detail" data-i18n="rm.v12.f3.detail">A new matching engine that breaks down, rep by rep, how you executed each prescribed interval — detailed and easy to understand.</div>
       </div>
     </div>
   </div>
