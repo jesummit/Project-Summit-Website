@@ -26,27 +26,42 @@ A privacy/security/SEO pass landed on branch `claude/practical-curie-UpinE`
 
 **Cloudflare (live now, applied via API — see `docs/cloudflare-security.md`):**
 - ✅ Security response headers active on `projectsummit.app`: HSTS
-  (`max-age=31536000`, no includeSubDomains/preload yet), `X-Content-Type-Options`,
-  `Referrer-Policy`, `X-Frame-Options: DENY`, `Permissions-Policy`,
-  `Cross-Origin-Opener-Policy`.
+  (`max-age=31536000; includeSubDomains; preload` since 2026-07-16 — all DNS
+  hostnames are proxied, so subdomains are safe; hstspreload.org submission is
+  optional and NOT done), `X-Content-Type-Options`, `Referrer-Policy`,
+  `X-Frame-Options: DENY`, `Permissions-Policy`, `Cross-Origin-Opener-Policy`.
 - ✅ Rate-limit on `/ingest`: action `block`, 40 req / 10 s per IP (Free-plan caps).
-- 🟡 **CSP is still in `Report-Only`** (rule id `680eae136b4f4e0aad7626991b8c714b`,
-  `http_response_headers_transform` phase). As of **2026-07-16** a live check of
-  `projectsummit.app` shows the **deploy gap is closed** — production now serves
-  this redesign (self-hosted `summit.css`, no `cdnjs`/Google Fonts in the
-  response), so the original blocker for enforcing no longer applies. Flipping
-  it (re-PUT the entrypoint renaming the header
-  `Content-Security-Policy-Report-Only` → `Content-Security-Policy`) needs
-  Cloudflare API/dashboard access, which a coding session doesn't have by
-  default — do it from a session with a Cloudflare API token (Rulesets scope)
-  or the dashboard, and re-validate the console for CSP violations across all
-  pages first.
+- ✅ **CSP is ENFORCED** (since 2026-07-16; rule id
+  `680eae136b4f4e0aad7626991b8c714b`, `http_response_headers_transform` phase) —
+  same strict `'self'` value that ran in Report-Only, verified live on en/es/ca
+  pages and `/blog/`. The last blocker (the blog signup form's cross-origin POST
+  to the `blog_subscribe_v1` Supabase Edge Function) was removed by routing it
+  same-origin: `blog-signup.js` posts to `/blog-subscribe` and the Worker
+  forwards it (see `infra/cloudflare-worker.js`; route
+  `projectsummit.app/blog-subscribe` deployed). If a new page ever needs a
+  third-party resource, the CSP must be widened first or it will be silently
+  blocked.
+- ✅ Minimum TLS 1.2 (was 1.0) and ✅ Bot Fight Mode on.
+- 🟡 **DNSSEC pending at the registrar**: Cloudflare signed the zone
+  (2026-07-16) but the domain is registered at **GoDaddy**, so the DS record
+  must be added there by hand (GoDaddy → Domain Settings → DNSSEC):
+  key tag `2371`, algorithm `13` (ECDSAP256SHA256), digest type `2` (SHA-256),
+  digest `D6EE039D3A1879DD2DBA40329AED6BEB72F06C0743E5AE38284BB05F46AD83E4`.
+  Harmless while pending; flips to `active` once the DS is published.
+- 🔴 **SSL mode stays `full`, NOT Full (strict)**: flipping to strict on
+  2026-07-16 made Cloudflare return **526** on the whole site (GitHub Pages
+  can't provision a valid origin cert while the DNS is orange-clouded) and was
+  reverted within seconds. To get strict: temporarily grey-cloud apex+www so
+  GitHub re-provisions the custom-domain cert (repo Settings → Pages shows
+  "Enforce HTTPS" available), then re-proxy and set strict.
+- ✅ Email DNS existed all along (earlier docs were stale): SPF (iCloud +
+  `send.` for Resend), DKIM (iCloud `sig1._domainkey` + `resend._domainkey`),
+  DMARC at `p=quarantine` (rua points at GoDaddy's collector). Fixed
+  2026-07-16: `sig1._domainkey` was **proxied** (orange cloud), which broke
+  iCloud DKIM lookups — now DNS-only. **BIMI** intentionally skipped (paid VMC).
 
-**Still manual (the session API token only had Rulesets access):** dashboard
-toggles (strengthen HSTS, min TLS 1.2, DNSSEC, Bot Fight) and email DNS
-(SPF/DKIM/DMARC — needs DNS perms + your ESP). **BIMI** intentionally skipped (paid
-VMC). The temporary API token used that session should be revoked if it hasn't
-been already.
+The temporary API tokens used for these sessions should be revoked once the
+work is confirmed.
 
 ## What this is
 A **static** marketing site for the Project Summit iOS cycling app, served by

@@ -11,27 +11,33 @@ the Cloudflare dashboard.
 > lets the CSP be strict (`'self'`). No third-party script/style/font origins are
 > needed, and Subresource Integrity is no longer relevant (nothing is hot-linked).
 
-## Applied state (2026-06)
+## Applied state (updated 2026-07-16)
 
-Applied **via the Cloudflare API** (Rulesets) and verified live:
+Applied **via the Cloudflare API** and verified live:
 
-- ✅ Security response headers (§1) — HSTS, `X-Content-Type-Options`,
-  `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`,
-  `Cross-Origin-Opener-Policy`.
-- ✅ **CSP deployed in `Content-Security-Policy-Report-Only` mode** — it reports
-  but does **not** block, so it cannot break the site.
-  ⚠️ **Do not flip to enforcing yet.** Production (the GitHub Pages branch) is
-  still serving the **old** site, which loads `cdnjs` (flag-icons) and Google
-  Fonts — the strict `'self'` CSP would block those. Flip to enforcing (§1) only
-  **after the self-hosted redesign is the version deployed to production.** It was
-  briefly enforced during this session and reverted for exactly this reason.
+- ✅ Security response headers (§1) — HSTS (now
+  `max-age=31536000; includeSubDomains; preload`; hstspreload.org submission
+  optional, not done), `X-Content-Type-Options`, `Referrer-Policy`,
+  `X-Frame-Options`, `Permissions-Policy`, `Cross-Origin-Opener-Policy`.
+- ✅ **CSP ENFORCED** (2026-07-16) — the strict `'self'` policy below is live as
+  `Content-Security-Policy` on every page. The blog signup form was the last
+  cross-origin call; it now posts same-origin to `/blog-subscribe` (Worker
+  forwards to the Supabase Edge Function — `infra/cloudflare-worker.js`), so
+  `connect-src 'self'` stands with no third-party origins.
 - ✅ Rate-limit on `/ingest` (§3) — Free-plan limits: action `block`, 40 requests
-  / 10 s per IP (per colo).
-
-Still **manual / not done** (this API token only had Rulesets access):
-
-- ⬜ Dashboard toggles (§2): HSTS strengthening, min TLS, DNSSEC, Bot Fight.
-- ⬜ Email DNS (§4): SPF/DKIM/DMARC — needs DNS-edit permission **and** your ESP.
+  / 10 s per IP (per colo). `/blog-subscribe` is NOT rate-limited (Free plan =
+  one rule); widen the `/ingest` rule's expression if abuse shows up.
+- ✅ Minimum TLS 1.2 (§2). ✅ Bot Fight Mode on (§2).
+- 🟡 DNSSEC (§2): zone signed; **pending the DS record at GoDaddy** —
+  key tag `2371`, algorithm `13`, digest type `2`, digest
+  `D6EE039D3A1879DD2DBA40329AED6BEB72F06C0743E5AE38284BB05F46AD83E4`.
+- 🔴 SSL mode remains **`full`** — Full (strict) was tried 2026-07-16 and the
+  site returned 526 (GitHub Pages has no valid origin cert while orange-clouded);
+  reverted immediately. Fix path: grey-cloud apex+www → let GitHub provision the
+  cert → re-proxy → strict.
+- ✅ Email DNS (§4): SPF/DKIM/DMARC were already in place (iCloud + Resend;
+  DMARC `p=quarantine`). Fixed 2026-07-16: `sig1._domainkey` (iCloud DKIM) was
+  proxied, which broke DKIM TXT resolution — now DNS-only.
 - ⬜ BIMI — not pursued (needs a paid VMC).
 
 ---
@@ -70,9 +76,9 @@ Notes:
   stop proxying, add the PostHog hosts here.
 - Validate after enabling: open the site, check the console for CSP violations,
   and confirm PostHog still ingests (Network tab → `/ingest`).
-- **Currently deployed in Report-Only.** To enforce, re-PUT the
-  `http_response_headers_transform` entrypoint changing the header name from
-  `Content-Security-Policy-Report-Only` to `Content-Security-Policy` (same value).
+- **Enforced since 2026-07-16** (header renamed from Report-Only, same value).
+  The blog signup POST goes same-origin via the Worker's `/blog-subscribe`
+  route, so no Supabase origin is needed in `connect-src`.
 
 ### Optional Worker variant
 If you prefer code over Transform Rules, the existing `infra/cloudflare-worker.js`
@@ -145,6 +151,7 @@ enforce TLS for incoming messages.
   proxied via `/ingest`.
 - The home page's live App Store rating badge fetches `/appstore-rating`
   **same-origin** (the Worker does the cross-origin iTunes call, since Apple sends
-  no CORS), so `connect-src 'self'` already covers it — no CSP change needed. Add
-  the `projectsummit.app/appstore-rating` Worker route when deploying.
+  no CORS), so `connect-src 'self'` already covers it — no CSP change needed. The
+  `projectsummit.app/appstore-rating` Worker route is deployed (as are
+  `/ingest*` and `/blog-subscribe`, all on the `cloudflare-worker` script).
 - `robots.txt` + `sitemap.xml`; legal pages and `thanks.html` are `noindex`.
