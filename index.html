@@ -35,6 +35,49 @@
   <meta name="twitter:description" content="Deterministic sport science, not a chatbot. Reads your recovery, rewrites your week. Now on the App Store, iOS." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/id6754172654"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://projectsummit.app/#app",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "description": "An adaptive iOS training platform for serious cyclists. Summit reads your recovery and your real schedule, then rewrites your plan like a coach would.",
+        "operatingSystem": "iOS",
+        "applicationCategory": "SportsApplication",
+        "downloadUrl": "https://apps.apple.com/app/id6754172654",
+        "author": { "@id": "https://projectsummit.app/#organization" },
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "category": "Free download, with optional in-app purchases"
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="assets/css/summit.css" />
 </head>
 <body data-vibe="product" data-page="home">

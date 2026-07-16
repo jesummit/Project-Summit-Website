@@ -29,6 +29,47 @@
   <meta name="twitter:description" content="Ride with Summit. Share it with your community. We're looking for cyclists who train seriously and love talking about it." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/id6754172654"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://projectsummit.app/ambassadors.html#webpage",
+        "url": "https://projectsummit.app/ambassadors.html",
+        "name": "Ambassadors — Project Summit",
+        "description": "Ride with Summit. Share it with your community. We're looking for cyclists who train seriously and love talking about it.",
+        "isPartOf": { "@id": "https://projectsummit.app/#website" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://projectsummit.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Ambassadors", "item": "https://projectsummit.app/ambassadors.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="assets/css/summit.css" />
 
   <style>

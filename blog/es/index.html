@@ -32,6 +32,56 @@
   <meta name="twitter:description" content="Notas de campo sobre entrenar con datos para ciclistas autoentrenados." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/id6754172654"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://projectsummit.app/blog/es/#blog",
+        "url": "https://projectsummit.app/blog/es/",
+        "name": "The Summit Journal",
+        "description": "Notas de campo sobre entrenar con datos para ciclistas autoentrenados: estructurar una temporada, leer tu PMC y llegar en forma al día que importa.",
+        "inLanguage": "es",
+        "isPartOf": { "@id": "https://projectsummit.app/#website" },
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "999 km cruzando Portugal en 6 días — los datos detrás del plan",
+            "url": "https://projectsummit.app/blog/es/gran-diagonal-999km-portugal.html",
+            "datePublished": "2026-07-15"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://projectsummit.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://projectsummit.app/blog/es/" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="../../assets/css/summit.css" />
   <link rel="stylesheet" href="../../assets/css/blog.css" />
 </head>
