@@ -19,6 +19,10 @@
   <title>Terms of Service — Project Summit</title>
   <meta name="description" content="Project Summit Terms of Service. Simple, clear, and fair." />
   <link rel="canonical" href="https://projectsummit.app/terms.html" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/terms.html" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/es/terms.html" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/terms.html" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/terms.html" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://projectsummit.app/terms.html" />
   <meta property="og:title" content="Terms of Service — Project Summit" />
@@ -29,6 +33,48 @@
   <meta name="twitter:description" content="Project Summit Terms of Service. Simple, clear, and fair." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
   <meta name="robots" content="noindex" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/id6754172654"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://projectsummit.app/terms.html#webpage",
+        "url": "https://projectsummit.app/terms.html",
+        "name": "Terms of Service — Project Summit",
+        "description": "Project Summit Terms of Service. Simple, clear, and fair.",
+        "isPartOf": { "@id": "https://projectsummit.app/#website" },
+        "inLanguage": "en",
+        "dateModified": "2026-07"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://projectsummit.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://projectsummit.app/terms.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="assets/css/summit.css" />
 
@@ -174,7 +220,7 @@
     }
   </style>
 </head>
-<body data-vibe="product" data-page="terms">
+<body data-vibe="product" data-page="terms" data-alt-en="/terms.html" data-alt-es="/es/terms.html" data-alt-ca="/ca/terms.html">
 
 <!-- ====================== HEADER ====================== -->
 <header class="site-header">
@@ -469,6 +515,7 @@
 <script src="assets/js/app.js"></script>
 <script src="assets/js/analytics.js"></script>
   <script src="assets/js/consent.js"></script>
+<script src="assets/js/lang-routing.js"></script>
 
 </body>
 </html>

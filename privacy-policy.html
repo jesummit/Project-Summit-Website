@@ -19,6 +19,10 @@
   <title>Privacy Policy — Project Summit</title>
   <meta name="description" content="Privacy Policy for Project Summit — the adaptive iOS cycling training platform. Learn how we collect, use, and protect your personal data." />
   <link rel="canonical" href="https://projectsummit.app/privacy-policy.html" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/privacy-policy.html" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/es/privacy-policy.html" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/privacy-policy.html" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/privacy-policy.html" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://projectsummit.app/privacy-policy.html" />
   <meta property="og:title" content="Privacy Policy — Project Summit" />
@@ -29,6 +33,49 @@
   <meta name="twitter:description" content="Privacy Policy for Project Summit — the adaptive iOS cycling training platform. Learn how we collect, use, and protect your personal data." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
   <meta name="robots" content="noindex, follow" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/id6754172654"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://projectsummit.app/privacy-policy.html#webpage",
+        "url": "https://projectsummit.app/privacy-policy.html",
+        "name": "Privacy Policy — Project Summit",
+        "description": "Privacy Policy for Project Summit — the adaptive iOS cycling training platform. Learn how we collect, use, and protect your personal data.",
+        "isPartOf": { "@id": "https://projectsummit.app/#website" },
+        "inLanguage": "en",
+        "datePublished": "2026-03",
+        "dateModified": "2026-07"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://projectsummit.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://projectsummit.app/privacy-policy.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="assets/css/summit.css" />
 
@@ -274,7 +321,7 @@
     }
   </style>
 </head>
-<body data-vibe="product" data-page="privacy">
+<body data-vibe="product" data-page="privacy" data-alt-en="/privacy-policy.html" data-alt-es="/es/privacy-policy.html" data-alt-ca="/ca/privacy-policy.html">
 
 <!-- ====================== HEADER ====================== -->
 <header class="site-header">
@@ -569,6 +616,7 @@
 <script src="assets/js/app.js"></script>
 <script src="assets/js/analytics.js"></script>
   <script src="assets/js/consent.js"></script>
+<script src="assets/js/lang-routing.js"></script>
 
 </body>
 </html>

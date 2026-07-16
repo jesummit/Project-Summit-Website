@@ -19,6 +19,10 @@
   <title>Project Summit — Train harder. Smarter.</title>
   <meta name="description" content="An adaptive iOS training platform for serious cyclists. Summit reads your recovery and your real schedule, then rewrites your plan like a coach would. Now on the App Store." />
   <link rel="canonical" href="https://projectsummit.app/" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/es/" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/" />
 
   <!-- Open Graph / WhatsApp / iMessage -->
   <meta property="og:type" content="website" />
@@ -35,9 +39,52 @@
   <meta name="twitter:description" content="Deterministic sport science, not a chatbot. Reads your recovery, rewrites your week. Now on the App Store, iOS." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/id6754172654"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://projectsummit.app/#app",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "description": "An adaptive iOS training platform for serious cyclists. Summit reads your recovery and your real schedule, then rewrites your plan like a coach would.",
+        "operatingSystem": "iOS",
+        "applicationCategory": "SportsApplication",
+        "downloadUrl": "https://apps.apple.com/app/id6754172654",
+        "author": { "@id": "https://projectsummit.app/#organization" },
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "category": "Free download, with optional in-app purchases"
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="assets/css/summit.css" />
 </head>
-<body data-vibe="product" data-page="home">
+<body data-vibe="product" data-page="home" data-alt-en="/" data-alt-es="/es/" data-alt-ca="/ca/">
 
 <!-- ====================== HEADER ====================== -->
 <header class="site-header">
@@ -371,6 +418,7 @@
 <script src="assets/js/app.js"></script>
 <script src="assets/js/analytics.js"></script>
   <script src="assets/js/consent.js"></script>
+<script src="assets/js/lang-routing.js"></script>
 
 </body>
 </html>
