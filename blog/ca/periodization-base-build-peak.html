@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ca" data-theme="light">
+<head>
+  <!-- PostHog Analytics (queueing stub; real init is gated by consent.js) -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="../../site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+
+  <title>Estructura la teva temporada: base, build, peak — desxifrats per a l'autoentrenat | Summit</title>
+  <meta name="description" content="Periodització sense argot: quin ramp rate és segur, quant TSS per setmana aguanta de veritat el teu CTL, i les setmanes de recuperació que gairebé tothom es salta. Amb un pla de blocs de 18 setmanes." />
+  <link rel="canonical" href="https://projectsummit.app/blog/ca/periodization-base-build-peak.html" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/periodization-base-build-peak.html" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/periodization-base-build-peak.html" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/periodization-base-build-peak.html" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/periodization-base-build-peak.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://projectsummit.app/blog/ca/periodization-base-build-peak.html" />
+  <meta property="og:title" content="Estructura la teva temporada: base, build, peak — desxifrats per a l'autoentrenat" />
+  <meta property="og:description" content="Periodització sense argot: ramp rates segurs, quant TSS per setmana aguanta el teu CTL, i les setmanes de recuperació que gairebé tothom es salta. Amb un pla de blocs de 18 setmanes." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estructura la teva temporada: base, build, peak — desxifrats per a l'autoentrenat" />
+  <meta name="twitter:description" content="Ramp rates segurs, quant TSS per setmana aguanta el teu CTL, i les setmanes de recuperació que gairebé tothom es salta. Un cas pràctic per a ciclistes autoentrenats." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Estructura la teva temporada: base, build, peak — desxifrats per a l'autoentrenat",
+    "description": "Una guia pràctica de periodització per a ciclistes autoentrenats: ramp rates segurs, quant TSS per setmana aguanta el teu CTL, i les setmanes de recuperació que gairebé tothom es salta. Amb un pla de blocs de 18 setmanes.",
+    "image": "https://projectsummit.app/assets/img/og-image.png",
+    "datePublished": "2026-07-16",
+    "dateModified": "2026-07-16",
+    "inLanguage": "ca",
+    "author": { "@type": "Person", "name": "Jordi Espanyol" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Project Summit",
+      "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" }
+    },
+    "mainEntityOfPage": "https://projectsummit.app/blog/ca/periodization-base-build-peak.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../assets/css/summit.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body data-vibe="product" data-page="blog-article" data-alt-en="/blog/periodization-base-build-peak.html" data-alt-es="/blog/es/periodization-base-build-peak.html" data-alt-ca="/blog/ca/periodization-base-build-peak.html">
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">
+      <span class="nav-logo"><img src="../../assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="../../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="../../faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="../../blog/index.html" class="active" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="../../about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="../../ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="../../terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="../../privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="https://apps.apple.com/app/id6754172654" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store"><img class="appstore-img" alt="Download on the App Store" src="../../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../../index.html" data-i18n="nav.home">Home</a>
+    <a href="../../roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="../../faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="../../blog/index.html" class="active" data-i18n="nav.blog">Blog</a>
+    <a href="../../about.html" data-i18n="nav.about">About</a>
+    <a href="../../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="../../terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="../../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <a href="https://apps.apple.com/app/id6754172654" data-source="nav_mobile" class="appstore appstore--white"><img class="appstore-img" alt="Download on the App Store" src="../../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <article>
+    <!-- ── Capçalera de l'article ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <header class="article-head">
+          <p class="article-kicker">Estructura la teva temporada · Entrenar amb dades</p>
+          <h1 class="article-title">Estructura la teva temporada: base, build, peak — <em>desxifrats</em> per a l'autoentrenat</h1>
+          <p class="article-dek">A gairebé ningú li falta esforç — li falta una forma. Aquí tens la que funciona: quin ramp rate és segur, quant TSS per setmana pot absorbir de veritat el teu estat de forma, i les setmanes de recuperació que gairebé tothom es salta.</p>
+          <div class="article-meta">
+            <span>Per <b>Jordi Espanyol</b></span>
+            <span class="dot-sep">·</span>
+            <span>16 jul 2026</span>
+            <span class="dot-sep">·</span>
+            <span>10 min de lectura</span>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <!-- ── Cos ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <div class="article-body">
+
+          <p class="article-lead">Aquest és el patró que veig en gairebé tot ciclista autoentrenat que està encallat: molt entrenament, cap estructura. Dies durs que mai són del tot durs, dies fàcils que mai són del tot fàcils, setmana rere setmana a la mateixa càrrega intermèdia — i després un salt enorme tres setmanes abans de l'esdeveniment perquè la forma no va arribar. Aquest ciclista no és gandul. Simplement roda sense una <em>forma</em>.</p>
+
+          <p>La periodització és aquesta forma. Treu-li l'argot i és una sola idea: <strong>no pots construir estat de forma i expressar-lo alhora.</strong> Així que divideixes l'any en fases que fan una sola feina cadascuna — construir el motor, afinar-lo, i després deixar que la fatiga es dreni perquè la forma aparegui el dia que importa. Base, build, peak, taper. Així és com s'executa de veritat amb els teus propis números, no com a teoria.</p>
+
+          <div class="stat-strip">
+            <div class="stat-cell"><div class="stat-num">3–7</div><div class="stat-lbl">CTL / setmana de rampa</div></div>
+            <div class="stat-cell"><div class="stat-num">3:1</div><div class="stat-lbl">Setmanes càrrega : recuperació</div></div>
+            <div class="stat-cell"><div class="stat-num">~7×</div><div class="stat-lbl">CTL = TSS setmanal per mantenir</div></div>
+            <div class="stat-cell"><div class="stat-num">+5 a +25</div><div class="stat-lbl">Banda de TSB el dia clau</div></div>
+          </div>
+
+          <h2>Primer, els tres números sobre els quals se sosté tot això</h2>
+          <p>Si ja et diuen alguna cosa, salta endavant. Si estan borrosos, tot el d'avall en depèn, així que trenta segons:</p>
+          <ul>
+            <li><strong>CTL (Chronic Training Load)</strong> — el teu estat de forma, modelat com una mitjana ponderada de ~42 dies del TSS diari. Es mou a poc a poc. És el número que la periodització pilota de veritat.</li>
+            <li><strong>ATL (Acute Training Load)</strong> — la teva fatiga, una mitjana de ~7 dies del TSS diari. Es mou ràpid: un bloc gran i es dispara; uns dies suaus i baixa.</li>
+            <li><strong>TSB (Training Stress Balance)</strong> — la forma, i senzillament el CTL d'ahir menys l'ATL d'ahir. Positiu vol dir fresc, negatiu vol dir enterrat. No és l'estat de forma — és quant de la teva forma pots accedir <em>avui</em>.</li>
+          </ul>
+          <p>Junts són el PMC — el Performance Management Chart. Cada fase d'avall no és més que un moviment deliberat sobre aquestes tres línies: base i build empenyen el CTL amunt (i el TSB avall); peak manté el CTL mentre la intensitat es torna específica de l'esdeveniment; taper deixa caure l'ATL perquè el TSB pugi a positiu l'únic dia que t'importa.</p>
+
+          <div class="callout">
+            <p class="callout-label">L'única regla que cal portar a través de tot</p>
+            <p>Et poses més en forma durant la <strong>recuperació</strong>, no durant la sessió dura. La sessió és l'estímul; l'adaptació passa mentre descanses. Aquest únic fet és per què les setmanes de recuperació no són opcionals, per què el ramp rate té un sostre, i per què un taper et fa més ràpid tot i fer menys. Tingues-ho present i la resta és comptabilitat.</p>
+          </div>
+
+          <h2>Base: construir el motor sobre el qual s'apuntala tota la resta</h2>
+          <p>La base és on es construeix el CTL i s'assenta la durabilitat — la base aeròbica que et permet absorbir feina més dura més endavant sense trencar-te. És sobretot volum: resistència i tempo, una quantitat controlada de sweet spot, i només la intensitat justa perquè el sostre no s'adormi. L'error aquí no és anar massa suau; és fer de la base un fang gris de sortides moderades, massa dures per ser resistència i massa fàcils per ser un estímul. Mantén el fàcil genuïnament fàcil per poder continuar sumant volum.</p>
+          <p>La base és també on més puja el CTL, perquè véns de la teva forma més baixa de l'any i el cos respon ràpid. Justament per això el número següent importa tant aquí.</p>
+
+          <h2>Ramp rate: el número més maltractat de l'autoentrenament</h2>
+          <p><strong>El ramp rate és la velocitat a la qual puja el teu CTL, en punts de CTL per setmana.</strong> És el número que decideix si un build et fa més fort o simplement et lesiona, et posa malalt o et deixa pla. L'entusiasme no té fre; el ramp rate és el fre.</p>
+          <p>Una guia pràctica per a la majoria de ciclistes que entrenen amb constància:</p>
+          <ul>
+            <li><strong>3–5 CTL/setmana</strong> — la zona sostenible. La pots mantenir durant setmanes i absorbir-la de veritat.</li>
+            <li><strong>5–8 CTL/setmana</strong> — agressiva. Va bé per a un bloc curt i deliberat si el teu son, el teu menjar i l'estrès de la vida estan tots controlats. No és un ajust que deixis posat.</li>
+            <li><strong>&gt;8 CTL/setmana sostingut</strong> — d'aquí surten les lesions, els refredats que no marxen i les setmanes de "per què estic lent de cop?". El gràfic va pujar; el ciclista va caure.</li>
+          </ul>
+          <p>El parany és que una rampa ràpida <em>sembla</em> productiva — el CTL puja, la línia es veu genial. Però el CTL no sap si t'estàs adaptant o cavant un forat; només compta càrrega. El cost d'un excés de rampa no arriba la setmana que ho fas. Arriba tres setmanes després, com una meseta o un virus, just quan menys t'ho pots permetre. Rampa prou baix com per avorrir-te una mica, i gairebé sempre en sortiràs guanyant.</p>
+
+          <div class="email-capture email-capture--inline" data-magnet="season-template" data-article="periodization">
+            <p class="email-capture-title">Vols la plantilla de temporada d'on surten aquests números?</p>
+            <p class="email-capture-sub">El full de rampa de CTL + planificació base/build/peak — la mateixa estructura d'avall, com una plantilla que omples amb el teu propi CTL. Un email, després alguna nota ocasional basada en dades. Sense spam.</p>
+            <div class="email-capture-row">
+              <input class="email-capture-input" type="email" name="email" required placeholder="tu@email.com" autocomplete="email" aria-label="Correu electrònic" />
+              <button class="email-capture-btn" type="submit">Envia-me-la</button>
+            </div>
+            <label class="email-capture-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Envia'm la plantilla i notes d'entrenament ocasionals. Em puc donar de baixa quan vulgui. <a href="/privacy-policy.html">Privacitat</a>.</span>
+            </label>
+            <input class="email-capture-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <h2>Quant TSS per setmana? Deixa de preguntar-ho al fòrum</h2>
+          <p>La pregunta més comuna — "quant TSS per setmana hauria de fer?" — no té resposta universal, i cada número que llegeixes en un fòrum és la resposta d'una altra persona a una pregunta diferent. La resposta honesta s'ancora al teu propi CTL, i hi ha una manera neta de veure-ho.</p>
+          <p>Com que el CTL és un model de mitjana diària, el TSS setmanal que simplement <strong>manté</strong> la teva forma actual és aproximadament:</p>
+          <div class="callout">
+            <p class="callout-label">La línia de manteniment</p>
+            <p><strong>TSS setmanal per mantenir ≈ el teu CTL × 7.</strong> A CTL 60 són uns 420 TSS per setmana només per quedar-te quiet. Per <em>construir</em>, has de fer mitjana per sobre d'això — la mida del buit per damunt de la línia és el que fixa el teu ramp rate. Roda per sota (una setmana de recuperació, un taper) i el CTL cau, a propòsit.</p>
+          </div>
+          <p>Així que la seqüència és: llegeix el teu CTL actual, multiplica'l per 7 per trobar la línia que el manté, i després suma una quantitat deliberada per damunt per aconseguir una rampa de 3–5 CTL/setmana. A mesura que el CTL puja durant la temporada, aquesta línia de manteniment puja amb ell — el mateix TSS setmanal que al gener era un build dur, al maig és a penes manteniment. Això no és una meseta; és exactament l'objectiu. La forma és cara de conservar, i per això no pots mantenir la càrrega de peak per sempre, i per això el calendari té fases.</p>
+
+          <h2>Setmanes de recuperació: les que gairebé tothom es salta</h2>
+          <p>Aquesta és la part que es retalla primer i la que més importa. El patró que funciona és <strong>3:1</strong> — tres setmanes progressivament més dures, després una de recuperació — o <strong>2:1</strong> si ets més gran, més nou, o la vida ve carregada. La setmana de recuperació no és un premi per sobreviure; és la setmana en què les tres anteriors es converteixen de veritat en forma.</p>
+          <p>Com és una setmana de recuperació de veritat:</p>
+          <ul>
+            <li><strong>Baixa el TSS setmanal un ~40–50%.</strong> No un 10%. Si les teves setmanes de build eren 500 TSS, la de recuperació ronda els 250–300. Una caiguda prou gran com perquè l'ATL baixi de cop i el TSB torni cap a positiu.</li>
+            <li><strong>Retalla volum, conserva una mica d'intensitat.</strong> Un parell d'esforços curts i punxants mantenen el sostre despert; la resta, fàcil. Estàs deixant anar fatiga, no forma — una setmana així de lleugera a penes mossega el CTL però neteja l'ATL gairebé del tot.</li>
+            <li><strong>Deixa que la forma torni a pujar.</strong> Al final de la setmana el TSB hauria d'estar a prop o per sobre de zero. Aquest rebot és l'adaptació aflorant — normalment comences el bloc següent de manera mesurable més fort, no només descansat.</li>
+          </ul>
+          <p>Per què la gent se la salta? Perquè saltar-se-la se sent més fort. El CTL continua pujant, el gràfic es veu implacable, i parar se sent com perdre terreny. És al revés. Salta't prou setmanes de recuperació i no obtens un ciclista més en forma — obtens un de cansat, amb el CTL alt i la <em>forma permanentment pels terra</em>, incapaç de fer justícia a una sola sessió. Els ciclistes que s'encallen al març gairebé sempre s'hi van encallar perquè mai es van prendre la setmana que hauria deixat aterrar la feina del febrer.</p>
+
+          <div class="callout">
+            <p class="callout-label">Un senyal que pots vigilar</p>
+            <p>Si la teva freqüència cardíaca a una potència donada continua derivant a l'alça setmana rere setmana, els teus dies fàcils ja no se senten fàcils, o les teves sessions intenses cauen totes per sota de l'objectiu — et toca una setmana de recuperació, digui el que digui el calendari. Els models de càrrega deterministes ho assenyalen com un TSB que no aconsegueix sortir d'un negatiu profund. El gràfic t'està dient que et prenguis la setmana. Pren-te-la.</p>
+          </div>
+
+          <h2>Peak i taper: convertir la forma en frescor</h2>
+          <p>Un cop base i build han portat el CTL on ha d'estar, les últimes setmanes canvien de feina del tot. El <strong>peak</strong> manté el CTL més o menys pla mentre la intensitat es torna específica del teu esdeveniment — les demandes exactes de la teva cursa, granfondo o ruta gran, assajades. Ja no construeixes forma; l'apuntes. El <strong>taper</strong> aleshores canvia una petita quantitat deliberada de CTL per una gran quantitat de frescor: retalla el volum un 40–60% al llarg d'una a tres setmanes, conserva una mica d'intensitat per no quedar-te pla, i deixa que el TSB pugi a una banda positiva — més o menys <strong>+5 a +25</strong> el dia, segons l'esdeveniment i el ciclista. Perds un parell de punts de CTL; guanyes accés a tot. Aquest intercanvi gairebé sempre val la pena, i és un tema prou gran com per ser el seu propi article — el fil de "picar el dia clau" d'aquest diari.</p>
+
+          <h2>Com es veu de principi a fi</h2>
+          <p>Aquí tens una tirada il·lustrativa de 18 setmanes des d'una forma mitjana fins a un esdeveniment, en blocs 3:1. Els números són un model didàctic — arrodonits, no trets de fitxers reals com el <a href="gran-diagonal-999km-portugal.html">cas d'estudi de la Gran Diagonal</a> — però la forma és exactament el que fa un bon pla. Fixa't en les setmanes de recuperació (ressaltades): cadascuna baixa lleugerament el CTL i deixa que la rampa es reiniciï abans de la següent empenta.</p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Set</th><th>Fase</th><th>TSS&nbsp;setmanal</th><th>CTL&nbsp;(fi)</th><th>Rampa</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Base 1</td><td>400</td><td>48</td><td>+3</td></tr>
+                <tr><td>2</td><td>Base 1</td><td>440</td><td>52</td><td>+4</td></tr>
+                <tr><td>3</td><td>Base 1</td><td>470</td><td>56</td><td>+4</td></tr>
+                <tr class="row-key"><td>4</td><td>Recuperació</td><td>250</td><td>54</td><td>−2</td></tr>
+                <tr><td>5</td><td>Base 2</td><td>490</td><td>58</td><td>+4</td></tr>
+                <tr><td>6</td><td>Base 2</td><td>520</td><td>62</td><td>+4</td></tr>
+                <tr><td>7</td><td>Build</td><td>550</td><td>66</td><td>+4</td></tr>
+                <tr class="row-key"><td>8</td><td>Recuperació</td><td>300</td><td>64</td><td>−2</td></tr>
+                <tr><td>9</td><td>Build</td><td>560</td><td>68</td><td>+4</td></tr>
+                <tr><td>10</td><td>Build</td><td>590</td><td>72</td><td>+4</td></tr>
+                <tr><td>11</td><td>Build</td><td>610</td><td>75</td><td>+3</td></tr>
+                <tr class="row-key"><td>12</td><td>Recuperació</td><td>320</td><td>72</td><td>−3</td></tr>
+                <tr><td>13</td><td>Peak</td><td>600</td><td>76</td><td>+4</td></tr>
+                <tr><td>14</td><td>Peak</td><td>620</td><td>79</td><td>+3</td></tr>
+                <tr><td>15</td><td>Peak</td><td>580</td><td>80</td><td>+1</td></tr>
+                <tr class="row-key"><td>16</td><td>Recuperació</td><td>340</td><td>77</td><td>−3</td></tr>
+                <tr><td>17</td><td>Taper</td><td>420</td><td>76</td><td>−1</td></tr>
+                <tr><td>18</td><td>Taper · esdeveniment</td><td>300</td><td>73</td><td>−3</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Model il·lustratiu, no fitxers reals d'activitat: el CTL i la rampa estan arrodonits per mostrar la forma d'un build 3:1. La teva pròpia corba depèn del teu CTL de partida, del teu esdeveniment i de com respon de veritat el teu cos — que és el que el motor calcula a partir de les teves dades, en lloc d'una plantilla genèrica.</p>
+
+          <p>Llegeix la columna de CTL de dalt a baix i la lògica es veu: puja de tres en tres, retrocedeix a la setmana de recuperació, i després torna a pujar des d'un cos que va absorbir l'últim bloc. Toca sostre cap a la setmana 15, i després el taper canvia tres o quatre punts de CTL pel frescor que converteix 80 punts de forma en un resultat el dia de l'esdeveniment. Cap setmana és a l'atzar. Cadascuna és un moviment.</p>
+
+          <h2>La part incòmoda</h2>
+          <p>Res d'això és complicat. La matemàtica és una multiplicació i una mica de paciència. El difícil és la disciplina que exigeix: rodar suau quan tens les cames fresques i volen anar, prendre't la setmana de recuperació quan el teu CTL puja i parar se sent com rendir-te, i fiar-te d'un número per sobre d'un estat d'ànim els dies en què no coincideixen. Al gràfic no li importa què bé se sentin les teves cames avui — li importa si les podràs expressar d'aquí a dotze setmanes. Autoentrenar-se no és no tenir pla. És ser el teu propi pla, i després seguir-lo de veritat.</p>
+
+          <!-- ── CTA: fes els teus propis números ── -->
+          <div class="article-cta">
+            <h2>Construeix la forma al voltant dels <em>teus</em> números</h2>
+            <p>El teu CTL, la teva línia de manteniment, la teva rampa, la setmana de recuperació que el gràfic diu que et toca — el motor ho calcula tot a partir de les teves pròpies dades i projecta la temporada endavant. No un chatbot que et parla d'entrenament: matemàtica de ciència de l'esport que et diu què hauria de ser aquesta setmana, i per què.</p>
+            <a href="https://apps.apple.com/app/id6754172654" data-source="blog_periodization" class="appstore"><img class="appstore-img" alt="Descarrega'l a l'App Store" src="../../assets/img/appstore-badges/Download_on_the_App_Store_Badge_CAES_blk_082124.svg" /></a>
+          </div>
+
+          <div class="email-capture" data-magnet="season-template" data-article="periodization">
+            <p class="email-capture-title">Aconsegueix la plantilla de planificació de temporada</p>
+            <p class="email-capture-sub">La rampa de CTL i l'estructura base/build/peak d'aquest article, com una plantilla que omples amb el teu propi CTL — gratis. Després alguna nota d'entrenament basada en dades al llarg de la temporada. Baixa quan vulguis.</p>
+            <div class="email-capture-row">
+              <input class="email-capture-input" type="email" name="email" required placeholder="tu@email.com" autocomplete="email" aria-label="Correu electrònic" />
+              <button class="email-capture-btn" type="submit">Envia-me-la</button>
+            </div>
+            <label class="email-capture-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Envia'm la plantilla i notes d'entrenament ocasionals. Em puc donar de baixa quan vulgui. <a href="/privacy-policy.html">Privacitat</a>.</span>
+            </label>
+            <input class="email-capture-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="article-foot">
+            <a href="index.html">← Tots els articles</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../../index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="../../assets/img/summit-logo.png" alt="Summit" /></span>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="foot.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.nav">Navigate</h4>
+      <ul>
+        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="../../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../../faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="../../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="../../terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="../../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <ul>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
+  </div>
+</footer>
+
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/analytics.js"></script>
+<script src="../../assets/js/consent.js"></script>
+<script src="../../assets/js/blog-signup.js"></script>
+<script src="../../assets/js/lang-routing.js"></script>
+
+</body>
+</html>
