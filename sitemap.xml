@@ -1,10 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://projectsummit.app/</loc><lastmod>2026-06-05</lastmod><priority>1.0</priority></url>
-  <url><loc>https://projectsummit.app/roadmap.html</loc><lastmod>2026-06-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://projectsummit.app/faq.html</loc><lastmod>2026-06-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://projectsummit.app/about.html</loc><lastmod>2026-06-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://projectsummit.app/ambassadors.html</loc><lastmod>2026-06-05</lastmod><priority>0.6</priority></url>
+  <url>
+    <loc>https://projectsummit.app/</loc><lastmod>2026-07-16</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/es/</loc><lastmod>2026-07-16</lastmod><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ca/</loc><lastmod>2026-07-16</lastmod><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/roadmap.html</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/roadmap.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/es/roadmap.html</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/roadmap.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ca/roadmap.html</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/roadmap.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/faq.html</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/faq.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/es/faq.html</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/faq.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ca/faq.html</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/faq.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/about.html</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/about.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/es/about.html</loc><lastmod>2026-07-16</lastmod><priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/about.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ca/about.html</loc><lastmod>2026-07-16</lastmod><priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/about.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ambassadors.html</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/ambassadors.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/es/ambassadors.html</loc><lastmod>2026-07-16</lastmod><priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/ambassadors.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ca/ambassadors.html</loc><lastmod>2026-07-16</lastmod><priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/ambassadors.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/ambassadors.html"/>
+  </url>
   <url>
     <loc>https://projectsummit.app/blog/</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/"/>

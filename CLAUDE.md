@@ -58,24 +58,26 @@ deployed artifact is the committed HTML itself.
 ## Layout
 ```
 *.html                     pages (committed, served as-is)
+es/*.html, ca/*.html        GENERATED locale shells — see "Internationalized URLs"; don't hand-edit
 partials/header.html       single source of truth for the site header
 partials/footer.html       single source of truth for the site footer
-build.js                   injects the partials into every page
+build.js                   injects the partials into every page + generates es//ca/ locale shells
 package.json               `npm run build` -> node build.js
 assets/css/summit.css      design system (light + dark, @font-face, all components)
 assets/js/app.js           controller: theme, language, carousel, nav, analytics hooks
 assets/js/i18n.js          translations (English in HTML; ES + CA overrides here)
+assets/js/lang-routing.js  makes the language switcher navigate to the translated URL (blog + shell pages)
 assets/js/analytics.js     PostHog helpers (internal-user flag)
 assets/js/consent.js       cookie-consent banner (PostHog opt-in gating)
 assets/fonts/              self-hosted Instrument Serif + JetBrains Mono (woff2)
 assets/img/                logo, og-image, founder photo, favicons, flags/
 assets/screenshots/        app screenshots used in the home carousel
 tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
-tools/check-links.js       CI/local check: internal links/assets/anchors resolve
+tools/check-links.js       CI/local check: internal links/assets/anchors resolve (incl. es//ca/)
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: PostHog proxy at /ingest + App Store rating at /appstore-rating
-robots.txt, sitemap.xml    SEO (indexable pages only)
+robots.txt, sitemap.xml    SEO (indexable pages only, incl. es//ca/ with hreflang)
 404.html, site.webmanifest standalone error page / PWA manifest
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
 CNAME, ATTRIBUTION.md      site config / credits
@@ -123,8 +125,13 @@ are pinned to commit SHAs and kept current by Dependabot.
 - **Spanish + Catalan** live in `assets/js/i18n.js` as the `ES` and `CA` objects.
 - At runtime `app.js` calls `SummitLang.set(lang)`; the engine captures each
   element's English once, then swaps to the dict value (or falls back to English
-  if a key is missing).
-- **Default language is Spanish** (`DEFAULTS.lang = 'es'` in `app.js`).
+  if a key is missing). This runtime swap still exists (used for same-page
+  previews — see "Internationalized URLs" below) but as of 2026-07-16 it's no
+  longer the mechanism that makes the site multilingual for SEO — that's now
+  real per-locale URLs, generated at build time.
+- **Default language is Spanish** (`DEFAULTS.lang = 'es'` in `app.js`) for the
+  *client-side preference* (returning visitors, the cookie banner's language,
+  etc). This is unrelated to which language a given URL serves — see below.
 - There is **no `translations.js`** anymore — it was replaced by `i18n.js`.
 
 To add/change a translatable string:
@@ -142,6 +149,76 @@ To add/change a translatable string:
    ```
    Shared nav/footer strings come from the partials, so their keys appear once in
    the partials and are translated like any other key.
+4. Run `npm run build` — the 14 `es/*.html` / `ca/*.html` shells (see below) are
+   regenerated FROM the English HTML + these dictionaries, so your edit
+   propagates automatically. Nothing under `es/`/`ca/` is hand-edited.
+
+### Internationalized URLs (`es/*.html`, `ca/*.html`) — 2026-07-16
+The problem this solves: translated content only living in `i18n.js` and
+getting DOM-swapped at runtime means Google only ever sees the **English**
+markup — ES/CA visitors and search traffic were invisible to SEO, and there
+was no indexable Spanish/Catalan URL to rank. The fix is real per-locale
+URLs — **without hand-tripling every page**, by generating them.
+
+- `build.js` now has a second stage (`augmentRootShells()` +
+  `generateLocaleShells()`, run after the existing header/footer stage) that:
+  1. Adds `hreflang` alternates + `data-alt-en/es/ca` (on `<body>`) to the 7
+     canonical English root pages (`index.html`, `roadmap.html`, `faq.html`,
+     `about.html`, `ambassadors.html`, `terms.html`, `privacy-policy.html`).
+  2. Generates `es/<file>` and `ca/<file>` for each of those 7 — same HTML,
+     same `partials/`-driven header/footer, but with every `data-i18n`
+     element's inner HTML swapped for the `i18n.js` dictionary value (a
+     **build-time twin of `i18n.js`'s own runtime `set()`** — same
+     fallback-to-English rule, just baked into the static file instead of
+     applied by the browser). `<html lang>`, `<title>`, meta description,
+     OG/Twitter tags, canonical, and the page's own JSON-LD `@graph` (see
+     "Structured data" above) are all rewritten to match. Internal links
+     between the 7 shell pages stay same-directory relative (the es/ca copy
+     sits right next to its siblings); asset paths get `../`; the Blog nav
+     link points at `../blog/<locale>/index.html` (the blog already has
+     per-locale directories — see below).
+  3. `i18n.js` itself is **not modified or required as a module** — build.js
+     just string-extracts the plain `var ES = {...}` / `var CA = {...}`
+     object literals out of the file and `new Function()`s them into data.
+     Don't break that extraction (`loadI18nDict()` in build.js) by reshaping
+     those declarations.
+  4. `<title>`/meta description are composed from copy that's **already
+     translated and reviewed elsewhere on the page** (nav labels, the page's
+     own "sub" line — see the `META` map in build.js) — not new marketing
+     copy invented at build time. `terms.html`/`privacy-policy.html` don't
+     have a reviewed translated one-liner to reuse, so their meta description
+     stays in English until someone writes real translated legal-page copy
+     (tracked via `descKey: null` in `META`).
+- **Root = English, `/es/`, `/ca/` are the translations** (matches "English is
+  the source" and the blog's existing convention — see below). `x-default` in
+  every hreflang block points at the English root.
+- **The blog already did exactly this by hand**: `blog/es/`, `blog/ca/` are
+  hand-translated (not generated — blog is English-first content per
+  `docs/blog.md`, so there's no dictionary to generate from) but use the
+  identical URL / hreflang / `data-alt-*` convention. `assets/js/lang-routing.js`
+  (renamed from `blog-i18n.js` — the logic was already fully generic, only the
+  name and comment were blog-specific) is what makes the language switcher
+  **navigate** to the translated URL instead of just DOM-swapping, on any page
+  that carries `data-alt-en` — now the shell pages too, not just the blog.
+- **`app.js`'s `load()`** derives `state.lang` from `document.documentElement`'s
+  `lang` attribute (not the stored/default preference) whenever a page has
+  `data-alt-en` AND the visitor hasn't made an explicit choice yet
+  (`langExplicit`). Without this, a first-time visitor landing on the English
+  `/roadmap.html` would get their page silently DOM-swapped to the stored
+  `'es'` default. Once a choice IS explicit, this is intentionally skipped —
+  that's what lets `lang-routing.js` notice a mismatch (stored `es`, landed on
+  an English URL) and redirect to the visitor's actual preferred locale.
+- `tools/check-links.js` now also validates all 14 `es/`/`ca/` shell files
+  (paths resolved relative to each file's own directory, not always repo
+  root). `sitemap.xml` lists `index/roadmap/faq/about/ambassadors` × en/es/ca
+  with hreflang annotations (terms/privacy-policy stay out, same as before —
+  they're `noindex`).
+- **Known gaps / next steps**: `terms.html`/`privacy-policy.html` meta
+  descriptions aren't translated yet (see above). Nothing here removes the
+  runtime `data-i18n`/`SummitLang` swap — it still exists and still runs (for
+  the same-page preview flash before `lang-routing.js` navigates) — a deeper
+  cleanup could retire it once every DOM-swap consumer is confirmed
+  unnecessary, but that wasn't done here to keep this change bounded.
 
 ## Blog / Journal (`/blog/`)
 A first-party, **English-first** content section for SEO + email capture. Full
@@ -298,6 +375,9 @@ tracking change:
   templates at `https://projectsummit.app/SummitLogo-Mail.png` and is not used by
   the site. Moving it 404s the logo in already-sent (immutable) emails.
 - **Don't hand-edit page header/footer** — edit `partials/` and rebuild.
+- **Don't hand-edit `es/*.html` / `ca/*.html`** — they're generated from the
+  English root pages + `i18n.js` on every `npm run build`; edit the English
+  HTML and/or `i18n.js` instead.
 - **Run the i18n coverage check** after touching copy or keys.
 - **Keep colors as tokens** so dark mode survives.
 - `thanks.html` is standalone — changes to the shared shell don't reach it.

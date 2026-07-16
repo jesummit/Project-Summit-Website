@@ -107,3 +107,270 @@ processPages(PAGES);
 processPages(BLOG_PAGES);
 const total = Object.keys(PAGES).length + Object.keys(BLOG_PAGES).length;
 console.log(`build complete — ${total} pages, ${changed} updated`);
+
+// ============================================================================
+// Locale shells: es/*.html, ca/*.html generated from the just-built English
+// source above + assets/js/i18n.js's ES/CA dictionaries, so translated,
+// indexable per-locale URLs don't require hand-tripling the HTML. Same
+// URL / hreflang / data-alt-* convention as the hand-authored blog/es/,
+// blog/ca/ (see assets/js/lang-routing.js) — generated here instead of
+// hand-translated. See CLAUDE.md "Internationalized URLs" for the full picture.
+const LOCALES = ['es', 'ca'];
+
+// i18n.js is a browser IIFE (no module.exports) holding `var ES = {...}` and
+// `var CA = {...}` object literals. Pull them out as plain data without
+// touching the runtime file or adding a dependency.
+function loadI18nDict(varName) {
+  const src = fs.readFileSync(path.join(ROOT, 'assets/js/i18n.js'), 'utf8');
+  const marker = 'var ' + varName + ' = {';
+  const start = src.indexOf(marker);
+  if (start === -1) throw new Error('i18n.js: missing ' + marker);
+  const objStart = src.indexOf('{', start);
+  const end = src.indexOf('\n};', objStart);
+  if (end === -1) throw new Error('i18n.js: unterminated ' + varName + ' block');
+  return new Function('return ' + src.slice(objStart, end + 2))();
+}
+const DICTS = { es: loadI18nDict('ES'), ca: loadI18nDict('CA') };
+
+function stripTags(s) { return s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); }
+
+// Depth-aware search for a tag's matching close (handles nested same-name
+// tags, e.g. the privacy-policy tables' nested <div class="callout">).
+function findMatchingClose(html, from, tagName) {
+  const openRe = new RegExp('<' + tagName + '(?:\\s|>)', 'gi');
+  const closeRe = new RegExp('</' + tagName + '>', 'gi');
+  let depth = 1, pos = from;
+  while (depth > 0) {
+    openRe.lastIndex = pos; closeRe.lastIndex = pos;
+    const o = openRe.exec(html), c = closeRe.exec(html);
+    if (!c) throw new Error('unclosed <' + tagName + '> while localizing');
+    if (o && o.index < c.index) { depth++; pos = o.index + o[0].length; }
+    else { depth--; pos = c.index + c[0].length; if (depth === 0) return { start: c.index, end: pos }; }
+  }
+}
+// Build-time twin of i18n.js's runtime `set()`: swap each data-i18n element's
+// inner HTML for dict[key], falling back to the English already in the
+// markup — the exact same rule the browser applies at runtime, baked in here.
+function localizeContent(html, dict) {
+  const openRe = /<([a-z0-9]+)\b[^>]*\bdata-i18n="([^"]+)"[^>]*>/gi;
+  let out = '', cursor = 0, m;
+  while ((m = openRe.exec(html))) {
+    const tagName = m[1], key = m[2];
+    const openEnd = openRe.lastIndex;
+    const close = findMatchingClose(html, openEnd, tagName);
+    out += html.slice(cursor, openEnd);
+    out += (dict[key] != null) ? dict[key] : html.slice(openEnd, close.start);
+    out += html.slice(close.start, close.end);
+    cursor = close.end;
+    openRe.lastIndex = close.end;
+  }
+  return out + html.slice(cursor);
+}
+
+// <title>/description are composed from copy that's already translated and
+// reviewed elsewhere on the page (nav labels, the page's own "sub" line) — not
+// new marketing copy invented at build time. `descKey: null` (terms, privacy)
+// means no reviewed translation exists yet, so the English description is
+// kept as-is until real translated legal-page copy is written.
+const META = {
+  'index.html':          { navKey: null,             descKey: 'hero.prod.sub' },
+  'roadmap.html':        { navKey: 'nav.roadmap',     descKey: 'roadmap.sub' },
+  'faq.html':            { navKey: 'nav.faq',         descKey: 'faq.sub', stripDesc: true },
+  'about.html':          { navKey: 'nav.about',       descKey: 'about.sub' },
+  'ambassadors.html':    { navKey: 'nav.ambassadors', descKey: 'amb.sub' },
+  'terms.html':          { navKey: 'nav.terms',       descKey: null },
+  'privacy-policy.html': { navKey: 'nav.privacy',     descKey: null },
+};
+const TITLE_EN = {
+  'index.html': 'Project Summit — Train harder. Smarter.',
+  'roadmap.html': 'Roadmap — Project Summit',
+  'faq.html': 'FAQ — Project Summit',
+  'about.html': 'About — Project Summit',
+  'ambassadors.html': 'Ambassadors — Project Summit',
+  'terms.html': 'Terms of Service — Project Summit',
+  'privacy-policy.html': 'Privacy Policy — Project Summit',
+};
+const DESC_EN = {
+  'index.html': 'An adaptive iOS training platform for serious cyclists. Summit reads your recovery and your real schedule, then rewrites your plan like a coach would. Now on the App Store.',
+  'roadmap.html': "What's built, what's coming, and where Project Summit is headed.",
+  'faq.html': 'Frequent questions about Summit — the adaptive cycling training app.',
+  'about.html': "Why Jordi Espanyol built Summit — and the problem it's solving for serious amateur cyclists.",
+  'ambassadors.html': "Ride with Summit. Share it with your community. We're looking for cyclists who train seriously and love talking about it.",
+  'terms.html': 'Project Summit Terms of Service. Simple, clear, and fair.',
+  'privacy-policy.html': 'Privacy Policy for Project Summit — the adaptive iOS cycling training platform. Learn how we collect, use, and protect your personal data.',
+};
+// index.html's <title> differs from its og:title/twitter:title (a punchier
+// tagline); every other page reuses the same string in all four spots.
+const OG_TITLE_EN = Object.assign({}, TITLE_EN, { 'index.html': 'Summit — A plan that adapts to your body and your life' });
+const OG_DESC_EN = Object.assign({}, DESC_EN, { 'index.html': 'Deterministic sport science, not a chatbot. Reads your recovery, rewrites your week. Now on the App Store, iOS.' });
+
+function replaceIfPresent(html, from, to) { return html.includes(from) ? html.split(from).join(to) : html; }
+
+// Matches the order the FAQPage Question/Answer pairs were hand-authored in
+// faq.html's JSON-LD (which follows the page's category order, not numeric
+// key order — q15 sits between q8 and q9). Keep in sync if faq.html's
+// mainEntity list is reordered.
+const FAQ_KEYS = ['faq.q1', 'faq.q2', 'faq.q3', 'faq.q4', 'faq.q5', 'faq.q6', 'faq.q7', 'faq.q8', 'faq.q15', 'faq.q9', 'faq.q10', 'faq.q11', 'faq.q12', 'faq.q13', 'faq.q14'];
+
+// The per-page JSON-LD block (added separately, page by page) isn't wired
+// into data-i18n at all, so localizeContent() above never touches it — without
+// this it would ship English url/@id/inLanguage/breadcrumb text on the es/ca
+// pages, silently wrong for crawlers. Parse + rewrite just the fields that are
+// page/locale-specific; Organization/WebSite stay untouched (locale-invariant).
+function localizeJsonLd(html, file, locale, title, desc) {
+  const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (!m) return html;
+  const data = JSON.parse(m[1]);
+  const graph = data['@graph'] || [];
+  const localeCanonical = canonicalFor(file, locale);
+  const dict = DICTS[locale];
+  const homeLabel = dict['nav.home'] != null ? dict['nav.home'] : 'Home';
+  const pageLabel = title.replace(/ — Project Summit$/, '');
+
+  graph.forEach((node) => {
+    if (node['@type'] === 'WebPage' || node['@type'] === 'AboutPage') {
+      node.url = localeCanonical;
+      node['@id'] = localeCanonical + '#webpage';
+      node.name = title;
+      if (node.description) node.description = desc;
+      node.inLanguage = locale;
+    } else if (node['@type'] === 'SoftwareApplication') {
+      node.description = desc;
+    } else if (node['@type'] === 'Person') {
+      node.url = localeCanonical;
+      const role = dict['about.founder.role'];
+      if (node.jobTitle && role) node.jobTitle = role.split(' · ')[0];
+    } else if (node['@type'] === 'BreadcrumbList') {
+      node.itemListElement.forEach((li) => {
+        if (li.position === 1) { li.name = homeLabel; li.item = canonicalFor('index.html', locale); }
+        else if (li.position === 2) { li.name = pageLabel; li.item = localeCanonical; }
+      });
+    } else if (node['@type'] === 'FAQPage') {
+      node.url = localeCanonical;
+      node['@id'] = localeCanonical + '#faqpage';
+      node.mainEntity = node.mainEntity.map((q, i) => {
+        const key = FAQ_KEYS[i];
+        const qText = dict[key + '.q'];
+        const aText = dict[key + '.a'];
+        return {
+          '@type': 'Question',
+          name: qText != null ? qText : q.name,
+          acceptedAnswer: { '@type': 'Answer', text: aText != null ? stripTags(aText) : q.acceptedAnswer.text },
+        };
+      });
+    }
+  });
+
+  const rebuilt = '<script type="application/ld+json">\n' + JSON.stringify(data, null, 2) + '\n</script>';
+  return html.slice(0, m.index) + rebuilt + html.slice(m.index + m[0].length);
+}
+
+function canonicalFor(file, locale) {
+  const base = 'https://projectsummit.app/';
+  if (file === 'index.html') return locale ? base + locale + '/' : base;
+  return locale ? base + locale + '/' + file : base + file;
+}
+function altPathFor(file, locale) {
+  if (file === 'index.html') return locale ? '/' + locale + '/' : '/';
+  return locale ? '/' + locale + '/' + file : '/' + file;
+}
+function hreflangBlock(file) {
+  const en = canonicalFor(file, null);
+  return [
+    `  <link rel="alternate" hreflang="en" href="${en}" />`,
+    `  <link rel="alternate" hreflang="es" href="${canonicalFor(file, 'es')}" />`,
+    `  <link rel="alternate" hreflang="ca" href="${canonicalFor(file, 'ca')}" />`,
+    `  <link rel="alternate" hreflang="x-default" href="${en}" />`,
+  ].join('\n');
+}
+
+// hreflang, data-alt-* body attributes, and the lang-routing script are
+// identical across a page's en/es/ca variants, so they're added to the
+// canonical (English) root pages ONCE, before locale copies are made — the
+// copies just inherit them via generateLocaleShells() below.
+function augmentRootShells() {
+  for (const file of Object.keys(PAGES)) {
+    const p = path.join(ROOT, file);
+    let html = fs.readFileSync(p, 'utf8');
+    const before = html;
+
+    if (!html.includes('rel="alternate" hreflang=')) {
+      html = html.replace(/<link rel="canonical" href="[^"]*" \/>/, (m) => `${m}\n${hreflangBlock(file)}`);
+    }
+    if (!html.includes('data-alt-en=')) {
+      html = html.replace(/<body([^>]*)>/, (m, attrs) =>
+        `<body${attrs} data-alt-en="${altPathFor(file, null)}" data-alt-es="${altPathFor(file, 'es')}" data-alt-ca="${altPathFor(file, 'ca')}">`);
+    }
+    if (!html.includes('lang-routing.js')) {
+      html = html.replace(
+        '  <script src="assets/js/consent.js"></script>',
+        '  <script src="assets/js/consent.js"></script>\n<script src="assets/js/lang-routing.js"></script>'
+      );
+    }
+
+    if (html !== before) fs.writeFileSync(p, html);
+  }
+}
+
+const SHELL_FILES = new Set(Object.keys(PAGES));
+// Like reroot() above, but sibling shell pages (index.html, roadmap.html, …)
+// stay as same-directory relative links (the es/ca copy sits next to them),
+// while everything else (assets/, site.webmanifest, favicons) gets "../", and
+// the Blog nav link is special-cased to the matching localized blog section.
+function rerootShellLocale(html, locale) {
+  return html.replace(/\b(href|src)="([^"]*)"/g, (whole, attr, val) => {
+    if (/^(https?:|mailto:|tel:|data:|#|\/)/.test(val)) return whole;
+    if (val === 'blog/index.html') return `${attr}="../blog/${locale}/index.html"`;
+    if (SHELL_FILES.has(val.split('#')[0])) return whole;
+    return `${attr}="../${val}"`;
+  });
+}
+
+function localeTitle(file, locale) {
+  if (file === 'index.html') {
+    const tagline = DICTS[locale]['foot.tagline'];
+    return 'Project Summit — ' + (tagline != null ? tagline : 'Train harder. Smarter.');
+  }
+  const cfg = META[file];
+  const label = DICTS[locale][cfg.navKey];
+  return (label != null ? label : cfg.navKey) + ' — Project Summit';
+}
+function localeDesc(file, locale) {
+  const cfg = META[file];
+  if (!cfg.descKey) return DESC_EN[file]; // no reviewed translation yet — keep English
+  const v = DICTS[locale][cfg.descKey];
+  const text = v != null ? v : DESC_EN[file];
+  return cfg.stripDesc ? stripTags(text) : text;
+}
+
+function generateLocaleShells() {
+  for (const file of Object.keys(PAGES)) {
+    const enHtml = fs.readFileSync(path.join(ROOT, file), 'utf8');
+    for (const locale of LOCALES) {
+      let html = localizeContent(enHtml, DICTS[locale]);
+      html = html.replace('<html lang="en"', `<html lang="${locale}"`);
+
+      const title = localeTitle(file, locale);
+      const desc = localeDesc(file, locale);
+      html = replaceIfPresent(html, `<title>${TITLE_EN[file]}</title>`, `<title>${title}</title>`);
+      html = replaceIfPresent(html, `content="${DESC_EN[file]}"`, `content="${desc}"`);
+      html = replaceIfPresent(html, `content="${OG_TITLE_EN[file]}"`, `content="${title}"`);
+      html = replaceIfPresent(html, `content="${OG_DESC_EN[file]}"`, `content="${desc}"`);
+      html = localizeJsonLd(html, file, locale, title, desc);
+
+      const canonical = canonicalFor(file, locale);
+      html = html.replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonical}" />`);
+      html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${canonical}" />`);
+
+      html = rerootShellLocale(html, locale);
+
+      const outDir = path.join(ROOT, locale);
+      if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(path.join(outDir, file), html);
+    }
+  }
+  console.log(`locale shells — ${LOCALES.length} locales × ${Object.keys(PAGES).length} pages generated`);
+}
+
+augmentRootShells();
+generateLocaleShells();
