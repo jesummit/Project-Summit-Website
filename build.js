@@ -52,10 +52,16 @@ const PAGES = {
   'privacy-policy.html': 'privacy',
 };
 
-// Blog pages (one directory deep). The shared shell is re-rooted with "../".
+// Blog pages (in sub-directories). The shared shell is re-rooted per depth
+// ("../" for /blog/, "../../" for /blog/<lang>/). English is the canonical set;
+// es/ca are native translations at their own URLs (hreflang in each page).
 const BLOG_PAGES = {
   'blog/index.html': 'blog',
   'blog/gran-diagonal-999km-portugal.html': 'blog',
+  'blog/es/index.html': 'blog',
+  'blog/es/gran-diagonal-999km-portugal.html': 'blog',
+  'blog/ca/index.html': 'blog',
+  'blog/ca/gran-diagonal-999km-portugal.html': 'blog',
 };
 
 function renderHeader(activeKey) {
@@ -74,8 +80,11 @@ function reroot(html, prefix) {
 }
 
 let changed = 0;
-function processPages(map, prefix) {
+// "" for root pages, "../" one dir deep, "../../" two deep, …
+function prefixFor(file) { return '../'.repeat(file.split('/').length - 1); }
+function processPages(map) {
   for (const [file, key] of Object.entries(map)) {
+    const prefix = prefixFor(file);
     const p = path.join(ROOT, file);
     let html = fs.readFileSync(p, 'utf8');
 
@@ -94,7 +103,7 @@ function processPages(map, prefix) {
   }
 }
 
-processPages(PAGES, '');
-processPages(BLOG_PAGES, '../');
+processPages(PAGES);
+processPages(BLOG_PAGES);
 const total = Object.keys(PAGES).length + Object.keys(BLOG_PAGES).length;
 console.log(`build complete — ${total} pages, ${changed} updated`);

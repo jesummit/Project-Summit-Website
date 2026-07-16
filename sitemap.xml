@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://projectsummit.app/</loc><lastmod>2026-06-05</lastmod><priority>1.0</priority></url>
   <url><loc>https://projectsummit.app/roadmap.html</loc><lastmod>2026-06-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://projectsummit.app/faq.html</loc><lastmod>2026-06-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://projectsummit.app/about.html</loc><lastmod>2026-06-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectsummit.app/ambassadors.html</loc><lastmod>2026-06-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://projectsummit.app/blog/</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
-  <url><loc>https://projectsummit.app/blog/gran-diagonal-999km-portugal.html</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url>
+    <loc>https://projectsummit.app/blog/</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/es/</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/ca/</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/gran-diagonal-999km-portugal.html</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/es/gran-diagonal-999km-portugal.html</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/ca/gran-diagonal-999km-portugal.html</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/gran-diagonal-999km-portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/gran-diagonal-999km-portugal.html"/>
+  </url>
 </urlset>
