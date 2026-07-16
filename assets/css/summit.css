@@ -417,8 +417,8 @@ a { color: inherit; }
   .reveal { opacity: 0; transform: translateY(34px); }
   .reveal.is-visible {
     opacity: 1; transform: none;
-    transition: opacity 0.66s cubic-bezier(.2,.8,.2,1), transform 0.66s cubic-bezier(.2,.8,.2,1);
-    transition-delay: calc(var(--reveal-i, 0) * 170ms);
+    transition: opacity 0.46s cubic-bezier(.2,.8,.2,1), transform 0.46s cubic-bezier(.2,.8,.2,1);
+    transition-delay: calc(var(--reveal-i, 0) * 90ms);
   }
 }
 

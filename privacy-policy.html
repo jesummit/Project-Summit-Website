@@ -347,7 +347,7 @@
     <p class="page-meta" data-i18n="privacy.meta">
       Effective date: <strong>March 2026</strong>
       &nbsp;·&nbsp;
-      Last updated: <strong>March 2026</strong>
+      Last updated: <strong>July 2026</strong>
     </p>
   </div>
 </div>
@@ -366,7 +366,8 @@
       <li><a href="#s7" data-i18n="s7.title">Your rights</a></li>
       <li><a href="#s8" data-i18n="s8.title">Children's privacy</a></li>
       <li><a href="#s9" data-i18n="s9.title">Changes to this policy</a></li>
-      <li><a href="#s10" data-i18n="s10.title">Contact</a></li>
+      <li><a href="#s10" data-i18n="s10.title">Cookies &amp; website analytics</a></li>
+      <li><a href="#s11" data-i18n="s11.title">Contact</a></li>
     </ol>
   </div>
 </div>
@@ -392,7 +393,7 @@
       <tbody>
         <tr><td><strong>Account &amp; identity</strong></td><td>Name, email address</td><td>Provided by you</td></tr>
         <tr><td><strong>Training &amp; performance</strong></td><td>FTP, power zones, TSS, CTL/ATL, training load metrics</td><td>Calculated by the App</td></tr>
-        <tr><td><strong>Activity data</strong></td><td>Rides, GPS routes, power output, heart rate, cadence, speed</td><td>Strava, Apple HealthKit</td></tr>
+        <tr><td><strong>Activity data</strong></td><td>Rides, GPS routes, power output, heart rate, cadence, speed</td><td>Strava, Hammerhead Karoo, Apple HealthKit</td></tr>
         <tr><td><strong>Health &amp; recovery</strong></td><td>HRV (RMSSD), resting heart rate, sleep duration and quality</td><td>Apple HealthKit</td></tr>
         <tr><td><strong>Device &amp; usage</strong></td><td>iOS version, app version, anonymised crash logs</td><td>Device automatically</td></tr>
       </tbody>
@@ -429,6 +430,7 @@
       </thead>
       <tbody>
         <tr><td><strong>Strava</strong></td><td>Import completed activities</td><td>Read-only activity access via OAuth 2.0</td></tr>
+        <tr><td><strong>Hammerhead Karoo</strong></td><td>Import completed activities &amp; push structured workouts</td><td>Direct, two-way device connection</td></tr>
         <tr><td><strong>intervals.icu</strong></td><td>Workout distribution to Garmin, Zwift, MyWhoosh</td><td>Structured workout data</td></tr>
         <tr><td><strong>Apple HealthKit</strong></td><td>Read sleep, HRV, and activity data</td><td>No data written back; read-only queries</td></tr>
         <tr><td><strong>Supabase</strong></td><td>Backend database &amp; serverless functions</td><td>Training plan data stored securely in EU region</td></tr>
@@ -492,8 +494,27 @@
 </div>
 
 <div class="policy-section" id="s10">
-  <h2><span class="num">10</span> <span data-i18n="s10.title">Contact</span></h2>
+  <h2><span class="num">10</span> <span data-i18n="s10.title">Cookies &amp; website analytics</span></h2>
   <div class="policy-body" data-i18n="privacy.s10.body">
+    <p>This section covers <strong>projectsummit.app</strong> itself, separately from the data the App collects (sections 1–9 above).</p>
+    <p>We use <strong>PostHog</strong>, an EU-hosted analytics provider, to understand how visitors use the site. Traffic is proxied through our own domain (<strong>projectsummit.app/ingest</strong>) rather than sent to PostHog directly. Analytics cookies are <strong>opt-in</strong>: nothing is loaded or set until you choose "Accept" in the cookie banner shown on your first visit.</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Storage</th><th>Purpose</th><th>Set when</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>summit_consent</strong> (localStorage)</td><td>Remembers your cookie choice</td><td>As soon as you accept or reject</td></tr>
+        <tr><td><strong>summit_site_v1</strong> (localStorage)</td><td>Remembers your theme and language preference</td><td>Always — essential, no consent required</td></tr>
+        <tr><td><strong>PostHog cookies &amp; identifiers</strong></td><td>Page views, clicks, and heatmaps to improve the site</td><td>Only if you accept analytics cookies</td></tr>
+      </tbody>
+    </table>
+    <p>You can change your choice at any time using the <strong>"Cookie settings"</strong> link in the footer.</p>
+  </div>
+</div>
+
+<div class="policy-section" id="s11">
+  <h2><span class="num">11</span> <span data-i18n="s11.title">Contact</span></h2>
+  <div class="policy-body" data-i18n="privacy.s11.body">
     <p>For privacy-related questions, requests, or complaints:</p>
     <div class="callout">
       <strong>Jordi Espanyol</strong><br/>

@@ -304,11 +304,11 @@
     });
     if (!groups.length) return;
 
-    // Scroll-driven: reveal once a trigger's top has entered ~30% into view.
+    // Scroll-driven: reveal once a trigger's top has entered ~20% into view.
     // (Plain rect math — reliable across browsers and sandboxed previews.)
     var raf;
     function check() {
-      var trigger = window.innerHeight * 0.7;
+      var trigger = window.innerHeight * 0.8;
       for (var k = groups.length - 1; k >= 0; k--) {
         if (groups[k].trigger.getBoundingClientRect().top < trigger) {
           groups[k].items.forEach(function (el) { el.classList.add('is-visible'); });
