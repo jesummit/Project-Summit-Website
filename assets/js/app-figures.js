@@ -252,25 +252,30 @@
     var PW = W - PAD.l - PAD.r, PH = H - PAD.t - PAD.b;
     var n = wks.length;
 
-    var tssMax = Math.ceil(Math.max.apply(null, wks.map(function (w) { return w.tss; })) / 200) * 200;
-    var ctlMax = Math.ceil(Math.max.apply(null, wks.map(function (w) { return w.ctl; })) / 25) * 25;
+    // Axis maxima/steps: auto by default, overridable per figure so a
+    // non-CTL right axis (e.g. average power in W) gets round tick labels.
+    var na = function (attr) { var v = parseFloat(fig.getAttribute(attr)); return isFinite(v) ? v : null; };
+    var tssMax = na('data-left-max') || Math.ceil(Math.max.apply(null, wks.map(function (w) { return w.tss; })) / 200) * 200;
+    var tssStep = na('data-left-step') || tssMax / 4;
+    var rMax = na('data-right-max') || Math.ceil(Math.max.apply(null, wks.map(function (w) { return w.ctl; })) / 25) * 25;
+    var rStep = na('data-right-step') || rMax / 4;
     var yT = function (v) { return PAD.t + PH * (1 - v / tssMax); };
-    var yC = function (v) { return PAD.t + PH * (1 - v / ctlMax); };
+    var yC = function (v) { return PAD.t + PH * (1 - v / rMax); };
     var band = PW / n, bw = band * 0.6;
     var cx = function (i) { return PAD.l + band * i + band / 2; };
 
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'xMidYMid meet', role: 'img' });
 
-    // gridlines + left (TSS) / right (CTL) axis labels
-    for (var g = 0; g <= tssMax; g += tssMax / 4) {
+    // gridlines + left (bar) / right (line) axis labels
+    for (var g = 0; g <= tssMax + 0.5; g += tssStep) {
       var gy = yT(g);
       svg.appendChild(el('line', { x1: PAD.l, y1: gy.toFixed(1), x2: W - PAD.r, y2: gy.toFixed(1), class: 'afx-grid' + (g === 0 ? ' is-zero' : '') }));
       var lt = el('text', { x: PAD.l - 5, y: (gy + 3).toFixed(1), 'text-anchor': 'end', class: 'afx-axis-label' });
-      lt.textContent = String(g); svg.appendChild(lt);
+      lt.textContent = String(Math.round(g)); svg.appendChild(lt);
     }
-    for (var c = 0; c <= ctlMax; c += ctlMax / 4) {
+    for (var c = 0; c <= rMax + 0.5; c += rStep) {
       var rt = el('text', { x: W - PAD.r + 5, y: (yC(c) + 3).toFixed(1), 'text-anchor': 'start', class: 'afx-axis-label afx-axis-ctl' });
-      rt.textContent = String(c); svg.appendChild(rt);
+      rt.textContent = String(Math.round(c)); svg.appendChild(rt);
     }
 
     // bars (weekly TSS)
@@ -291,9 +296,9 @@
       svg.appendChild(el('circle', { cx: cx(i).toFixed(1), cy: yC(w.ctl).toFixed(1), r: 2.4, class: 'afx-ctl-dot' }));
     });
 
-    // X labels — a few week anchors
+    // X labels — all bars when few, else every 3rd + endpoints
     wks.forEach(function (w, i) {
-      if (i !== 0 && (i + 1) % 3 !== 0 && i !== n - 1) return;
+      if (n > 8 && i !== 0 && (i + 1) % 3 !== 0 && i !== n - 1) return;
       var t = el('text', { x: cx(i).toFixed(1), y: (H - PAD.b + 18).toFixed(1), 'text-anchor': 'middle', class: 'afx-axis-label' });
       t.textContent = (w.label || ('W' + w.wk)); svg.appendChild(t);
     });
