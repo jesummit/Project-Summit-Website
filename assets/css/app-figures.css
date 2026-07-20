@@ -90,6 +90,9 @@
 .afx-axis-label.is-today { fill: var(--af-ink); font-weight: 700; }
 .afx-today      { stroke: var(--af-faint); stroke-width: 1.2; stroke-dasharray: 4 4; }
 .afx-zone       { fill: var(--af-zone); }
+/* Retrospective mode: highlighted event window + its label */
+.afx-event-band  { fill: var(--af-warn); opacity: 0.14; }
+.afx-event-label { fill: var(--af-warn); font-family: var(--font-mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.6px; }
 
 /* Data series — solid = historic, .is-proj = dashed forecast */
 .afx-line { fill: none; stroke-linejoin: round; stroke-linecap: round; }

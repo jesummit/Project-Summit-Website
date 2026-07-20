@@ -94,6 +94,19 @@
     var s = computeScale(pts);
     var todayIdx = lastHistoricIndex(pts);
 
+    // Retrospective mode: a case-study PMC of real past data — no TODAY
+    // cursor and no forecast; instead the event window is highlighted and
+    // the X axis reads in months. Opt-in via data-mode="retro" on the
+    // figure, with per-point `date` (ISO) in the data and data-event-start /
+    // data-event-end marking the event to band. data-months overrides the
+    // month tick labels (comma list, Jan-first) for localized posts.
+    var retro = fig.getAttribute('data-mode') === 'retro';
+    var evStart = fig.getAttribute('data-event-start');
+    var evEnd = fig.getAttribute('data-event-end');
+    var evLabel = fig.getAttribute('data-event-label') || '';
+    var monthNames = (fig.getAttribute('data-months') ||
+      'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec').split(',');
+
     var svg = el('svg', {
       viewBox: '0 0 ' + W + ' ' + H,
       preserveAspectRatio: 'xMidYMid meet',
@@ -135,11 +148,34 @@
       });
     }
 
-    // LAYER 4: TODAY vertical marker
+    // LAYER 4: TODAY vertical marker (live mode) — or event band (retro)
     var tx = x(todayIdx, pts.length);
-    svg.appendChild(el('line', {
-      x1: tx.toFixed(1), y1: PAD.t, x2: tx.toFixed(1), y2: PAD.t + PLOT_H, class: 'afx-today'
-    }));
+    if (retro) {
+      if (evStart && evEnd) {
+        var iS = pts.findIndex(function (p) { return p.date >= evStart; });
+        var iE = -1;
+        for (var k = pts.length - 1; k >= 0; k--) { if (pts[k].date <= evEnd) { iE = k; break; } }
+        if (iS >= 0 && iE >= iS) {
+          var bx = x(iS, pts.length), bw = x(iE, pts.length) - bx;
+          svg.appendChild(el('rect', {
+            x: bx.toFixed(1), y: PAD.t, width: Math.max(bw, 2).toFixed(1), height: PLOT_H,
+            class: 'afx-event-band'
+          }));
+          if (evLabel) {
+            var elab = el('text', {
+              x: (bx + bw / 2).toFixed(1), y: (PAD.t + 9).toFixed(1),
+              'text-anchor': 'middle', class: 'afx-event-label'
+            });
+            elab.textContent = evLabel;
+            svg.appendChild(elab);
+          }
+        }
+      }
+    } else {
+      svg.appendChild(el('line', {
+        x1: tx.toFixed(1), y1: PAD.t, x2: tx.toFixed(1), y2: PAD.t + PLOT_H, class: 'afx-today'
+      }));
+    }
 
     // LAYER 5–7: series (TSB behind, then CTL, then ATL — app z-order)
     var series = [
@@ -154,20 +190,38 @@
       }
     });
 
-    // LAYER 8: today's TSB marker (ring + core)
-    var tdy = pts[todayIdx];
-    var tdyY = y(tdy.tsb, s);
-    svg.appendChild(el('circle', { cx: tx.toFixed(1), cy: tdyY.toFixed(1), r: 4.5, class: 'afx-today-dot-ring' }));
-    svg.appendChild(el('circle', { cx: tx.toFixed(1), cy: tdyY.toFixed(1), r: 3, class: 'afx-today-dot-core' }));
+    // LAYER 8: today's TSB marker (ring + core) — live mode only
+    if (!retro) {
+      var tdy = pts[todayIdx];
+      var tdyY = y(tdy.tsb, s);
+      svg.appendChild(el('circle', { cx: tx.toFixed(1), cy: tdyY.toFixed(1), r: 4.5, class: 'afx-today-dot-ring' }));
+      svg.appendChild(el('circle', { cx: tx.toFixed(1), cy: tdyY.toFixed(1), r: 3, class: 'afx-today-dot-core' }));
+    }
 
-    // LAYER 9: X labels (days, like the app: -Nd / -N/2d / TODAY / +N/2d / +Nd)
-    var xLabels = [
-      { pos: 0, text: '-' + historic + 'D' },
-      { pos: todayIdx / (pts.length - 1) * 0.5, text: '-' + Math.max(Math.round(historic / 2), 1) + 'D' },
-      { pos: todayIdx / (pts.length - 1), text: 'TODAY', today: true },
-      { pos: (todayIdx / (pts.length - 1) + 1) / 2, text: '+' + Math.max(Math.round(forecast / 2), 1) + 'D' },
-      { pos: 1, text: '+' + forecast + 'D' }
-    ];
+    // LAYER 9: X labels — months (retro) or -Nd / TODAY / +Nd (live)
+    var xLabels;
+    if (retro) {
+      // one tick per month boundary, using each point's ISO `date`
+      xLabels = [];
+      var lastMonth = null;
+      pts.forEach(function (p, i) {
+        if (!p.date) return;
+        var m = p.date.slice(0, 7);
+        if (m !== lastMonth) {
+          lastMonth = m;
+          var mi = parseInt(p.date.slice(5, 7), 10) - 1;
+          xLabels.push({ pos: i / (pts.length - 1), text: monthNames[mi] || '' });
+        }
+      });
+    } else {
+      xLabels = [
+        { pos: 0, text: '-' + historic + 'D' },
+        { pos: todayIdx / (pts.length - 1) * 0.5, text: '-' + Math.max(Math.round(historic / 2), 1) + 'D' },
+        { pos: todayIdx / (pts.length - 1), text: 'TODAY', today: true },
+        { pos: (todayIdx / (pts.length - 1) + 1) / 2, text: '+' + Math.max(Math.round(forecast / 2), 1) + 'D' },
+        { pos: 1, text: '+' + forecast + 'D' }
+      ];
+    }
     xLabels.forEach(function (l) {
       var lx = PAD.l + PLOT_W * l.pos;
       var t = el('text', {
