@@ -94,6 +94,12 @@
 .afx-event-band  { fill: var(--af-warn); opacity: 0.14; }
 .afx-event-label { fill: var(--af-warn); font-family: var(--font-mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.6px; }
 
+/* Weekly load bars (left axis) + CTL line (right axis) */
+.afx-bar         { fill: var(--af-ctl); opacity: 0.28; }
+.afx-bar.is-recovery { fill: var(--af-warn); opacity: 0.62; }
+.afx-ctl-dot     { fill: var(--af-ctl); }
+.afx-axis-ctl    { fill: var(--af-ctl); opacity: 0.75; }
+
 /* Data series — solid = historic, .is-proj = dashed forecast */
 .afx-line { fill: none; stroke-linejoin: round; stroke-linecap: round; }
 .afx-ctl  { stroke: var(--af-ctl);  stroke-width: 2.6; }
@@ -121,6 +127,9 @@
 .app-figure-legend .lg { display: inline-flex; align-items: center; gap: 5px; }
 .app-figure-legend .lg-swatch { width: 16px; height: 2.5px; border-radius: 2px; }
 .app-figure-legend .lg-dot { width: 6px; height: 6px; border-radius: 50%; opacity: 0.75; }
+.app-figure-legend .lg-block { width: 11px; height: 9px; border-radius: 2px; }
+.app-figure-legend .lg-bar { background: var(--af-ctl); opacity: 0.28; }
+.app-figure-legend .lg-bar-rec { background: var(--af-warn); opacity: 0.62; }
 .app-figure-legend .lg-ctl { background: var(--af-ctl); }
 .app-figure-legend .lg-atl { background: var(--af-atl); }
 .app-figure-legend .lg-tsb { background: var(--af-tsb); }

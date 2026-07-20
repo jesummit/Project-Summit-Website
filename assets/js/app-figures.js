@@ -80,7 +80,7 @@
     return pts.length - 1;
   }
 
-  function render(fig) {
+  function renderPMC(fig) {
     var dataEl = fig.querySelector('.app-figure-data');
     var target = fig.querySelector('.app-figure-chart');
     if (!dataEl || !target) return;
@@ -236,9 +236,79 @@
     target.appendChild(svg);
   }
 
+  // ── Weekly load + fitness bar/line (mirrors a training-load block view)
+  // Bars = weekly TSS (left axis), line = CTL / fitness (right axis),
+  // recovery weeks highlighted. Data: [{wk,tss,ctl,recovery}]. Dual axis so
+  // the ~7× scale gap between weekly TSS and CTL both read cleanly.
+  function renderWeekly(fig) {
+    var dataEl = fig.querySelector('.app-figure-data');
+    var target = fig.querySelector('.app-figure-chart');
+    if (!dataEl || !target) return;
+    var wks;
+    try { wks = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    if (!Array.isArray(wks) || !wks.length) return;
+
+    var W = 600, H = 300, PAD = { l: 34, r: 30, t: 14, b: 30 };
+    var PW = W - PAD.l - PAD.r, PH = H - PAD.t - PAD.b;
+    var n = wks.length;
+
+    var tssMax = Math.ceil(Math.max.apply(null, wks.map(function (w) { return w.tss; })) / 200) * 200;
+    var ctlMax = Math.ceil(Math.max.apply(null, wks.map(function (w) { return w.ctl; })) / 25) * 25;
+    var yT = function (v) { return PAD.t + PH * (1 - v / tssMax); };
+    var yC = function (v) { return PAD.t + PH * (1 - v / ctlMax); };
+    var band = PW / n, bw = band * 0.6;
+    var cx = function (i) { return PAD.l + band * i + band / 2; };
+
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'xMidYMid meet', role: 'img' });
+
+    // gridlines + left (TSS) / right (CTL) axis labels
+    for (var g = 0; g <= tssMax; g += tssMax / 4) {
+      var gy = yT(g);
+      svg.appendChild(el('line', { x1: PAD.l, y1: gy.toFixed(1), x2: W - PAD.r, y2: gy.toFixed(1), class: 'afx-grid' + (g === 0 ? ' is-zero' : '') }));
+      var lt = el('text', { x: PAD.l - 5, y: (gy + 3).toFixed(1), 'text-anchor': 'end', class: 'afx-axis-label' });
+      lt.textContent = String(g); svg.appendChild(lt);
+    }
+    for (var c = 0; c <= ctlMax; c += ctlMax / 4) {
+      var rt = el('text', { x: W - PAD.r + 5, y: (yC(c) + 3).toFixed(1), 'text-anchor': 'start', class: 'afx-axis-label afx-axis-ctl' });
+      rt.textContent = String(c); svg.appendChild(rt);
+    }
+
+    // bars (weekly TSS)
+    wks.forEach(function (w, i) {
+      var h = Math.max(PAD.t + PH - yT(w.tss), 0);
+      svg.appendChild(el('rect', {
+        x: (cx(i) - bw / 2).toFixed(1), y: yT(w.tss).toFixed(1),
+        width: bw.toFixed(1), height: h.toFixed(1), rx: 1.5,
+        class: 'afx-bar' + (w.recovery ? ' is-recovery' : '')
+      }));
+    });
+
+    // CTL line + dots (right axis)
+    var d = '';
+    wks.forEach(function (w, i) { d += (i ? 'L' : 'M') + cx(i).toFixed(1) + ' ' + yC(w.ctl).toFixed(1) + ' '; });
+    svg.appendChild(el('path', { d: d.trim(), class: 'afx-line afx-ctl' }));
+    wks.forEach(function (w, i) {
+      svg.appendChild(el('circle', { cx: cx(i).toFixed(1), cy: yC(w.ctl).toFixed(1), r: 2.4, class: 'afx-ctl-dot' }));
+    });
+
+    // X labels — a few week anchors
+    wks.forEach(function (w, i) {
+      if (i !== 0 && (i + 1) % 3 !== 0 && i !== n - 1) return;
+      var t = el('text', { x: cx(i).toFixed(1), y: (H - PAD.b + 18).toFixed(1), 'text-anchor': 'middle', class: 'afx-axis-label' });
+      t.textContent = (w.label || ('W' + w.wk)); svg.appendChild(t);
+    });
+
+    target.textContent = '';
+    target.appendChild(svg);
+  }
+
   function init() {
-    var figs = document.querySelectorAll('[data-app-figure="pmc"]');
-    for (var i = 0; i < figs.length; i++) render(figs[i]);
+    var figs = document.querySelectorAll('[data-app-figure]');
+    for (var i = 0; i < figs.length; i++) {
+      var type = figs[i].getAttribute('data-app-figure');
+      if (type === 'weekly') renderWeekly(figs[i]);
+      else renderPMC(figs[i]);
+    }
   }
 
   if (document.readyState === 'loading') {
