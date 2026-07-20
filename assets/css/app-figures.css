@@ -1,0 +1,144 @@
+/*
+  app-figures.css — in-app figure system for the blog
+  ----------------------------------------------------
+  Faithful web replicas of the Summit iOS app's Training screens, embedded
+  in blog articles so the text is accompanied by the exact visual the reader
+  would meet in the product ("show, don't tell").
+
+  Source of truth is the app itself (SwiftUI). This file reproduces the FORM
+  tab's visual language — the Performance Management Chart, the CTL/ATL/TSB
+  readout, and the interpretation rail — by eye, not by build; keep it in
+  sync with `Features/Training/Components/TrainingLoadChart.swift` and
+  `TrainingTabForm.swift` in Project-Summit-MVP when the app's chart changes.
+
+  Colors: the app's SEMANTIC palette (info / alert / success / warn) is NOT
+  part of the marketing-site token set, so the exact app hexes are declared
+  here, once, as `--af-*` tokens with light + dark variants — mirroring how
+  DSColor resolves them per trait. Everything else reuses the site's own
+  ink/card/hair tokens so the figure sits natively on the paper canvas and
+  survives dark mode. Geometry is drawn by assets/js/app-figures.js; all
+  color lives here so a theme flip needs no re-render.
+*/
+
+.app-figure {
+  /* App semantic colors — exact DSColor values (light) */
+  --af-ctl:  #0073FF;   /* info    — CTL / fitness  */
+  --af-atl:  #D84333;   /* alert   — ATL / fatigue  */
+  --af-tsb:  #3DB76F;   /* success — TSB / form     */
+  --af-warn: #E0A93C;   /* warn    — amber          */
+  --af-zone: rgba(61,183,111,0.10);   /* TSB optimal band fill */
+  /* Neutrals map onto the site's paper tokens so the card reads as native */
+  --af-ink:   var(--ink);
+  --af-soft:  var(--ink-soft);
+  --af-faint: var(--ink-faint);
+  --af-hair:  var(--ink-hair);
+
+  margin: 30px 0;
+}
+
+[data-theme="dark"] .app-figure {
+  /* DSColor dark variants (success is non-adaptive — same in both themes) */
+  --af-ctl:  #5CA8FF;
+  --af-atl:  #E85B4D;
+  --af-tsb:  #3DB76F;
+  --af-warn: #E8B655;
+  --af-zone: rgba(61,183,111,0.12);
+}
+
+/* ── Card frame — mirrors TrainingTabCard on the app's paper canvas ── */
+.app-figure-card {
+  background: var(--card);
+  border: 1px solid var(--af-hair);
+  border-radius: var(--r-card);
+  box-shadow: var(--e1);
+  padding: 18px 16px 14px;
+}
+
+/* Eyebrow: mono, tracked, soft — same as the app's card eyebrow */
+.app-figure-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--af-soft);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* "IN-APP VIEW" honesty tag — signals this is a replica of the product UI */
+.app-figure-tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  color: var(--af-faint);
+  border: 1px solid var(--af-hair);
+  border-radius: var(--r-pill);
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+/* ── Chart canvas ── */
+.app-figure-chart { width: 100%; height: auto; display: block; }
+.app-figure-chart svg { width: 100%; height: auto; display: block; }
+
+/* Grid + axes */
+.afx-grid       { stroke: var(--af-hair); stroke-width: 0.5; }
+.afx-grid.is-zero { stroke: var(--af-faint); stroke-width: 1; }
+.afx-axis-label { fill: var(--af-faint); font-family: var(--font-mono); font-size: 9px; }
+.afx-axis-label.is-today { fill: var(--af-ink); font-weight: 700; }
+.afx-today      { stroke: var(--af-faint); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.afx-zone       { fill: var(--af-zone); }
+/* Retrospective mode: highlighted event window + its label */
+.afx-event-band  { fill: var(--af-warn); opacity: 0.14; }
+.afx-event-label { fill: var(--af-warn); font-family: var(--font-mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.6px; }
+
+/* Data series — solid = historic, .is-proj = dashed forecast */
+.afx-line { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.afx-ctl  { stroke: var(--af-ctl);  stroke-width: 2.6; }
+.afx-atl  { stroke: var(--af-atl);  stroke-width: 2.2; }
+.afx-tsb  { stroke: var(--af-tsb);  stroke-width: 2.2; }
+.afx-line.is-proj { stroke-dasharray: 5 3; opacity: 0.6; }
+
+/* TSS load dots + today's form marker */
+.afx-tss     { fill: var(--af-faint); }
+.afx-tss.is-proj { opacity: 0.55; }
+.afx-today-dot-ring { fill: none; stroke: var(--af-tsb); stroke-width: 2; }
+.afx-today-dot-core { fill: var(--af-tsb); }
+
+/* ── Legend — CTL · ATL · TSB · TSS, same order as the app ── */
+.app-figure-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: var(--af-faint);
+}
+.app-figure-legend .lg { display: inline-flex; align-items: center; gap: 5px; }
+.app-figure-legend .lg-swatch { width: 16px; height: 2.5px; border-radius: 2px; }
+.app-figure-legend .lg-dot { width: 6px; height: 6px; border-radius: 50%; opacity: 0.75; }
+.app-figure-legend .lg-ctl { background: var(--af-ctl); }
+.app-figure-legend .lg-atl { background: var(--af-atl); }
+.app-figure-legend .lg-tsb { background: var(--af-tsb); }
+.app-figure-legend .lg-tss { background: var(--af-faint); }
+
+/* ── figcaption — always present so the figure isn't a blank hole w/o JS ── */
+.app-figure figcaption {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--af-soft);
+}
+.app-figure figcaption b { color: var(--af-ink); font-weight: 600; }
+
+/* Fallback height for the canvas before JS draws (avoids layout jump) */
+.app-figure-chart:empty { min-height: 240px; }
+
+@media (max-width: 640px) {
+  .app-figure-card { padding: 15px 12px 12px; }
+  .app-figure-legend { gap: 10px; }
+}
