@@ -203,10 +203,12 @@ URLs — **without hand-tripling every page**, by generating them.
   4. `<title>`/meta description are composed from copy that's **already
      translated and reviewed elsewhere on the page** (nav labels, the page's
      own "sub" line — see the `META` map in `tools/i18n-meta.js`) — not new
-     marketing copy invented at build time. `terms.html`/`privacy-policy.html`
-     don't have a reviewed translated one-liner to reuse, so their meta
-     description stays in English until someone writes real translated
-     legal-page copy (tracked via `descKey: null` in `META`).
+     marketing copy invented at build time. When a page has no on-page
+     one-liner to reuse, a dedicated translated meta key is used instead
+     (e.g. `terms.metadesc` / `privacy.metadesc` for the legal pages, added
+     to `i18n.js` and pointed at via `descKey` in `META`). A page with
+     `descKey: null` has no reviewed translation yet and keeps the English
+     description until one is written.
 - **`tools/i18n-meta.js`** holds `META`/`TITLE_EN`/`DESC_EN`/`OG_TITLE_EN`/
   `OG_DESC_EN`/`FAQ_KEYS` — hand-kept copies of each page's real `<title>`/
   meta/OG/Twitter text and of the order `faq.html`'s hand-authored FAQPage
@@ -241,8 +243,7 @@ URLs — **without hand-tripling every page**, by generating them.
   root). `sitemap.xml` lists `index/roadmap/faq/about/ambassadors` × en/es/ca
   with hreflang annotations (terms/privacy-policy stay out, same as before —
   they're `noindex`).
-- **Known gaps / next steps**: `terms.html`/`privacy-policy.html` meta
-  descriptions aren't translated yet (see above). Nothing here removes the
+- **Known gaps / next steps**: Nothing here removes the
   runtime `data-i18n`/`SummitLang` swap — it still exists and still runs (for
   the same-page preview flash before `lang-routing.js` navigates) — a deeper
   cleanup could retire it once every DOM-swap consumer is confirmed
