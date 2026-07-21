@@ -73,10 +73,21 @@
 /* ── Data table (real numbers) ────────────────────────────────────────────── */
 .data-table-wrap { margin: 30px 0; overflow-x: auto; border: 1px solid var(--ink-hair); border-radius: var(--r-data); }
 
-/* Photos (ride shots) — full content-width figure with caption */
+/* Photos (ride shots) — centered figure, capped so tall portraits don't
+   dominate. width/height:auto (never 100%) keeps the aspect ratio intact
+   regardless of the intrinsic width/height attributes. */
 .post-photo { margin: 34px 0; }
-.post-photo img { display: block; width: 100%; height: auto; border-radius: var(--r-card); border: 1px solid var(--ink-hair); }
-.post-photo figcaption { margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink-faint); }
+.post-photo img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 62vh;
+  border-radius: var(--r-card);
+  border: 1px solid var(--ink-hair);
+}
+.post-photo figcaption { margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink-faint); text-align: center; }
 .data-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
 .data-table th, .data-table td { padding: 12px 14px; text-align: right; border-bottom: 1px solid var(--ink-hair); white-space: nowrap; }
 .data-table th:first-child, .data-table td:first-child { text-align: left; }
