@@ -319,8 +319,8 @@ places:
   when it shows). Needs the `/appstore-rating` Worker route deployed (see
   `infra/cloudflare-worker.js`).
 - **Hero phones**: the three home-hero phones use dedicated hero art
-  (`assets/screenshots/hero-recovery.png`, `hero-today.png`,
-  `hero-training-load.png`) — separate from the carousel shots, so the hero and
+  (`assets/screenshots/hero-recovery.webp`, `hero-today.webp`,
+  `hero-training-load.webp`) — separate from the carousel shots, so the hero and
   carousel can differ. (They currently start as copies of the carousel images;
   overwrite the `hero-*` files with the final hero art.)
 

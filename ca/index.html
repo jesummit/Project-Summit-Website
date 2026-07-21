@@ -101,6 +101,9 @@
 }
 </script>
 
+  <!-- Preload the one webfont face used above the fold (the hero's serif-italic
+       accent word) so it paints without waiting on summit.css to be parsed. -->
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/instrument-serif-italic-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="../assets/css/summit.css" />
 </head>
 <body data-vibe="product" data-page="home" data-alt-en="/" data-alt-es="/es/" data-alt-ca="/ca/">
@@ -188,10 +191,10 @@
       </div>
       <div class="hp-stage hero-rise">
         <!-- Hero cockpit: dedicated hero art (separate from the carousel).
-             Swap assets/screenshots/hero-*.png with your final hero shots. -->
-        <div class="phone hp-side hero-pop" style="--pop-delay:.54s"><img src="../assets/screenshots/hero-recovery.png" alt="Recovery" /></div>
-        <div class="phone hp-center hero-pop" style="--pop-delay:.40s"><img src="../assets/screenshots/hero-today.png" alt="Today" /></div>
-        <div class="phone hp-side hero-pop" style="--pop-delay:.64s"><img src="../assets/screenshots/hero-training-load.png" alt="Training load" /></div>
+             Swap assets/screenshots/hero-*.webp with your final hero shots. -->
+        <div class="phone hp-side hero-pop" style="--pop-delay:.54s"><img src="../assets/screenshots/hero-recovery.webp" alt="Recovery" width="1206" height="2622" decoding="async" /></div>
+        <div class="phone hp-center hero-pop" style="--pop-delay:.40s"><img src="../assets/screenshots/hero-today.webp" alt="Today" width="1206" height="2622" decoding="async" fetchpriority="high" /></div>
+        <div class="phone hp-side hero-pop" style="--pop-delay:.64s"><img src="../assets/screenshots/hero-training-load.webp" alt="Training load" width="1206" height="2622" decoding="async" /></div>
         <div class="hp-callout co1 co-in" style="--pop-delay:1.12s;--co-from:-32px"><span class="co-label" data-i18n="co.recovery.label">Recuperació</span><span class="co-text" data-i18n="co.recovery.text">Llegeix VFC i son des d’Apple Health</span></div>
         <div class="hp-callout co2 co-in" style="--pop-delay:1.25s;--co-from:32px"><span class="co-label" data-i18n="co.adapts.label">S’adapta</span><span class="co-text" data-i18n="co.adapts.text">Reescriu la setmana quan la vida canvia</span></div>
         <div class="hp-callout co3 co-in" style="--pop-delay:1.38s;--co-from:-32px"><span class="co-label" data-i18n="co.motor.label">El teu motor</span><span class="co-text" data-i18n="co.motor.text">eFTP i corba de potència, sempre al dia</span></div>
@@ -216,13 +219,13 @@
   </div>
   <div class="wrap" style="overflow:visible">
     <div class="carousel-track" id="carousel">
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/today.png" alt="Today" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.today.e">Avui</div><div class="cap-title" data-i18n="cap.today.t">El teu dia d’un cop d’ull</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/training-load.png" alt="Training load" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.load.e">Càrrega d’entreno</div><div class="cap-title" data-i18n="cap.load.t">CTL / ATL / TSB, en directe</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/workout.png" alt="Workout" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.workout.e">Entreno</div><div class="cap-title" data-i18n="cap.workout.t">Sessions estructurades, a punt per rodar</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/recovery.png" alt="Recovery" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.recovery.e">Recuperació</div><div class="cap-title" data-i18n="cap.recovery.t">VFC. Son. Forma.</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/calendar.png" alt="Calendar" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.calendar.e">Calendari</div><div class="cap-title" data-i18n="cap.calendar.t">El teu pla, setmana a setmana</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/activity.png" alt="Activity" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.activity.e">Activitat</div><div class="cap-title" data-i18n="cap.activity.t">Potència. FC. Desnivell. Zones.</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/nutrition.png" alt="Nutrition" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.nutrition.e">Nutrició</div><div class="cap-title" data-i18n="cap.nutrition.t">Pla d’avituallament de cursa</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/today.webp" alt="Today" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.today.e">Avui</div><div class="cap-title" data-i18n="cap.today.t">El teu dia d’un cop d’ull</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/training-load.webp" alt="Training load" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.load.e">Càrrega d’entreno</div><div class="cap-title" data-i18n="cap.load.t">CTL / ATL / TSB, en directe</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/workout.webp" alt="Workout" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.workout.e">Entreno</div><div class="cap-title" data-i18n="cap.workout.t">Sessions estructurades, a punt per rodar</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/recovery.webp" alt="Recovery" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.recovery.e">Recuperació</div><div class="cap-title" data-i18n="cap.recovery.t">VFC. Son. Forma.</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/calendar.webp" alt="Calendar" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.calendar.e">Calendari</div><div class="cap-title" data-i18n="cap.calendar.t">El teu pla, setmana a setmana</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/activity.webp" alt="Activity" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.activity.e">Activitat</div><div class="cap-title" data-i18n="cap.activity.t">Potència. FC. Desnivell. Zones.</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="../assets/screenshots/nutrition.webp" alt="Nutrition" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.nutrition.e">Nutrició</div><div class="cap-title" data-i18n="cap.nutrition.t">Pla d’avituallament de cursa</div></div></div>
     </div>
   </div>
   <div class="carousel-dots" id="dots"></div>
