@@ -168,4 +168,25 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/periodization-base-build-peak.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/periodization-base-build-peak.html"/>
   </url>
+  <url>
+    <loc>https://projectsummit.app/blog/taper-and-peak-tsb.html</loc><lastmod>2026-07-21</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/es/taper-and-peak-tsb.html</loc><lastmod>2026-07-21</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/ca/taper-and-peak-tsb.html</loc><lastmod>2026-07-21</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/taper-and-peak-tsb.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
+  </url>
 </urlset>
