@@ -59,6 +59,7 @@ const BLOG_PAGES = {
   'blog/index.html': 'blog',
   'blog/gran-diagonal-999km-portugal.html': 'blog',
   'blog/periodization-base-build-peak.html': 'blog',
+  'blog/taper-and-peak-tsb.html': 'blog',
   'blog/es/index.html': 'blog',
   'blog/es/gran-diagonal-999km-portugal.html': 'blog',
   'blog/es/periodization-base-build-peak.html': 'blog',
