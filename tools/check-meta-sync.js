@@ -32,6 +32,25 @@ for (const file of Object.keys(TITLE_EN)) {
   }
 }
 
+// Extract the visible answer text for a faq.<key>.a block (strip tags +
+// normalise whitespace) so the FAQPage JSON-LD answer can be checked against
+// the on-page copy Google will compare it to.
+function faqVisibleAnswer(html, key) {
+  const marker = `data-i18n="${key}.a">`;
+  const i = html.indexOf(marker);
+  if (i < 0) return null;
+  const start = i + marker.length;
+  let depth = 1, j = start;
+  const re = /<\/?div\b[^>]*>/g; re.lastIndex = start;
+  let m;
+  while ((m = re.exec(html))) {
+    if (m[0].startsWith('</')) { depth--; if (depth === 0) { j = m.index; break; } }
+    else depth++;
+  }
+  return html.slice(start, j).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&')
+             .replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 // FAQ_KEYS must match faq.html's own hand-authored FAQPage question order.
 const faqHtml = fs.readFileSync(path.join(ROOT, 'faq.html'), 'utf8');
 const ldMatch = faqHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
@@ -47,6 +66,15 @@ if (!faqNode) {
     if (!m) { fail(`faq.html: no data-i18n="${key}.q" element found for FAQ_KEYS[${i}]`); return; }
     if (m[1] !== q.name) {
       fail(`faq.html: FAQ_KEYS[${i}] ('${key}') is question "${m[1]}", but the JSON-LD at position ${i} is "${q.name}" — reorder FAQ_KEYS in tools/i18n-meta.js to match`);
+    }
+    // The JSON-LD answer text must match the visible <details> answer verbatim,
+    // or Google flags the FAQPage markup as not matching on-page content.
+    const ans = q.acceptedAnswer && q.acceptedAnswer.text;
+    const vis = faqVisibleAnswer(faqHtml, key);
+    if (vis == null) {
+      fail(`faq.html: no data-i18n="${key}.a" answer element found for FAQ_KEYS[${i}]`);
+    } else if (ans !== vis) {
+      fail(`faq.html: FAQPage answer for '${key}' does not match the visible answer text — re-sync the JSON-LD acceptedAnswer to the on-page <details> copy`);
     }
   });
 }
