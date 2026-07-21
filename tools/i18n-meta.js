@@ -35,7 +35,7 @@ const TITLE_EN = {
   'privacy-policy.html': 'Privacy Policy — Project Summit',
 };
 const DESC_EN = {
-  'index.html': 'An adaptive iOS training platform for serious cyclists. Summit reads your recovery and your real schedule, then rewrites your plan like a coach would. Now on the App Store.',
+  'index.html': 'An adaptive iOS training platform for serious cyclists. Summit reads your recovery and schedule, then rewrites your plan like a coach would. On the App Store.',
   'roadmap.html': "What's built, what's coming, and where Project Summit is headed.",
   'faq.html': 'Frequent questions about Summit — the adaptive cycling training app.',
   'about.html': "Why Jordi Espanyol built Summit — and the problem it's solving for serious amateur cyclists.",

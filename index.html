@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
   <title>Project Summit — Train harder. Smarter.</title>
-  <meta name="description" content="An adaptive iOS training platform for serious cyclists. Summit reads your recovery and your real schedule, then rewrites your plan like a coach would. Now on the App Store." />
+  <meta name="description" content="An adaptive iOS training platform for serious cyclists. Summit reads your recovery and schedule, then rewrites your plan like a coach would. On the App Store." />
   <link rel="canonical" href="https://projectsummit.app/" />
   <link rel="alternate" hreflang="en" href="https://projectsummit.app/" />
   <link rel="alternate" hreflang="es" href="https://projectsummit.app/es/" />
@@ -82,6 +82,9 @@
   }
   </script>
 
+  <!-- Preload the one webfont face used above the fold (the hero's serif-italic
+       accent word) so it paints without waiting on summit.css to be parsed. -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-italic-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/summit.css" />
 </head>
 <body data-vibe="product" data-page="home" data-alt-en="/" data-alt-es="/es/" data-alt-ca="/ca/">
@@ -169,10 +172,10 @@
       </div>
       <div class="hp-stage hero-rise">
         <!-- Hero cockpit: dedicated hero art (separate from the carousel).
-             Swap assets/screenshots/hero-*.png with your final hero shots. -->
-        <div class="phone hp-side hero-pop" style="--pop-delay:.54s"><img src="assets/screenshots/hero-recovery.png" alt="Recovery" /></div>
-        <div class="phone hp-center hero-pop" style="--pop-delay:.40s"><img src="assets/screenshots/hero-today.png" alt="Today" /></div>
-        <div class="phone hp-side hero-pop" style="--pop-delay:.64s"><img src="assets/screenshots/hero-training-load.png" alt="Training load" /></div>
+             Swap assets/screenshots/hero-*.webp with your final hero shots. -->
+        <div class="phone hp-side hero-pop" style="--pop-delay:.54s"><img src="assets/screenshots/hero-recovery.webp" alt="Recovery" width="1206" height="2622" decoding="async" /></div>
+        <div class="phone hp-center hero-pop" style="--pop-delay:.40s"><img src="assets/screenshots/hero-today.webp" alt="Today" width="1206" height="2622" decoding="async" fetchpriority="high" /></div>
+        <div class="phone hp-side hero-pop" style="--pop-delay:.64s"><img src="assets/screenshots/hero-training-load.webp" alt="Training load" width="1206" height="2622" decoding="async" /></div>
         <div class="hp-callout co1 co-in" style="--pop-delay:1.12s;--co-from:-32px"><span class="co-label" data-i18n="co.recovery.label">Recovery</span><span class="co-text" data-i18n="co.recovery.text">Reads HRV &amp; sleep from Apple Health</span></div>
         <div class="hp-callout co2 co-in" style="--pop-delay:1.25s;--co-from:32px"><span class="co-label" data-i18n="co.adapts.label">Adapts</span><span class="co-text" data-i18n="co.adapts.text">Rewrites the week when life shifts</span></div>
         <div class="hp-callout co3 co-in" style="--pop-delay:1.38s;--co-from:-32px"><span class="co-label" data-i18n="co.motor.label">Your motor</span><span class="co-text" data-i18n="co.motor.text">eFTP &amp; power curve, always current</span></div>
@@ -197,13 +200,13 @@
   </div>
   <div class="wrap" style="overflow:visible">
     <div class="carousel-track" id="carousel">
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/today.png" alt="Today" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.today.e">Today</div><div class="cap-title" data-i18n="cap.today.t">Your day at a glance</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/training-load.png" alt="Training load" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.load.e">Training Load</div><div class="cap-title" data-i18n="cap.load.t">CTL / ATL / TSB, live</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/workout.png" alt="Workout" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.workout.e">Workout</div><div class="cap-title" data-i18n="cap.workout.t">Structured sessions, ready to ride</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/recovery.png" alt="Recovery" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.recovery.e">Recovery</div><div class="cap-title" data-i18n="cap.recovery.t">HRV. Sleep. Readiness.</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/calendar.png" alt="Calendar" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.calendar.e">Calendar</div><div class="cap-title" data-i18n="cap.calendar.t">Your plan, week by week</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/activity.png" alt="Activity" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.activity.e">Activity</div><div class="cap-title" data-i18n="cap.activity.t">Power. HR. Elevation. Zones.</div></div></div>
-      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/nutrition.png" alt="Nutrition" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.nutrition.e">Nutrition</div><div class="cap-title" data-i18n="cap.nutrition.t">Race-day fueling plan</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/today.webp" alt="Today" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.today.e">Today</div><div class="cap-title" data-i18n="cap.today.t">Your day at a glance</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/training-load.webp" alt="Training load" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.load.e">Training Load</div><div class="cap-title" data-i18n="cap.load.t">CTL / ATL / TSB, live</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/workout.webp" alt="Workout" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.workout.e">Workout</div><div class="cap-title" data-i18n="cap.workout.t">Structured sessions, ready to ride</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/recovery.webp" alt="Recovery" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.recovery.e">Recovery</div><div class="cap-title" data-i18n="cap.recovery.t">HRV. Sleep. Readiness.</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/calendar.webp" alt="Calendar" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.calendar.e">Calendar</div><div class="cap-title" data-i18n="cap.calendar.t">Your plan, week by week</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/activity.webp" alt="Activity" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.activity.e">Activity</div><div class="cap-title" data-i18n="cap.activity.t">Power. HR. Elevation. Zones.</div></div></div>
+      <div class="carousel-item"><div class="phone"><img src="assets/screenshots/nutrition.webp" alt="Nutrition" width="1206" height="2622" loading="lazy" decoding="async" /></div><div class="cap"><div class="cap-eyebrow" data-i18n="cap.nutrition.e">Nutrition</div><div class="cap-title" data-i18n="cap.nutrition.t">Race-day fueling plan</div></div></div>
     </div>
   </div>
   <div class="carousel-dots" id="dots"></div>
