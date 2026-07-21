@@ -26,7 +26,7 @@ const META = {
   'privacy-policy.html': { navKey: 'nav.privacy',     descKey: 'privacy.metadesc' },
 };
 const TITLE_EN = {
-  'index.html': 'Project Summit — Train harder. Smarter.',
+  'index.html': 'Project Summit — Adaptive Cycling Training App for iOS',
   'roadmap.html': 'Roadmap — Project Summit',
   'faq.html': 'FAQ — Project Summit',
   'about.html': 'About — Project Summit',
