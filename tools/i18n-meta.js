@@ -12,18 +12,18 @@
 'use strict';
 
 // <title>/description are composed from copy that's already translated and
-// reviewed elsewhere on the page (nav labels, the page's own "sub" line) — not
-// new marketing copy invented at build time. `descKey: null` (terms, privacy)
-// means no reviewed translation exists yet, so the English description is
-// kept as-is until real translated legal-page copy is written.
+// reviewed elsewhere on the page (nav labels, the page's own "sub" line, or a
+// dedicated translated meta key) — not new marketing copy invented at build
+// time. `descKey: null` means no reviewed translation exists yet, so the
+// English description is kept as-is until real translated copy is written.
 const META = {
   'index.html':          { navKey: null,             descKey: 'hero.prod.sub' },
   'roadmap.html':        { navKey: 'nav.roadmap',     descKey: 'roadmap.sub' },
   'faq.html':            { navKey: 'nav.faq',         descKey: 'faq.sub', stripDesc: true },
   'about.html':          { navKey: 'nav.about',       descKey: 'about.sub' },
   'ambassadors.html':    { navKey: 'nav.ambassadors', descKey: 'amb.sub' },
-  'terms.html':          { navKey: 'nav.terms',       descKey: null },
-  'privacy-policy.html': { navKey: 'nav.privacy',     descKey: null },
+  'terms.html':          { navKey: 'nav.terms',       descKey: 'terms.metadesc' },
+  'privacy-policy.html': { navKey: 'nav.privacy',     descKey: 'privacy.metadesc' },
 };
 const TITLE_EN = {
   'index.html': 'Project Summit — Train harder. Smarter.',

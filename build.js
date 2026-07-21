@@ -321,6 +321,13 @@ function generateLocaleShells() {
       html = replaceIfPresent(html, `content="${DESC_EN[file]}"`, `content="${desc}"`);
       html = replaceIfPresent(html, `content="${OG_TITLE_EN[file]}"`, `content="${title}"`);
       html = replaceIfPresent(html, `content="${OG_DESC_EN[file]}"`, `content="${desc}"`);
+      // twitter:title/description are localized by rewriting their own tags —
+      // explicitly, not by relying on their text happening to match
+      // og:title/og:description (which the replaceIfPresent calls above key
+      // off). This keeps them localized even if a page's Twitter copy ever
+      // diverges textually from its OpenGraph copy.
+      html = html.replace(/<meta name="twitter:title" content="[^"]*" \/>/, () => `<meta name="twitter:title" content="${title}" />`);
+      html = html.replace(/<meta name="twitter:description" content="[^"]*" \/>/, () => `<meta name="twitter:description" content="${desc}" />`);
       html = localizeJsonLd(html, file, locale, title, desc);
 
       const canonical = canonicalFor(file, locale);
