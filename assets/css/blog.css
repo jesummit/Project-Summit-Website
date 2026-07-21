@@ -151,6 +151,18 @@
 .article-foot a { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; }
 .article-foot a:hover { color: var(--accent); }
 
+/* Read next / related — internal links to the sibling post + product pages */
+.read-next { margin-top: 8px; padding: 30px 0 6px; border-top: 1px solid var(--ink-hair); }
+.read-next-h { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+.read-next-h + * + .read-next-h { margin-top: 26px; }
+.read-next-post { display: inline-flex; align-items: baseline; gap: 8px; font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+.read-next-post span { color: var(--accent); transition: transform 0.15s; }
+.read-next-post:hover { color: var(--accent); }
+.read-next-post:hover span { transform: translateX(3px); }
+.read-next-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.read-next-links a { font-size: 15px; color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid transparent; width: fit-content; }
+.read-next-links a:hover { color: var(--accent); border-bottom-color: var(--accent-line); }
+
 /* ── Blog index ───────────────────────────────────────────────────────────── */
 .blog-hero { padding: 84px 0 44px; border-bottom: 1px solid var(--ink-hair); }
 .blog-hero .article-kicker { color: var(--accent); }
