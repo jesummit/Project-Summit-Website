@@ -6,6 +6,7 @@
  *   projectsummit.app/ingest/*         →  eu.i.posthog.com/*
  *   projectsummit.app/appstore-rating  →  itunes.apple.com lookup (rating JSON)
  *   projectsummit.app/blog-subscribe   →  blog_subscribe_v1 Supabase Edge Function
+ *   projectsummit.app/unsubscribe      →  unsubscribe_v1 Supabase Edge Function
  *
  * Deploy instructions:
  *   1. Cloudflare dashboard → Workers & Pages → Create Worker
@@ -14,6 +15,17 @@
  *        projectsummit.app/ingest*
  *        projectsummit.app/appstore-rating
  *        projectsummit.app/blog-subscribe
+ *        projectsummit.app/unsubscribe*
+ *
+ * GOTCHA — route patterns are matched against the URL *including the query
+ * string*, so a pattern without a trailing `*` only matches the bare path.
+ * `projectsummit.app/unsubscribe` silently fell through to GitHub Pages for
+ * every real unsubscribe link (they all carry ?c=…&k=…&t=…), which looked
+ * exactly like "the route isn't deployed yet". Any route whose URLs carry a
+ * query string needs the `*` — that is also why /ingest* has one. The API
+ * rejects a literal `?` in a pattern, so `*` is the only way to express it.
+ * /appstore-rating and /blog-subscribe are called without a query, so their
+ * exact patterns are fine.
  */
 
 const POSTHOG_API_HOST   = 'eu.i.posthog.com'
@@ -23,6 +35,13 @@ const POSTHOG_ASSET_HOST = 'eu-assets.i.posthog.com'
 // can stay; the Worker does the cross-origin hop. The function checks the
 // forwarded Origin header, so the original request headers must be passed on.
 const BLOG_SUBSCRIBE_UPSTREAM = 'https://nzxgsopmqpvhiikcbdfo.supabase.co/functions/v1/blog_subscribe_v1'
+
+// Every marketing email's List-Unsubscribe header points at
+// projectsummit.app/unsubscribe (RFC 8058 one-click). Hosting it on the branded
+// domain instead of *.supabase.co is both a deliverability signal and what lets
+// the opt-out page inherit the site's security headers. The URL's HMAC token is
+// the authentication, so the Worker just forwards — query string included.
+const UNSUBSCRIBE_UPSTREAM = 'https://nzxgsopmqpvhiikcbdfo.supabase.co/functions/v1/unsubscribe_v1'
 
 const APP_ID        = '6754172654'
 const APP_STOREFRONT = 'es'
@@ -42,6 +61,16 @@ export default {
         return new Response('Method not allowed', { status: 405 })
       }
       return fetch(new Request(BLOG_SUBSCRIBE_UPSTREAM, request))
+    }
+
+    // GET renders the confirmation page, POST applies the opt-out (the form and
+    // the mail client's one-click both POST). The query string carries the
+    // contact/campaign/token, so it must survive the hop.
+    if (url.pathname === '/unsubscribe') {
+      if (request.method !== 'GET' && request.method !== 'POST') {
+        return new Response('Method not allowed', { status: 405 })
+      }
+      return fetch(new Request(UNSUBSCRIBE_UPSTREAM + url.search, request))
     }
 
     if (url.pathname.startsWith('/ingest/static/')) {

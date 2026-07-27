@@ -25,8 +25,23 @@ Applied **via the Cloudflare API** and verified live:
   forwards to the Supabase Edge Function — `infra/cloudflare-worker.js`), so
   `connect-src 'self'` stands with no third-party origins.
 - ✅ Rate-limit on `/ingest` (§3) — Free-plan limits: action `block`, 40 requests
-  / 10 s per IP (per colo). `/blog-subscribe` is NOT rate-limited (Free plan =
-  one rule); widen the `/ingest` rule's expression if abuse shows up.
+  / 10 s per IP (per colo). `/blog-subscribe` and `/unsubscribe` are NOT
+  rate-limited (Free plan = one rule); widen the `/ingest` rule's expression if
+  abuse shows up. Low risk on `/unsubscribe`: without the per-contact HMAC token
+  every request is rejected before any DB write, so there is nothing to
+  enumerate — brute-forcing a SHA-256 signature is not a practical attack.
+- ✅ `/unsubscribe*` (RFC 8058 one-click opt-out) is served same-origin through
+  the Worker from the `unsubscribe_v1` Edge Function in `Project-Summit-MVP`.
+  **The trailing `*` is load-bearing**: Worker route patterns match the URL
+  *including the query string*, and every unsubscribe link carries
+  `?c=…&k=…&t=…`. With the bare `projectsummit.app/unsubscribe` pattern the
+  request fell straight through to GitHub Pages (which answered with the site's
+  own 404 page — indistinguishable from "the route isn't live yet"). Cloudflare
+  rejects a literal `?` in a pattern, so `*` is the only way to express it.
+  It needs **no CSP change**: the page is self-contained (inline `<style>`, no
+  scripts, no external assets) and its confirmation form posts to itself, which
+  the existing `style-src 'unsafe-inline'` and `form-action 'self'` already
+  allow.
 - ✅ Minimum TLS 1.2 (§2). ✅ Bot Fight Mode on (§2).
 - 🟡 DNSSEC (§2): zone signed; **pending the DS record at GoDaddy** —
   key tag `2371`, algorithm `13`, digest type `2`, digest
