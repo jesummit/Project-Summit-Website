@@ -15,7 +15,17 @@
  *        projectsummit.app/ingest*
  *        projectsummit.app/appstore-rating
  *        projectsummit.app/blog-subscribe
- *        projectsummit.app/unsubscribe
+ *        projectsummit.app/unsubscribe*
+ *
+ * GOTCHA — route patterns are matched against the URL *including the query
+ * string*, so a pattern without a trailing `*` only matches the bare path.
+ * `projectsummit.app/unsubscribe` silently fell through to GitHub Pages for
+ * every real unsubscribe link (they all carry ?c=…&k=…&t=…), which looked
+ * exactly like "the route isn't deployed yet". Any route whose URLs carry a
+ * query string needs the `*` — that is also why /ingest* has one. The API
+ * rejects a literal `?` in a pattern, so `*` is the only way to express it.
+ * /appstore-rating and /blog-subscribe are called without a query, so their
+ * exact patterns are fine.
  */
 
 const POSTHOG_API_HOST   = 'eu.i.posthog.com'

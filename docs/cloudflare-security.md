@@ -30,8 +30,14 @@ Applied **via the Cloudflare API** and verified live:
   abuse shows up. Low risk on `/unsubscribe`: without the per-contact HMAC token
   every request is rejected before any DB write, so there is nothing to
   enumerate — brute-forcing a SHA-256 signature is not a practical attack.
-- ✅ `/unsubscribe` (RFC 8058 one-click opt-out) is served same-origin through
+- ✅ `/unsubscribe*` (RFC 8058 one-click opt-out) is served same-origin through
   the Worker from the `unsubscribe_v1` Edge Function in `Project-Summit-MVP`.
+  **The trailing `*` is load-bearing**: Worker route patterns match the URL
+  *including the query string*, and every unsubscribe link carries
+  `?c=…&k=…&t=…`. With the bare `projectsummit.app/unsubscribe` pattern the
+  request fell straight through to GitHub Pages (which answered with the site's
+  own 404 page — indistinguishable from "the route isn't live yet"). Cloudflare
+  rejects a literal `?` in a pattern, so `*` is the only way to express it.
   It needs **no CSP change**: the page is self-contained (inline `<style>`, no
   scripts, no external assets) and its confirmation form posts to itself, which
   the existing `style-src 'unsafe-inline'` and `form-action 'self'` already
