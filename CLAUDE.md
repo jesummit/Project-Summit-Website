@@ -302,14 +302,28 @@ places:
 
 ## Placeholders (swap these when the real values exist)
 - **App Store links**: ✅ done — every `.appstore` badge points to
-  `https://apps.apple.com/app/id6754172654` (Apple ID `6754172654`) and keeps its
-  `data-source="…"` for analytics. The badge artwork is Apple's **official SVG
-  lockup** (`assets/img/appstore-badges/`, en/es/ca × black/white): each badge is
+  `https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&ct=web&mt=8`
+  (Apple ID `6754172654`) and keeps its `data-source="…"` for analytics. The
+  badge artwork is Apple's **official SVG lockup**
+  (`assets/img/appstore-badges/`, en/es/ca × black/white): each badge is
   an `<img class="appstore-img">` and `app.js updateBadges()` swaps the file by
   language + surface (white on dark surfaces/`appstore--white`/dark mode, black
   otherwise) on every theme/lang change. `thanks.html` is standalone so it sets
   its badge with a small inline script. Update the Apple ID in all badge anchors
   if the listing changes.
+  - **Don't drop the `?pt=…&ct=…&mt=8` query** — it's an App Store Connect
+    *campaign link* (created 2026-07-27 in App Store Connect → Analytics →
+    Acquisition → Campaigns). `pt` is the provider ID, `ct=web` is the campaign
+    token; together they let Apple attribute **downloads** to the website, which
+    PostHog cannot do on its own (PostHog sees the badge click, Apple sees the
+    install, and nothing joins them without this). The `#rating-badge` in the
+    home hero carries the same query on its own `/es/app/` storefront path.
+    Written as `&amp;` in the HTML — raw `&` in an attribute is invalid markup.
+  - Campaign data lands in **App Store Connect**, not PostHog, and a campaign
+    only appears there after 24 h *and* ≥5 first-time downloads. That floor is
+    why there is a single coarse `web` token instead of one per surface —
+    splitting it further at current volume would keep every campaign below the
+    threshold and report nothing. Add tokens only when downloads justify it.
 - **Rating**: the star rows (`#stars-prod`, `#stars-cta`) are filled by
   `app.js renderStars()` and are a placeholder until real reviews exist. The home
   hero also has a **live** rating badge (`#rating-badge`): `app.js
