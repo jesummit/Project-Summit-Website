@@ -373,12 +373,39 @@
     }, { threshold: 0.5 });
   }
 
+  /* ---------- Blog article identity ----------
+     Slug of the current blog post, or '' anywhere else. Derived from the
+     filename so the EN/ES/CA copies of a post (blog/x.html, blog/es/x.html,
+     blog/ca/x.html) all report the SAME slug — the language travels in its own
+     property, so an article's total reach isn't split three ways. */
+  function articleSlug() {
+    if ((document.body && document.body.getAttribute('data-page')) !== 'blog-article') return '';
+    var file = location.pathname.split('/').pop() || '';
+    return file.replace(/\.html$/, '');
+  }
+
+  /* ---------- Blog article tracking ----------
+     Fires `blog_article_viewed` once per article load. Without it the blog was
+     invisible: `$pageview` counts the URL, but nothing tied a read to a post in
+     a way that survives the three per-locale URLs each article has. */
+  function initBlogTracking() {
+    var slug = articleSlug();
+    if (!slug) return;
+    track('blog_article_viewed', {
+      article: slug,
+      language: document.documentElement.getAttribute('lang') || ''
+    });
+  }
+
   /* ---------- Scroll depth ----------
      Fires `scroll_depth` once per page-load when the visitor crosses 25/50/75/
      100% of the page. Replaces the legacy event (whose `depth` property was
      never set). Detaches after 100%. */
   function initScrollDepth() {
     var page = (document.body && document.body.getAttribute('data-page')) || '';
+    // Carried on blog posts so "which article gets read to the end" is
+    // answerable — `page` alone is 'blog-article' for every post.
+    var slug = articleSlug();
     var thresholds = [25, 50, 75, 100];
     var fired = {};
     function onScroll() {
@@ -386,7 +413,12 @@
       if (h <= 0) return;
       var pct = Math.min(100, Math.round((window.scrollY / h) * 100));
       thresholds.forEach(function (t) {
-        if (pct >= t && !fired[t]) { fired[t] = true; track('scroll_depth', { depth: t, page: page }); }
+        if (pct >= t && !fired[t]) {
+          fired[t] = true;
+          var props = { depth: t, page: page };
+          if (slug) props.article = slug;
+          track('scroll_depth', props);
+        }
       });
       if (fired[100]) window.removeEventListener('scroll', onScroll);
     }
@@ -453,6 +485,7 @@
     initRatingBadge();
     initSectionTracking();
     initAppstoreImpressions();
+    initBlogTracking();
     initScrollDepth();
     initExternalLinkTracking();
   });
