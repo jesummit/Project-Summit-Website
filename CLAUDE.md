@@ -93,7 +93,7 @@ tools/i18n-meta.js         shared title/description/FAQ-order config for build.j
 tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live HTML
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
-infra/cloudflare-worker.js Cloudflare Worker: PostHog proxy at /ingest + App Store rating at /appstore-rating
+infra/cloudflare-worker.js Cloudflare Worker: /ingest (PostHog) + /appstore-rating + /blog-subscribe + /unsubscribe
 robots.txt, sitemap.xml    SEO (indexable pages only, incl. es//ca/ with hreflang)
 404.html, site.webmanifest standalone error page / PWA manifest
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
@@ -393,6 +393,12 @@ places:
 - Headers (CSP/HSTS/etc.), `/ingest` rate-limiting, and email auth
   (SPF/DKIM/DMARC/BIMI) are applied at **Cloudflare**, not in the repo. The exact
   copy/paste config is in **`docs/cloudflare-security.md`**.
+- **Email opt-out lives at `/unsubscribe`** (2026-07-27). Every marketing email's
+  `List-Unsubscribe` header points there; the Worker forwards it to the
+  `unsubscribe_v1` Edge Function in `Project-Summit-MVP` (same pattern as
+  `/blog-subscribe` — this repo only owns the route, not the function). The page
+  is rendered by the function and is deliberately self-contained (inline styles,
+  no JS, no assets) so it needs no CSP change. Privacy policy §7 documents it.
 
 ## Privacy policy (`privacy-policy.html`)
 11 numbered sections (`#s1`–`#s11`), TOC + anchors built the same way as the
