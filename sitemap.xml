@@ -189,10 +189,25 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/taper-and-peak-tsb.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/taper-and-peak-tsb.html"/>
   </url>
-  <!-- English only for now; add es/ca entries + hreflang alternates when the translations land. -->
   <url>
     <loc>https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html</loc><lastmod>2026-07-28</lastmod><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html</loc><lastmod>2026-07-28</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/blog/ca/cycling-in-the-heat-hydration-sodium.html</loc><lastmod>2026-07-28</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/cycling-in-the-heat-hydration-sodium.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html"/>
   </url>
 </urlset>
