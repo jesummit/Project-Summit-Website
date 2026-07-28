@@ -65,10 +65,12 @@ const BLOG_PAGES = {
   'blog/es/gran-diagonal-999km-portugal.html': 'blog',
   'blog/es/periodization-base-build-peak.html': 'blog',
   'blog/es/taper-and-peak-tsb.html': 'blog',
+  'blog/es/cycling-in-the-heat-hydration-sodium.html': 'blog',
   'blog/ca/index.html': 'blog',
   'blog/ca/gran-diagonal-999km-portugal.html': 'blog',
   'blog/ca/periodization-base-build-peak.html': 'blog',
   'blog/ca/taper-and-peak-tsb.html': 'blog',
+  'blog/ca/cycling-in-the-heat-hydration-sodium.html': 'blog',
 };
 
 function renderHeader(activeKey) {

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <!-- PostHog Analytics (queueing stub; real init is gated by consent.js) -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="../../site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+
+  <title>Ciclismo con calor: cuánto beber y cuánto sodio necesitas de verdad | Summit</title>
+  <meta name="description" content="Con calor tu necesidad de sodio sube más del doble, mientras que la de líquido sube solo un tercio. Por qué el calor cambia la hidratación en bici, cuáles son las cifras reales y cómo planificarlas." />
+  <link rel="canonical" href="https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/blog/ca/cycling-in-the-heat-hydration-sodium.html" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html" />
+  <meta property="og:title" content="Rodar con calor: cuánto beber, y cuánta sal necesitas de verdad" />
+  <meta property="og:description" content="El verano no solo hace que rodar cueste más: cambia las cuentas. Tu necesidad de líquido sube un tercio. La de sodio sube más del doble. Aquí está el porqué." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/blog/heat/og-cycling-in-the-heat.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rodar con calor: cuánto beber, y cuánta sal necesitas" />
+  <meta name="twitter:description" content="El líquido sube un tercio con el calor. El sodio sube más del doble. Las cifras de hidratación que la mayoría falla en verano — y cómo Summit calcula las tuyas." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/blog/heat/og-cycling-in-the-heat.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Rodar con calor: cuánto beber, y cuánta sal necesitas de verdad",
+        "description": "Cómo cambia el calor la hidratación en el ciclismo: por qué el líquido sube solo un tercio mientras el sodio sube más del doble, cómo son las cifras por hora, y cómo planificar bien una salida con calor.",
+        "image": "https://projectsummit.app/assets/img/blog/heat/og-cycling-in-the-heat.jpg",
+        "datePublished": "2026-07-28",
+        "dateModified": "2026-07-28",
+        "inLanguage": "es",
+        "author": {
+          "@type": "Person",
+          "@id": "https://projectsummit.app/about.html#jordi",
+          "name": "Jordi Espanyol",
+          "url": "https://projectsummit.app/about.html",
+          "sameAs": [
+            "https://instagram.com/projectsummit.app"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Project Summit",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://projectsummit.app/assets/img/summit-logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html"
+        },
+        "wordCount": 2150
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cuánto hay que beber al rodar con calor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Por encima de unos 24 °C, la mayoría necesita entre 850 y 1000 mL de líquido por hora, más si el ritmo es alto o hay humedad. Un litro por hora es un techo razonable: por encima, casi nadie lo absorbe bien, y beber mucha agua sola mientras pierdes sal puede diluir el sodio en sangre."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto sodio necesitas al rodar con calor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para un ciclista medio en un día caluroso por encima de 30 °C, entre 800 y 900 mg de sodio por hora — algo más del doble de lo que necesitaría a 18 °C. El sodio sube más rápido que el líquido porque el calor te hace sudar más y hace cada litro de sudor más salado."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Se puede beber demasiada agua en una salida con calor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Beber mucha agua sola mientras sudas sal puede diluir el sodio en sangre — hiponatremia —, algo raro pero realmente peligroso. Pasa sobre todo a ciclistas que beben de forma agresiva en días de calor. La solución para el calor no es más agua: es la misma agua con más sodio dentro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda un ciclista en aclimatarse al calor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Unos diez días o más de exposición real al calor. A partir de ahí empiezas a sudar antes y más, pero tu sudor lleva menos sodio. La adaptación se pierde en un par de semanas sin calor, por eso el primer día caluroso de la temporada es el que pilla a la gente por sorpresa."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://projectsummit.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://projectsummit.app/blog/es/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Ciclismo con calor: hidratación y sodio",
+            "item": "https://projectsummit.app/blog/es/cycling-in-the-heat-hydration-sodium.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../assets/css/summit.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body data-vibe="product" data-page="blog-article" data-alt-en="/blog/cycling-in-the-heat-hydration-sodium.html" data-alt-es="/blog/es/cycling-in-the-heat-hydration-sodium.html" data-alt-ca="/blog/ca/cycling-in-the-heat-hydration-sodium.html">
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">
+      <span class="nav-logo"><img src="../../assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="../../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="../../faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="../../blog/index.html" class="active" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="../../about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="../../ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="../../terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="../../privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store"><img class="appstore-img" alt="Download on the App Store" src="../../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../../index.html" data-i18n="nav.home">Home</a>
+    <a href="../../roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="../../faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="../../blog/index.html" class="active" data-i18n="nav.blog">Blog</a>
+    <a href="../../about.html" data-i18n="nav.about">About</a>
+    <a href="../../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="../../terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="../../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="nav_mobile" class="appstore appstore--white"><img class="appstore-img" alt="Download on the App Store" src="../../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <article>
+    <!-- ── Article header ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <header class="article-head">
+          <p class="article-kicker">Calor e hidratación · Entrenar con datos</p>
+          <h1 class="article-title">Rodar con calor: cuánto beber, y cuánta <em>sal</em> necesitas de verdad</h1>
+          <p class="article-dek">El verano no solo hace que rodar cueste más: cambia las cuentas. Tu necesidad de líquido sube en torno a un tercio. La de sodio sube más del doble. Casi todo el mundo solo corrige la primera.</p>
+          <div class="article-meta">
+            <span>Por <b>Jordi Espanyol</b></span>
+            <span class="dot-sep">·</span>
+            <span>28 jul 2026</span>
+            <span class="dot-sep">·</span>
+            <span>9 min de lectura</span>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <!-- ── Body ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <div class="article-body">
+
+          <figure class="post-photo">
+            <img src="../../assets/img/blog/heat/HEAT-05.webp" alt="Dos ciclistas refrescándose en una fuente de pueblo con azulejos, uno con la cabeza bajo el caño" width="1080" height="1620" decoding="async" fetchpriority="high" />
+            <figcaption>Una fuente de pueblo en pleno día de calor. Echarte agua <em>por encima</em> y meterte agua <em>dentro</em> son dos trabajos distintos — y por encima de 30 °C necesitas los dos.</figcaption>
+          </figure>
+
+          <p class="article-lead">Hay una temperatura a partir de la cual tu nutrición de siempre deja de funcionar sin que te des cuenta. No es dramático. A 30 °C no revientas como podrías reventar a 40 °C: simplemente te apagas un poco antes de lo esperado, notas las piernas planas en la última subida, y lo apuntas como un mal día.</p>
+
+          <p>Normalmente no es un mal día. Es que el bidón y el gel que te sacaban adelante sin problema en una salida de primavera a 18 °C ahora solo cubren más o menos la mitad de lo que estás perdiendo. Y esa mitad que te falta no es agua. Es sal.</p>
+
+          <div class="stat-strip">
+            <div class="stat-cell"><div class="stat-num">+33%</div><div class="stat-lbl">Líquido por hora · 18 → 33 °C</div></div>
+            <div class="stat-cell"><div class="stat-num">+113%</div><div class="stat-lbl">Sodio por hora · misma salida</div></div>
+            <div class="stat-cell"><div class="stat-num">30 °C</div><div class="stat-lbl">Donde empieza el estrés real por calor</div></div>
+            <div class="stat-cell"><div class="stat-num">1 L/h</div><div class="stat-lbl">El techo que conviene respetar</div></div>
+          </div>
+
+          <h2>Lo que el calor te cuesta de verdad</h2>
+
+          <figure class="post-photo post-photo--right">
+            <img src="../../assets/img/blog/heat/HEAT-03.webp" alt="Un ciclista tumbado en una roca con la cabeza metida en un arroyo poco profundo" width="1080" height="1620" loading="lazy" decoding="async" />
+            <figcaption>Lo que un día de calor te cuesta de verdad. La sed llega tarde: cuando la necesitas tanto, ya llevas un rato por detrás.</figcaption>
+          </figure>
+
+          <p>Cuando aprieta el calor pasan tres cosas a la vez, y solo una es evidente.</p>
+          <p><strong>Sudas más.</strong> Esa es la evidente. Lo que no se ve tanto es cuánto más: la diferencia entre un día suave y uno realmente caluroso no son un par de sorbos, son cientos de mililitros cada hora.</p>
+          <p><strong>Tu sangre tiene que hacer dos trabajos.</strong> Llevar oxígeno a las piernas <em>y</em> sacar calor hacia la piel para que lo disipes. Los dos trabajos compiten por los mismos litros. A medida que te deshidratas, el volumen de sangre baja y el corazón compensa latiendo más rápido para mover la misma cantidad — por eso la frecuencia cardiaca se te va subiendo en una salida calurosa aunque la potencia vaya cayendo. Eso no es falta de forma. Es hidráulica, sin más.</p>
+          <p><strong>Pierdes sal, no solo agua.</strong> El sudor no es agua destilada. Lleva sodio, y cuánto lleva depende de ti y de lo fuerte que estés sudando. Si repones el agua pero no la sal, te quedas con lo peor de los dos mundos: sigues corto de sodio, y encima diluyes el que te queda.</p>
+          <p>La primera es la razón por la que la gente bebe más en verano. La tercera es la que casi nadie calcula bien — y es la que más se mueve.</p>
+
+          <h2>¿Cuánto hay que beber en bici cuando hace calor?</h2>
+          <p>La temperatura del aire es la palanca más importante, así que es el sitio por donde empezar. Summit trabaja con rangos en vez de una fórmula única, porque un rango admite honestamente que nadie conoce tu tasa de sudoración al mililitro:</p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Temperatura del aire</th><th>Punto de partida</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Menos de 10 °C</td><td>350 mL/h</td></tr>
+                <tr><td>10–17 °C</td><td>500 mL/h</td></tr>
+                <tr><td>18–23 °C</td><td>650 mL/h</td></tr>
+                <tr><td>24–29 °C</td><td>850 mL/h</td></tr>
+                <tr class="row-key"><td>30 °C o más</td><td>1000 mL/h</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Un punto de partida, no la respuesta final — es la cifra antes de tener en cuenta tu ritmo y la humedad.</p>
+
+          <p>Luego hay dos cosas más que la ajustan, las dos las notas pero casi nunca las cuantificas.</p>
+          <p><strong>La intensidad a la que vas.</strong> Un ritmo de fondo y un esfuerzo al umbral no generan el mismo calor dentro de ti. Ir fuerte suma hasta una quinta parte a la cifra de la tabla.</p>
+          <p><strong>La humedad.</strong> Es la que la gente más subestima. El sudor no te enfría por sí mismo — te enfría al <em>evaporarse</em>. Con aire seco se evapora y hace su trabajo. Con aire húmedo te resbala por los brazos y gotea sobre el tubo superior, así que pagas el coste completo en líquido y recibes muy poco enfriamiento a cambio. Por eso los días húmedos piden más líquido, no menos: pierdes la misma agua y sacas menos partido de ella. Un día de 28 °C con 90% de humedad es de verdad más duro de lo que dice el termómetro.</p>
+          <p>Y si alguna vez has medido tu propia tasa de sudoración — pesarte antes y después de rodar, sumando lo que has bebido —, esa cifra vale más que cualquier tabla, y Summit la usará en su lugar. Con un ajuste deliberado: planifica en torno al 80% de lo que sudas, porque casi nadie es capaz de beber todo lo que pierde, y un objetivo que no puedes cumplir es peor que no tener objetivo.</p>
+
+          <h2>Por qué un litro por hora es el techo</h2>
+          <p>Sea cual sea la temperatura, sea cual sea la humedad, hay un punto a partir del cual "bebe más" deja de ser un buen consejo. Ese punto está en torno a un litro por hora.</p>
+          <p>Dos razones. Primera, la mayoría no es capaz de absorber mucho más que eso — el resto se te queda en el estómago chapoteando y haciéndote sentir fatal, que también es una forma estupenda de arruinarte el día. Segunda, y más seria: beber mucha agua sola mientras pierdes sal por el sudor es justo así como se acaba en hiponatremia — con el sodio en sangre diluido hasta un punto que hace daño de verdad. Es raro, y le pasa sobre todo a gente con buenas intenciones que bebe a saco en un día de calor precisamente porque ha leído que la deshidratación es peligrosa.</p>
+
+          <div class="callout">
+            <p class="callout-label">Más no es mejor</p>
+            <p>Pasado el litro por hora, el líquido extra deja de ayudar y empieza a crear otro problema distinto. La solución para un día de calor no es más agua: es la misma agua con más sodio dentro.</p>
+          </div>
+
+          <h2>El sodio es la cifra que de verdad se mueve</h2>
+
+          <figure class="post-photo">
+            <img src="../../assets/img/blog/heat/HEAT-04.webp" alt="Una mesa de café en una parada de ruta cubierta de botellas grandes de agua, latas de Coca-Cola, vasos y polos" width="1080" height="1620" loading="lazy" decoding="async" />
+            <figcaption>El avituallamiento clásico de un día de calor — y una ilustración casi perfecta del problema. En esta mesa sobra líquido y casi no hay sodio: el agua embotellada lleva unos pocos miligramos por litro, y una Coca-Cola apenas más. Puedes beber toda la tarde y aun así terminar el día corto de sal.</figcaption>
+          </figure>
+
+          <p>Aquí viene la parte que sorprende a la gente.</p>
+          <p>Tu objetivo de sodio se calcula a partir del de líquido — cuánto bebes, multiplicado por lo salado que es tu sudor — y luego solo repones en torno al 70% de esa pérdida mientras ruedas. Esa parte es deliberada: a mitad de ruta no buscas cuadrar la cuenta. Buscas seguir funcionando hasta meta. El resto lo recuperas después, en la mesa, donde es fácil y no tienes que tragártelo a base de bidón.</p>
+          <p>Y a eso se le suma el calor. A partir de unos 26 °C el objetivo de sodio sube alrededor de un tercio; a partir de 30 °C, un 50%.</p>
+          <p>¿Por qué un extra, si la cifra de líquido ya había subido? Porque cuanto más sudas, más salado sale el sudor. Las glándulas sudoríparas reabsorben algo de sodio antes de que salga, y con tasas de sudoración altas no llegan a tiempo — así que un litro de sudor en un día de calor lleva más sal que un litro en un día suave.</p>
+          <p>Lo que significa que el sodio sube <em>dos veces</em>: una porque bebes más, y otra porque cada litro te cuesta ahora más sal. El líquido llega pronto a su techo. El sodio no. Esa asimetría es la razón por la que un ciclista puede hacerlo todo bien con el agua y aun así terminar una marcha calurosa con calambres, la cabeza espesa y las piernas planas.</p>
+
+          <h2>Un ejemplo real: tres horas, dos días muy distintos</h2>
+          <p>Un ciclista de 70 kg, tres horas a un buen ritmo de tempo, 60% de humedad, sudor de salinidad media. Mismo ciclista, misma ruta, mismo esfuerzo — solo cambia el tiempo.</p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th></th><th>18 °C</th><th>33 °C</th><th>Cambio</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Líquido</td><td>750 mL/h</td><td>1000 mL/h</td><td>+33%</td></tr>
+                <tr class="row-key"><td>Sodio</td><td>400 mg/h</td><td>850 mg/h</td><td>+113%</td></tr>
+                <tr><td>Carbohidrato</td><td>75 g/h</td><td>75 g/h</td><td>sin cambios</td></tr>
+                <tr><td>En tres horas</td><td>2,25 L · 1200 mg</td><td>3,0 L · 2550 mg</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Calculado con el mismo modelo que usa Summit para montar un plan de día de carrera. Tus cifras dependen de tu peso, tu esfuerzo, tu perfil de sudoración y la previsión — esto es la forma, no una receta.</p>
+
+          <p>La diferencia en líquido es real pero manejable: un bidón más. La diferencia en sodio es un plan completamente distinto. Mil doscientos miligramos en tres horas los cubre sin esfuerzo una bebida deportiva normal. Dos mil quinientos, no — eso exige elegir a propósito una mezcla más concentrada, cápsulas de sal, o las dos cosas; algo que se decide antes de salir de casa.</p>
+          <p>Si te llevas una sola fila de este artículo, que sea la del medio.</p>
+
+          <h2>Qué cambia cuando estás acostumbrado al calor</h2>
+
+          <figure class="post-photo post-photo--left">
+            <img src="../../assets/img/blog/heat/HEAT-02.webp" alt="Un ciclista inclinado sobre una fuente de piedra de un pueblo con el agua cayéndole por la nuca" width="1080" height="1620" loading="lazy" decoding="async" />
+            <figcaption>Diez días de exposición real al calor reconstruyen el sistema. Dos semanas sin calor deshacen casi todo.</figcaption>
+          </figure>
+
+          <p>Pasa diez días o más realmente expuesto al calor y el cuerpo reconstruye por completo el sistema de refrigeración. Aquí importan dos adaptaciones, y tiran en direcciones opuestas.</p>
+          <p><strong>Sudas antes y más.</strong> Suena a inconveniente; no lo es. Empezar a sudar antes significa empezar a enfriarte antes, que es justo el objetivo.</p>
+          <p><strong>El sudor sale menos salado.</strong> El cuerpo aprende a retener sodio y deja pasar agua en su lugar. Mismo enfriamiento, más barato en sal.</p>
+          <p>Así que un ciclista aclimatado necesita en un día de calor un poco <em>más</em> de líquido y bastante <em>menos</em> sodio — en el ejemplo de arriba, el objetivo de sodio de un día de calor baja de 850 a unos 700 mg/h. Escrito así parece contradictorio. Son solo dos adaptaciones haciendo trabajos distintos, y por eso "aclimatado" es un ajuste que merece la pena decirle a Summit, no una sensación vaga.</p>
+          <p>Por eso también "el verano pasado hice una prueba con calor y no me pasó nada" no es garantía de que en mayo vayas a estar bien. La aclimatación se pierde en un par de semanas. El primer día de calor del año es el peligroso, todos los años.</p>
+
+          <div class="email-capture email-capture--inline" data-magnet="season-template" data-article="cycling-in-the-heat">
+            <p class="email-capture-title">¿Preparas una prueba este verano?</p>
+            <p class="email-capture-sub">Consigue la hoja de planificación de temporada — base, build, peak y taper, en una plantilla que rellenas con tus propios números. Gratis, y alguna nota de entrenamiento puntual basada en datos. Sin spam.</p>
+            <div class="email-capture-row">
+              <input class="email-capture-input" type="email" name="email" required placeholder="tu@email.com" autocomplete="email" aria-label="Correo electrónico" />
+              <button class="email-capture-btn" type="submit">Envíamela</button>
+            </div>
+            <label class="email-capture-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Envíame la plantilla y notas de entrenamiento ocasionales. Puedo darme de baja cuando quiera. <a href="/privacy-policy.html">Privacidad</a>.</span>
+            </label>
+            <input class="email-capture-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <h2>Empieza antes de empezar</h2>
+          <p>En un día de calor, salir ya un poco corto de líquido es un agujero del que no sales — porque no puedes beber más de un litro por hora para recuperarte. El déficit te acompaña toda la mañana.</p>
+          <p>Así que el plan empieza una hora antes de salir: en torno a 5 mL de líquido por kilo de peso — unos 350 mL para un ciclista de 70 kg — con más o menos la mitad de tu objetivo horario de sodio. Para el día de calor del ejemplo, eso es un bidón pequeño con unos 450 mg de sodio dentro.</p>
+          <p>La sal de esa precarga no es decorativa. El agua sola una hora antes de la salida acaba en buena parte en los baños de la salida. Con sodio dentro, se queda mucha más donde la necesitas.</p>
+
+          <h2>La trampa del bidón concentrado</h2>
+          <p>La respuesta tentadora para un día largo y caluroso es un solo bidón que lo resuelve todo: todos tus carbohidratos, toda tu sal, una mezcla fuerte, menos paradas.</p>
+          <p>Sale mal. Una bebida mucho más concentrada que un 9% de carbohidrato sale despacio del estómago, y mientras está ahí no te hidrata — incluso puede tirar de agua <em>hacia</em> el intestino para diluirse ella misma. En un día fresco eso es una ineficiencia menor. En un día de 33 °C, cuando meter líquido en el torrente sanguíneo es lo que mantiene tu temperatura corporal en un rango soportable, es un pésimo intercambio.</p>
+          <p>Los días de calor piden bidones diluidos, con el carbohidrato llegando aparte por geles y comida — justo lo contrario de lo que parece eficiente cuando preparas el material. Es exactamente el tipo de cosa de la que Summit te avisa antes de salir, en vez de dejar que la descubras en el kilómetro 80: si la bebida que le has dicho que llevas es demasiado concentrada para el plan que está montando, te lo dice.</p>
+
+          <h2>Dos tipos de calor</h2>
+
+          <figure class="post-photo post-photo--right">
+            <img src="../../assets/img/blog/heat/HEAT-01.webp" alt="Un ciclista vaciándose un bidón de agua por la nuca en una parada de tienda al borde de la carretera" width="1080" height="1620" loading="lazy" decoding="async" />
+            <figcaption>Por encima de 35 °C este es el mejor uso de medio bidón. Enfriarte la piel rinde más que esa misma agua bebida a sorbos.</figcaption>
+          </figure>
+
+          <p>No todo el calor merece el mismo consejo, y tratar 30 °C y 40 °C como si fueran lo mismo es justo lo que vacía de sentido los avisos.</p>
+          <p><strong>Desde 30 °C.</strong> Aquí empieza el estrés real por calor en esfuerzos de fondo sostenidos. La instrucción es sencilla: bebe desde el minuto cero, más a menudo de lo que parece necesario, y con sal. No esperes a tener sed — en un día de calor la sed llega después de que llegue el déficit.</p>
+          <p><strong>Desde 35 °C.</strong> Por encima de esto, la hidratación sola deja de ser la respuesta, y el consejo cambia de forma: baja el ritmo, y enfríate de forma activa donde puedas — hielo, sombra, agua por la cabeza y la nuca. Con ese calor, enfriarte la piel hace más por tu temperatura interna que otros 200 mL.</p>
+          <p>Esa es la distinción que Summit marca en un plan de día de carrera, y importa, porque si llamas "extremo" a 30 °C te quedas sin palabras para el día en que de verdad las necesitas.</p>
+
+          <h2>Dos cosas que las cifras no te van a decir</h2>
+          <p>Merece la pena saberlo, porque un plan en el que no puedes confiar del todo es peor que no tener plan.</p>
+          <p><strong>El calor puede quitarte el apetito por la comida sólida.</strong> Tu objetivo de carbohidrato no baja solo porque haga calor — en el ejemplo de arriba, 75 g/h son 75 g/h los dos días, y a los músculos no les importa el tiempo que hace. Pero el calor desvía sangre del intestino hacia la piel, y a muchos ciclistas las barritas y las gominolas les sientan mal cuando aprieta el calor. Si es tu caso, pasa más de esos carbohidratos a líquido y geles en vez de comer menos sin darte cuenta. El objetivo no cambia; el formato sí debería.</p>
+          <p><strong>La humedad no avisa.</strong> Ya está metida en el cálculo de cuánto deberías beber, pero no hay ninguna lectura del termómetro que te avise de ella. Mírala la noche antes junto con la temperatura — un 28 °C bochornoso merece el mismo respeto que un 33 °C seco.</p>
+
+          <h2>La versión corta</h2>
+          <ul>
+            <li><strong>El líquido</strong> sube con el calor pero se topa en torno a un litro por hora. Ese techo es una decisión de seguridad, no una limitación.</li>
+            <li><strong>El sodio</strong> sube aproximadamente el doble de rápido, porque el calor te hace sudar más <em>y</em> hace tu sudor más salado.</li>
+            <li><strong>Precarga</strong> una hora antes de salir, con sal dentro. Después ya no hay forma de recuperarlo.</li>
+            <li><strong>Diluye los bidones</strong> en los días de calor y lleva los carbohidratos aparte.</li>
+            <li><strong>Por encima de 35 °C</strong>, controlar el ritmo y enfriarte de forma activa importan más que beber.</li>
+            <li><strong>Diez días</strong> de exposición al calor cambian tus cifras. Dos semanas sin calor lo deshacen.</li>
+          </ul>
+          <p>Nada de esto es complicado. Es solo concreto — y lo concreto es justo lo que se pierde entre leer un artículo en julio y estar en la cocina a las 6 de la mañana preguntándote cuántos cacitos echar al bidón.</p>
+
+          <!-- ── CTA: run your own numbers ── -->
+          <div class="article-cta">
+            <h2>Deja que Summit haga las cuentas</h2>
+            <p>Todo lo anterior son decisiones que alguien tiene que tomar antes de salir a rodar: cuánto líquido por hora, cuánto sodio, cuánto carbohidrato, cuándo tomarlo, y qué poner exactamente en cada bidón. Summit toma esas decisiones para tu prueba. Lee la previsión de temperatura y humedad en tu línea de salida, calcula el líquido y el sodio según tu peso, tu esfuerzo y tu propio perfil de sudoración, lo contrasta con los productos que de verdad llevas — y te entrega un plan cronometrado, hora a hora, que puedes seguir sin hacer cuentas mentales a las 6 de la mañana.</p>
+            <p>Sin tener que meter el tiempo a mano. Sin adivinar la sal. No es un chatbot con opiniones — son matemáticas de ciencia del deporte, aplicadas a tu salida y a tu cuerpo.</p>
+            <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="blog_heat" class="appstore"><img class="appstore-img" alt="Descárgala en la App Store" src="../../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
+          </div>
+
+          <div class="email-capture" data-magnet="season-template" data-article="cycling-in-the-heat">
+            <p class="email-capture-title">Consigue la plantilla de planificación de temporada</p>
+            <p class="email-capture-sub">La estructura base/build/pico/taper de este artículo, como una hoja que rellenas con tu propio CTL y tu fecha de evento — gratis. Luego, unas cuantas notas de entrenamiento basadas en datos a lo largo de la temporada. Baja cuando quieras.</p>
+            <div class="email-capture-row">
+              <input class="email-capture-input" type="email" name="email" required placeholder="tu@email.com" autocomplete="email" aria-label="Correo electrónico" />
+              <button class="email-capture-btn" type="submit">Envíamela</button>
+            </div>
+            <label class="email-capture-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Envíame la plantilla y notas de entrenamiento ocasionales. Puedo darme de baja cuando quiera. <a href="/privacy-policy.html">Privacidad</a>.</span>
+            </label>
+            <input class="email-capture-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <nav class="read-next" aria-label="Sigue leyendo">
+            <p class="read-next-h">Sigue leyendo</p>
+            <a class="read-next-post" href="gran-diagonal-999km-portugal.html">999 km cruzando Portugal en 6 días — los datos detrás del plan<span aria-hidden="true">→</span></a>
+            <p class="read-next-h">Más sobre Summit</p>
+            <ul class="read-next-links">
+              <li><a href="taper-and-peak-tsb.html">Taper y pico: llegar en forma</a></li>
+              <li><a href="../../es/index.html">Cómo Summit construye tu plan</a></li>
+              <li><a href="../../es/faq.html">Preguntas, respondidas</a></li>
+            </ul>
+          </nav>
+
+          <div class="article-foot">
+            <a href="index.html">← Todos los artículos</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../../index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="../../assets/img/summit-logo.png" alt="Summit" /></span>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="foot.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.nav">Navigate</h4>
+      <ul>
+        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="../../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../../faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="../../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="../../terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="../../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <ul>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
+  </div>
+</footer>
+
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/analytics.js"></script>
+<script src="../../assets/js/consent.js"></script>
+<script src="../../assets/js/blog-signup.js"></script>
+<script src="../../assets/js/lang-routing.js"></script>
+
+</body>
+</html>
