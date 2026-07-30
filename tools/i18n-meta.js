@@ -52,6 +52,6 @@ const OG_DESC_EN = Object.assign({}, DESC_EN, { 'index.html': 'Deterministic spo
 // faq.html's JSON-LD (which follows the page's category order, not numeric
 // key order — q15 sits between q8 and q9). Keep in sync if faq.html's
 // mainEntity list is reordered — check-meta-sync.js verifies this.
-const FAQ_KEYS = ['faq.q1', 'faq.q2', 'faq.q3', 'faq.q4', 'faq.q5', 'faq.q6', 'faq.q7', 'faq.q8', 'faq.q15', 'faq.q9', 'faq.q10', 'faq.q11', 'faq.q12', 'faq.q13', 'faq.q14'];
+const FAQ_KEYS = ['faq.q1', 'faq.q2', 'faq.q3', 'faq.q4', 'faq.q5', 'faq.q6', 'faq.q7', 'faq.q8', 'faq.q15', 'faq.q9', 'faq.q10', 'faq.q11', 'faq.q12', 'faq.q16', 'faq.q13', 'faq.q14'];
 
 module.exports = { META, TITLE_EN, DESC_EN, OG_TITLE_EN, OG_DESC_EN, FAQ_KEYS };
