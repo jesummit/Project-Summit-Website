@@ -61,16 +61,19 @@ const BLOG_PAGES = {
   'blog/periodization-base-build-peak.html': 'blog',
   'blog/taper-and-peak-tsb.html': 'blog',
   'blog/cycling-in-the-heat-hydration-sodium.html': 'blog',
+  'blog/apple-watch-sleep-recovery-cycling.html': 'blog',
   'blog/es/index.html': 'blog',
   'blog/es/gran-diagonal-999km-portugal.html': 'blog',
   'blog/es/periodization-base-build-peak.html': 'blog',
   'blog/es/taper-and-peak-tsb.html': 'blog',
   'blog/es/cycling-in-the-heat-hydration-sodium.html': 'blog',
+  'blog/es/apple-watch-sleep-recovery-cycling.html': 'blog',
   'blog/ca/index.html': 'blog',
   'blog/ca/gran-diagonal-999km-portugal.html': 'blog',
   'blog/ca/periodization-base-build-peak.html': 'blog',
   'blog/ca/taper-and-peak-tsb.html': 'blog',
   'blog/ca/cycling-in-the-heat-hydration-sodium.html': 'blog',
+  'blog/ca/apple-watch-sleep-recovery-cycling.html': 'blog',
 };
 
 function renderHeader(activeKey) {
