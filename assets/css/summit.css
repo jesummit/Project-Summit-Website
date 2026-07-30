@@ -494,6 +494,25 @@ a { color: inherit; }
 .badge-beta { display: inline-block; font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-line); border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; position: relative; top: -2px; }
 
 /* =====================================================================
+   FREE TIER panel
+   Card treatment (not another grid) so the offer reads as an offer and not
+   as a third feature list on the same page. Tokens only — dark mode follows.
+   ===================================================================== */
+.free-panel { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: start; background: var(--card); border: 1px solid var(--accent-line); border-radius: var(--r-card); padding: 44px 40px; box-shadow: var(--e1); }
+.free-title { font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin: 14px 0 18px; color: var(--ink); text-wrap: balance; }
+.free-title em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
+.free-sub { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; max-width: 46ch; }
+.free-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; }
+.free-actions .split-link { margin-top: 0; }
+.free-note { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 16px; }
+.free-list { list-style: none; }
+.free-list li { font-size: 15px; color: var(--ink-soft); padding: 15px 0; border-bottom: 1px solid var(--ink-hair); display: flex; align-items: flex-start; gap: 13px; line-height: 1.55; }
+.free-list li:first-child { padding-top: 0; }
+.free-list li:last-child { border-bottom: none; }
+.free-list li strong { color: var(--ink); font-weight: 700; }
+.free-list li svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; margin-top: 3px; stroke-width: 2.2; }
+
+/* =====================================================================
    FEATURES grid
    ===================================================================== */
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink-hair); border: 1px solid var(--ink-hair); border-radius: var(--r-data); overflow: hidden; }
@@ -633,6 +652,7 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   .hp-callout .co-text { font-size: 13.5px; }
 
   .whofor-grid { grid-template-columns: 1fr; gap: 32px; }
+  .free-panel { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
   .split-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
 }

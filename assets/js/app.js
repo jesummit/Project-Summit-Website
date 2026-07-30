@@ -247,6 +247,7 @@
     home: [
       { trigger: '#screens',      items: ['.showcase-top', '.carousel-track', '.carousel-dots'] },
       { trigger: '#how',          items: ['.section-head', '.split-block'] },
+      { trigger: '#free',         items: ['.free-text', '.free-list li'] },
       { trigger: '#features',     items: ['.section-head', '.feature-card'] },
       { trigger: '#nutrition',    items: ['.section-head', '.split-block'] },
       { trigger: '#whofor',       items: ['.whofor-grid > div:first-child', '.whofor-list li'] },

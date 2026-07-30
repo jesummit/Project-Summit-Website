@@ -268,6 +268,34 @@ details in **`docs/blog.md`**. Key points:
 - Blog pages are **not** in `tools/check-links.js` (its list is the root pages);
   verify blog internal links by hand.
 
+## Free-tier copy — what is actually free (verify before editing)
+The home `#free` section (between `#how` and `#features`) and `faq.q16` are the
+site's free-tier magnet: same ICP (cyclists), the watch as the hook. Every claim
+there is checked against the app's real gating in `Project-Summit-MVP` — re-check
+before touching this copy, because a false claim here is a support ticket:
+- **Free = anything with no `EntitlementGate`.** `EntitlementGate.gates(for: .free)`
+  returns `[]`, and nothing gates recovery or sleep: the daily recovery score, the
+  sleep score + full breakdown, the recovery trend, and the Home/Lock Screen
+  widgets. **Premium**: training load (CTL/ATL/TSB), power/eFTP, per-activity
+  detailed analysis (Pro); adaptive plan, export, nutrition (Elite). Never list a
+  Premium feature in the free section.
+- **There is no Apple Watch app in the shipped build** — `FeatureFlags
+  .watchAppEnabled` is `false` in Release and `Config/Release.xcconfig` strips
+  `SummitWatch.app` from the IPA (staged rollout, ADR-2026-07-22). The watch is the
+  **sensor**, read via Apple Health. Never imply a watch app, complication or
+  on-wrist surface until that ADR is reversed.
+- **Apple Watch is not required** (`faq.q6` says so, and it's true — any wearable
+  writing to Apple Health works). The watch framing is an ICP filter, not a
+  requirement; keep both readings consistent.
+- **Premium has a 14-day trial** (`PaywallView`). "Free forever" must stay visibly
+  distinct from it — hence the `free.note` line and the "not a trial" wording in
+  `faq.q12`/`faq.q16`.
+- `free.link` points at `blog/index.html` **on purpose**: `rerootShellLocale()` in
+  `build.js` only special-cases that exact path, so it becomes `../blog/es|ca/`.
+  When the free-tier article ships, pointing at it directly needs either a
+  per-locale href or an extra case there — otherwise the ES/CA pages link to the
+  English post and no check catches it.
+
 ## Theming (light/dark)
 - `app.js` sets `data-theme` on `<html>`. It **follows the device** color scheme
   (`prefers-color-scheme`) and live-updates on system change, until the user
