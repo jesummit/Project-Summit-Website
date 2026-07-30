@@ -61,6 +61,7 @@ const BLOG_PAGES = {
   'blog/periodization-base-build-peak.html': 'blog',
   'blog/taper-and-peak-tsb.html': 'blog',
   'blog/cycling-in-the-heat-hydration-sodium.html': 'blog',
+  'blog/apple-watch-sleep-recovery-cycling.html': 'blog',
   'blog/es/index.html': 'blog',
   'blog/es/gran-diagonal-999km-portugal.html': 'blog',
   'blog/es/periodization-base-build-peak.html': 'blog',
