@@ -290,11 +290,11 @@ before touching this copy, because a false claim here is a support ticket:
 - **Premium has a 14-day trial** (`PaywallView`). "Free forever" must stay visibly
   distinct from it — hence the `free.note` line and the "not a trial" wording in
   `faq.q12`/`faq.q16`.
-- `free.link` points at `blog/index.html` **on purpose**: `rerootShellLocale()` in
-  `build.js` only special-cases that exact path, so it becomes `../blog/es|ca/`.
-  When the free-tier article ships, pointing at it directly needs either a
-  per-locale href or an extra case there — otherwise the ES/CA pages link to the
-  English post and no check catches it.
+- `free.link` points at `blog/apple-watch-sleep-recovery-cycling.html`, the
+  article behind this offer. Any `blog/<page>` href on a shell page is rewritten
+  by `rerootShellLocale()` (`build.js`) to `../blog/<locale>/<page>`, so the ES/CA
+  pages link their own translation — link blog pages by their English path and
+  let the build localize them. A missing translation fails `check-links.js`.
 
 ## Theming (light/dark)
 - `app.js` sets `data-theme` on `<html>`. It **follows the device** color scheme

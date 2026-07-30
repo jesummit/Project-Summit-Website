@@ -290,11 +290,19 @@ const SHELL_FILES = new Set(Object.keys(PAGES));
 // Like reroot() above, but sibling shell pages (index.html, roadmap.html, …)
 // stay as same-directory relative links (the es/ca copy sits next to them),
 // while everything else (assets/, site.webmanifest, favicons) gets "../", and
-// the Blog nav link is special-cased to the matching localized blog section.
+// any blog link is redirected to that locale's copy of the same page.
 function rerootShellLocale(html, locale) {
   return html.replace(/\b(href|src)="([^"]*)"/g, (whole, attr, val) => {
     if (/^(https?:|mailto:|tel:|data:|#|\/)/.test(val)) return whole;
-    if (val === 'blog/index.html') return `${attr}="../blog/${locale}/index.html"`;
+    // The blog keeps one directory per locale (blog/, blog/es/, blog/ca/) with
+    // the same filenames, so the locale segment is the only difference: a shell
+    // page linking blog/<page> must land on blog/<locale>/<page>, never the
+    // English original. This is deliberately generic rather than a per-link
+    // special case — an untranslated post would otherwise be linked in English
+    // from the es/ca pages with nothing to catch it. If a translation is
+    // missing, tools/check-links.js fails on the resulting path.
+    const blogPage = val.match(/^blog\/(.+)$/);
+    if (blogPage) return `${attr}="../blog/${locale}/${blogPage[1]}"`;
     if (SHELL_FILES.has(val.split('#')[0])) return whole;
     return `${attr}="../${val}"`;
   });
