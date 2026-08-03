@@ -4,6 +4,15 @@ Operational notes for future Claude sessions working on this repo. Read this
 first; it captures how the site is wired and the gotchas that aren't obvious
 from the file tree.
 
+## Language
+- **Everything written into the repo is English** — code, comments, commit
+  messages, PR bodies, this file, and all project documentation (`docs/`,
+  RFCs, READMEs). Site *copy* is the exception and is not affected: English
+  is the source in the HTML, ES/CA live in `assets/js/i18n.js` and in the
+  hand-translated `blog/es/`, `blog/ca/` pages (see "Internationalization").
+- **Chat responses to the owner are in Spanish**, regardless of the language
+  of the request. Same rule as `Project-Summit-MVP/CLAUDE.md` §2.1/§14.
+
 ## Hardening done 2026-06-05 (current state)
 
 A privacy/security/SEO pass landed on branch `claude/practical-curie-UpinE`
