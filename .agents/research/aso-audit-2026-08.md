@@ -40,7 +40,7 @@ Data pulled live from the iTunes lookup API and the ES/US listing pages on 2026-
 
 **2. Put the free-forever wedge into screenshot 1's caption.** Screenshot captions have been indexed since June 2025, and ~90% of users never scroll past the third screenshot. Subscription fatigue is a high-confidence VOC theme ("Great tracking awful price", "$30/mo is steep"), and free recovery + sleep is the answer to it — yet nothing above the fold says so today.
 
-**3. Fix the stale version claim on the website.** `index.html` says "What's in v1.1" and "New in v1.1" while the App Store is on **1.4.0**. Three minor versions of drift on the page that sells the app. Keys: `feat.eyebrow`, `int.karoo.new`, `v11.title` in `assets/js/i18n.js` plus the English source in `index.html`.
+**3. ~~Fix the stale version claim on the website.~~ Done 2026-08-04.** The site advertised "What's in v1.1" while the App Store was on 1.4.0, and `roadmap.html` stopped at v1.3 labelled "current release" — v1.4 was absent from the repo entirely. Since v1.4 rebuilt the *sleep score*, the strongest free-tier asset, the gap was a missing story rather than a stale number. Fixed: v1.4 block added to the roadmap in EN/ES/CA, v1.3 demoted to shipped, eyebrow updated, and the three-versions-old "New in v1.1" badge removed from the Karoo card. The v1.1 references inside the roadmap timeline are historical and correctly left alone.
 
 ---
 
@@ -57,9 +57,11 @@ The app asks for reviews correctly: `ReviewRequestManager` uses the modern `Requ
 | Completing today's planned workout | `TodayView.swift:250` | An adaptive plan → **Elite** |
 | Post-activity training-load refresh | `TrainingView.swift:560`, asked at `:175` on the Form tab | Training load → **Pro** (`TrainingView.swift:86` shows `LockedFeatureView` to free users) |
 
-A free user — the tier the entire marketing wedge is built to attract — plausibly never accumulates a value moment, and so is never asked to rate. That would explain 4 ratings on a listing that has been live since June.
+A free user — the tier the entire marketing wedge is built to attract — never accumulates a value moment, and so is never asked to rate. That is what explains 4 ratings on a listing live since June.
 
-**This is a hypothesis, not a confirmed bug.** It cannot be verified from this environment: no Xcode, no device, and the `.onChange` at `TrainingView.swift:175` is attached to the outer view rather than the gated branch, so its exact runtime behaviour for a free user needs checking on device. **Recommended fix if confirmed:** register a value moment on a free-tier moment of real value — e.g. the third consecutive morning the recovery score is viewed, or the first time the sleep breakdown is opened. That is the moment the free user actually gets what they came for.
+**CONFIRMED on device by the owner, 2026-08-04:** in free mode there is no value moment and no review prompt. This is a defect, not a hypothesis — the free tier, which is the top of the entire funnel, can never be asked to rate the app.
+
+**Fix (not yet implemented, lives in `Project-Summit-MVP`):** register a value moment on a free-tier moment of real value. The natural candidates are opening the sleep breakdown — which v1.4 just rebuilt, and which is the free tier's strongest asset — or the third consecutive morning of viewing the recovery score. Both are moments where the free user has actually received what they came for. The existing eligibility gating (3 days, 3 value moments, 120 days between prompts) needs no change; only the accumulation sites do.
 
 ### Title: 7 unused characters, brand-heavy for an unknown app
 
@@ -103,7 +105,7 @@ Health & Fitness (primary) is where the direct competitors live, and is brutally
 |---|---|---|---|---|
 | 1 | Replace US promotional text with the anti-AI line | 10 min | High | No |
 | 2 | Free-forever wedge into screenshot 1 caption | 1–2 h | High | No (screenshots only) |
-| 3 | Verify the free-tier review-prompt hypothesis on device | 1 h | **Highest** | Yes, if a fix is needed |
+| 3 | ~~Verify the free-tier review-prompt hypothesis~~ **Done 2026-08-04 — confirmed.** Now: add a free-tier value moment | 1 h | **Highest** | Yes |
 | 4 | Fix v1.1 → v1.4 on the website | 15 min | Medium | No |
 | 5 | Retitle + resubtitle with keyword coverage | 30 min | Medium-High | No |
 | 6 | Audit the keyword field for repeats in App Store Connect | 20 min | Medium | No |
