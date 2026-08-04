@@ -83,7 +83,9 @@ Options (US, assuming title takes "Plan"):
 
 ### Keyword field — cannot be audited from outside
 
-The 100-**byte** keyword field is invisible outside App Store Connect. Check that it does not repeat any word already in the title or subtitle, and that it is comma-separated with no spaces. Candidate terms not currently visible anywhere in the listing: `ftp`, `power`, `interval`, `gravel`, `granfondo`, `tss`, `periodization`, `readiness`, `strava`, `karoo`.
+The 100-**byte** keyword field is invisible outside App Store Connect. Check that it does not repeat any word already in the title or subtitle, and that it is comma-separated with no spaces. Candidate terms not currently visible anywhere in the listing: `ftp`, `power`, `interval`, `gravel`, `granfondo`, `tss`, `periodization`, `readiness`.
+
+> **Correction (2026-08-04):** an earlier version of this line also suggested `strava` and `karoo`. Both are third-party trademarks, and App Review guideline 2.3.7 treats trademarks in the keyword field as keyword stuffing — a rejection risk even though the integrations are real. Keep those names in the description, not the keyword field. Final per-locale sets are in `../aso-listing-copy-2026-08.md`.
 
 ### No preview video
 
