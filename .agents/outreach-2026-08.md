@@ -41,72 +41,86 @@ Two things the original post left on the table, both used below: it listed **hom
 
 ---
 
-## 2 · Press pitches
+## 2 · Press pitches — v2
 
-Three emails, one angle each. **Send individually, personally, no press release, no attachments, no CC.** Any hint of a mailshot and all three bin it.
+> **Revised 2026-08-04 after review.** The first drafts led with the free tier and never said what Summit *is*. That sells the price of a slice, not the product: a reviewer reads "free recovery score" and files it as another HRV app that shows a number, only cheaper. The differentiator is not the price, it is that **recovery moves the plan** — without that sentence, "free" means nothing, and it positions Summit as cheap rather than different. All three now lead with the product and land the free tier as the kicker.
 
-**Before sending, have ready:** a handful of App Store promo codes (reviewers need them for Premium), a 60–90s screen recording of the adaptation happening, and the press assets. Offer, do not attach.
+**DC Rainmaker's contact page states he receives 200–300 emails a day** and asks explicitly: *"the shorter/more concise your message below – the more likely I'll be able to answer it."* The form is Name / Email / Subject / Message — plain text, so no formatting survives. Every draft below is written for that constraint: no bold, no bullets, under ~130 words.
 
-**Do not:** follow up more than once, after about ten days. Do not chase a second time — this is a small world and the reputational cost is durable.
+**Send individually. No press release, no attachments, no CC.** Have App Store promo codes and a 30–60s screen recording ready to offer — never attach them unprompted.
 
-### 2.1 — DC Rainmaker (Ray Maker)
+**Follow up once, after about ten days. Never twice.**
 
-*Angle: the free tier, aimed squarely at his recurring app-pricing comparisons.*
+### 2.1 — DC Rainmaker (via the contact form at dcrainmaker.com/contact)
 
-> **Subject:** Recovery + sleep scores, free forever — an odd pricing choice worth a look
+*Angle: the two product claims a technical reviewer can test in an afternoon. Free tier as the closing oddity.*
+
+> **Subject:** Training app that plans around the time you actually have
 >
 > Ray,
 >
-> You run the pricing comparisons nobody else bothers to keep current, so this is aimed at you specifically.
+> Project Summit is an iOS training app for self-coached endurance cyclists. Two claims, both easy to disprove if I'm wrong.
 >
-> I build Project Summit, an iOS training app for self-coached endurance cyclists. The daily recovery score, the full sleep analysis and breakdown, the recovery trend and the widgets are **free permanently** — not a trial, not a teaser. It reads HRV, resting HR and sleep from Apple Health, so any wearable that writes there works; no hardware, no subscription.
+> It plans around your availability, not just your physiology: you tell it how much time you actually have that day, and if today is zero the week reflows instead of breaking.
 >
-> The reason I think it's worth a paragraph in one of your comparisons: this is the layer the recovery wearables charge a monthly subscription for, given away from the watch someone already owns. Premium exists — training load, power analysis, the adaptive plan — but it sits above that line, not on top of it.
+> And recovery moves the plan both ways. Most tools only brake — Summit also pushes when HRV and sleep say you're primed, so a good window gets used instead of wasted.
 >
-> Happy to send promo codes if you want to poke at the paid side. If it's not interesting, no reply needed and no hard feelings.
+> The engine is deterministic: no LLM, and every session traces back to the rule and the numbers that produced it.
+>
+> Unusual commercially too — the daily recovery score and the full sleep analysis are permanently free, read from Apple Health.
+>
+> Promo codes on request. No reply needed if it's not for you.
 >
 > Jordi Espanyol — Barcelona, solo developer
 > projectsummit.app
 
 ### 2.2 — GPLama (Shane Miller)
 
-*Angle: deterministic and explainable, plus a demo that films well.*
+*Angle: built the opposite way to the category, with a demo that films in thirty seconds.*
 
-> **Subject:** A training app that refuses to call itself AI — happy to be picked apart
+> **Subject:** A training app built the opposite way to the rest — deterministic, no LLM
 >
 > Shane,
 >
-> Everything in this category is bolting an LLM on and calling it coaching. I've gone the other way and I suspect that's more interesting to your audience than another AI announcement.
+> Project Summit is an iOS training app for self-coached endurance cyclists. The category is bolting an LLM onto everything; I've gone the other way and I think that's the more interesting story.
 >
-> Project Summit's engine is deterministic: same inputs, same output, and every recommendation traces back to a codified sports-science rule you can open up and read. No model, no chatbot, no generated text. When it moves today's session after a bad night, it will tell you exactly which rule fired and on which numbers.
+> The engine is deterministic — same inputs, same output — and every session traces back to a codified sports-science rule you can open and read. When it drops today's intervals after a bad night, it tells you which rule fired and on which numbers.
 >
-> Films well, too: sleep badly, open the app, watch the hard session become an easy one, then open the reasoning behind it. Whole thing is about thirty seconds.
+> It also plans around your availability, not just your physiology: say you've got forty minutes and it replans; say you've got nothing and the week reflows.
 >
-> It's an iOS app from one developer in Barcelona — I'm not going to pretend it's a big product. But it is genuinely built the opposite way to the rest of the category, and I'd rather you kicked the tyres on that claim than took my word for it. Promo codes on request.
+> Films in about thirty seconds — sleep badly, open the app, watch the hard session turn easy, then open the reasoning behind it.
+>
+> Solo developer in Barcelona, so it's small. But it is genuinely built the opposite way to the rest, and I'd rather you tested that claim than took my word for it. Promo codes on request.
 >
 > Jordi Espanyol
 > projectsummit.app
 
 ### 2.3 — BikeRadar (Simon von Bromley, tech)
 
-*Angle: inclusion in a roundup, which is the durable, rankable win.*
+*Angle: roundup inclusion, led by the thing that would differentiate it in the list.*
 
-> **Subject:** For the training-apps roundup — free recovery + sleep, no subscription
+> **Subject:** For the training-apps roundup — a plan that adapts to the time you actually have
 >
 > Simon,
 >
-> You keep BikeRadar's training-app roundups current, so a candidate for the next revision.
+> You keep BikeRadar's training-app roundups current, so: a candidate for the next revision.
 >
-> Project Summit is an iOS app for self-coached endurance cyclists. What sets it apart from the others on that list: the daily recovery score and the full sleep analysis are **permanently free** — it reads HRV, resting HR and sleep from Apple Health, so any wearable that writes there works. Premium adds training load, power analysis and the adaptive plan, but the recovery layer never expires.
+> Project Summit is an iOS app for self-coached endurance cyclists. What would set it apart in that list is that it adapts to two things, not one — your recovery, read from Apple Health, and the time you actually have. Tell it today is a write-off and the week reflows around it rather than logging you as non-compliant.
 >
-> It also pushes structured sessions out to a Hammerhead Karoo natively, or via intervals.icu to Garmin, Zwift and MyWhoosh, and imports from Strava automatically.
+> It pushes structured sessions natively to a Hammerhead Karoo, or through intervals.icu to Garmin, Zwift and MyWhoosh, and imports from Strava automatically.
 >
-> Screenshots, a short demo and promo codes available if useful. iOS only, iOS 26+, solo developer — worth saying up front so it doesn't waste your time if that rules it out.
+> The daily recovery score and full sleep analysis are permanently free; Premium adds training load, power analysis and the adaptive plan.
+>
+> iOS only, solo developer — worth saying up front in case that rules it out. Screenshots, a short demo and promo codes available.
 >
 > Jordi Espanyol
 > projectsummit.app
 
----
+### Expectation setting
+
+These are long shots and should be treated as such. All three cover major hardware and established platforms; a solo iOS app with four ratings is not their usual subject. The reason to send them anyway is that it costs half an hour and the downside is silence. **Do not build a plan on a reply arriving** — the community work in Tier 1 and 2 of the discovery plan is the part that compounds regardless.
+
+If nothing lands, the realistic next rung is smaller and warmer: Spanish-language cycling outlets, and the weekly news formats (The FIT File) where a release is easier to fit than a full review.
 
 ## Claims used, and where each is verified
 
@@ -119,6 +133,8 @@ Three emails, one angle each. **Send individually, personally, no press release,
 | The four v1.4 fixes quoted in the forum post | v1.4 release notes, verbatim |
 | Widgets + App Intents in v1.3 | v1.3 release, roadmap page |
 | Karoo native, intervals.icu distribution, Strava import | `index.html` integrations |
+| Plans around stated availability; no window today means the week reflows | `index.html` "Adapts to your life" |
+| Recovery moves the plan both ways — eases *and* pushes to catch good windows | `index.html` "It reads your recovery — both ways" |
 | Premium: training load, power, adaptive plan | Pro/Elite gate lists |
 
 **Not claimed anywhere, deliberately:** any watchOS app or on-wrist surface, any user or download number, any rating, and "AI" as a description of the product.
