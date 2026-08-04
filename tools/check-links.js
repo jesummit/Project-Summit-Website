@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
-const rootPages = ['index', 'roadmap', 'faq', 'about', 'ambassadors', 'terms', 'privacy-policy', 'thanks'];
-const shellPages = ['index', 'roadmap', 'faq', 'about', 'ambassadors', 'terms', 'privacy-policy'];
+const rootPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'terms', 'privacy-policy', 'thanks'];
+const shellPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'terms', 'privacy-policy'];
 const files = [
   ...rootPages.map((p) => p + '.html'),
   ...['es', 'ca'].flatMap((locale) => shellPages.map((p) => locale + '/' + p + '.html')),

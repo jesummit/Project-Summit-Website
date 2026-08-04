@@ -16,7 +16,7 @@ function block(name, next) {
 const ES = block('ES', 'CA');
 const CA = block('CA', 'DICT');
 
-const pages = ['index', 'roadmap', 'faq', 'about', 'ambassadors', 'terms', 'privacy-policy'];
+const pages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'terms', 'privacy-policy'];
 let missing = 0;
 pages.forEach((p) => {
   const html = fs.readFileSync(path.join(ROOT, p + '.html'), 'utf8');

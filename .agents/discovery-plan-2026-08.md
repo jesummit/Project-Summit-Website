@@ -31,11 +31,10 @@ The category has 162 topics and 2,646 posts. The winners are not better announce
 
 ### 1.1 Revive the intervals.icu thread and never let it go quiet
 
-Turn it into a release log. Post the v1.4 sleep engine now — it is a real, substantial update and exactly what that audience cares about. Then post every release, and answer everything.
+> **Status 2026-08-04: the v1.4 post is published.** The thread is alive again. What matters now is the part that made the neighbouring threads work — replying to everything within a day, and posting each release without being reminded.
 
-What to post, in order:
-- **Now:** the v1.4 sleep engine — historical median, sleep debt, stages, rhythm, and that it is free.
-- **Ongoing:** each release, with screenshots and the reasoning behind the change.
+It is a release log now. Keeping it one means:
+- **Ongoing:** post each release, with screenshots and the reasoning behind the change.
 - **Always:** reply to every question within a day. The neighbour threads live on replies, not on posts.
 
 The intervals.icu integration is genuine (structured workouts push out through it), which is what earns the right to be in that category at all.
@@ -104,7 +103,7 @@ Do not run this until there is something to land on. It is a spike, and a spike 
 
 ## Order
 
-1. **This week, free:** revive the intervals.icu thread with the v1.4 sleep engine, and commit to replying to everything.
+1. ~~**This week, free:** revive the intervals.icu thread with the v1.4 sleep engine~~ — **done 2026-08-04.** Now: reply to everything within a day, and post the next release without waiting to be asked.
 2. **This week, free:** pick two Spanish forums and start participating. Ten useful answers before any mention.
 3. **Two weeks out:** pitch the two angles above to DC Rainmaker, GPLama and BikeRadar. One personal email each, no press release, leading with the free-recovery angle.
 4. **When the destination pages exist:** Product Hunt, with three weeks of preparation.

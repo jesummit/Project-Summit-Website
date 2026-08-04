@@ -46,6 +46,7 @@ const PAGES = {
   'index.html': 'home',
   'roadmap.html': 'roadmap',
   'faq.html': 'faq',
+  'pricing.html': 'pricing',
   'about.html': 'about',
   'ambassadors.html': 'ambassadors',
   'terms.html': 'terms',
