@@ -1,0 +1,5 @@
+# Marketing skills installed per session with `npx skills add` (PASO 0).
+# They are third-party playbooks, reinstalled fresh each session, and are
+# tooling rather than site source — keep them out of the deployed repo.
+.claude/
+skills-lock.json
