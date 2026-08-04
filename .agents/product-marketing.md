@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v1
+**Document version:** v2
 **Last updated:** 2026-08-03
 
 > Shared context for every marketing skill. Everything here is sourced from the
@@ -123,6 +123,8 @@
 | "Another app to add to my stack." | It replaces the synthesis layer across 3–5 apps; rides come in from Strava automatically and sessions go out to your head unit. |
 | "Can I trust an algorithm with my training?" | Every recommendation traces to a specific rule and your own data — you can see the why. |
 | "Is my health data safe?" | HRV, resting HR, sleep and body temp are read from HealthKit; export and full account deletion are available in-app. (`faq.q17`) |
+| **"The data should be descriptive, not prescriptive — I listen to my body."** (research-sourced; no on-site answer exists yet) | Don't argue the number is smarter than the athlete. Summit shows *why*, so it can be knowingly overruled: every recommendation traces to a rule and your own data. The free tier gives the interpretation without demanding you obey it. |
+| **"The score never matches how I actually feel."** (research-sourced; the single most trust-destroying failure in this category) | Explainability, not accuracy claims, is the answer: the sleep breakdown says what kind of night you had and what explains it, so a mismatch is inspectable instead of just wrong. |
 
 **Anti-persona:** Casual/fitness riders with no power meter and no target event; runners, swimmers and triathletes (cycling-only today); Android users (roadmap 2027); anyone wanting a human coach with accountability; athletes wanting an indoor-first structured-workout library.
 
@@ -157,7 +159,20 @@
 | Plan cascading | The engine rewriting the week after a missed/changed session while keeping the goal. Premium (Elite). |
 | Free tier | Permanent, no-gate access to recovery + sleep + trend + widgets. Never a trial. |
 
-> **Verbatim customer language is missing.** No interviews or review mining have been done yet. The phrasing above is Summit's own voice, not the customer's. Fill this with the `customer-research` skill before writing conversion copy.
+**How they describe the problem (verbatim, proxy sources — see `research/voc-cycling-recovery-2026-08.md`):**
+- "my recovery scores bear no resemblance to how I feel or perform. As a result I have decided to ditch whoop. I have lost all confidence in the system."
+- "the sleep metrics can just ruin your day even if you're feeling fine."
+- "Garmin gave me a sleep score of 84 last night despite waking up at least 4 times for the baby… but I don't really feel that good, so will take it easy despite what my watch says."
+- "Workouts listed as optional, if not completed, get logged as red as missed workouts in Compliance."
+- "There's also no flexibility at all… the app won't allow me to do that."
+- "Doesn't adapt to you… it just starts you off with a PL 1 workout as if you've done 0 work before."
+- "…what I've been doing that day and how I feel and not what AI thinks I need to do."
+- "I would like one app that tracks across a few devices… It then can mesh all the info together to prepare an adaptive plan."
+- "The price is steep at $30/mo…" · "Great tracking awful price."
+
+**Phrases worth reusing in copy:** "ruin your day" · "bear no resemblance to how I feel" · "lost all confidence in the system" · "logged as red as missed workouts" · "doesn't adapt to you" · "not what AI thinks I need to do" · "descriptive, not prescriptive".
+
+> **Still proxy, not first-party.** These are competitors' customers (App Store reviews + TrainerRoad forum, 2026-08), not Summit users. No Spanish or Catalan sources, and Reddit was unreachable. Treat as directional; replace as Summit accumulates its own reviews.
 
 ---
 
@@ -204,4 +219,5 @@
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v2 (2026-08-03) — Filled Customer Language with verbatim from proxy VOC research (315 competitor App Store reviews + 54 TrainerRoad forum posts); added two research-sourced objections (score-vs-feel mismatch, "descriptive not prescriptive"). Evidence and its limits in `research/voc-cycling-recovery-2026-08.md`.
 - v1 (2026-08-03) — Initial context, auto-drafted from both repos. Encodes the shipped-product hard constraints (no Watch app, free-tier scope, trial vs free, anti-"AI" framing) so downstream marketing skills stop generating claims the product can't back.
