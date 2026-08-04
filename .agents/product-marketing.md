@@ -1,7 +1,7 @@
 # Product Marketing Context
 
-**Document version:** v2
-**Last updated:** 2026-08-03
+**Document version:** v3
+**Last updated:** 2026-08-04
 
 > Shared context for every marketing skill. Everything here is sourced from the
 > two repos (`Project-Summit-Website`, `Project-Summit-MVP`), not invented.
@@ -42,7 +42,7 @@
 - **Elite** — full platform: adaptive training plans, adaptive peak form, workout export (ZWO/FIT + intervals.icu sync), race-day nutrition, nutrition recipes, shopping list, plan-today and availability notifications.
 - **14-day free trial** on Premium, monthly and yearly billing.
 
-**Pricing — UNCONFIRMED.** The local StoreKit test config (`SummitSport.storekit`) carries Pro €7.99/mo · €63.99/yr and Elite €14.99/mo · €119.99/yr. **These are test values, not proof of live App Store Connect pricing.** The website deliberately publishes no prices (`faq.q13` points to the app and the App Store). Confirm against App Store Connect before putting a number in any asset.
+**Pricing — CONFIRMED 2026-08-04** against the live App Store listing (ES storefront IAP list): **Pro €7.99/mo · €63.99/yr · Elite €14.99/mo · €119.99/yr**. Matches the local StoreKit config. Note the website still publishes no prices by design (`faq.q13` points to the app and the App Store) — confirming the figures does not mean putting them on the site.
 
 **Distribution:** App Store, Apple ID `6754172654`. Website links carry the campaign query `?pt=128228195&ct=web&mt=8` — never drop it, it is the only way Apple attributes installs to the site.
 
@@ -219,5 +219,6 @@
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v3 (2026-08-04) — Premium pricing confirmed against the live App Store listing during the ASO audit (was flagged UNCONFIRMED since v1); no other section changed. Audit in `research/aso-audit-2026-08.md`.
 - v2 (2026-08-03) — Filled Customer Language with verbatim from proxy VOC research (315 competitor App Store reviews + 54 TrainerRoad forum posts); added two research-sourced objections (score-vs-feel mismatch, "descriptive not prescriptive"). Evidence and its limits in `research/voc-cycling-recovery-2026-08.md`.
 - v1 (2026-08-03) — Initial context, auto-drafted from both repos. Encodes the shipped-product hard constraints (no Watch app, free-tier scope, trial vs free, anti-"AI" framing) so downstream marketing skills stop generating claims the product can't back.
