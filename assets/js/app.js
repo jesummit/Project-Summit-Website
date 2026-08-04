@@ -274,6 +274,11 @@
       { trigger: '.amb-how',   items: ['.amb-how-label', '.step'] },
       { trigger: '.amb-cta',   items: ['.amb-cta-inner'] }
     ],
+    pricing: [
+      { trigger: '.plans-grid',  items: ['.plan'] },
+      { trigger: '.plans-notes', items: ['.plans-note-title', '.plans-note-body'] },
+      { trigger: '.plans-cta',   items: ['.section-head', '.appstore'] }
+    ],
     terms: [
       { each: '.terms-section' }
     ],
