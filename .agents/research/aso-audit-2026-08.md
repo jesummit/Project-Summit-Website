@@ -61,7 +61,7 @@ A free user — the tier the entire marketing wedge is built to attract — neve
 
 **CONFIRMED on device by the owner, 2026-08-04:** in free mode there is no value moment and no review prompt. This is a defect, not a hypothesis — the free tier, which is the top of the entire funnel, can never be asked to rate the app.
 
-**Fix (not yet implemented, lives in `Project-Summit-MVP`):** register a value moment on a free-tier moment of real value. The natural candidates are opening the sleep breakdown — which v1.4 just rebuilt, and which is the free tier's strongest asset — or the third consecutive morning of viewing the recovery score. Both are moments where the free user has actually received what they came for. The existing eligibility gating (3 days, 3 value moments, 120 days between prompts) needs no change; only the accumulation sites do.
+**Fix — IMPLEMENTED 2026-08-04 in `Project-Summit-MVP`.** The approach: register a value moment on a free-tier moment of real value. The natural candidates are opening the sleep breakdown — which v1.4 just rebuilt, and which is the free tier's strongest asset — or the third consecutive morning of viewing the recovery score. Both are moments where the free user has actually received what they came for. The existing eligibility gating (3 days, 3 value moments, 120 days between prompts) needs no change; only the accumulation sites do.
 
 ### Title: 7 unused characters, brand-heavy for an unknown app
 
@@ -107,7 +107,7 @@ Health & Fitness (primary) is where the direct competitors live, and is brutally
 |---|---|---|---|---|
 | 1 | Replace US promotional text with the anti-AI line | 10 min | High | No |
 | 2 | Free-forever wedge into screenshot 1 caption | 1–2 h | High | No (screenshots only) |
-| 3 | ~~Verify the free-tier review-prompt hypothesis~~ **Done 2026-08-04 — confirmed.** Now: add a free-tier value moment | 1 h | **Highest** | Yes |
+| 3 | ~~Verify, then fix, the free-tier review prompt~~ **Done 2026-08-04 — confirmed and implemented.** Ratings should now start accruing from free users | — | **Highest** | Shipped |
 | 4 | Fix v1.1 → v1.4 on the website | 15 min | Medium | No |
 | 5 | Retitle + resubtitle with keyword coverage | 30 min | Medium-High | No |
 | 6 | Audit the keyword field for repeats in App Store Connect | 20 min | Medium | No |

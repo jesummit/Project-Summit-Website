@@ -108,8 +108,8 @@ robots.txt, sitemap.xml    SEO (indexable pages only, incl. es//ca/ with hreflan
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
 CNAME, ATTRIBUTION.md      site config / credits
 ```
-Pages with the shared shell: `index, roadmap, faq, about, ambassadors, terms,
-privacy-policy`. `thanks.html` is **standalone** (no shared header/footer) — it's
+Pages with the shared shell: `index, roadmap, faq, pricing, about, ambassadors,
+terms, privacy-policy`. `thanks.html` is **standalone** (no shared header/footer) — it's
 a minimal confirmation page and is intentionally excluded from the build.
 
 ## Shared header/footer (the build step)
@@ -168,7 +168,7 @@ To add/change a translatable string:
    `ES` and `CA`. Quick check:
    ```
    node -e "const fs=require('fs');const i=fs.readFileSync('assets/js/i18n.js','utf8');
-   ['index','roadmap','faq','about','ambassadors','terms','privacy-policy'].forEach(p=>{
+   ['index','roadmap','faq','pricing','about','ambassadors','terms','privacy-policy'].forEach(p=>{
      const h=fs.readFileSync(p+'.html','utf8');
      [...new Set([...h.matchAll(/data-i18n=\"([^\"]+)\"/g)].map(m=>m[1]))]
        .forEach(k=>{ if(!i.includes('\"'+k+'\"')) console.log('MISSING',p,k); });
@@ -176,7 +176,7 @@ To add/change a translatable string:
    ```
    Shared nav/footer strings come from the partials, so their keys appear once in
    the partials and are translated like any other key.
-4. Run `npm run build` — the 14 `es/*.html` / `ca/*.html` shells (see below) are
+4. Run `npm run build` — the 16 `es/*.html` / `ca/*.html` shells (see below) are
    regenerated FROM the English HTML + these dictionaries, so your edit
    propagates automatically. Nothing under `es/`/`ca/` is hand-edited.
 
@@ -189,10 +189,11 @@ URLs — **without hand-tripling every page**, by generating them.
 
 - `build.js` now has a second stage (`augmentRootShells()` +
   `generateLocaleShells()`, run after the existing header/footer stage) that:
-  1. Adds `hreflang` alternates + `data-alt-en/es/ca` (on `<body>`) to the 7
+  1. Adds `hreflang` alternates + `data-alt-en/es/ca` (on `<body>`) to the 8
      canonical English root pages (`index.html`, `roadmap.html`, `faq.html`,
-     `about.html`, `ambassadors.html`, `terms.html`, `privacy-policy.html`).
-  2. Generates `es/<file>` and `ca/<file>` for each of those 7 — same HTML,
+     `pricing.html`, `about.html`, `ambassadors.html`, `terms.html`,
+     `privacy-policy.html`).
+  2. Generates `es/<file>` and `ca/<file>` for each of those 8 — same HTML,
      same `partials/`-driven header/footer, but with every `data-i18n`
      element's inner HTML swapped for the `i18n.js` dictionary value (a
      **build-time twin of `i18n.js`'s own runtime `set()`** — same
@@ -200,7 +201,7 @@ URLs — **without hand-tripling every page**, by generating them.
      applied by the browser). `<html lang>`, `<title>`, meta description,
      OG/Twitter tags, canonical, and the page's own JSON-LD `@graph` (see
      "Structured data" above) are all rewritten to match. Internal links
-     between the 7 shell pages stay same-directory relative (the es/ca copy
+     between the 8 shell pages stay same-directory relative (the es/ca copy
      sits right next to its siblings); asset paths get `../`; the Blog nav
      link points at `../blog/<locale>/index.html` (the blog already has
      per-locale directories — see below).
@@ -247,9 +248,9 @@ URLs — **without hand-tripling every page**, by generating them.
   `'es'` default. Once a choice IS explicit, this is intentionally skipped —
   that's what lets `lang-routing.js` notice a mismatch (stored `es`, landed on
   an English URL) and redirect to the visitor's actual preferred locale.
-- `tools/check-links.js` now also validates all 14 `es/`/`ca/` shell files
+- `tools/check-links.js` now also validates all 16 `es/`/`ca/` shell files
   (paths resolved relative to each file's own directory, not always repo
-  root). `sitemap.xml` lists `index/roadmap/faq/about/ambassadors` × en/es/ca
+  root). `sitemap.xml` lists `index/roadmap/faq/pricing/about/ambassadors` × en/es/ca
   with hreflang annotations (terms/privacy-policy stay out, same as before —
   they're `noindex`).
 - **Known gaps / next steps**: Nothing here removes the
@@ -278,6 +279,12 @@ details in **`docs/blog.md`**. Key points:
   verify blog internal links by hand.
 
 ## Free-tier copy — what is actually free (verify before editing)
+The same rules govern **`pricing.html`** (the plans page, added 2026-08-04):
+it exists because most directories require a pricing page, and it
+deliberately carries **no figures** — Apple sets Premium pricing per country,
+so the page points at the App Store listing and the app instead. Keep it that
+way; adding numbers here means keeping them in sync with every storefront.
+
 The home `#free` section (between `#how` and `#features`) and `faq.q16` are the
 site's free-tier magnet: same ICP (cyclists), the watch as the hook. Every claim
 there is checked against the app's real gating in `Project-Summit-MVP` — re-check

@@ -6,6 +6,8 @@
 
 ## 1 · intervals.icu — reply on the existing thread
 
+> **Published 2026-08-04.** Kept here as the reference for tone and for the cadence rules below, which are the part that still needs doing.
+
 **Where:** the existing "Project Summit — adaptive, recovery-driven training plans (iOS)" topic in *External Projects*. **Reply to it, do not start a new topic** — the whole point is that the thread becomes a living log, and a second topic splits it.
 
 Two things the original post left on the table, both used below: it listed **home-screen widgets as roadmap** when they shipped in v1.3, and it **never mentioned the free tier at all** — only the 14-day trial. Leading with "you asked, here it is" and then correcting the free-tier omission is a genuine update, not a re-announcement.
