@@ -215,8 +215,6 @@ a { color: inherit; }
 .avail {
   display: inline-flex; align-items: center; gap: 12px;
 }
-.avail .stars { display: inline-flex; gap: 2px; color: var(--accent); }
-.avail .stars svg { width: 15px; height: 15px; fill: var(--accent); }
 .avail .avail-text { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.4; }
 .avail .avail-text b { color: var(--ink); }
 
@@ -521,6 +519,8 @@ a { color: inherit; }
 .feature-num { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 18px; }
 .feature-title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 11px; color: var(--ink); }
 .feature-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+/* Same grid, four columns — used by #getting-started's 4 numbered steps. */
+.features-grid--steps { grid-template-columns: repeat(4, 1fr); }
 
 /* =====================================================================
    WHO FOR
@@ -572,9 +572,77 @@ a { color: inherit; }
 .cta-title em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
 .cta-body { font-size: 16px; color: var(--ink-soft); margin-bottom: 32px; line-height: 1.7; max-width: 44ch; }
 .cta-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+/* Human-support reassurance under the final CTA. Small and quiet on purpose —
+   it answers "will anyone actually be there?", it is not a headline. */
+.support-line { font-size: 13.5px; line-height: 1.7; color: var(--ink-faint); margin-top: 22px; max-width: 52ch; }
+.support-line a { color: var(--accent); text-decoration: none; }
+.support-line a:hover { text-decoration: underline; }
 .cta-aside { display: flex; flex-direction: column; align-items: center; gap: 22px; }
 .cta-qr { width: 150px; height: 150px; border-radius: var(--r-card); background: var(--card); border: 1px solid var(--ink-hair); display: flex; align-items: center; justify-content: center; box-shadow: var(--e2); }
 .cta-qr-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: center; max-width: 18ch; line-height: 1.6; }
+
+/* =====================================================================
+   FAQ ACCORDION — shared component (native <details>/<summary>)
+   Used by faq.html (full list, inside .faq-category) and by the home
+   page's condensed #faq-home block. The page-specific chrome around it
+   (.faq-body / .faq-category / .faq-cat-label / .faq-cta on faq.html,
+   .faq-home-* here) stays with its page; only the item itself is shared.
+   ===================================================================== */
+.faq-item { border-bottom: 1px solid var(--ink-hair); }
+
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 22px 0; cursor: pointer;
+  list-style: none; user-select: none;
+}
+.faq-question::-webkit-details-marker { display: none; }
+
+.faq-q-text {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  letter-spacing: -0.01em; color: var(--ink); line-height: 1.3;
+  transition: color 0.15s;
+}
+
+.faq-icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  border-radius: 50%; border: 1px solid var(--ink-hair);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-size: 16px; font-weight: 300;
+  transition: transform 0.2s, background 0.2s;
+}
+
+details[open] .faq-icon { transform: rotate(45deg); background: var(--accent-soft); }
+details[open] .faq-question .faq-q-text { color: var(--accent); }
+
+.faq-answer {
+  padding: 0 0 24px;
+  font-size: 15px; color: var(--ink-soft); line-height: 1.8;
+  max-width: 680px;
+}
+.faq-answer p { margin-bottom: 10px; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer strong { font-weight: 600; color: var(--ink); }
+.faq-answer a { color: var(--accent); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+.faq-tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 4px; margin-left: 8px;
+  vertical-align: middle; position: relative; top: -2px;
+}
+.faq-tag--roadmap {
+  background: var(--accent-soft); color: var(--accent);
+  border: 1px solid var(--accent-line);
+}
+
+/* Home page condensed FAQ (#faq-home): the shared items in a bordered
+   card, matching the .free-panel / .features-grid surface treatment. */
+.faq-home-list { border-top: 1px solid var(--ink-hair); }
+.faq-home-list .faq-item:last-child { border-bottom: none; }
+.faq-home-more { margin-top: 26px; }
+.faq-home-more .split-link { margin-top: 0; }
 
 /* =====================================================================
    PAGE HEADER + PROSE — shared by inner pages (about / roadmap / faq /
@@ -622,6 +690,7 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
    ===================================================================== */
 @media (max-width: 1000px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-grid--steps { grid-template-columns: repeat(2, 1fr); }
   .integrations-grid { grid-template-columns: 1fr; }
   .cta-inner { grid-template-columns: 1fr; gap: 40px; }
 }
@@ -670,6 +739,7 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   .page-section { padding-left: 24px; padding-right: 24px; }
   :root { --section-pad: 64px; }
   .features-grid { grid-template-columns: 1fr; }
+  .features-grid--steps { grid-template-columns: 1fr; }
   .integ-row-2 { flex-direction: column; }
   .integ-mini { min-width: 0; }
   .showcase-top { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -709,12 +779,96 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   text-align: left;
 }
 .footer-cookies:hover { color: rgba(245,238,224,0.6); }
+/* Entry animation. The banner is no longer inserted at DOMContentLoaded — it
+   appears after a short delay or on first scroll (see assets/js/consent.js), so
+   without this it would just pop in. Slide up from below + fade, gated the same
+   way as every other motion in this file: reduced-motion gets it instantly. */
+@keyframes consentIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+/* Deliberately NO `opacity: 0` base and NO `forwards`: the keyframe's own
+   `from` does the fade, and the element's natural state is already the `to`
+   state. That way an animation that never runs — animations disabled by an
+   extension, a broken --m-transition token — leaves the banner fully visible
+   instead of invisible-but-present. This is a consent gate; it must fail
+   towards being shown. */
+@media (prefers-reduced-motion: no-preference) {
+  .consent { animation: consentIn var(--m-transition); }
+}
 @media (max-width: 520px) {
+  /* Deliberately a floating card over the content, NOT a bar docked to the
+     bottom edge. It was briefly docked; that was reverted on the owner's call:
+     the banner sitting over the page is what drives an explicit choice, and no
+     choice means no analytics at all — PostHog is never initialised without
+     consent. Keep it in front of the content.
+     (The sticky App Store CTA further down still has to stand down while this
+     is on screen — a floating card at bottom:16px occupies the same corner a
+     docked bar would. See html.has-consent in the STICKY MOBILE CTA block.) */
   .consent { flex-direction: column; align-items: stretch; gap: 14px; }
-  /* In column layout the 320px flex-basis becomes height — reset it so the text
-     block collapses to its natural height (no giant gap above the buttons). */
   .consent-text { flex: 0 0 auto; }
   .consent-actions { justify-content: flex-end; }
+  /* Kept from the docked version: the desktop 9px padding is only ~35px tall,
+     under the 44px touch-target floor. Unrelated to where the banner sits. */
+  .consent-btn { min-height: 44px; }
+}
+
+/* =====================================================================
+   STICKY MOBILE APP STORE CTA  (home — see initStickyCta() in app.js)
+   =====================================================================
+   Hidden everywhere by default. Only the <=640px block below can show it, and
+   only once JS has added .is-visible (hero badge scrolled away AND #download
+   not in view). No JS / no IntersectionObserver → it never appears, which is
+   the intended failure mode: a permanent bar covering content is worse than
+   no bar. Desktop keeps display:none, so its badge never even registers an
+   impression. */
+.sticky-cta { display: none; }
+
+@media (max-width: 640px) {
+  /* Docked edge to edge: unlike the cookie banner it is not asking for a
+     decision, so it stays out of the way at the very bottom rather than
+     floating over the content. Same --card surface and hairline border, so
+     the two still read as one system. They never appear at once. */
+  .sticky-cta.is-visible {
+    position: fixed; z-index: 200;    /* under the consent banner's 300, over the page */
+    left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    background: var(--card); color: var(--ink);
+    border-top: 1px solid var(--ink-hair);
+    box-shadow: var(--e3);
+    padding: 8px 16px;
+    /* Home-indicator clearance. The shorthand above already set an 8px bottom
+       padding, so browsers without env()/max() drop this line and keep it —
+       the fallback is the preceding declaration, same pattern as .consent. */
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+  }
+  /* 44px keeps the badge a full touch target while shrinking the bar. */
+  .sticky-cta .appstore-img { height: 44px; }
+  .sticky-cta .avail-text { font-size: 10px; letter-spacing: 0.06em; }
+
+  /* THE COLLISION: the cookie banner is a floating card pinned to the bottom
+     of the viewport (z-index 300, bottom: 16px, 16px insets), so it lands on
+     top of this bar. Two stacked things in the bottom corner of a 390px phone
+     is unacceptable and the consent gate wins, so consent.js flags <html>
+     while its banner is in the DOM (show() adds, remove() clears) and the CTA
+     stands down — including when the footer "Cookie settings" link reopens the
+     banner later. Written with a class, not :has(): a browser without :has()
+     would silently render BOTH, the exact failure this prevents. The selector
+     has to out-specify .sticky-cta.is-visible above, hence repeating
+     .is-visible rather than using !important. */
+  html.has-consent .sticky-cta.is-visible { display: none; }
+}
+/* Slide up from below + fade. Deliberately NO `opacity: 0` base and NO
+   `forwards` — same lesson as .consent above: the keyframe's own `from` does
+   the fade and the element's natural state is already the `to` state, so an
+   animation that never runs leaves the bar visible instead of
+   invisible-but-present. Motion is gated on prefers-reduced-motion. */
+@keyframes stickyCtaIn {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: none; }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .sticky-cta.is-visible { animation: stickyCtaIn var(--m-transition); }
 }
 
 /* =====================================================================

@@ -95,15 +95,19 @@ assets/js/analytics.js     PostHog helpers (internal-user flag)
 assets/js/consent.js       cookie-consent banner (PostHog opt-in gating)
 assets/fonts/              self-hosted Instrument Serif + JetBrains Mono (woff2)
 assets/img/                logo, og-image, founder photo, favicons, flags/
-assets/screenshots/        app screenshots used in the home carousel
+assets/screenshots/        app screenshots (hero + carousel); optional en//es//ca/
+                           override dirs, localized at build time — see its README.md
 tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
 tools/check-links.js       CI/local check: internal links/assets/anchors resolve (incl. es//ca/)
 tools/i18n-meta.js         shared title/description/FAQ-order config for build.js + check-meta-sync.js
 tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live HTML
+tools/llms-content.js      curated source copy/links for the generated llms.txt
+tools/check-screenshots.js CI/local check: each screenshot locale dir is complete
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: /ingest (PostHog) + /appstore-rating + /blog-subscribe + /unsubscribe
 robots.txt, sitemap.xml    SEO (indexable pages only, incl. es//ca/ with hreflang)
+llms.txt                   GENERATED site map for AI answer engines — don't hand-edit
 404.html, site.webmanifest standalone error page / PWA manifest
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
 CNAME, ATTRIBUTION.md      site config / credits
@@ -368,19 +372,38 @@ places:
     why there is a single coarse `web` token instead of one per surface —
     splitting it further at current volume would keep every campaign below the
     threshold and report nothing. Add tokens only when downloads justify it.
-- **Rating**: the star rows (`#stars-prod`, `#stars-cta`) are filled by
-  `app.js renderStars()` and are a placeholder until real reviews exist. The home
-  hero also has a **live** rating badge (`#rating-badge`): `app.js
-  initRatingBadge()` fetches `/appstore-rating` (the Worker proxies the iTunes
-  lookup — Apple sends no CORS), and only un-hides the badge if the App Store has
-  ≥1 rating (otherwise the page is unchanged; it also hides the placeholder stars
-  when it shows). Needs the `/appstore-rating` Worker route deployed (see
-  `infra/cloudflare-worker.js`).
+- **Rating**: there are **no placeholder stars any more**. Until 2026-08-05 the hero
+  and the final CTA carried hardcoded five-star rows (`#stars-prod`, `#stars-cta`,
+  filled by `app.js renderStars()`) with no rating behind them — the same fabricated
+  claim we refuse to make in JSON-LD, just rendered in pixels instead of markup. All
+  of it was removed: the function, its call, the markup and the `.avail .stars` CSS.
+  What remains beside the App Store badge is the availability text alone.
+  The only rating on the site is the **live** badge in the home hero
+  (`#rating-badge`): `app.js initRatingBadge()` fetches `/appstore-rating` (the Worker
+  proxies the iTunes lookup — Apple sends no CORS) and only un-hides the badge if the
+  App Store reports ≥1 rating; otherwise the page is unchanged. Needs the
+  `/appstore-rating` Worker route deployed (see `infra/cloudflare-worker.js`).
+  **Do not reintroduce decorative stars** — if real reviews exist, this badge is the
+  mechanism that shows them.
 - **Hero phones**: the three home-hero phones use dedicated hero art
   (`assets/screenshots/hero-recovery.webp`, `hero-today.webp`,
   `hero-training-load.webp`) — separate from the carousel shots, so the hero and
   carousel can differ. (They currently start as copies of the carousel images;
   overwrite the `hero-*` files with the final hero art.)
+- **Localized screenshots**: the 10 flat `.webp` files still carry **Spanish**
+  app UI, including on the English canonical/`x-default` home page. The pipeline
+  to fix that exists and is inert until the captures land: drop a complete set
+  into `assets/screenshots/en/`, `es/` or `ca/` (same 10 filenames, 1206×2622
+  WebP) and `npm run build` picks it up — `localizeScreenshots()` in `build.js`
+  rewrites each `<img src>` to `assets/screenshots/<locale>/<file>` **only for
+  files that exist on disk**, so a locale with no override dir keeps the flat
+  fallback and `check-links.js` never sees a dead path. Substitution is
+  build-time on purpose: the hero centre phone is the LCP image
+  (`fetchpriority="high"`), so a runtime `src` swap would double-download it and
+  flash the wrong language. A locale dir must be **complete** —
+  `tools/check-screenshots.js` fails `npm run check`/CI on a partial set or a
+  filename with no flat counterpart. Full brief for whoever produces the
+  captures: `assets/screenshots/README.md`.
 
 ## Analytics & consent
 - PostHog is **lazy-initialised** for real opt-in: each page's `<head>` only has
@@ -412,6 +435,18 @@ places:
 - `robots.txt` + `sitemap.xml` (indexable pages only — legal pages and
   `thanks.html`/`404.html` are `noindex`). Favicons + `site.webmanifest` are
   generated from the logo; regenerate with an image tool if the logo changes.
+- **`llms.txt` is GENERATED — never hand-edit it.** It's the curated map AI
+  answer engines read to decide what to cite. The copy and the link list live in
+  **`tools/llms-content.js`**; `generateLlmsTxt()` in `build.js` renders them at
+  the repo root, building absolute URLs from the same `ORIGIN` constant the
+  canonical/hreflang tags use, and **asserting every linked path resolves to a
+  real file on disk** before writing (a dead link in the file we hand to answer
+  engines is the failure mode this prevents). `verify.yml`'s "Generated output
+  is in sync" step re-runs the build and fails if the committed `llms.txt`
+  drifts. To change it: edit `tools/llms-content.js`, `npm run build`, commit
+  both. The copy there is a public claim about the product — re-check it against
+  the "Free-tier copy" rules above (not AI, no Watch app, free ≠ trial, no
+  prices/ratings/numbers) before touching it.
 - **Structured data (JSON-LD)** — every page has a `<script
   type="application/ld+json">` in `<head>` (hand-authored per page, right
   before the `summit.css` link — there's no build-time generation/dedup for

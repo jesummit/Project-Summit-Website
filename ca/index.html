@@ -182,8 +182,7 @@
         <p class="hero-sub fade-up" style="animation-delay:.18s" data-i18n="hero.prod.sub">Cada pantalla està pensada al voltant del que un ciclista seriós necessita veure de debò: recuperació, càrrega i la sessió següent, adaptant-se en temps real.</p>
         <div class="hero-actions fade-up" style="animation-delay:.26s">
           <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="hero" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
-          <!-- PLACEHOLDER: star rating shown until real App Store reviews exist -->
-          <span class="avail"><span class="stars" id="stars-prod"></span><span class="avail-text" data-i18n="avail.now.iphone"><b>Ja disponible</b> · iPhone</span></span>
+          <span class="avail"><span class="avail-text" data-i18n="avail.now.iphone"><b>Ja disponible</b> · iPhone</span></span>
           <!-- Live App Store rating — hidden until the /appstore-rating proxy returns a real rating (count > 0). -->
           <a id="rating-badge" class="rating-badge" href="https://apps.apple.com/es/app/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" target="_blank" rel="noopener" hidden>
             <span class="rating-stars" id="rating-stars" aria-hidden="true"></span>
@@ -290,11 +289,34 @@
   </div>
 </section>
 
+<!-- ====================== GETTING STARTED ======================
+     What actually happens after the tap on Download — answers the "another
+     app to add to my stack" objection. Every claim here must stay true to the
+     free tier described in #free above: free download, no card, no trial
+     clock, and the watch is a SENSOR read through Apple Health, never a
+     requirement and never an app of its own.
+     No REVEAL_MAPS entry in app.js for #getting-started, so the cards are
+     visible by default (no reveal animation). -->
+<section class="section" id="getting-started">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="start.eyebrow">Com començar</p>
+      <h2 class="section-title" data-i18n="start.title">De la descàrrega al teu primer pla.</h2>
+    </div>
+    <div class="features-grid features-grid--steps">
+      <div class="feature-card"><div class="feature-num">01</div><h3 class="feature-title" data-i18n="start.01.t">Descarrega-la i obre-la</h3><p class="feature-desc" data-i18n="start.01.d">Gratis a l’App Store, iPhone amb iOS 26 o posterior. Sense targeta i sense compte enrere de prova.</p></div>
+      <div class="feature-card"><div class="feature-num">02</div><h3 class="feature-title" data-i18n="start.02.t">Connecta Strava i Apple Health</h3><p class="feature-desc" data-i18n="start.02.d">Les teves rodades s’importen soles tan bon punt n’acabes una. La VFC, la freqüència cardíaca en repòs i el son es llegeixen des d’Apple Health — des d’un Apple Watch o qualsevol wearable que hi escrigui.</p></div>
+      <div class="feature-card"><div class="feature-num">03</div><h3 class="feature-title" data-i18n="start.03.t">Digues-li com és la teva setmana</h3><p class="feature-desc" data-i18n="start.03.d">Quant temps tens de debò i l’esdeveniment al qual apuntes. El pla es construeix al voltant d’això.</p></div>
+      <div class="feature-card"><div class="feature-num">04</div><h3 class="feature-title" data-i18n="start.04.t">Roda. Summit segueix el ritme.</h3><p class="feature-desc" data-i18n="start.04.d">La recuperació i la teva disponibilitat mouen el pla soles. Et saltes una sessió, et poses malalt, viatges — la setmana es reescriu i l’objectiu es manté.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== FEATURES ====================== -->
 <section class="section" id="features">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow" data-i18n="feat.eyebrow">Què inclou la v1.4</p>
+      <p class="eyebrow" data-i18n="feat.eyebrow">Què inclou l'app</p>
       <h2 class="section-title" data-i18n="feat.title">Tot el que un ciclista seriós fa servir de debò.</h2>
     </div>
     <div class="features-grid">
@@ -349,6 +371,100 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-i18n="who.5">Vols arribar a punt per a un esdeveniment objectiu, o simplement seguir millorant, competeixis o no</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-i18n="who.6">Vols la nutrició integrada en el teu entrenament, no afegida a part</span></li>
     </ul>
+  </div>
+</section>
+
+<!-- ====================== FAQ (condensed) ======================
+     The 8 highest-objection questions, lifted from faq.html and reusing the
+     SAME faq.qN.q / faq.qN.a keys — so ES/CA already cover them and there is
+     no second copy of the copy to translate. If you edit a question or answer
+     in faq.html, mirror it here (or vice versa).
+     NO FAQPage JSON-LD on this page, deliberately: faq.html already publishes
+     that entity for all 16 questions and tools/check-meta-sync.js guards it
+     verbatim. A second copy would duplicate the entity and double the drift
+     surface with only half of it guarded.
+     No REVEAL_MAPS entry either (app.js) — the items are visible by default. -->
+<section class="section" id="faq-home">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="hfaq.eyebrow">Preguntes</p>
+      <h2 class="section-title" data-i18n="hfaq.title">El que la gent pregunta abans de descarregar.</h2>
+    </div>
+    <div class="faq-home-list">
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q2.q">És Summit una app d'IA?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q2.a"><p>La part que més importa, no. El <strong>motor d'entrenament i adaptació</strong> de Summit —el que decideix quan carregar, recuperar i descarregar— és un sistema algorítmic determinista. Sense model de llenguatge, sense chatbot, sense contingut generatiu: segueix regles codificades de ciències de l'esport i produeix recomanacions predictibles i explicables, que pots rastrejar fins a un càlcul concret i no a una caixa negra.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q16.q">He de pagar per veure la meva recuperació i el meu son?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q16.a"><p>No. Si ets ciclista i portes un Apple Watch — o qualsevol wearable que escrigui a Apple Health — la teva puntuació de recuperació diària, la teva puntuació de son i el desglossament complet que hi ha al darrere són gratis mentre facis servir Summit.</p><p>La tendència de recuperació i els widgets de pantalla d'inici i de bloqueig també hi entren. És el nivell gratuït, no una prova que caduca. La càrrega d'entrenament, l'anàlisi de potència i el pla adaptatiu són les parts que necessiten Summit Premium.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q6.q">Necessito un Apple Watch?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q6.a"><p>No. Summit llegeix VFC, son i dades de recuperació directament des d'Apple Health. Qualsevol wearable que escrigui aquestes mètriques a Apple Health és compatible.</p><p>A la pràctica, l'Apple Watch ofereix avui les dades més consistents i completes per als càlculs de recuperació de Summit. Altres dispositius poden escriure dades parcials segons la seva integració amb Apple Health.</p><p>Si en portes un, el que Summit construeix a partir d’ell — la teva puntuació de recuperació i la teva anàlisi de son — forma part del nivell gratuït.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q5.q">Necessito un potenciòmetre?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q5.a"><p>Per als càlculs de càrrega, no. Summit fa servir freqüència cardíaca i esforç percebut per estimar la càrrega quan no hi ha dades de potència.</p><p>Per a entrenaments estructurats, <strong>sí ara per ara</strong>. Els entrenaments es prescriuen actualment en zones de potència (% FTP), així que necessites un potenciòmetre per seguir-los amb precisió. <span class="faq-tag faq-tag--roadmap">Roadmap</span> Les prescripcions per zones de FC estan en camí — és una prioritat coneguda.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q3.q">Què passa si em salto una sessió?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q3.a"><p>Summit ho detecta automàticament i recalcula el teu pla. A això li diem cascada de pla — sessions saltades, sessions completades, malaltia, viatges o qualsevol canvi en la teva disponibilitat activen un ajust automàtic del que ve a continuació.</p><p>Mai et quedaràs atrapat seguint un pla que va deixar de tenir sentit fa tres dies.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q8.q">Com arriben els entrenaments al meu Garmin, Karoo o Zwift?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q8.a"><p>Per a una Hammerhead Karoo, Summit envia els entrenaments estructurats directament al ciclocomputador mitjançant una connexió nativa i directa.</p><p>Per a Garmin, Zwift i MyWhoosh, Summit fa servir intervals.icu com a centre de distribució: una sola connexió arriba als tres. Connectes cadascun una vegada a la configuració de Summit i, a partir d'aquí, és automàtic.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q12.q">Quant costa Summit?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q12.a"><p>Summit és gratis per descarregar, i el nivell gratuït no és una prova: la teva puntuació de recuperació diària i la teva anàlisi de son completa continuen sent gratis mentre facis servir l'app.</p><p>Summit Premium afegeix dos nivells: <strong>Pro</strong> (anàlisi detallada de l'entrenament — càrrega, potència i anàlisi per activitat) i <strong>Elite</strong> (accés complet a la plataforma, incloent el pla adaptatiu i les noves funcions a mesura que es llancin, i suport prioritari).</p><p>Pots veure el preu actual de Premium a la mateixa app i a l'App Store.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q10.q">Està Summit disponible a Android?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q10.a"><p>Encara no. Summit és iOS-first i ja està disponible a l'App Store. Android és al roadmap per al 2027, però iOS és el focus d'aquesta versió.</p><p>Si ets a Android, segueix-nos a Instagram — compartirem avenços i t'avisarem tan bon punt estigui llest.</p></div>
+        </details>
+      </div>
+    </div>
+    <p class="faq-home-more"><a class="split-link" href="faq.html" data-i18n="hfaq.link">Les 16 preguntes →</a></p>
   </div>
 </section>
 
@@ -422,14 +538,26 @@
         <p class="cta-body" data-i18n="cta.body">Summit ja és a l’App Store. Descarrega-la, connecta Strava i deixa que el pla comenci a aprendre’t.</p>
         <div class="cta-actions">
           <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="cta" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
-          <!-- PLACEHOLDER: star rating shown until real App Store reviews exist -->
-          <span class="avail"><span class="stars" id="stars-cta"></span><span class="avail-text" data-i18n="avail.ios.free"><b>iOS 26+</b> · iPhone · Gratis</span></span>
+          <span class="avail"><span class="avail-text" data-i18n="avail.ios.free"><b>iOS 26+</b> · iPhone · Gratis</span></span>
         </div>
+        <p class="support-line" data-i18n="support.line">Dubtes abans de descarregar? Escriu a <a href="mailto:team@projectsummit.app">team@projectsummit.app</a> — respon en Jordi, que és qui construeix Summit. Sense bots ni cues de tickets.</p>
       </div>
     </div>
   </div>
 </section>
 </main>
+
+<!-- ====================== STICKY MOBILE CTA ======================
+     Deliberately a sibling of the page sections (outside <main>, outside the
+     footer): it is position:fixed on mobile only, and no section should own its
+     layout. Hidden by default; app.js initStickyCta() adds .is-visible once the
+     hero badge has scrolled away AND #download is not in view. It is suppressed
+     entirely while the cookie banner is docked in the same spot — see
+     html.has-consent in summit.css / consent.js. -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="sticky" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
+  <span class="avail"><span class="avail-text" data-i18n="avail.ios.free"><b>iOS 26+</b> · iPhone · Gratis</span></span>
+</div>
 
 <!-- ====================== FOOTER ====================== -->
 <footer class="site-footer">

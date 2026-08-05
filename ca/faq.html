@@ -251,57 +251,10 @@
       border-bottom: 1px solid var(--ink-hair);
     }
 
-    /* ── Accordion (native <details>/<summary>) ── */
-    .faq-item {
-      border-bottom: 1px solid var(--ink-hair);
-    }
-
-    .faq-question {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 20px; padding: 22px 0; cursor: pointer;
-      list-style: none; user-select: none;
-    }
-    .faq-question::-webkit-details-marker { display: none; }
-
-    .faq-q-text {
-      font-family: var(--font-display); font-size: 1rem; font-weight: 700;
-      letter-spacing: -0.01em; color: var(--ink); line-height: 1.3;
-      transition: color 0.15s;
-    }
-
-    .faq-icon {
-      width: 24px; height: 24px; flex-shrink: 0;
-      border-radius: 50%; border: 1px solid var(--ink-hair);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 16px; font-weight: 300;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    details[open] .faq-icon { transform: rotate(45deg); background: var(--accent-soft); }
-    details[open] .faq-question .faq-q-text { color: var(--accent); }
-
-    .faq-answer {
-      padding: 0 0 24px;
-      font-size: 15px; color: var(--ink-soft); line-height: 1.8;
-      max-width: 680px;
-    }
-    .faq-answer p { margin-bottom: 10px; }
-    .faq-answer p:last-child { margin-bottom: 0; }
-    .faq-answer strong { font-weight: 600; color: var(--ink); }
-    .faq-answer a { color: var(--accent); text-decoration: none; }
-    .faq-answer a:hover { text-decoration: underline; }
-
-    .faq-tag {
-      display: inline-block;
-      font-family: var(--font-mono); font-size: 9px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 2px 8px; border-radius: 4px; margin-left: 8px;
-      vertical-align: middle; position: relative; top: -2px;
-    }
-    .faq-tag--roadmap {
-      background: var(--accent-soft); color: var(--accent);
-      border: 1px solid var(--accent-line);
-    }
+    /* ── Accordion (native <details>/<summary>) ──
+       .faq-item / .faq-question / .faq-q-text / .faq-icon / .faq-answer /
+       .faq-tag now live in assets/css/summit.css — they are shared with the
+       home page's condensed #faq-home block. Don't re-add them here. */
 
     /* ── CTA block ── */
     .faq-cta {

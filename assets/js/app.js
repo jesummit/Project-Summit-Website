@@ -84,14 +84,6 @@
     try { if (window.posthog) window.posthog.capture(event, props || {}); } catch (e) {}
   }
 
-  /* ---------- Stars ---------- */
-  function renderStars() {
-    var star = '<svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
-    document.querySelectorAll('.stars').forEach(function (el) {
-      el.innerHTML = star.repeat(5);
-    });
-  }
-
   /* ---------- Carousel ---------- */
   function initCarousel() {
     var track = document.getElementById('carousel');
@@ -248,9 +240,11 @@
       { trigger: '#screens',      items: ['.showcase-top', '.carousel-track', '.carousel-dots'] },
       { trigger: '#how',          items: ['.section-head', '.split-block'] },
       { trigger: '#free',         items: ['.free-text', '.free-list li'] },
+      { trigger: '#getting-started', items: ['.section-head', '.feature-card'] },
       { trigger: '#features',     items: ['.section-head', '.feature-card'] },
       { trigger: '#nutrition',    items: ['.section-head', '.split-block'] },
       { trigger: '#whofor',       items: ['.whofor-grid > div:first-child', '.whofor-list li'] },
+      { trigger: '#faq-home',     items: ['.section-head', '.faq-item'] },
       { trigger: '#integrations', items: ['.section-head', '.integ-card', '.integ-row-2'] },
       { trigger: '#download',     items: ['.cta-inner'] }
     ],
@@ -379,6 +373,42 @@
     }, { threshold: 0.5 });
   }
 
+  /* ---------- Sticky mobile App Store CTA (home) ----------
+     WHY: on a 390px screen the hero badge sits ~500px down and leaves the
+     viewport immediately. Exposure — not persuasion — is the bottleneck.
+
+     Shown only while BOTH are true: the hero's App Store badge is out of view
+     AND the final CTA (#download) is not in view. Duplicating a CTA that is
+     already on screen is just noise, and the #download rule is also what keeps
+     the bar off the footer at the bottom of the page.
+
+     observeOnce() above is one-shot by design; this needs to keep tracking as
+     the visitor scrolls both ways, so it gets its own observer. No scroll
+     listener: this file already has several and IO is the right tool.
+
+     FAILS HIDDEN: no IntersectionObserver (or either anchor missing) → the bar
+     simply never appears. An always-on bar covering content is worse than none.
+     Mobile-only and the consent-banner collision are handled in CSS
+     (.sticky-cta / html.has-consent in summit.css). */
+  function initStickyCta() {
+    var bar = document.getElementById('sticky-cta');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    var hero = document.querySelector('.appstore[data-source="hero"]');
+    var end = document.getElementById('download');
+    if (!hero || !end) return;
+
+    var heroVisible = true, endVisible = false;   // hidden until the IO reports
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.target === hero) heroVisible = e.isIntersecting;
+        else if (e.target === end) endVisible = e.isIntersecting;
+      });
+      bar.classList.toggle('is-visible', !heroVisible && !endVisible);
+    }, { threshold: 0 });
+    io.observe(hero);
+    io.observe(end);
+  }
+
   /* ---------- Blog article identity ----------
      Slug of the current blog post, or '' anywhere else. Derived from the
      filename so the EN/ES/CA copies of a post (blog/x.html, blog/es/x.html,
@@ -472,8 +502,6 @@
         document.getElementById('rating-stars').innerHTML = s;
         document.getElementById('rating-text').textContent =
           d.rating.toFixed(1) + ' · ' + d.count + ' ' + (d.count === 1 ? 'valoración' : 'valoraciones') + ' en App Store';
-        // Drop the placeholder star rows so we don't show two ratings.
-        document.querySelectorAll('.avail .stars').forEach(function (el) { el.style.display = 'none'; });
         badge.hidden = false;
         track('rating_badge_shown', { rating: d.rating, count: d.count });
       })
@@ -483,12 +511,12 @@
   /* ---------- Boot ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     apply();
-    renderStars();
     initCarousel();
     initNav();
     initSystemTheme();
     initReveal();
     initRatingBadge();
+    initStickyCta();
     initSectionTracking();
     initAppstoreImpressions();
     initBlogTracking();
