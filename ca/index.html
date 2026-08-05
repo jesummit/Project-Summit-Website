@@ -540,11 +540,24 @@
           <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="cta" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
           <span class="avail"><span class="avail-text" data-i18n="avail.ios.free"><b>iOS 26+</b> · iPhone · Gratis</span></span>
         </div>
+        <p class="support-line" data-i18n="support.line">Dubtes abans de descarregar? Escriu a <a href="mailto:team@projectsummit.app">team@projectsummit.app</a> — respon en Jordi, que és qui construeix Summit. Sense bots ni cues de tickets.</p>
       </div>
     </div>
   </div>
 </section>
 </main>
+
+<!-- ====================== STICKY MOBILE CTA ======================
+     Deliberately a sibling of the page sections (outside <main>, outside the
+     footer): it is position:fixed on mobile only, and no section should own its
+     layout. Hidden by default; app.js initStickyCta() adds .is-visible once the
+     hero badge has scrolled away AND #download is not in view. It is suppressed
+     entirely while the cookie banner is docked in the same spot — see
+     html.has-consent in summit.css / consent.js. -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="sticky" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
+  <span class="avail"><span class="avail-text" data-i18n="avail.ios.free"><b>iOS 26+</b> · iPhone · Gratis</span></span>
+</div>
 
 <!-- ====================== FOOTER ====================== -->
 <footer class="site-footer">

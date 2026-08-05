@@ -15,6 +15,25 @@
 
   var KEY = 'summit_consent';
 
+  /* The sticky mobile App Store CTA (#sticky-cta, see app.js initStickyCta())
+     docks edge-to-edge at the bottom of the viewport on <=640px. This banner is
+     a floating card pinned to that same corner (bottom: 16px), so it lands on
+     top of the bar. Two stacked things in the bottom of a 390px phone is not
+     acceptable, and the consent gate wins — so while this banner is in the DOM
+     we flag it on <html> and the CSS suppresses the CTA.
+     A class rather than a CSS :has() selector on purpose: on a browser without
+     :has() support the suppression would silently do nothing and BOTH bars
+     would render — the exact failure this is meant to prevent. show() and
+     remove() are the only two places the banner enters/leaves the DOM, so they
+     are the only two places this flag is touched. */
+  var SUPPRESS_CLASS = 'has-consent';
+  function flagBanner(on) {
+    try {
+      var r = document.documentElement;
+      if (on) r.classList.add(SUPPRESS_CLASS); else r.classList.remove(SUPPRESS_CLASS);
+    } catch (e) {}
+  }
+
   // Single source of truth for the PostHog config. Mirror this if you ever
   // need to tune ingestion behaviour — there is no <head> init to keep in sync.
   var POSTHOG_KEY = 'phc_nx6HJowbqHyMpAZRwfBAa4UjTBRJhtvrKECSD9WDRp8E';
@@ -49,7 +68,11 @@
     try { posthog.init(POSTHOG_KEY, POSTHOG_CONFIG); } catch (e) {}
   }
 
-  function remove() { var b = document.getElementById('consent'); if (b) b.parentNode.removeChild(b); }
+  function remove() {
+    var b = document.getElementById('consent');
+    if (b) b.parentNode.removeChild(b);
+    flagBanner(false);   // banner gone → the sticky CTA is free to appear again
+  }
 
   function decide(v) {
     store(v);
@@ -78,6 +101,7 @@
     el.querySelector('.consent-accept').addEventListener('click', function () { decide('granted'); });
     el.querySelector('.consent-reject').addEventListener('click', function () { decide('denied'); });
     document.body.appendChild(el);
+    flagBanner(true);    // banner docked → suppress the sticky CTA underneath it
   }
 
   // Public API for the footer "Cookie settings" link.

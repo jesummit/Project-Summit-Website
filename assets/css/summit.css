@@ -572,6 +572,11 @@ a { color: inherit; }
 .cta-title em { font-style: italic; font-family: var(--font-serif); font-weight: 400; color: var(--accent); }
 .cta-body { font-size: 16px; color: var(--ink-soft); margin-bottom: 32px; line-height: 1.7; max-width: 44ch; }
 .cta-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+/* Human-support reassurance under the final CTA. Small and quiet on purpose —
+   it answers "will anyone actually be there?", it is not a headline. */
+.support-line { font-size: 13.5px; line-height: 1.7; color: var(--ink-faint); margin-top: 22px; max-width: 52ch; }
+.support-line a { color: var(--accent); text-decoration: none; }
+.support-line a:hover { text-decoration: underline; }
 .cta-aside { display: flex; flex-direction: column; align-items: center; gap: 22px; }
 .cta-qr { width: 150px; height: 150px; border-radius: var(--r-card); background: var(--card); border: 1px solid var(--ink-hair); display: flex; align-items: center; justify-content: center; box-shadow: var(--e2); }
 .cta-qr-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: center; max-width: 18ch; line-height: 1.6; }
@@ -791,28 +796,79 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
 @media (prefers-reduced-motion: no-preference) {
   .consent { animation: consentIn var(--m-transition); }
 }
+@media (max-width: 520px) {
+  /* Deliberately a floating card over the content, NOT a bar docked to the
+     bottom edge. It was briefly docked; that was reverted on the owner's call:
+     the banner sitting over the page is what drives an explicit choice, and no
+     choice means no analytics at all — PostHog is never initialised without
+     consent. Keep it in front of the content.
+     (The sticky App Store CTA further down still has to stand down while this
+     is on screen — a floating card at bottom:16px occupies the same corner a
+     docked bar would. See html.has-consent in the STICKY MOBILE CTA block.) */
+  .consent { flex-direction: column; align-items: stretch; gap: 14px; }
+  .consent-text { flex: 0 0 auto; }
+  .consent-actions { justify-content: flex-end; }
+  /* Kept from the docked version: the desktop 9px padding is only ~35px tall,
+     under the 44px touch-target floor. Unrelated to where the banner sits. */
+  .consent-btn { min-height: 44px; }
+}
+
+/* =====================================================================
+   STICKY MOBILE APP STORE CTA  (home — see initStickyCta() in app.js)
+   =====================================================================
+   Hidden everywhere by default. Only the <=640px block below can show it, and
+   only once JS has added .is-visible (hero badge scrolled away AND #download
+   not in view). No JS / no IntersectionObserver → it never appears, which is
+   the intended failure mode: a permanent bar covering content is worse than
+   no bar. Desktop keeps display:none, so its badge never even registers an
+   impression. */
+.sticky-cta { display: none; }
+
 @media (max-width: 640px) {
-  /* Docked as a system-style bar, not a floating card: edge to edge at the very
-     bottom, no rounding, as short as it can be while staying readable. Keeps the
-     banner out of the hero/product shot on a phone. */
-  .consent {
-    left: 0; right: 0; bottom: 0; max-width: none;
-    border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0;
-    padding: 12px 16px;
-    /* iPhone home-indicator clearance. The shorthand above already set a 12px
-       bottom padding, so browsers without env()/max() simply drop this line and
-       keep that value — the fallback is the preceding declaration, on purpose. */
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-    flex-direction: column; align-items: stretch; gap: 10px;
+  /* Docked edge to edge: unlike the cookie banner it is not asking for a
+     decision, so it stays out of the way at the very bottom rather than
+     floating over the content. Same --card surface and hairline border, so
+     the two still read as one system. They never appear at once. */
+  .sticky-cta.is-visible {
+    position: fixed; z-index: 200;    /* under the consent banner's 300, over the page */
+    left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    background: var(--card); color: var(--ink);
+    border-top: 1px solid var(--ink-hair);
+    box-shadow: var(--e3);
+    padding: 8px 16px;
+    /* Home-indicator clearance. The shorthand above already set an 8px bottom
+       padding, so browsers without env()/max() drop this line and keep it —
+       the fallback is the preceding declaration, same pattern as .consent. */
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
   }
-  /* In column layout the 320px flex-basis becomes height — reset it so the text
-     block collapses to its natural height (no giant gap above the buttons). */
-  .consent-text { flex: 0 0 auto; font-size: 13px; line-height: 1.5; }
-  /* Both buttons share one full-width row: fewer stacked rows = shorter bar.
-     min-height keeps the touch target at 44px (the desktop 9px padding is only
-     ~35px tall, so on mobile it grows rather than shrinks). */
-  .consent-actions { gap: 10px; }
-  .consent-btn { flex: 1 1 0; min-height: 44px; padding: 10px 16px; }
+  /* 44px keeps the badge a full touch target while shrinking the bar. */
+  .sticky-cta .appstore-img { height: 44px; }
+  .sticky-cta .avail-text { font-size: 10px; letter-spacing: 0.06em; }
+
+  /* THE COLLISION: the cookie banner is a floating card pinned to the bottom
+     of the viewport (z-index 300, bottom: 16px, 16px insets), so it lands on
+     top of this bar. Two stacked things in the bottom corner of a 390px phone
+     is unacceptable and the consent gate wins, so consent.js flags <html>
+     while its banner is in the DOM (show() adds, remove() clears) and the CTA
+     stands down — including when the footer "Cookie settings" link reopens the
+     banner later. Written with a class, not :has(): a browser without :has()
+     would silently render BOTH, the exact failure this prevents. The selector
+     has to out-specify .sticky-cta.is-visible above, hence repeating
+     .is-visible rather than using !important. */
+  html.has-consent .sticky-cta.is-visible { display: none; }
+}
+/* Slide up from below + fade. Deliberately NO `opacity: 0` base and NO
+   `forwards` — same lesson as .consent above: the keyframe's own `from` does
+   the fade and the element's natural state is already the `to` state, so an
+   animation that never runs leaves the bar visible instead of
+   invisible-but-present. Motion is gated on prefers-reduced-motion. */
+@keyframes stickyCtaIn {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: none; }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .sticky-cta.is-visible { animation: stickyCtaIn var(--m-transition); }
 }
 
 /* =====================================================================

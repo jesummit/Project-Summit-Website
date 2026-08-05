@@ -373,6 +373,42 @@
     }, { threshold: 0.5 });
   }
 
+  /* ---------- Sticky mobile App Store CTA (home) ----------
+     WHY: on a 390px screen the hero badge sits ~500px down and leaves the
+     viewport immediately. Exposure — not persuasion — is the bottleneck.
+
+     Shown only while BOTH are true: the hero's App Store badge is out of view
+     AND the final CTA (#download) is not in view. Duplicating a CTA that is
+     already on screen is just noise, and the #download rule is also what keeps
+     the bar off the footer at the bottom of the page.
+
+     observeOnce() above is one-shot by design; this needs to keep tracking as
+     the visitor scrolls both ways, so it gets its own observer. No scroll
+     listener: this file already has several and IO is the right tool.
+
+     FAILS HIDDEN: no IntersectionObserver (or either anchor missing) → the bar
+     simply never appears. An always-on bar covering content is worse than none.
+     Mobile-only and the consent-banner collision are handled in CSS
+     (.sticky-cta / html.has-consent in summit.css). */
+  function initStickyCta() {
+    var bar = document.getElementById('sticky-cta');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    var hero = document.querySelector('.appstore[data-source="hero"]');
+    var end = document.getElementById('download');
+    if (!hero || !end) return;
+
+    var heroVisible = true, endVisible = false;   // hidden until the IO reports
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.target === hero) heroVisible = e.isIntersecting;
+        else if (e.target === end) endVisible = e.isIntersecting;
+      });
+      bar.classList.toggle('is-visible', !heroVisible && !endVisible);
+    }, { threshold: 0 });
+    io.observe(hero);
+    io.observe(end);
+  }
+
   /* ---------- Blog article identity ----------
      Slug of the current blog post, or '' anywhere else. Derived from the
      filename so the EN/ES/CA copies of a post (blog/x.html, blog/es/x.html,
@@ -480,6 +516,7 @@
     initSystemTheme();
     initReveal();
     initRatingBadge();
+    initStickyCta();
     initSectionTracking();
     initAppstoreImpressions();
     initBlogTracking();
