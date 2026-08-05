@@ -14,6 +14,61 @@ claim in a video is far harder to retract than one on a page.
 
 ---
 
+## The account as it stands — audited 2026-08-05
+
+25 posts · 134 followers · 139 following. What the grid actually contains:
+
+- **It is a cycling-photography account, not a product account.** Of the visible grid,
+  one post in eight shows the app. The rest is riding lifestyle — good photography,
+  genuinely well shot, and almost all **static 4:5 stills rather than vertical video**.
+  That is the whole explanation for 46 website visits in 90 days: stills in the feed
+  reach the follower list and stop there.
+- **One post is third-party pro-racing photography** (rainbow jersey, UAE, Colnago).
+  Remove it. Two problems: the rights are not yours, and it recruits followers who
+  came for pro racing and will never install a training app. Follower quality is worth
+  more than follower count at this size.
+- **The existing strength is real footage.** Whoever is shooting this can already
+  produce good cycling b-roll. Use it — see the production note under the pillars.
+
+### Fix the profile before filming anything (≈15 minutes, free)
+
+| Field | Now | Change to | Why |
+|---|---|---|---|
+| **Name** | `Project Summit` | e.g. `Project Summit · Entreno y recuperación` | Instagram search indexes **username + name only — never the bio**. The name field currently repeats the username and earns nothing. This is the single free keyword slot on the profile. |
+| **Category** | `Community` | An app / sport category | "Community" tells the algorithm nothing about who to serve this to, and it is not what the account is. |
+| **Bio line 3** | `⬇️ Descúbrela aquí` | The free-tier wedge | "Descúbrela" is a filler line pointing at a link that is already visible. Spend it on the offer. |
+| **Bio, overall** | Never says what it is | Say it plainly, and say **iOS** | A stranger arriving from a Reel learns that you crossed Portugal and that it isn't a chatbot — but not that this is an iPhone app for cycling training and recovery. Naming iOS up front also stops Android users bouncing at the App Store. |
+| **Highlights** | ¿Qué es? · ¿Cómo va? · Gran Diagonal · Rides | Add one: **Gratis** | The structure is good and `¿Qué es?` is the right first one. The free tier deserves its own, because it is the reason to act today. |
+
+Bio draft, for reference — line 1 and 2 are already strong and stay almost as they are:
+
+> Crucé Portugal en bici. 1000 km sin reventar, con esto.
+> App iOS de entreno para ciclistas: la recuperación reescribe el plan.
+> Ciencia del deporte, no un chatbot.
+> Recuperación y sueño gratis para siempre ⬇️
+
+### The asset already there and barely used: Gran Diagonal
+
+The 1000 km Portugal crossing is the strongest thing this account owns. It is real,
+it is the founder's own body on the line, there is already a pinned Reel, a bio line
+and a blog post (`gran-diagonal-999km-portugal.html`) — and it is being spent as **one
+post**.
+
+A 1000 km crossing is inherently episodic, and it is the bridge between the
+photography this account is already good at and the product content it needs:
+
+- The recovery score on the morning of each day, and what it said to do.
+- The sleep score across consecutive days of accumulating fatigue — the free tier,
+  demonstrated under real load rather than described.
+- What broke, what hurt, what the numbers saw coming and what they missed. Saying what
+  the engine got *wrong* is worth more than any claim it gets things right.
+
+Six to eight vertical episodes out of a trip already ridden and already filmed. It costs
+no new riding, and it is the one series where the product appears without the video
+being an ad.
+
+---
+
 ## The premise this is built on
 
 With 130 followers the feed reaches nobody. Posting *to* an audience is not the job;
@@ -49,7 +104,14 @@ non-follower numbers say otherwise.
 **Pillar 4 matters more than its share suggests.** There are no testimonials, no
 usable ratings and no publishable user numbers (`product-marketing.md` → Proof
 Points). Founder credibility and mechanism are the only proof available, so the
-one-in-ten is not filler.
+one-in-ten is not filler. The Gran Diagonal series above is pillar 4 at its best,
+and it should be what the first month runs on.
+
+**Production note — play to the footage you already shoot.** Pillars 1 and 2 do not
+need a talking head. Voice over your own riding b-roll, with the hook as on-screen
+text, is faster to produce, uses the one thing this account is already good at, and
+keeps the visual identity continuous with the 25 posts already there. Reserve the
+face-to-camera for pillar 4, where the credibility comes from it being you.
 
 ---
 
