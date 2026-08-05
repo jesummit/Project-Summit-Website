@@ -35,9 +35,13 @@ const INTRO =
 const BODY =
   'Summit is not an AI product and has no chatbot. The engine is deterministic: every ' +
   'recommendation traces back to a codified sports-science rule and your own data, so you ' +
-  'can see why it made a call. Recovery score, sleep score with its full breakdown, the ' +
-  'recovery trend and the Home and Lock Screen widgets are permanently free — a free tier, ' +
-  'not a trial. Premium adds training load (CTL/ATL/TSB), power analysis (eFTP, critical ' +
+  'can see why it made a call. The free tier is broad: the daily recovery score and its ' +
+  '30-day trend, the sleep score with its full breakdown, the Home and Lock Screen widgets, ' +
+  'automatic ride import from Strava, Hammerhead Karoo and Apple Health, every ride\'s route ' +
+  'map, stats and elevation profile, share cards, a calendar you can put races, camps and ' +
+  'holidays on, and the shape of the day\'s session — its type, its duration and the training ' +
+  'phase you are in. All of that is permanently free — a free tier, not a trial. Premium adds ' +
+  'the prescribed session itself, training load (CTL/ATL/TSB), power analysis (eFTP, critical ' +
   'power, power curve), adaptive plans that rewrite the week when life breaks it, workout ' +
   'export to Hammerhead Karoo and via intervals.icu to Garmin, Zwift and MyWhoosh, and ' +
   'race-day nutrition. An Apple Watch is not required — any wearable that writes HRV and ' +
