@@ -368,14 +368,19 @@ places:
     why there is a single coarse `web` token instead of one per surface —
     splitting it further at current volume would keep every campaign below the
     threshold and report nothing. Add tokens only when downloads justify it.
-- **Rating**: the star rows (`#stars-prod`, `#stars-cta`) are filled by
-  `app.js renderStars()` and are a placeholder until real reviews exist. The home
-  hero also has a **live** rating badge (`#rating-badge`): `app.js
-  initRatingBadge()` fetches `/appstore-rating` (the Worker proxies the iTunes
-  lookup — Apple sends no CORS), and only un-hides the badge if the App Store has
-  ≥1 rating (otherwise the page is unchanged; it also hides the placeholder stars
-  when it shows). Needs the `/appstore-rating` Worker route deployed (see
-  `infra/cloudflare-worker.js`).
+- **Rating**: there are **no placeholder stars any more**. Until 2026-08-05 the hero
+  and the final CTA carried hardcoded five-star rows (`#stars-prod`, `#stars-cta`,
+  filled by `app.js renderStars()`) with no rating behind them — the same fabricated
+  claim we refuse to make in JSON-LD, just rendered in pixels instead of markup. All
+  of it was removed: the function, its call, the markup and the `.avail .stars` CSS.
+  What remains beside the App Store badge is the availability text alone.
+  The only rating on the site is the **live** badge in the home hero
+  (`#rating-badge`): `app.js initRatingBadge()` fetches `/appstore-rating` (the Worker
+  proxies the iTunes lookup — Apple sends no CORS) and only un-hides the badge if the
+  App Store reports ≥1 rating; otherwise the page is unchanged. Needs the
+  `/appstore-rating` Worker route deployed (see `infra/cloudflare-worker.js`).
+  **Do not reintroduce decorative stars** — if real reviews exist, this badge is the
+  mechanism that shows them.
 - **Hero phones**: the three home-hero phones use dedicated hero art
   (`assets/screenshots/hero-recovery.webp`, `hero-today.webp`,
   `hero-training-load.webp`) — separate from the carousel shots, so the hero and

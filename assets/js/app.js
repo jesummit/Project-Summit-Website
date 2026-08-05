@@ -84,14 +84,6 @@
     try { if (window.posthog) window.posthog.capture(event, props || {}); } catch (e) {}
   }
 
-  /* ---------- Stars ---------- */
-  function renderStars() {
-    var star = '<svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
-    document.querySelectorAll('.stars').forEach(function (el) {
-      el.innerHTML = star.repeat(5);
-    });
-  }
-
   /* ---------- Carousel ---------- */
   function initCarousel() {
     var track = document.getElementById('carousel');
@@ -472,8 +464,6 @@
         document.getElementById('rating-stars').innerHTML = s;
         document.getElementById('rating-text').textContent =
           d.rating.toFixed(1) + ' · ' + d.count + ' ' + (d.count === 1 ? 'valoración' : 'valoraciones') + ' en App Store';
-        // Drop the placeholder star rows so we don't show two ratings.
-        document.querySelectorAll('.avail .stars').forEach(function (el) { el.style.display = 'none'; });
         badge.hidden = false;
         track('rating_badge_shown', { rating: d.rating, count: d.count });
       })
@@ -483,7 +473,6 @@
   /* ---------- Boot ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     apply();
-    renderStars();
     initCarousel();
     initNav();
     initSystemTheme();
