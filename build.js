@@ -259,6 +259,33 @@ function hreflangBlock(file) {
   ].join('\n');
 }
 
+// App screenshots carry the app's own UI text, so they're localized too:
+// assets/screenshots/<locale>/<file>.webp overrides the flat
+// assets/screenshots/<file>.webp for that locale. Only files that actually
+// exist on disk are pointed at — a locale with no override directory keeps the
+// flat fallback, so this is a no-op until captures are dropped in (and
+// tools/check-links.js never sees a path that doesn't resolve).
+//
+// This is done at BUILD time and deliberately not at runtime: the hero's centre
+// phone is the page's LCP image and carries fetchpriority="high", so swapping
+// its src from JS would fetch the wrong-language capture first and then a
+// second one — a doubled LCP plus a visible flash of the wrong language. The
+// static file must ship the right src already.
+//
+// The matcher works off the basename and tolerates an already-localized path,
+// so re-running resolves en/es/ca/<file> to the current locale instead of
+// nesting — the build stays idempotent.
+const SCREENSHOT_DIR = 'assets/screenshots';
+function localizeScreenshots(html, locale) {
+  const re = new RegExp('\\bsrc="' + SCREENSHOT_DIR + '/(?:(?:en|es|ca)/)?([^"/]+)"', 'g');
+  return html.replace(re, (whole, base) => {
+    const localized = SCREENSHOT_DIR + '/' + locale + '/' + base;
+    return fs.existsSync(path.join(ROOT, localized))
+      ? `src="${localized}"`
+      : `src="${SCREENSHOT_DIR}/${base}"`;
+  });
+}
+
 // hreflang, data-alt-* body attributes, and the lang-routing script are
 // identical across a page's en/es/ca variants, so they're added to the
 // canonical (English) root pages ONCE, before locale copies are made — the
@@ -282,6 +309,8 @@ function augmentRootShells() {
         '  <script src="assets/js/consent.js"></script>\n<script src="assets/js/lang-routing.js"></script>'
       );
     }
+    // The root pages ARE the English variant, so they get the en/ overrides.
+    html = localizeScreenshots(html, 'en');
 
     if (html !== before) fs.writeFileSync(p, html);
   }
@@ -352,6 +381,9 @@ function generateLocaleShells() {
       html = html.replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonical}" />`);
       html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${canonical}" />`);
 
+      // Before rerootShellLocale(), while the paths are still root-relative —
+      // the "../" prefixing then applies to the localized path as usual.
+      html = localizeScreenshots(html, locale);
       html = rerootShellLocale(html, locale);
 
       const outDir = path.join(ROOT, locale);

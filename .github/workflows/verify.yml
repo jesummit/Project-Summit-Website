@@ -1,7 +1,11 @@
 name: Verify
 
-# Quality gate on every push / PR: i18n coverage, internal links, and that the
-# generated shell is in sync with partials/. Read-only (no writes).
+# Quality gate on every push / PR: i18n coverage, internal links, complete
+# screenshot locale sets, title/description/FAQ sync, and that the generated
+# shell is in sync with partials/. Read-only (no writes).
+# Keep these steps in step with the `check` script in package.json — the two
+# drifted before (check-meta-sync.js was in npm run check but not here, so it
+# only ever ran locally while CLAUDE.md claimed CI enforced it).
 
 on:
   push:
@@ -24,6 +28,12 @@ jobs:
 
       - name: Internal links, assets and anchors resolve
         run: node tools/check-links.js
+
+      - name: Screenshot locale sets are complete
+        run: node tools/check-screenshots.js
+
+      - name: tools/i18n-meta.js matches the live title/description/FAQ copy
+        run: node tools/check-meta-sync.js
 
       - name: Shell is in sync with partials/
         run: |
