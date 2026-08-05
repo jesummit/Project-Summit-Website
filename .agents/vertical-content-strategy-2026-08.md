@@ -13,6 +13,11 @@ Every claim below is traced to `product-marketing.md` → Hard Constraints. The
 "never film" checklist at the end is the part to re-read before each shoot: a false
 claim in a video is far harder to retract than one on a page.
 
+**Any copy here that faces a platform limit is counted, not estimated** — bio 150
+chars, Instagram caption 2,200 (~125 visible before "more"), TikTok 4,000 (~150
+visible), YouTube Shorts title 100 (~70 visible), and 3–5 hashtags on Instagram and
+TikTok. Same rule `aso-listing-copy-2026-08.md` follows for the App Store fields.
+
 ---
 
 ## Fix the path — the cheapest win, and it is not content
@@ -89,12 +94,52 @@ down.
 | **Bio, overall** | Never says what it is | Say it plainly, and say **iOS** | A stranger arriving from a Reel learns that you crossed Portugal and that it isn't a chatbot — but not that this is an iPhone app for cycling training and recovery. Naming iOS up front also stops Android users bouncing at the App Store. |
 | **Highlights** | ¿Qué es? · ¿Cómo va? · Gran Diagonal · Rides | Add one: **Gratis** | The structure is good and `¿Qué es?` is the right first one. The free tier deserves its own, because it is the reason to act today. |
 
-Bio draft, for reference — line 1 and 2 are already strong and stay almost as they are:
+### Bio options — **the Instagram bio is capped at 150 characters**
 
-> Crucé Portugal en bici. 1000 km sin reventar, con esto.
-> App iOS de entreno para ciclistas: la recuperación reescribe el plan.
+An earlier revision of this file proposed a four-line bio that came to **205
+characters**, 55 over the limit and therefore unusable. Counts below were computed,
+not estimated — the same standard `aso-listing-copy-2026-08.md` already sets for the
+App Store fields. Line breaks count. None of these carry an emoji, which also avoids
+the question of whether it costs one character or two.
+
+At 150 characters you can have three of the four things worth saying — what it is,
+the free offer, the anti-chatbot line, the Portugal proof — not all four. Each option
+below drops a different one.
+
+| Option | Chars | Drops |
+|---|---|---|
+| **A — offer first** | 137 | The Portugal proof |
+| **B — founder first** | 124 | The anti-chatbot line |
+| **C — mechanism first** | 117 | Portugal *and* anti-chatbot |
+| **D — compressed** | 120 | The "not a trial" clarifier |
+
+**A — offer first (137)**
+> App iOS de entrenamiento para ciclistas.
+> Recuperación y sueño gratis, para siempre. No es una prueba.
 > Ciencia del deporte, no un chatbot.
-> Recuperación y sueño gratis para siempre ⬇️
+
+**B — founder first, keeps Portugal (124)**
+> Crucé Portugal en bici: 1000 km en 6 días.
+> Con la app iOS que construí para ello.
+> Recuperación y sueño gratis, para siempre.
+
+**C — mechanism first (117)**
+> Entrenamiento ciclista para iPhone.
+> Tu recuperación reescribe el plan.
+> Recuperación y sueño gratis, no es una prueba.
+
+**D — compressed (120)**
+> App iOS de ciclismo: la recuperación reescribe tu plan.
+> Ciencia del deporte, no un chatbot.
+> Sueño y recuperación gratis.
+
+**Recommendation: B.** Losing Portugal costs more than losing "no un chatbot". The
+crossing is the only proof this account owns that a competitor cannot copy, it already
+carries the anti-chatbot position implicitly (nobody plans a 1000 km crossing with a
+chatbot), and the objection it answers — *is this another AI wrapper?* — is one a
+visitor raises **after** arriving, where the highlights and the site can answer it at
+length. The offer still lands on line three. It also leaves 26 characters spare, which
+is the room to add a line later without a rewrite.
 
 ### Moment content — the one thing already proven to reach strangers
 
