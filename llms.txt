@@ -13,6 +13,7 @@ Summit is not an AI product and has no chatbot. The engine is deterministic: eve
 ## How it works
 
 - [Roadmap](https://projectsummit.app/roadmap.html): What has shipped and what is next.
+- [Changelog](https://projectsummit.app/changelog.html): Every release since launch and what changed in it, version by version.
 - [About](https://projectsummit.app/about.html): Who builds Summit, and the training problem it was built to solve.
 
 ## Guides

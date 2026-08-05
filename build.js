@@ -49,6 +49,7 @@ const PAGES = {
   'pricing.html': 'pricing',
   'about.html': 'about',
   'ambassadors.html': 'ambassadors',
+  'changelog.html': 'changelog',
   'terms.html': 'terms',
   'privacy-policy.html': 'privacy',
 };
@@ -289,6 +290,79 @@ function localizeScreenshots(html, locale) {
   });
 }
 
+// ============================================================================
+// Changelog: changelog.html (+ its es/ca twins) is a normal shell page whose
+// #changelog-entries container is filled here, per locale, from
+// tools/changelog-content.js.
+//
+// The release history deliberately does NOT live in assets/js/i18n.js: that
+// dictionary is the site's UI strings, a bounded set every page shares, while
+// this grows by one entry with every App Store release and is used on exactly
+// one page. Same generated-from-a-data-module pattern as llms.txt above.
+//
+// Rendering is idempotent: the container's existing children are REPLACED (the
+// closing </div> is found depth-aware, so the nested markup of a previous run
+// doesn't confuse it), which is what lets `node build.js` twice be a no-op.
+const { SECTION_LABELS, CLOSING, MONTHS, RELEASES } = require('./tools/changelog-content');
+const CHANGELOG_FILE = 'changelog.html';
+const CHANGELOG_ID = 'changelog-entries';
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// "2026-07-29" -> "29 July 2026" / "29 de julio de 2026" / "29 de juliol de
+// 2026". Catalan elides the article before a vowel-initial month (d'agost).
+function formatReleaseDate(iso, locale) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const month = MONTHS[locale][m - 1];
+  if (locale === 'en') return `${d} ${month} ${y}`;
+  const article = (locale === 'ca' && /^[aeiouàèéíòóú]/i.test(month)) ? "d'" : 'de ';
+  return `${d} ${article}${month} de ${y}`;
+}
+
+function renderChangelogEntries(locale) {
+  const out = [];
+  RELEASES.forEach((release, i) => {
+    const anchor = 'v' + release.version.replace(/\./g, '-');
+    out.push(`    <article class="release${i === 0 ? ' release--latest' : ''}" id="${anchor}">`);
+    out.push('      <span class="release-dot" aria-hidden="true"></span>');
+    out.push('      <div class="release-head">');
+    out.push(`        <h2 class="release-version">${escapeHtml(release.version)}</h2>`);
+    // Undated releases render with the version alone — no date is invented to
+    // fill the slot (only 1.0 and 1.4.0 have a sourced release date).
+    if (release.date) {
+      out.push(`        <time class="release-date" datetime="${release.date}">${escapeHtml(formatReleaseDate(release.date, locale))}</time>`);
+    }
+    out.push('      </div>');
+
+    const groups = release.groups[locale];
+    if (!groups) throw new Error(`changelog: release ${release.version} has no "${locale}" copy`);
+    for (const group of groups) {
+      const label = SECTION_LABELS[group.section];
+      if (!label) throw new Error(`changelog: release ${release.version} uses unknown section "${group.section}"`);
+      out.push(`      <section class="release-group release-group--${group.section}">`);
+      out.push(`        <h3 class="release-label">${escapeHtml(label[locale])}</h3>`);
+      out.push('        <ul class="release-list">');
+      for (const item of group.items) out.push(`          <li>${escapeHtml(item)}</li>`);
+      out.push('        </ul>');
+      out.push('      </section>');
+    }
+
+    if (release.closing) out.push(`      <p class="release-closing">${escapeHtml(CLOSING[locale])}</p>`);
+    out.push('    </article>');
+  });
+  return out.join('\n');
+}
+
+function renderChangelog(html, locale) {
+  const m = html.match(new RegExp('<div id="' + CHANGELOG_ID + '"[^>]*>'));
+  if (!m) throw new Error(`changelog.html: no <div id="${CHANGELOG_ID}"> container to render into`);
+  const openEnd = m.index + m[0].length;
+  const close = findMatchingClose(html, openEnd, 'div');
+  return html.slice(0, openEnd) + '\n' + renderChangelogEntries(locale) + '\n  ' + html.slice(close.start);
+}
+
 // hreflang, data-alt-* body attributes, and the lang-routing script are
 // identical across a page's en/es/ca variants, so they're added to the
 // canonical (English) root pages ONCE, before locale copies are made — the
@@ -314,6 +388,7 @@ function augmentRootShells() {
     }
     // The root pages ARE the English variant, so they get the en/ overrides.
     html = localizeScreenshots(html, 'en');
+    if (file === CHANGELOG_FILE) html = renderChangelog(html, 'en');
 
     if (html !== before) fs.writeFileSync(p, html);
   }
@@ -387,6 +462,11 @@ function generateLocaleShells() {
       // Before rerootShellLocale(), while the paths are still root-relative —
       // the "../" prefixing then applies to the localized path as usual.
       html = localizeScreenshots(html, locale);
+      // Replaces the English entries this file inherited from the root page
+      // with the same releases in `locale` (the changelog copy lives in
+      // tools/changelog-content.js, not in the data-i18n dictionary, so
+      // localizeContent() above leaves it untouched).
+      if (file === CHANGELOG_FILE) html = renderChangelog(html, locale);
       html = rerootShellLocale(html, locale);
 
       const outDir = path.join(ROOT, locale);

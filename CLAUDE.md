@@ -102,6 +102,7 @@ tools/check-links.js       CI/local check: internal links/assets/anchors resolve
 tools/i18n-meta.js         shared title/description/FAQ-order config for build.js + check-meta-sync.js
 tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live HTML
 tools/llms-content.js      curated source copy/links for the generated llms.txt
+tools/changelog-content.js release notes (en/es/ca) rendered into changelog.html by build.js
 tools/check-screenshots.js CI/local check: each screenshot locale dir is complete
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
@@ -113,8 +114,18 @@ SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
 CNAME, ATTRIBUTION.md      site config / credits
 ```
 Pages with the shared shell: `index, roadmap, faq, pricing, about, ambassadors,
-terms, privacy-policy`. `thanks.html` is **standalone** (no shared header/footer) — it's
-a minimal confirmation page and is intentionally excluded from the build.
+changelog, terms, privacy-policy`. `thanks.html` is **standalone** (no shared
+header/footer) — it's a minimal confirmation page and is intentionally excluded
+from the build.
+
+**`changelog.html` body is GENERATED**: the page ships an empty
+`<div id="changelog-entries">` and `renderChangelog()` in `build.js` fills it
+per locale from **`tools/changelog-content.js`** (the release notes, en/es/ca,
+newest first — `date` is optional and is omitted rather than guessed). Same
+"data module + generator" pattern as `llms.txt`, and deliberately NOT in
+`assets/js/i18n.js`: that dictionary is the site's bounded UI strings, while
+the release history grows with every App Store release. To publish a release:
+add an object at the top of `RELEASES`, `npm run build`, commit both.
 
 ## Shared header/footer (the build step)
 The header and footer are **not** duplicated by hand. Edit them once in

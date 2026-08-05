@@ -43,6 +43,27 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/roadmap.html"/>
   </url>
   <url>
+    <loc>https://projectsummit.app/changelog.html</loc><lastmod>2026-08-05</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/changelog.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/es/changelog.html</loc><lastmod>2026-08-05</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/changelog.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/ca/changelog.html</loc><lastmod>2026-08-05</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/changelog.html"/>
+  </url>
+  <url>
     <loc>https://projectsummit.app/faq.html</loc><lastmod>2026-07-16</lastmod><priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/faq.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/faq.html"/>

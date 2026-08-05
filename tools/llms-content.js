@@ -62,6 +62,7 @@ const SECTIONS = [
     heading: 'How it works',
     links: [
       { path: '/roadmap.html', label: 'Roadmap', blurb: 'What has shipped and what is next.' },
+      { path: '/changelog.html', label: 'Changelog', blurb: 'Every release since launch and what changed in it, version by version.' },
       { path: '/about.html', label: 'About', blurb: 'Who builds Summit, and the training problem it was built to solve.' },
     ],
   },

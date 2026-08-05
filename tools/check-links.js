@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
-const rootPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'terms', 'privacy-policy', 'thanks'];
-const shellPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'terms', 'privacy-policy'];
+const rootPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'changelog', 'terms', 'privacy-policy', 'thanks'];
+const shellPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'changelog', 'terms', 'privacy-policy'];
 
 // Blog pages: discovered from disk rather than hardcoded. build.js's BLOG_PAGES
 // map is the "real" source of truth for this list, but build.js runs its build
