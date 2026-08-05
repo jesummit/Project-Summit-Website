@@ -10,24 +10,26 @@ const ROOT = path.join(__dirname, '..');
 const rootPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'changelog', 'terms', 'privacy-policy', 'thanks'];
 const shellPages = ['index', 'roadmap', 'faq', 'pricing', 'about', 'ambassadors', 'changelog', 'terms', 'privacy-policy'];
 
-// Blog pages: discovered from disk rather than hardcoded. build.js's BLOG_PAGES
-// map is the "real" source of truth for this list, but build.js runs its build
-// (writes files) as a top-level side effect on require(), so importing it here
-// would trigger a full rebuild as a side effect of running the link checker —
-// not acceptable for a read-only check. Globbing blog/, blog/es/, blog/ca/
-// achieves the same goal (no second hand-maintained list to drift out of sync)
-// without executing build.js.
-const blogDirs = ['blog', 'blog/es', 'blog/ca'];
-const blogFiles = blogDirs.flatMap((dir) =>
+// Sub-directory clusters (the blog, the comparison pages): discovered from disk
+// rather than hardcoded. build.js's BLOG_PAGES / COMPARE_PAGES maps are the
+// "real" source of truth for these lists, but build.js runs its build (writes
+// files) as a top-level side effect on require(), so importing it here would
+// trigger a full rebuild as a side effect of running the link checker — not
+// acceptable for a read-only check. Globbing each cluster's en/es/ca
+// directories achieves the same goal (no second hand-maintained list to drift
+// out of sync) without executing build.js, and a new post or comparison page is
+// covered the moment its file lands.
+const htmlIn = (dir) =>
   fs.readdirSync(path.join(ROOT, dir))
     .filter((f) => f.endsWith('.html'))
-    .map((f) => dir + '/' + f)
-);
+    .map((f) => dir + '/' + f);
+const clusterDirs = ['blog', 'blog/es', 'blog/ca', 'compare', 'compare/es', 'compare/ca'];
+const clusterFiles = clusterDirs.flatMap(htmlIn);
 
 const files = [
   ...rootPages.map((p) => p + '.html'),
   ...['es', 'ca'].flatMap((locale) => shellPages.map((p) => locale + '/' + p + '.html')),
-  ...blogFiles,
+  ...clusterFiles,
 ];
 let problems = 0;
 const fail = (msg) => { console.error('BROKEN  ' + msg); problems++; };
@@ -72,4 +74,4 @@ for (const file of files) {
 }
 
 if (problems) { console.error(`\nlink check failed: ${problems} broken reference(s).`); process.exit(1); }
-console.log('link check OK — internal links, assets and anchors resolve.');
+console.log(`link check OK — internal links, assets and anchors resolve (${files.length} files).`);

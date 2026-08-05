@@ -15,10 +15,11 @@
  * class for that page. Re-running is idempotent. thanks.html is standalone (no
  * shared shell) and is intentionally excluded.
  *
- * Blog pages live one level deep in blog/. The partials use root-relative paths
- * (index.html, assets/…), so for those pages the injected shell is re-rooted
- * with a "../" prefix. The page body itself is authored with correct paths and
- * is left untouched.
+ * Blog pages live one level deep in blog/, and the comparison cluster likewise
+ * in compare/. The partials use root-relative paths (index.html, assets/…), so
+ * for those pages the injected shell is re-rooted with a "../" prefix (and
+ * "../../" for their es/ca sub-directories). The page body itself is authored
+ * with correct paths and is left untouched.
  *
  * To change the header/footer: edit partials/header.html or partials/footer.html,
  * then run the build. Do NOT hand-edit the generated blocks inside the pages.
@@ -78,6 +79,26 @@ const BLOG_PAGES = {
   'blog/ca/apple-watch-sleep-recovery-cycling.html': 'blog',
 };
 
+// Comparison cluster (compare/). Structurally identical to BLOG_PAGES — long-form
+// prose pages one directory deep, with hand-translated es/ca twins at their own
+// URLs — so it rides the exact same processPages()/reroot() machinery. It is a
+// SEPARATE map rather than more entries in BLOG_PAGES because the two clusters
+// are different sections of the site (different URL root, different nav key,
+// different docs) and tools/check-links.js globs them as separate directory
+// sets; folding them together would make "the blog" mean two things.
+//
+// The 'compare' key matches no $$token$$ in partials/header.html on purpose:
+// the cluster is not in the site nav, so no nav item should light up. Add a
+// $$compare$$ token to the partial the day it earns a nav slot.
+const COMPARE_PAGES = {
+  'compare/index.html': 'compare',
+  'compare/summit-vs-whoop.html': 'compare',
+  'compare/es/index.html': 'compare',
+  'compare/es/summit-vs-whoop.html': 'compare',
+  'compare/ca/index.html': 'compare',
+  'compare/ca/summit-vs-whoop.html': 'compare',
+};
+
 function renderHeader(activeKey) {
   let h = headerTpl.replace(/\$\$([a-z]+)\$\$/g, (_, k) => (k === activeKey ? 'active' : ''));
   h = h.replace(/ class=""/g, '');                                   // drop emptied nav-link classes
@@ -119,7 +140,8 @@ function processPages(map) {
 
 processPages(PAGES);
 processPages(BLOG_PAGES);
-const total = Object.keys(PAGES).length + Object.keys(BLOG_PAGES).length;
+processPages(COMPARE_PAGES);
+const total = Object.keys(PAGES).length + Object.keys(BLOG_PAGES).length + Object.keys(COMPARE_PAGES).length;
 console.log(`build complete — ${total} pages, ${changed} updated`);
 
 // ============================================================================
@@ -402,15 +424,16 @@ const SHELL_FILES = new Set(Object.keys(PAGES));
 function rerootShellLocale(html, locale) {
   return html.replace(/\b(href|src)="([^"]*)"/g, (whole, attr, val) => {
     if (/^(https?:|mailto:|tel:|data:|#|\/)/.test(val)) return whole;
-    // The blog keeps one directory per locale (blog/, blog/es/, blog/ca/) with
-    // the same filenames, so the locale segment is the only difference: a shell
-    // page linking blog/<page> must land on blog/<locale>/<page>, never the
-    // English original. This is deliberately generic rather than a per-link
-    // special case — an untranslated post would otherwise be linked in English
-    // from the es/ca pages with nothing to catch it. If a translation is
-    // missing, tools/check-links.js fails on the resulting path.
-    const blogPage = val.match(/^blog\/(.+)$/);
-    if (blogPage) return `${attr}="../blog/${locale}/${blogPage[1]}"`;
+    // The content clusters each keep one directory per locale (blog/, blog/es/,
+    // blog/ca/ — and the same shape under compare/) with identical filenames, so
+    // the locale segment is the only difference: a shell page linking
+    // <cluster>/<page> must land on <cluster>/<locale>/<page>, never the English
+    // original. Deliberately generic rather than a per-link special case — an
+    // untranslated page would otherwise be linked in English from the es/ca
+    // pages with nothing to catch it. If a translation is missing,
+    // tools/check-links.js fails on the resulting path.
+    const clusterPage = val.match(/^(blog|compare)\/(.+)$/);
+    if (clusterPage) return `${attr}="../${clusterPage[1]}/${locale}/${clusterPage[2]}"`;
     if (SHELL_FILES.has(val.split('#')[0])) return whole;
     return `${attr}="../${val}"`;
   });

@@ -67,6 +67,25 @@ const SECTIONS = [
     ],
   },
   {
+    // Comparison queries are where answer engines are asked to pick, so the
+    // cluster is listed before the guides. Blurbs must stay as even-handed as
+    // the pages themselves: an engine quoting this section out of context must
+    // not end up making a claim about a competitor that the page would not.
+    heading: 'How Summit compares',
+    links: [
+      {
+        path: '/compare/',
+        label: 'How Summit compares',
+        blurb: 'Side-by-side comparisons against the tools cyclists weigh Summit against, each conceding what the other does better and dating every competitor fact.',
+      },
+      {
+        path: '/compare/summit-vs-whoop.html',
+        label: 'Summit vs Whoop: a recovery score only counts if something changes',
+        blurb: 'Whoop measures recovery continuously on its own hardware; Summit reads the wearable you already own through Apple Health and turns the same physiology into a cycling session. Includes what Whoop does better and what each one costs.',
+      },
+    ],
+  },
+  {
     heading: 'Guides',
     links: [
       {

@@ -39,7 +39,9 @@ Two small paths were made **absolute** so sub-directory pages don't break:
 Blog pages are added to `build.js` (`BLOG_PAGES`) and are **covered by**
 `tools/check-links.js` since 2026-08-05 — it globs `blog/`, `blog/es/` and
 `blog/ca/` from disk rather than keeping a second list, so new posts are checked
-the moment they land. No more verifying blog links by hand.
+the moment they land. No more verifying blog links by hand. (The comparison
+cluster at `/compare/` reuses this exact pattern — `COMPARE_PAGES` in `build.js`,
+and its three directories are in the same `clusterDirs` glob in the checker.)
 
 Two things that checker deliberately does NOT flag, worth knowing before you
 "fix" a report: references inside HTML comments are ignored (posts park

@@ -104,6 +104,8 @@ tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live H
 tools/llms-content.js      curated source copy/links for the generated llms.txt
 tools/changelog-content.js release notes (en/es/ca) rendered into changelog.html by build.js
 tools/check-screenshots.js CI/local check: each screenshot locale dir is complete
+compare/**                 comparison cluster (hub + `summit-vs-whoop`), en/es/ca —
+                           hand-written prose like the blog, NOT dictionary-generated
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: /ingest (PostHog) + /appstore-rating + /blog-subscribe + /unsubscribe
@@ -294,6 +296,41 @@ details in **`docs/blog.md`**. Key points:
   by `tools/check-links.js` — the checker discovers them by reading the blog
   directories on disk (not by hardcoding a second list), so a new post is
   covered automatically once its file exists.
+
+## Comparison cluster (`/compare/`)
+Competitor comparison pages, added 2026-08-05 — the first content on this site
+that matches a query a person actually types ("summit vs whoop", "whoop
+alternative"). Built on the **blog pattern, not the shell/dictionary pattern**:
+these are 1,200+ words of argued prose per locale, which would be unmaintainable
+inside `assets/js/i18n.js`. So `compare/*.html` is the English source and
+`compare/es/`, `compare/ca/` are **hand-translated** twins at their own URLs,
+exactly like `blog/es/`, `blog/ca/`.
+- `build.js` has a `COMPARE_PAGES` map alongside `BLOG_PAGES`; both go through
+  the same `processPages()` / `reroot()` machinery, so the shared shell is
+  injected and re-rooted per depth (`../` in `compare/`, `../../` in
+  `compare/<locale>/`). Edit `partials/`, run `npm run build`, as always.
+- The `'compare'` nav key matches **no `$$token$$`** in the header partial on
+  purpose — the cluster is not in the site nav, so nothing lights up. Which also
+  means **it is currently reachable only from `sitemap.xml`, `llms.txt` and the
+  pages' own cross-links**: no shell page links into it. Adding a nav/footer
+  entry means editing `partials/` (it would touch every page's generated shell).
+- `tools/check-links.js` globs `compare/`, `compare/es/`, `compare/ca/` in the
+  same `clusterDirs` list as the blog, so a new comparison page is covered the
+  moment its file exists.
+- Comparison tables use `.compare-table` / `.compare-table-wrap` in
+  `assets/css/blog.css` (a sibling of `.data-table`, which is built for figures
+  and will not wrap prose). The wrapper is the only thing that scrolls
+  sideways.
+- **Rules for competitor facts** (a false one is a support ticket, or worse):
+  every claim about another product carries the date it was checked and links to
+  that company's own page as the authority; never invent a limitation — if you
+  are not confident, leave it out; and never frame Summit as "cheaper" when the
+  competitor's price includes hardware. Each page must carry a genuine "Where
+  <competitor> wins" section. All the "Free-tier copy" rules below apply here
+  too, unchanged.
+- The Whoop page's figures (WHOOP One $199/yr, Peak $239/yr, Life $359/yr,
+  device included) were checked **2026-08-05**. Re-check and update the date
+  before treating them as current.
 
 ## Free-tier copy — what is actually free (verify before editing)
 The same rules govern **`pricing.html`** (the plans page, added 2026-08-04):

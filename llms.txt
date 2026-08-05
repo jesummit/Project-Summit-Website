@@ -16,6 +16,11 @@ Summit is not an AI product and has no chatbot. The engine is deterministic: eve
 - [Changelog](https://projectsummit.app/changelog.html): Every release since launch and what changed in it, version by version.
 - [About](https://projectsummit.app/about.html): Who builds Summit, and the training problem it was built to solve.
 
+## How Summit compares
+
+- [How Summit compares](https://projectsummit.app/compare/): Side-by-side comparisons against the tools cyclists weigh Summit against, each conceding what the other does better and dating every competitor fact.
+- [Summit vs Whoop: a recovery score only counts if something changes](https://projectsummit.app/compare/summit-vs-whoop.html): Whoop measures recovery continuously on its own hardware; Summit reads the wearable you already own through Apple Health and turns the same physiology into a cycling session. Includes what Whoop does better and what each one costs.
+
 ## Guides
 
 - [If you ride with an Apple Watch, your recovery and your sleep are free. Permanently.](https://projectsummit.app/blog/apple-watch-sleep-recovery-cycling.html): How the permanent free tier reads the wearable you already own into a daily recovery and sleep score.
