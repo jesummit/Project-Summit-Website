@@ -36,9 +36,17 @@ Two small paths were made **absolute** so sub-directory pages don't break:
 - `assets/js/app.js` → `BADGE_BASE` (App Store badge swap)
 - `assets/js/consent.js` → the cookie-banner "More info" privacy link
 
-Blog pages are added to `build.js` (`BLOG_PAGES`) but **not** to
-`tools/check-links.js` (its fixed page list is the root pages); verify blog links
-by hand or extend the checker if the section grows.
+Blog pages are added to `build.js` (`BLOG_PAGES`) and are **covered by**
+`tools/check-links.js` since 2026-08-05 — it globs `blog/`, `blog/es/` and
+`blog/ca/` from disk rather than keeping a second list, so new posts are checked
+the moment they land. No more verifying blog links by hand.
+
+Two things that checker deliberately does NOT flag, worth knowing before you
+"fix" a report: references inside HTML comments are ignored (posts park
+unshipped `<figure>` blocks in comments while the art is produced, and a link
+the browser never resolves must not fail the gate), and a leading `/` is
+resolved from the repo root, the way the server does it, not relative to the
+page.
 
 ## Email capture flow (single opt-in)
 The `blog_subscribe_v1` Edge Function lives in **`Project-Summit-MVP`** and ships

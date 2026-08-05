@@ -98,7 +98,7 @@ assets/img/                logo, og-image, founder photo, favicons, flags/
 assets/screenshots/        app screenshots (hero + carousel); optional en//es//ca/
                            override dirs, localized at build time — see its README.md
 tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
-tools/check-links.js       CI/local check: internal links/assets/anchors resolve (incl. es//ca/)
+tools/check-links.js       CI/local check: internal links/assets/anchors resolve (incl. es//ca/, blog/**)
 tools/i18n-meta.js         shared title/description/FAQ-order config for build.js + check-meta-sync.js
 tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live HTML
 tools/llms-content.js      curated source copy/links for the generated llms.txt
@@ -279,8 +279,10 @@ details in **`docs/blog.md`**. Key points:
   from this static-site repo. This repo only holds the front-end that calls it.
 - Framing stays anti-chatbot: always "the engine" / "the algorithm", never "AI"
   or "coach".
-- Blog pages are **not** in `tools/check-links.js` (its list is the root pages);
-  verify blog internal links by hand.
+- Blog pages (`blog/*.html`, `blog/es/*.html`, `blog/ca/*.html`) **are** covered
+  by `tools/check-links.js` — the checker discovers them by reading the blog
+  directories on disk (not by hardcoding a second list), so a new post is
+  covered automatically once its file exists.
 
 ## Free-tier copy — what is actually free (verify before editing)
 The same rules govern **`pricing.html`** (the plans page, added 2026-08-04):
