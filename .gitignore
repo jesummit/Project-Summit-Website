@@ -1,0 +1,16 @@
+# Marketing skills installed per-session with
+#   npx skills add coreyhaines31/marketingskills -a claude-code
+# Deliberately not vendored: they are third-party instructions that run with
+# full agent permissions, and pinning 3 MB of them in this repo would make the
+# static site's history about someone else's tooling.
+.claude/
+skills-lock.json
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
