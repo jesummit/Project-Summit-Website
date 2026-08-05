@@ -95,9 +95,25 @@ photography this account is already good at and the product content it needs:
 - What broke, what hurt, what the numbers saw coming and what they missed. Saying what
   the engine got *wrong* is worth more than any claim it gets things right.
 
-Six to eight vertical episodes out of a trip already ridden and already filmed. It costs
-no new riding, and it is the one series where the product appears without the video
-being an ad.
+**The material constraint, and why it does not block this.** There is one Gran Diagonal
+Reel and no further video from the trip — only stills. That rules out a trip-footage
+series, and it does not matter, because neither of the two things this series actually
+needs is trip footage:
+
+- **Stills carry a Reel perfectly well.** Photographs with slow push-in, on-screen text
+  and a voiceover is a standard, well-performing vertical format — 2–4 seconds a frame.
+  It is not a downgrade from video; for a story being *narrated in retrospect*, it is
+  the more natural form.
+- **The data from those days is new footage you can shoot at a desk today.** If the
+  rides and the recovery/sleep of that week are in the app, screen-record them now:
+  the score each morning, sleep across consecutive days of accumulating fatigue, what
+  the engine said to do. That is original product footage generated with no riding and
+  no camera — and it is the half of the story the photos cannot tell.
+
+So the visual language is **photo + data screen + voiceover**, which suits a
+retrospective better than trip b-roll would have. Size it to the material: four
+episodes told well beats eight padded out. It costs no new riding, and it is the one
+series where the product appears without the video being an ad.
 
 ---
 
@@ -132,6 +148,30 @@ happens to run on social surfaces.
 The ratio is deliberately discovery-heavy. Pillar 3 is the one that feels most
 productive to make and produces the least reach — keep it at two in ten until the
 non-follower numbers say otherwise.
+
+### On the "70% cycling life / 30% product" split
+
+An earlier plan set the mix at 70/30 on a *lifestyle vs product* axis. On the
+product axis that number is roughly right — this plan lands at 80/20 — but **the axis
+itself is the problem, and the composition of the 70 is what decides whether any of
+this reaches a stranger.**
+
+Seventy percent generic riding photography is indistinguishable from a million other
+cycling accounts. It gives the algorithm no topical signal about who to serve it to,
+and the followers it does recruit came for bike photos, which is not the same
+population as people who train with power and would install a training app. The same
+70% spent on **the problem** — recovery versus feel, sleep scores that contradict you,
+plans that break in a real week — is equally non-promotional, but it self-selects the
+ICP and tells the platform what this account is about.
+
+Where 70/30 was right, and this plan keeps: **lifestyle is the credibility bed, not
+the calendar.** An account that is nothing but data talking-heads reads as a marketing
+account. The riding is what makes this a cyclist's account that happens to have built
+something — so it stays as the *texture* (b-roll under the voiceover, the occasional
+pure ride post) rather than as the majority of the output.
+
+The account's own evidence points the same way: the post that broke out was neither
+lifestyle nor product. It was a moment.
 
 **Pillar 4 matters more than its share suggests.** There are no testimonials, no
 usable ratings and no publishable user numbers (`product-marketing.md` → Proof
