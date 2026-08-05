@@ -1,0 +1,29 @@
+# Project Summit
+
+> Project Summit is an adaptive training app for serious amateur cyclists, on iPhone. It reads your rides from Strava and your recovery from Apple Health, then produces a training plan that adapts to how recovered you are and how much time you actually have.
+
+Summit is not an AI product and has no chatbot. The engine is deterministic: every recommendation traces back to a codified sports-science rule and your own data, so you can see why it made a call. Recovery score, sleep score with its full breakdown, the recovery trend and the Home and Lock Screen widgets are permanently free — a free tier, not a trial. Premium adds training load (CTL/ATL/TSB), power analysis (eFTP, critical power, power curve), adaptive plans that rewrite the week when life breaks it, workout export to Hammerhead Karoo and via intervals.icu to Garmin, Zwift and MyWhoosh, and race-day nutrition. An Apple Watch is not required — any wearable that writes HRV and sleep to Apple Health works. iPhone only, iOS 26 or later; there is no Android or web version. Free to download on the App Store.
+
+## Start here
+
+- [Project Summit](https://projectsummit.app/): What Summit does and how the engine decides what you ride today.
+- [Plans](https://projectsummit.app/pricing.html): What's free and what Premium adds — no prices on the site; Apple sets them per storefront.
+- [FAQ](https://projectsummit.app/faq.html): The questions that decide it: is this AI, do I need a watch, what is actually free.
+
+## How it works
+
+- [Roadmap](https://projectsummit.app/roadmap.html): What has shipped and what is next.
+- [About](https://projectsummit.app/about.html): Who builds Summit, and the training problem it was built to solve.
+
+## Guides
+
+- [If you ride with an Apple Watch, your recovery and your sleep are free. Permanently.](https://projectsummit.app/blog/apple-watch-sleep-recovery-cycling.html): How the permanent free tier reads the wearable you already own into a daily recovery and sleep score.
+- [Cycling in the heat: how much to drink, and how much salt you actually need](https://projectsummit.app/blog/cycling-in-the-heat-hydration-sodium.html): What heat does to fluid and sodium needs, the actual numbers, and how to plan them for a ride.
+- [Taper and peak: reading your TSB to arrive in form](https://projectsummit.app/blog/taper-and-peak-tsb.html): Cutting volume while holding intensity so form (TSB) climbs into a positive window on the day that matters.
+- [Structure your season: base, build, peak — decoded for the self-coached](https://projectsummit.app/blog/periodization-base-build-peak.html): Periodization without the jargon: safe ramp rates, the weekly TSS your CTL can take, and the recovery weeks most riders skip.
+- [999 km across Portugal in 6 days — the data behind the plan](https://projectsummit.app/blog/gran-diagonal-999km-portugal.html): A five-month CTL build, TSS per stage and the fuelling maths behind riding 999 km in six days.
+
+## Also available in
+
+- [Español](https://projectsummit.app/es/): The full site in Spanish; the guides above are hand-translated at /blog/es/.
+- [Català](https://projectsummit.app/ca/): The full site in Catalan; the guides above are hand-translated at /blog/ca/.

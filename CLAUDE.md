@@ -101,11 +101,13 @@ tools/check-i18n.js        CI/local check: every data-i18n key has ES + CA
 tools/check-links.js       CI/local check: internal links/assets/anchors resolve (incl. es//ca/)
 tools/i18n-meta.js         shared title/description/FAQ-order config for build.js + check-meta-sync.js
 tools/check-meta-sync.js   CI/local check: i18n-meta.js still matches the live HTML
+tools/llms-content.js      curated source copy/links for the generated llms.txt
 tools/check-screenshots.js CI/local check: each screenshot locale dir is complete
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: /ingest (PostHog) + /appstore-rating + /blog-subscribe + /unsubscribe
 robots.txt, sitemap.xml    SEO (indexable pages only, incl. es//ca/ with hreflang)
+llms.txt                   GENERATED site map for AI answer engines — don't hand-edit
 404.html, site.webmanifest standalone error page / PWA manifest
 SummitLogo-Mail.png        ROOT on purpose — see "Gotchas"
 CNAME, ATTRIBUTION.md      site config / credits
@@ -433,6 +435,18 @@ places:
 - `robots.txt` + `sitemap.xml` (indexable pages only — legal pages and
   `thanks.html`/`404.html` are `noindex`). Favicons + `site.webmanifest` are
   generated from the logo; regenerate with an image tool if the logo changes.
+- **`llms.txt` is GENERATED — never hand-edit it.** It's the curated map AI
+  answer engines read to decide what to cite. The copy and the link list live in
+  **`tools/llms-content.js`**; `generateLlmsTxt()` in `build.js` renders them at
+  the repo root, building absolute URLs from the same `ORIGIN` constant the
+  canonical/hreflang tags use, and **asserting every linked path resolves to a
+  real file on disk** before writing (a dead link in the file we hand to answer
+  engines is the failure mode this prevents). `verify.yml`'s "Generated output
+  is in sync" step re-runs the build and fails if the committed `llms.txt`
+  drifts. To change it: edit `tools/llms-content.js`, `npm run build`, commit
+  both. The copy there is a public claim about the product — re-check it against
+  the "Free-tier copy" rules above (not AI, no Watch app, free ≠ trial, no
+  prices/ratings/numbers) before touching it.
 - **Structured data (JSON-LD)** — every page has a `<script
   type="application/ld+json">` in `<head>` (hand-authored per page, right
   before the `summit.css` link — there's no build-time generation/dedup for

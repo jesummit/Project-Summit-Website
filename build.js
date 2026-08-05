@@ -240,10 +240,13 @@ function localizeJsonLd(html, file, locale, title, desc) {
   return html.slice(0, m.index) + rebuilt + html.slice(m.index + m[0].length);
 }
 
+// The site's public origin, with trailing slash. Single copy on purpose — the
+// canonical/hreflang tags and the generated llms.txt must never disagree about
+// where this site lives.
+const ORIGIN = 'https://projectsummit.app/';
 function canonicalFor(file, locale) {
-  const base = 'https://projectsummit.app/';
-  if (file === 'index.html') return locale ? base + locale + '/' : base;
-  return locale ? base + locale + '/' + file : base + file;
+  if (file === 'index.html') return locale ? ORIGIN + locale + '/' : ORIGIN;
+  return locale ? ORIGIN + locale + '/' + file : ORIGIN + file;
 }
 function altPathFor(file, locale) {
   if (file === 'index.html') return locale ? '/' + locale + '/' : '/';
@@ -394,5 +397,48 @@ function generateLocaleShells() {
   console.log(`locale shells — ${LOCALES.length} locales × ${Object.keys(PAGES).length} pages generated`);
 }
 
+// ============================================================================
+// llms.txt: a curated map of the site for AI answer engines, so they can cite
+// the real pages instead of paraphrasing whatever they happened to crawl.
+//
+// GENERATED, never hand-maintained — deliberately. A hand-kept file is a second
+// copy of the product's claims sitting outside every check the pages get, and
+// it drifts silently: the competitor we studied still advertises a 30-day trial
+// in theirs while every page of their site says 14 days. Here the copy lives in
+// tools/llms-content.js, the URLs are built from the same ORIGIN as the
+// canonical tags, every linked path is asserted to exist on disk before a byte
+// is written, and CI re-runs this build and fails if the committed llms.txt
+// differs. Edit tools/llms-content.js and rebuild; don't touch llms.txt.
+const { TITLE: LLMS_TITLE, INTRO: LLMS_INTRO, BODY: LLMS_BODY, SECTIONS: LLMS_SECTIONS } = require('./tools/llms-content');
+
+// "/" -> index.html, "/es/" -> es/index.html, "/blog/x.html" -> blog/x.html.
+function llmsLocalPath(sitePath) {
+  if (!sitePath.startsWith('/')) throw new Error(`llms-content.js: path "${sitePath}" must start with "/"`);
+  const rel = sitePath.slice(1);
+  return rel === '' || rel.endsWith('/') ? rel + 'index.html' : rel;
+}
+
+function generateLlmsTxt() {
+  const lines = ['# ' + LLMS_TITLE, '', '> ' + LLMS_INTRO, '', LLMS_BODY];
+
+  for (const section of LLMS_SECTIONS) {
+    lines.push('', '## ' + section.heading, '');
+    for (const link of section.links) {
+      // Assert before writing: a dead link in the file we hand to answer
+      // engines is the whole failure mode this generator exists to prevent.
+      const local = llmsLocalPath(link.path);
+      if (!fs.existsSync(path.join(ROOT, local))) {
+        throw new Error(`llms.txt: "${link.path}" (${link.label}) resolves to ${local}, which does not exist — fix the path in tools/llms-content.js`);
+      }
+      lines.push(`- [${link.label}](${ORIGIN + link.path.slice(1)}): ${link.blurb}`);
+    }
+  }
+
+  fs.writeFileSync(path.join(ROOT, 'llms.txt'), lines.join('\n') + '\n');
+  const count = LLMS_SECTIONS.reduce((n, s) => n + s.links.length, 0);
+  console.log(`llms.txt — ${LLMS_SECTIONS.length} sections, ${count} links (all verified on disk)`);
+}
+
 augmentRootShells();
 generateLocaleShells();
+generateLlmsTxt();

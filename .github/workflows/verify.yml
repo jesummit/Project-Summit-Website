@@ -35,12 +35,16 @@ jobs:
       - name: tools/i18n-meta.js matches the live title/description/FAQ copy
         run: node tools/check-meta-sync.js
 
-      - name: Shell is in sync with partials/
+      # One step, one build: llms.txt comes out of the same `node build.js` run
+      # as the shell, so guarding both here keeps a single source of truth for
+      # "the committed output matches the build" instead of two steps that could
+      # drift apart the way this workflow and package.json already did once.
+      - name: Generated output is in sync (shell + llms.txt)
         run: |
           node build.js
-          if [ -n "$(git status --porcelain -- '*.html')" ]; then
-            echo "::error::Generated shell is stale — run 'npm run build' and commit."
-            git --no-pager diff -- '*.html'
+          if [ -n "$(git status --porcelain -- '*.html' llms.txt)" ]; then
+            echo "::error::Generated output is stale (page shell and/or llms.txt) — run 'npm run build' and commit. llms.txt is generated from tools/llms-content.js; never hand-edit it."
+            git --no-pager diff -- '*.html' llms.txt
             exit 1
           fi
-          echo "Shell is in sync."
+          echo "Generated output is in sync."
