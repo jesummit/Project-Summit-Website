@@ -87,11 +87,56 @@
     set: decide
   };
 
+  /* ── Deferred first appearance ──────────────────────────────────────────
+   * WHY: appended synchronously at DOMContentLoaded, the banner landed right
+   * on top of the hero product shot (1440x900) and covered the phone mockup
+   * entirely (390x844) — the visitor's first impression of the product was a
+   * dialog sitting over it. So on a first visit we let the hero breathe and
+   * only ask after ~2.5s, or as soon as the visitor scrolls (whichever comes
+   * first — by then they've seen the hero and a bar at the bottom is no
+   * longer covering the thing they came to look at).
+   *
+   * WHY IT LIVES IN boot() AND NOT IN show(): `show` is exported verbatim as
+   * `SummitConsent.reopen()` for the footer "Cookie settings" link. That is a
+   * direct user action and must stay instantaneous — delaying it inside
+   * show() would make the link feel broken. Only the first-visit path is
+   * deferred.
+   *
+   * This changes ONLY when the banner is inserted into the DOM. The PostHog
+   * gate is untouched: nothing is fetched or captured before consent, exactly
+   * as before.
+   */
+  var SHOW_DELAY_MS = 2500;
+  var deferTimer = null;
+  var deferFired = false;
+
+  // Single entry point for both triggers, so they are mutually idempotent:
+  // whichever fires first wins and the other becomes a no-op.
+  function showDeferred() {
+    if (deferFired) return;
+    deferFired = true;
+    if (deferTimer !== null) { clearTimeout(deferTimer); deferTimer = null; }
+    // Race guard: during the delay the visitor can open the banner via the
+    // footer "Cookie settings" link and accept/reject it. A choice now exists,
+    // so we must NOT pop the banner back up when the pending trigger fires.
+    if (get()) return;
+    show();
+  }
+
+  function scheduleShow() {
+    // The timer must work on its own: thanks.html loads this script, has no
+    // footer "Cookie settings" link and is a short page that may not even be
+    // scrollable — scroll would never fire there. Don't "optimise" the timer
+    // away in favour of scroll-only.
+    deferTimer = setTimeout(showDeferred, SHOW_DELAY_MS);
+    window.addEventListener('scroll', showDeferred, { passive: true, once: true });
+  }
+
   function boot() {
     var c = get();
     if (c === 'granted') { loadPosthog(); return; }   // returning consenter → init now
     if (c === 'denied') return;                        // explicit no → never init
-    show();                                            // first visit → ask
+    scheduleShow();                                    // first visit → ask, but not on top of the hero
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

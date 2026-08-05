@@ -707,12 +707,45 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   text-align: left;
 }
 .footer-cookies:hover { color: rgba(245,238,224,0.6); }
-@media (max-width: 520px) {
-  .consent { flex-direction: column; align-items: stretch; gap: 14px; }
+/* Entry animation. The banner is no longer inserted at DOMContentLoaded — it
+   appears after a short delay or on first scroll (see assets/js/consent.js), so
+   without this it would just pop in. Slide up from below + fade, gated the same
+   way as every other motion in this file: reduced-motion gets it instantly. */
+@keyframes consentIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+/* Deliberately NO `opacity: 0` base and NO `forwards`: the keyframe's own
+   `from` does the fade, and the element's natural state is already the `to`
+   state. That way an animation that never runs — animations disabled by an
+   extension, a broken --m-transition token — leaves the banner fully visible
+   instead of invisible-but-present. This is a consent gate; it must fail
+   towards being shown. */
+@media (prefers-reduced-motion: no-preference) {
+  .consent { animation: consentIn var(--m-transition); }
+}
+@media (max-width: 640px) {
+  /* Docked as a system-style bar, not a floating card: edge to edge at the very
+     bottom, no rounding, as short as it can be while staying readable. Keeps the
+     banner out of the hero/product shot on a phone. */
+  .consent {
+    left: 0; right: 0; bottom: 0; max-width: none;
+    border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0;
+    padding: 12px 16px;
+    /* iPhone home-indicator clearance. The shorthand above already set a 12px
+       bottom padding, so browsers without env()/max() simply drop this line and
+       keep that value — the fallback is the preceding declaration, on purpose. */
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    flex-direction: column; align-items: stretch; gap: 10px;
+  }
   /* In column layout the 320px flex-basis becomes height — reset it so the text
      block collapses to its natural height (no giant gap above the buttons). */
-  .consent-text { flex: 0 0 auto; }
-  .consent-actions { justify-content: flex-end; }
+  .consent-text { flex: 0 0 auto; font-size: 13px; line-height: 1.5; }
+  /* Both buttons share one full-width row: fewer stacked rows = shorter bar.
+     min-height keeps the touch target at 44px (the desktop 9px padding is only
+     ~35px tall, so on mobile it grows rather than shrinks). */
+  .consent-actions { gap: 10px; }
+  .consent-btn { flex: 1 1 0; min-height: 44px; padding: 10px 16px; }
 }
 
 /* =====================================================================
