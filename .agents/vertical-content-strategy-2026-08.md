@@ -23,10 +23,12 @@ claim in a video is far harder to retract than one on a page.
   genuinely well shot, and almost all **static 4:5 stills rather than vertical video**.
   That is the whole explanation for 46 website visits in 90 days: stills in the feed
   reach the follower list and stop there.
-- **One post is third-party pro-racing photography** (rainbow jersey, UAE, Colnago).
-  Remove it. Two problems: the rights are not yours, and it recruits followers who
-  came for pro racing and will never install a training app. Follower quality is worth
-  more than follower count at this size.
+- **The pro-racing post is the account's best result so far, and it is own footage.**
+  It is a Reel filmed at the roadside of the Tour, framed as Summit being there — and
+  it took meaningfully more views than the rest. Keep it. It is the only evidence this
+  account has of anything reaching past the 134 followers, and what produced that reach
+  was **being at a live event people were already searching for that week**. See
+  "Moment content" below.
 - **The existing strength is real footage.** Whoever is shooting this can already
   produce good cycling b-roll. Use it — see the production note under the pillars.
 
@@ -46,6 +48,36 @@ Bio draft, for reference — line 1 and 2 are already strong and stay almost as 
 > App iOS de entreno para ciclistas: la recuperación reescribe el plan.
 > Ciencia del deporte, no un chatbot.
 > Recuperación y sueño gratis para siempre ⬇️
+
+### Moment content — the one thing already proven to reach strangers
+
+The Tour Reel is the account's only demonstrated reach beyond its own followers, and
+the mechanism is worth naming precisely: **during a big race, an enormous audience is
+already searching and scrolling for exactly that thing**, and the algorithm has demand
+to fill. A small account can borrow that demand for a few days. Nothing else available
+at this size does that.
+
+So it stays, as an opportunistic slot that **overrides the calendar** whenever a real
+peg lands — a grand tour, a heat wave, a big local gran fondo. It is not schedulable,
+which is why it is not a pillar.
+
+Two things to get right, though:
+
+- **Check what that Reel actually produced.** Instagram gives you profile visits and
+  link taps per Reel natively. Event views are broad-audience views — cycling fans, not
+  necessarily people who train with power. If the views did not turn into profile
+  visits, it was a vanity spike; if they did, this is a channel. You have that number
+  and I do not — it decides how much weight this slot deserves.
+- **Attach the moment to the mechanism.** "Summit ha estado viendo el Tour" earns the
+  reach but says nothing. The version that also does positioning ties the race to
+  something the product has an opinion about: what third-week fatigue does to a
+  professional's recovery, why their rest days are not easy days, what the numbers on
+  screen during a stage actually mean. Same reach, and the viewer learns why this
+  account exists.
+
+The next peg is the Vuelta — Spanish-language audience, home roads, and the closest
+thing to a scheduled reach opportunity this account gets. Confirm the calendar and plan
+two or three pieces against it rather than improvising on the day.
 
 ### The asset already there and barely used: Gran Diagonal
 
