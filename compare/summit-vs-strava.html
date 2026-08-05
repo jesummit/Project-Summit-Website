@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- PostHog Analytics (queueing stub; real init is gated by consent.js) -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+
+  <title>Summit vs Strava for cyclists: what each one is actually for | Summit</title>
+  <meta name="description" content="Strava records the ride and connects you to everyone who rode it too. Summit reads your Strava rides and decides what today's session should be. Complementary, not competing." />
+  <link rel="canonical" href="https://projectsummit.app/compare/summit-vs-strava.html" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-strava.html" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-strava.html" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-strava.html" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-strava.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://projectsummit.app/compare/summit-vs-strava.html" />
+  <meta property="og:title" content="Summit vs Strava: one records the ride, the other decides it" />
+  <meta property="og:description" content="Nobody should leave Strava for Summit. Summit imports from it. This is a comparison of what each one is for." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Summit vs Strava: one records the ride, the other decides it" />
+  <meta name="twitter:description" content="What Strava does better, what Summit adds on top of it, and what each one costs. Checked 5 August 2026." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Summit vs Strava: one records the ride, the other decides it",
+        "description": "An honest comparison of Summit and Strava for cyclists: why they are complementary rather than competing, what Strava does better, what Summit adds, what is permanently free, and what each one costs.",
+        "image": "https://projectsummit.app/assets/img/og-image.png",
+        "datePublished": "2026-08-05",
+        "dateModified": "2026-08-05",
+        "inLanguage": "en",
+        "author": {
+          "@type": "Person",
+          "@id": "https://projectsummit.app/about.html#jordi",
+          "name": "Jordi Espanyol",
+          "url": "https://projectsummit.app/about.html",
+          "sameAs": [
+            "https://instagram.com/projectsummit.app"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Project Summit",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://projectsummit.app/assets/img/summit-logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://projectsummit.app/compare/summit-vs-strava.html"
+        },
+        "about": [
+          { "@type": "Thing", "name": "Project Summit" },
+          { "@type": "Thing", "name": "Strava" }
+        ],
+        "wordCount": 1962
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Should I stop using Strava if I install Summit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, and please do not. Summit reads your rides from Strava, so leaving Strava would take away the thing Summit runs on. They do different jobs: Strava records the ride and connects you to the people who ride near you; Summit decides what today's session should be. Keeping both is the intended setup, not a compromise."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Summit import my Strava rides automatically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Connect Strava once and rides arrive on their own; you do not export or upload anything. Summit also reads rides from Hammerhead Karoo, and exports workouts to Karoo and, via intervals.icu, to Garmin, Zwift and MyWhoosh."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Summit have segments, kudos or a feed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. There is no feed, no kudos, no clubs, no segments and no leaderboards in Summit, and none are planned. That layer is Strava's and Strava is very good at it. Summit is a training app you open in the morning to find out what to do, not a place to be seen doing it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does Strava cost in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As listed on 5 August 2026, a standard Strava subscription in the United States is $11.99 per month or $79.99 per year plus applicable taxes, with a Family plan at $139.99 per year and a Strava + Runna plan at $149.99 per year. Pricing varies by region and changes, so strava.com/pricing is the authority. This page deliberately does not list which features sit behind that subscription, because that line has moved more than once. Summit publishes no prices of its own: Apple sets Premium pricing per storefront, so the App Store listing is the only honest source."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Summit's recovery score really free, or is it a trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Free, permanently. The daily recovery score, the sleep score with its full breakdown, the recovery trend and the Home and Lock Screen widgets have no gate on them and no counter running out. Premium is a separate thing, and Premium is what has a 14-day trial."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://projectsummit.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Compare",
+            "item": "https://projectsummit.app/compare/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Summit vs Strava",
+            "item": "https://projectsummit.app/compare/summit-vs-strava.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/css/summit.css" />
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+</head>
+<body data-vibe="product" data-page="compare-article" data-alt-en="/compare/summit-vs-strava.html" data-alt-es="/compare/es/summit-vs-strava.html" data-alt-ca="/compare/ca/summit-vs-strava.html">
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+  <nav class="nav">
+    <a href="../index.html" class="nav-brand">
+      <span class="nav-logo"><img src="../assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="../faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="../pricing.html" class="nav-more-option" data-i18n="nav.pricing">Plans</a>
+        <a href="../about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="../ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="../terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="../privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../index.html" data-i18n="nav.home">Home</a>
+    <a href="../roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="../faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="../blog/index.html" data-i18n="nav.blog">Blog</a>
+    <a href="../pricing.html" data-i18n="nav.pricing">Plans</a>
+    <a href="../about.html" data-i18n="nav.about">About</a>
+    <a href="../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="../terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="nav_mobile" class="appstore appstore--white"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <article>
+    <!-- ── Article header ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <header class="article-head">
+          <p class="article-kicker">Comparisons · Recording &amp; training</p>
+          <h1 class="article-title">Summit vs Strava: one records the ride, the other <em>decides</em> it</h1>
+          <p class="article-dek">Strava is where the ride counts and where your history already lives. Summit reads it, and answers a question Strava never set out to answer: what should today be?</p>
+          <div class="article-meta">
+            <span>By <b>Jordi Espanyol</b></span>
+            <span class="dot-sep">·</span>
+            <span>5 Aug 2026</span>
+            <span class="dot-sep">·</span>
+            <span>7 min read</span>
+            <span class="dot-sep">·</span>
+            <span>Strava facts checked 5 Aug 2026</span>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <!-- ── Body ── -->
+    <div class="blog-wrap">
+      <div class="article-measure">
+        <div class="article-body">
+
+          <p class="article-lead">This is the one comparison on this site that should not end with you switching anything.</p>
+
+          <p>Strava is where the ride counts. Not in a training sense — in the sense that until it is on Strava it did not quite happen. It is where your club is, where the local Sunday hierarchy is settled on a two-kilometre climb, where you find out that the road you have never taken is the one everybody else takes. And it is where almost every cyclist's history already lives: years of rides, in one place, that nobody is going to move.</p>
+
+          <p>It is also not a training system, and it has never claimed to be one. Strava records and it connects. That is an enormous, well-executed job, and it is a different job from deciding what you should do on Thursday.</p>
+
+          <p>Summit does that second thing, and it does it <em>on top of</em> Strava rather than instead of it. Connect the two and your rides arrive in Summit on their own. Nothing is exported, nothing is re-uploaded, nothing leaves Strava.</p>
+
+          <div class="callout">
+            <p class="callout-label">In short</p>
+            <p>These two are complementary, not competing. Strava is where the ride is recorded, kept and shared; Summit reads those rides, reads your recovery from Apple Health, and turns both into what today's session should be. Nobody should leave Strava for Summit — Summit imports from it. The honest question is not "which one wins", it is "what is each one for".</p>
+          </div>
+
+          <h2>At a glance</h2>
+
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">&nbsp;</th>
+                  <th scope="col" class="col-us">Summit</th>
+                  <th scope="col">Strava</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">What it is for</th>
+                  <td class="col-us">Deciding what you ride today, and rebuilding the week when life breaks it</td>
+                  <td>Recording the ride, keeping it, and sharing it</td>
+                </tr>
+                <tr>
+                  <th scope="row">Where your rides come from</th>
+                  <td class="col-us">Imported automatically from Strava (and Hammerhead Karoo)</td>
+                  <td>Recorded by your phone, watch or head unit</td>
+                </tr>
+                <tr>
+                  <th scope="row">The social layer</th>
+                  <td class="col-us">None — no feed, no kudos, no clubs, no leaderboards</td>
+                  <td>The feed, clubs, kudos and segment leaderboards</td>
+                </tr>
+                <tr>
+                  <th scope="row">Finding somewhere to ride</th>
+                  <td class="col-us">Not a feature and not planned</td>
+                  <td>Route creation, Suggested Routes and personal heatmaps</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sports</th>
+                  <td class="col-us">Cycling only</td>
+                  <td>Five sport categories, from Ride to Nordic Ski</td>
+                </tr>
+                <tr>
+                  <th scope="row">Platform</th>
+                  <td class="col-us">iPhone, iOS 26 or later. No Android, no web.</td>
+                  <td>iOS and Android apps, plus the website</td>
+                </tr>
+                <tr>
+                  <th scope="row">Cost</th>
+                  <td class="col-us">No prices published — Apple sets Premium per storefront</td>
+                  <td>Subscription $11.99/month or $79.99/year in the US, plus tax</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Strava facts as listed on 5 August 2026: prices from <a href="https://www.strava.com/pricing" target="_blank" rel="noopener">strava.com/pricing</a>; sport categories from <a href="https://support.strava.com/hc/en-us/articles/216919407-Supported-Sport-Types-on-Strava" target="_blank" rel="noopener">Strava's supported sport types</a>; leaderboards, Suggested Routes and personal heatmaps from <a href="https://support.strava.com/hc/en-us/articles/216917657-Strava-Subscription-Features" target="_blank" rel="noopener">Strava's own feature list</a>; apps from <a href="https://www.strava.com/mobile" target="_blank" rel="noopener">strava.com/mobile</a>. This page does not state which of those features sit behind the subscription — that line has moved more than once, and strava.com is the authority on it, not us.</p>
+
+          <h2>Summit reads Strava — that is the relationship</h2>
+
+          <p>Connect Strava once and rides land in Summit by themselves. Distance, duration, heart rate, power if you record it — the ride you already uploaded becomes the input to what happens next. There is nothing to export and no second upload, and your Strava account is unchanged: same kudos, same segments, same feed.</p>
+
+          <p>On the other side, Summit reads heart-rate variability, resting heart rate and sleep from Apple Health. Whatever wrote them there is the sensor: an Apple Watch, a Garmin, an Oura ring, or anything else that writes to Health. Worth being precise about one thing, because it gets assumed: <strong>there is no Summit watch app</strong>. Nothing to install on the watch, no complication, no on-wrist screen. The watch measures; the iPhone reads. And an Apple Watch is not required — any wearable that writes those metrics works.</p>
+
+          <p>So Strava supplies what you did, Apple Health supplies how you are, and Summit is the thing that has an opinion about tomorrow.</p>
+
+          <h2>The question Strava was never built to answer</h2>
+
+          <p>Open Strava after a ride and you get a complete, well-presented record of what just happened, plus everyone else's. What you do not get — because it is not what Strava is for — is a plan that changes.</p>
+
+          <p>That is the gap Summit fills. It holds the actual plan: that Thursday is 4×8 at threshold, that Saturday is the long ride the block is built around, that the event is nine weeks out. Which is what lets your morning numbers act. A strong morning and today's session stands, or grows. An average one and it is left exactly as planned — quietly downgrading sessions every time a number dips is how riders lose fitness while feeling responsible. A genuinely bad morning and the hard work comes out but the hours on the bike stay, because on a rough day it is the intensity that costs you. Tell it you only have ninety minutes on Saturday and the week rebuilds around ninety minutes. Report an illness or an injury and the day stops entirely, with the key session rescheduled rather than quietly disappearing.</p>
+
+          <p>None of that is AI and none of it is a chatbot. The engine is deterministic: every call traces back to a codified sports-science rule applied to your own data, so you can see why it decided what it decided. That is also the part Summit charges for — the plan that rearranges itself is Premium, along with training load (CTL, ATL, TSB), power analysis (eFTP, critical power, your power curve), per-activity detailed analysis, workout export and race-day fuelling. Day-to-day nutrition that follows your training is on the roadmap, not shipped.</p>
+
+          <h2>What is free in Summit — permanently, and not a trial</h2>
+
+          <p>Four things cost nothing and are not scheduled to start costing anything:</p>
+
+          <ul>
+            <li>the <strong>daily recovery score</strong>;</li>
+            <li>the <strong>sleep score with its full breakdown</strong>;</li>
+            <li>the <strong>recovery trend</strong> over time;</li>
+            <li>the <strong>Home and Lock Screen widgets</strong>.</li>
+          </ul>
+
+          <p>That is a free tier, not a free trial. There is no counter running out and no card to enter. Premium is a separate thing, and Premium is what has the 14-day trial. Keeping those two apart matters: a "free" that quietly expires is a different product from one that does not.</p>
+
+          <div class="callout">
+            <p class="callout-label">What each one costs</p>
+            <p>Strava, as listed on <strong>5 August 2026</strong>: a standard subscription in the United States is <strong>$11.99/month or $79.99/year</strong> plus applicable taxes, with a <strong>Family plan at $139.99/year</strong> and a <strong>Strava + Runna plan at $149.99/year</strong>. Pricing varies by region and changes — <a href="https://www.strava.com/pricing" target="_blank" rel="noopener">strava.com/pricing</a> is the authority, not this page.</p>
+            <p>What sits behind that subscription and what does not is something this page deliberately will not tell you. That line has moved more than once, and a stale answer here would be worse than none. What Strava's own help centre does say is that when a subscription expires you "will only lose access to the paid features temporarily" (<a href="https://support.strava.com/hc/en-us/articles/13013167258381-Subscription-Pricing-FAQ" target="_blank" rel="noopener">Subscription Pricing FAQ</a>, checked 5 August 2026) — an unsubscribed account keeps working, and plenty of riders have never needed more than that.</p>
+            <p>Summit publishes no prices of its own. Apple sets Premium per storefront, so the App Store listing is the only source that is right in your country. What is free is on the <a href="../pricing.html">plans page</a>.</p>
+          </div>
+
+          <h2>Where Strava wins</h2>
+
+          <p>Not a token section. On everything below, Strava is not merely better than Summit — Summit does not compete at all.</p>
+
+          <h3>The community and the feed</h3>
+          <p>Kudos, comments, clubs, the small social pressure of people seeing that you went out in the rain. That is a genuine training aid for a lot of riders and Summit has none of it, on purpose. A training app that also wanted your attention every evening would be a worse training app.</p>
+
+          <h3>Segments and local competition</h3>
+          <p>Segment leaderboards, filtered by follower, club, age and weight, turn every ordinary road into something with a scoreboard (<a href="https://support.strava.com/hc/en-us/articles/216917657-Strava-Subscription-Features" target="_blank" rel="noopener">Strava's own feature list</a>, checked 5 August 2026). Nothing in Summit replaces that, and nothing in Summit tries.</p>
+
+          <h3>Route discovery and heatmaps</h3>
+          <p>Route creation, Suggested Routes and personal heatmaps — Strava describes the last as "unique visualizations of the ground you've covered worldwide" (same page, checked 5 August 2026). Finding good roads in an unfamiliar place is a solved problem there, and an unsolved one everywhere else.</p>
+
+          <h3>Multi-sport breadth</h3>
+          <p>Strava groups its activity types into five categories — foot sports, cycle sports, water sports, winter sports and everything else — covering dozens of activities (<a href="https://support.strava.com/hc/en-us/articles/216919407-Supported-Sport-Types-on-Strava" target="_blank" rel="noopener">supported sport types</a>, checked 5 August 2026). Summit is cycling only, deliberately. If your week includes a run, a swim and a ski day, one of these two is holding all of it and it is not Summit.</p>
+
+          <h3>It runs everywhere</h3>
+          <p>Strava ships an iOS app and an Android app (<a href="https://www.strava.com/mobile" target="_blank" rel="noopener">strava.com/mobile</a>) and has a full website. Summit is iPhone only, iOS 26 or later, with no Android version and no web version to announce. If you do not carry an iPhone, Summit is not available to you and Strava is.</p>
+
+          <h3>Your history is already there</h3>
+          <p>Years of rides, with the photos and the comments attached. Nobody should be asked to walk away from that, and Summit's answer is not to ask: it reads from Strava precisely so that the history stays where it is.</p>
+
+          <!-- ── CTA ── -->
+          <div class="article-cta">
+            <h2>Keep Strava. Add the part it was never for.</h2>
+            <p>Install Summit, connect Strava, and allow it to read your Health data. Your rides arrive on their own, and within a few mornings you have a recovery score, a full read of your sleep, and an answer to what today should be. Free, permanently, with no trial to expire — deterministic sports-science maths running on your phone.</p>
+            <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="compare-strava" class="appstore"><img class="appstore-img" alt="Download on the App Store" src="../assets/img/appstore-badges/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" /></a>
+          </div>
+
+          <h2>Questions people actually ask</h2>
+
+          <h3>Should I stop using Strava if I install Summit?</h3>
+          <p>No, and please do not. Summit reads your rides from Strava, so leaving Strava would take away the thing Summit runs on. They do different jobs: Strava records the ride and connects you to the people who ride near you; Summit decides what today's session should be. Keeping both is the intended setup, not a compromise.</p>
+
+          <h3>Does Summit import my Strava rides automatically?</h3>
+          <p>Yes. Connect Strava once and rides arrive on their own; you do not export or upload anything. Summit also reads rides from Hammerhead Karoo, and exports workouts to Karoo and, via intervals.icu, to Garmin, Zwift and MyWhoosh.</p>
+
+          <h3>Does Summit have segments, kudos or a feed?</h3>
+          <p>No. There is no feed, no kudos, no clubs, no segments and no leaderboards in Summit, and none are planned. That layer is Strava's and Strava is very good at it. Summit is a training app you open in the morning to find out what to do, not a place to be seen doing it.</p>
+
+          <h3>How much does Strava cost in 2026?</h3>
+          <p>As listed on 5 August 2026, a standard Strava subscription in the United States is $11.99 per month or $79.99 per year plus applicable taxes, with a Family plan at $139.99 per year and a Strava + Runna plan at $149.99 per year. Pricing varies by region and changes, so <a href="https://www.strava.com/pricing" target="_blank" rel="noopener">strava.com/pricing</a> is the authority. This page deliberately does not list which features sit behind that subscription, because that line has moved more than once. Summit publishes no prices of its own: Apple sets Premium pricing per storefront, so the App Store listing is the only honest source.</p>
+
+          <h3>Is Summit's recovery score really free, or is it a trial?</h3>
+          <p>Free, permanently. The daily recovery score, the sleep score with its full breakdown, the recovery trend and the Home and Lock Screen widgets have no gate on them and no counter running out. Premium is a separate thing, and Premium is what has a 14-day trial.</p>
+
+          <nav class="read-next" aria-label="Read next">
+            <p class="read-next-h">Read next</p>
+            <a class="read-next-post" href="summit-vs-trainingpeaks.html">Summit vs TrainingPeaks: one shows you the data, the other decides<span aria-hidden="true">→</span></a>
+            <p class="read-next-h">More comparisons</p>
+            <ul class="read-next-links">
+              <li><a href="summit-vs-whoop.html">Summit vs Whoop: a recovery score only counts if something changes</a></li>
+              <li><a href="../blog/apple-watch-sleep-recovery-cycling.html">What the free recovery and sleep read actually contains</a></li>
+            </ul>
+            <p class="read-next-h">More on Summit</p>
+            <ul class="read-next-links">
+              <li><a href="../pricing.html">What's free and what Premium adds</a></li>
+              <li><a href="../faq.html">Questions, answered</a></li>
+              <li><a href="../index.html">How Summit builds your plan</a></li>
+            </ul>
+          </nav>
+
+          <div class="article-foot">
+            <a href="index.html">← All comparisons</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="../assets/img/summit-logo.png" alt="Summit" /></span>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="foot.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.nav">Navigate</h4>
+      <ul>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../compare/index.html" data-i18n="nav.compare">Compare</a></li>
+        <li><a href="../changelog.html" data-i18n="nav.changelog">Changelog</a></li>
+        <li><a href="../ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="../terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="../privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <ul>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
+  </div>
+</footer>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/consent.js"></script>
+<script src="../assets/js/lang-routing.js"></script>
+
+</body>
+</html>

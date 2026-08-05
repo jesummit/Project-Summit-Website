@@ -295,6 +295,48 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-whoop.html"/>
   </url>
   <url>
+    <loc>https://projectsummit.app/compare/summit-vs-trainingpeaks.html</loc><lastmod>2026-08-05</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-trainingpeaks.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/compare/es/summit-vs-trainingpeaks.html</loc><lastmod>2026-08-05</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-trainingpeaks.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/compare/ca/summit-vs-trainingpeaks.html</loc><lastmod>2026-08-05</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-trainingpeaks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-trainingpeaks.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/compare/summit-vs-strava.html</loc><lastmod>2026-08-05</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-strava.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/compare/es/summit-vs-strava.html</loc><lastmod>2026-08-05</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-strava.html"/>
+  </url>
+  <url>
+    <loc>https://projectsummit.app/compare/ca/summit-vs-strava.html</loc><lastmod>2026-08-05</lastmod><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/compare/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/compare/es/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://projectsummit.app/compare/ca/summit-vs-strava.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://projectsummit.app/compare/summit-vs-strava.html"/>
+  </url>
+  <url>
     <loc>https://projectsummit.app/pricing.html</loc><lastmod>2026-08-04</lastmod><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://projectsummit.app/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://projectsummit.app/es/pricing.html"/>

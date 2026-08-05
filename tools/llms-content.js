@@ -83,6 +83,16 @@ const SECTIONS = [
         label: 'Summit vs Whoop: a recovery score only counts if something changes',
         blurb: 'Whoop measures recovery continuously on its own hardware; Summit reads the wearable you already own through Apple Health and turns the same physiology into a cycling session. Includes what Whoop does better and what each one costs.',
       },
+      {
+        path: '/compare/summit-vs-trainingpeaks.html',
+        label: 'Summit vs TrainingPeaks: one shows you the data, the other decides',
+        blurb: 'TrainingPeaks is the endurance world’s shared vocabulary and the workspace a human coach works in; Summit generates the cycling plan and rewrites it around recovery and available time. Includes what TrainingPeaks does better and what each one costs.',
+      },
+      {
+        path: '/compare/summit-vs-strava.html',
+        label: 'Summit vs Strava: one records the ride, the other decides it',
+        blurb: 'Complementary rather than competing: Strava records, keeps and shares the ride, and Summit imports those rides to decide what today’s session should be. Includes what Strava does better and what each one costs.',
+      },
     ],
   },
   {

@@ -20,6 +20,8 @@ Summit is not an AI product and has no chatbot. The engine is deterministic: eve
 
 - [How Summit compares](https://projectsummit.app/compare/): Side-by-side comparisons against the tools cyclists weigh Summit against, each conceding what the other does better and dating every competitor fact.
 - [Summit vs Whoop: a recovery score only counts if something changes](https://projectsummit.app/compare/summit-vs-whoop.html): Whoop measures recovery continuously on its own hardware; Summit reads the wearable you already own through Apple Health and turns the same physiology into a cycling session. Includes what Whoop does better and what each one costs.
+- [Summit vs TrainingPeaks: one shows you the data, the other decides](https://projectsummit.app/compare/summit-vs-trainingpeaks.html): TrainingPeaks is the endurance world’s shared vocabulary and the workspace a human coach works in; Summit generates the cycling plan and rewrites it around recovery and available time. Includes what TrainingPeaks does better and what each one costs.
+- [Summit vs Strava: one records the ride, the other decides it](https://projectsummit.app/compare/summit-vs-strava.html): Complementary rather than competing: Strava records, keeps and shares the ride, and Summit imports those rides to decide what today’s session should be. Includes what Strava does better and what each one costs.
 
 ## Guides
 

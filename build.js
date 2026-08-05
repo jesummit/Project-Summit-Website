@@ -93,10 +93,16 @@ const BLOG_PAGES = {
 const COMPARE_PAGES = {
   'compare/index.html': 'compare',
   'compare/summit-vs-whoop.html': 'compare',
+  'compare/summit-vs-trainingpeaks.html': 'compare',
+  'compare/summit-vs-strava.html': 'compare',
   'compare/es/index.html': 'compare',
   'compare/es/summit-vs-whoop.html': 'compare',
+  'compare/es/summit-vs-trainingpeaks.html': 'compare',
+  'compare/es/summit-vs-strava.html': 'compare',
   'compare/ca/index.html': 'compare',
   'compare/ca/summit-vs-whoop.html': 'compare',
+  'compare/ca/summit-vs-trainingpeaks.html': 'compare',
+  'compare/ca/summit-vs-strava.html': 'compare',
 };
 
 function renderHeader(activeKey) {
