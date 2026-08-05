@@ -240,9 +240,11 @@
       { trigger: '#screens',      items: ['.showcase-top', '.carousel-track', '.carousel-dots'] },
       { trigger: '#how',          items: ['.section-head', '.split-block'] },
       { trigger: '#free',         items: ['.free-text', '.free-list li'] },
+      { trigger: '#getting-started', items: ['.section-head', '.feature-card'] },
       { trigger: '#features',     items: ['.section-head', '.feature-card'] },
       { trigger: '#nutrition',    items: ['.section-head', '.split-block'] },
       { trigger: '#whofor',       items: ['.whofor-grid > div:first-child', '.whofor-list li'] },
+      { trigger: '#faq-home',     items: ['.section-head', '.faq-item'] },
       { trigger: '#integrations', items: ['.section-head', '.integ-card', '.integ-row-2'] },
       { trigger: '#download',     items: ['.cta-inner'] }
     ],

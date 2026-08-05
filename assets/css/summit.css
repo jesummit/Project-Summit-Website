@@ -519,6 +519,8 @@ a { color: inherit; }
 .feature-num { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 18px; }
 .feature-title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 11px; color: var(--ink); }
 .feature-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+/* Same grid, four columns — used by #getting-started's 4 numbered steps. */
+.features-grid--steps { grid-template-columns: repeat(4, 1fr); }
 
 /* =====================================================================
    WHO FOR
@@ -575,6 +577,69 @@ a { color: inherit; }
 .cta-qr-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: center; max-width: 18ch; line-height: 1.6; }
 
 /* =====================================================================
+   FAQ ACCORDION — shared component (native <details>/<summary>)
+   Used by faq.html (full list, inside .faq-category) and by the home
+   page's condensed #faq-home block. The page-specific chrome around it
+   (.faq-body / .faq-category / .faq-cat-label / .faq-cta on faq.html,
+   .faq-home-* here) stays with its page; only the item itself is shared.
+   ===================================================================== */
+.faq-item { border-bottom: 1px solid var(--ink-hair); }
+
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 22px 0; cursor: pointer;
+  list-style: none; user-select: none;
+}
+.faq-question::-webkit-details-marker { display: none; }
+
+.faq-q-text {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  letter-spacing: -0.01em; color: var(--ink); line-height: 1.3;
+  transition: color 0.15s;
+}
+
+.faq-icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  border-radius: 50%; border: 1px solid var(--ink-hair);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-size: 16px; font-weight: 300;
+  transition: transform 0.2s, background 0.2s;
+}
+
+details[open] .faq-icon { transform: rotate(45deg); background: var(--accent-soft); }
+details[open] .faq-question .faq-q-text { color: var(--accent); }
+
+.faq-answer {
+  padding: 0 0 24px;
+  font-size: 15px; color: var(--ink-soft); line-height: 1.8;
+  max-width: 680px;
+}
+.faq-answer p { margin-bottom: 10px; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer strong { font-weight: 600; color: var(--ink); }
+.faq-answer a { color: var(--accent); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+.faq-tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 4px; margin-left: 8px;
+  vertical-align: middle; position: relative; top: -2px;
+}
+.faq-tag--roadmap {
+  background: var(--accent-soft); color: var(--accent);
+  border: 1px solid var(--accent-line);
+}
+
+/* Home page condensed FAQ (#faq-home): the shared items in a bordered
+   card, matching the .free-panel / .features-grid surface treatment. */
+.faq-home-list { border-top: 1px solid var(--ink-hair); }
+.faq-home-list .faq-item:last-child { border-bottom: none; }
+.faq-home-more { margin-top: 26px; }
+.faq-home-more .split-link { margin-top: 0; }
+
+/* =====================================================================
    PAGE HEADER + PROSE — shared by inner pages (about / roadmap / faq /
    terms / privacy / ambassadors). Bespoke components live in each page's
    own scoped <style> block, but all read these shared tokens.
@@ -620,6 +685,7 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
    ===================================================================== */
 @media (max-width: 1000px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-grid--steps { grid-template-columns: repeat(2, 1fr); }
   .integrations-grid { grid-template-columns: 1fr; }
   .cta-inner { grid-template-columns: 1fr; gap: 40px; }
 }
@@ -668,6 +734,7 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   .page-section { padding-left: 24px; padding-right: 24px; }
   :root { --section-pad: 64px; }
   .features-grid { grid-template-columns: 1fr; }
+  .features-grid--steps { grid-template-columns: 1fr; }
   .integ-row-2 { flex-direction: column; }
   .integ-mini { min-width: 0; }
   .showcase-top { flex-direction: column; align-items: flex-start; gap: 20px; }

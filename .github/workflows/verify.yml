@@ -35,6 +35,9 @@ jobs:
       - name: tools/i18n-meta.js matches the live title/description/FAQ copy
         run: node tools/check-meta-sync.js
 
+      - name: Home FAQ block matches faq.html verbatim
+        run: node tools/check-faq-home.js
+
       # One step, one build: llms.txt comes out of the same `node build.js` run
       # as the shell, so guarding both here keeps a single source of truth for
       # "the committed output matches the build" instead of two steps that could

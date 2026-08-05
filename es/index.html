@@ -289,6 +289,29 @@
   </div>
 </section>
 
+<!-- ====================== GETTING STARTED ======================
+     What actually happens after the tap on Download — answers the "another
+     app to add to my stack" objection. Every claim here must stay true to the
+     free tier described in #free above: free download, no card, no trial
+     clock, and the watch is a SENSOR read through Apple Health, never a
+     requirement and never an app of its own.
+     No REVEAL_MAPS entry in app.js for #getting-started, so the cards are
+     visible by default (no reveal animation). -->
+<section class="section" id="getting-started">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="start.eyebrow">Cómo empezar</p>
+      <h2 class="section-title" data-i18n="start.title">De la descarga a tu primer plan.</h2>
+    </div>
+    <div class="features-grid features-grid--steps">
+      <div class="feature-card"><div class="feature-num">01</div><h3 class="feature-title" data-i18n="start.01.t">Descárgala y ábrela</h3><p class="feature-desc" data-i18n="start.01.d">Gratis en el App Store, iPhone con iOS 26 o posterior. Sin tarjeta y sin cuenta atrás de prueba.</p></div>
+      <div class="feature-card"><div class="feature-num">02</div><h3 class="feature-title" data-i18n="start.02.t">Conecta Strava y Apple Health</h3><p class="feature-desc" data-i18n="start.02.d">Tus rodadas se importan solas en cuanto terminas una. La VFC, la frecuencia cardíaca en reposo y el sueño se leen desde Apple Health — desde un Apple Watch o cualquier wearable que escriba en él.</p></div>
+      <div class="feature-card"><div class="feature-num">03</div><h3 class="feature-title" data-i18n="start.03.t">Dile cómo es tu semana</h3><p class="feature-desc" data-i18n="start.03.d">Cuánto tiempo tienes de verdad y el evento al que apuntas. El plan se construye alrededor de eso.</p></div>
+      <div class="feature-card"><div class="feature-num">04</div><h3 class="feature-title" data-i18n="start.04.t">Rueda. Summit sigue el ritmo.</h3><p class="feature-desc" data-i18n="start.04.d">La recuperación y tu disponibilidad mueven el plan solas. Te saltas una sesión, te pones malo, viajas — la semana se reescribe y el objetivo sigue en pie.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== FEATURES ====================== -->
 <section class="section" id="features">
   <div class="wrap">
@@ -348,6 +371,100 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-i18n="who.5">Quieres llegar a punto para un evento objetivo, o simplemente seguir mejorando, compitas o no</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-i18n="who.6">Quieres la nutrición integrada en tu entrenamiento, no añadida aparte</span></li>
     </ul>
+  </div>
+</section>
+
+<!-- ====================== FAQ (condensed) ======================
+     The 8 highest-objection questions, lifted from faq.html and reusing the
+     SAME faq.qN.q / faq.qN.a keys — so ES/CA already cover them and there is
+     no second copy of the copy to translate. If you edit a question or answer
+     in faq.html, mirror it here (or vice versa).
+     NO FAQPage JSON-LD on this page, deliberately: faq.html already publishes
+     that entity for all 16 questions and tools/check-meta-sync.js guards it
+     verbatim. A second copy would duplicate the entity and double the drift
+     surface with only half of it guarded.
+     No REVEAL_MAPS entry either (app.js) — the items are visible by default. -->
+<section class="section" id="faq-home">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="hfaq.eyebrow">Preguntas</p>
+      <h2 class="section-title" data-i18n="hfaq.title">Lo que la gente pregunta antes de descargar.</h2>
+    </div>
+    <div class="faq-home-list">
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q2.q">¿Es Summit una app de IA?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q2.a"><p>La parte que más importa, no. El <strong>motor de entrenamiento y adaptación</strong> de Summit —el que decide cuándo cargar, recuperar y descargar— es un sistema algorítmico determinista. Sin modelo de lenguaje, sin chatbot, sin contenido generativo: sigue reglas codificadas de ciencias del deporte y produce recomendaciones predecibles y explicables, que puedes rastrear hasta un cálculo concreto y no a una caja negra.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q16.q">¿Tengo que pagar para ver mi recuperación y mi sueño?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q16.a"><p>No. Si eres ciclista y llevas un Apple Watch — o cualquier wearable que escriba en Apple Health — tu puntuación de recuperación diaria, tu puntuación de sueño y el desglose completo que hay detrás son gratis mientras uses Summit.</p><p>La tendencia de recuperación y los widgets de pantalla de inicio y de bloqueo también entran. Es el nivel gratuito, no una prueba que caduca. La carga de entrenamiento, el análisis de potencia y el plan adaptativo son las partes que necesitan Summit Premium.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q6.q">¿Necesito un Apple Watch?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q6.a"><p>No. Summit lee VFC, sueño y datos de recuperación directamente desde Apple Health. Cualquier wearable que escriba esas métricas en Apple Health es compatible.</p><p>En la práctica, el Apple Watch ofrece hoy los datos más consistentes y completos para los cálculos de recuperación de Summit. Otros dispositivos pueden escribir datos parciales en función de su integración con Apple Health.</p><p>Si llevas uno, lo que Summit construye a partir de él — tu puntuación de recuperación y tu análisis de sueño — forma parte del nivel gratuito.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q5.q">¿Necesito un potenciómetro?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q5.a"><p>Para los cálculos de carga, no. Summit utiliza frecuencia cardíaca y esfuerzo percibido para estimar la carga cuando no hay datos de potencia.</p><p>Para entrenamientos estructurados, <strong>sí por ahora</strong>. Los entrenos se prescriben actualmente en zonas de potencia (% FTP), así que necesitas un potenciómetro para seguirlos con precisión. <span class="faq-tag faq-tag--roadmap">Roadmap</span> Las prescripciones por zonas de FC están en camino — es una prioridad conocida.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q3.q">¿Qué pasa si me salto una sesión?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q3.a"><p>Summit lo detecta automáticamente y recalcula tu plan. A esto le llamamos cascada de plan — sesiones saltadas, sesiones completadas, enfermedad, viajes o cualquier cambio en tu disponibilidad activan un ajuste automático de lo que viene a continuación.</p><p>Nunca te quedarás atascado siguiendo un plan que dejó de tener sentido hace tres días.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q8.q">¿Cómo llegan los entrenos a mi Garmin, Karoo o Zwift?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q8.a"><p>Para una Hammerhead Karoo, Summit envía los entrenos estructurados directamente al ciclocomputador mediante una conexión nativa y directa.</p><p>Para Garmin, Zwift y MyWhoosh, Summit usa intervals.icu como centro de distribución: una sola conexión llega a los tres. Conectas cada uno una vez en la configuración de Summit y, a partir de ahí, es automático.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q12.q">¿Cuánto cuesta Summit?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q12.a"><p>Summit es gratis para descargar, y el nivel gratuito no es una prueba: tu puntuación de recuperación diaria y tu análisis de sueño completo siguen siendo gratis mientras uses la app.</p><p>Summit Premium añade dos niveles: <strong>Pro</strong> (análisis detallado del entrenamiento — carga, potencia y análisis por actividad) y <strong>Elite</strong> (acceso completo a la plataforma, incluyendo el plan adaptativo y las nuevas funciones a medida que se lancen, y soporte prioritario).</p><p>Puedes ver el precio actual de Premium en la propia app y en la App Store.</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-question">
+            <span class="faq-q-text" data-i18n="faq.q10.q">¿Está Summit disponible en Android?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer" data-i18n="faq.q10.a"><p>Todavía no. Summit es iOS-first y ya está disponible en la App Store. Android está en el roadmap para 2027, pero iOS es el foco de esta versión.</p><p>Si estás en Android, síguenos en Instagram — compartiremos avances y te avisaremos en cuanto esté listo.</p></div>
+        </details>
+      </div>
+    </div>
+    <p class="faq-home-more"><a class="split-link" href="faq.html" data-i18n="hfaq.link">Las 16 preguntas →</a></p>
   </div>
 </section>
 
