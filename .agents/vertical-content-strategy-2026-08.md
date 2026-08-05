@@ -1,7 +1,8 @@
 # Vertical content strategy — Instagram, reusable on TikTok and YouTube Shorts
 
-**Date:** 2026-08-05 · **Constraint:** discovery. 130 Instagram followers, ~2 website
-visitors/week, 4 App Store ratings.
+**Date:** 2026-08-05 · **Constraint:** discovery. 134 Instagram followers, ~2 website
+visitors/week, 4 App Store ratings. Reels take ~1,300 views, of which only ~20% is
+organic.
 
 > **Language of this document.** The prose is English, per the repo rule. The scripts
 > are **Spanish, verbatim and ready to film** — they are copy, the same exception the
@@ -14,21 +15,67 @@ claim in a video is far harder to retract than one on a page.
 
 ---
 
+## Fix the path — the cheapest win, and it is not content
+
+The published Reels earn views and then lose everyone on the way out. Four things
+visible in the captions, in order of how much they probably cost:
+
+1. **"Link en bio" is not a reason, and the path is four taps.** Watch → remember →
+   go to profile → tap the link → land on the site → find the badge → App Store.
+   Every step halves. Replace the CTA with the reason to act — *"recuperación y sueño
+   gratis, para siempre"* — because that is a motive, and "link en bio" is an
+   instruction with no motive attached.
+2. **Test sending the bio link straight to the App Store.** The site's job is to
+   explain, and a Reel has already done that; the extra hop mostly adds a place to
+   leave. The cost is losing the PostHog view of that traffic, which at this volume
+   is worth very little. Worth a fortnight's test either way.
+3. **The language is inconsistent.** The Karoo Reel is entirely in English — caption
+   and hashtags — while the others are Spanish, and the audience is Spanish. That is
+   free reach and free comprehension being dropped.
+4. **The hashtags are broad and generic.** `#ciclismo`, `#cyclinglife`, `#gravel` are
+   enormous, competitive and low-intent; a 134-follower account ranks in none of them.
+   Narrower, intent-carrying tags (training, HRV, recovery, power) at least describe
+   who this is for. Worth fixing, but expect little — Instagram ranks on content now,
+   not tags. Do this last.
+
+### ⚠️ Verify the nutrition Reel before it stays up
+
+The gels Reel says *"Summit calcula qué comer y cuándo según la duración y la
+intensidad de tu salida."* Two things to check against the shipped build, because this
+is exactly the kind of claim the Hard Constraints exist to catch:
+
+- **Training-driven nutrition planning is roadmap, not shipped** — only the race-day
+  fuelling planner exists. If that caption describes per-ride fuelling for any ride
+  rather than race day, it is claiming something the app does not do.
+- **Nutrition is Elite either way**, and nothing in the caption says so. A viewer who
+  downloads the free tier looking for this will not find it.
+
+Neither is a filming rule, it is a live post. Check it and edit the caption or take it
+down.
+
+---
+
 ## The account as it stands — audited 2026-08-05
 
 25 posts · 134 followers · 139 following. What the grid actually contains:
 
-- **It is a cycling-photography account, not a product account.** Of the visible grid,
-  one post in eight shows the app. The rest is riding lifestyle — good photography,
-  genuinely well shot, and almost all **static 4:5 stills rather than vertical video**.
-  That is the whole explanation for 46 website visits in 90 days: stills in the feed
-  reach the follower list and stop there.
-- **The pro-racing post is the account's best result so far, and it is own footage.**
-  It is a Reel filmed at the roadside of the Tour, framed as Summit being there — and
-  it took meaningfully more views than the rest. Keep it. It is the only evidence this
-  account has of anything reaching past the 134 followers, and what produced that reach
-  was **being at a live event people were already searching for that week**. See
-  "Moment content" below.
+- **The grid is mostly cycling photography, not product.** One post in eight shows the
+  app; the rest is riding lifestyle, well shot, and largely **static 4:5 stills**. The
+  Reels are the exception and they are where the views are.
+- **The Reels all land in the same band: 1,028 / 1,353 / 1,374 / 1,506.** That
+  flatness is itself the finding. Four very different pieces — a Tour roadside clip, a
+  1000 km crossing, a nutrition product demo, a landscape riding shot — landing within
+  30% of each other is the signature of a **distribution ceiling rather than content
+  quality**: the reshare loop delivers roughly the same audience whatever you post.
+  Content is not what is varying, so content is not currently what is being measured.
+- **The pro-racing Reel is own footage, shot at the roadside of the Tour.** It sits
+  third of four on views, so it is not the outlier an earlier revision called it — but
+  the *mechanism* is still the only one available that borrows an audience the account
+  does not have. See "Moment content" below, and check its organic share before
+  weighting it.
+- **The lowest performer is the product demo, and the highest is scenery.** Do not
+  read that as a mandate for more scenery — inside a friends-and-stories loop, pretty
+  riding gets reshared and a product demo does not. It ranks the loop's taste.
 - **The existing strength is real footage.** Whoever is shooting this can already
   produce good cycling b-roll. Use it — see the production note under the pillars.
 
@@ -51,11 +98,13 @@ Bio draft, for reference — line 1 and 2 are already strong and stay almost as 
 
 ### Moment content — the one thing already proven to reach strangers
 
-The Tour Reel is the account's only demonstrated reach beyond its own followers, and
-the mechanism is worth naming precisely: **during a big race, an enormous audience is
-already searching and scrolling for exactly that thing**, and the algorithm has demand
-to fill. A small account can borrow that demand for a few days. Nothing else available
-at this size does that.
+The Tour Reel is not the account's biggest — it sits third of four — and whether its
+reach came from the loop or from strangers is exactly the number nobody has looked up
+yet. It earns its place here on **mechanism, not on results**: during a big race an
+enormous audience is already searching and scrolling for that thing, and the algorithm
+has demand to fill. A small account can borrow that demand for a few days. Nothing else
+available at this size does that. If its organic share turns out to be no better than
+the others', this slot is worth much less than it looks — check before betting on it.
 
 So it stays, as an opportunistic slot that **overrides the calendar** whenever a real
 peg lands — a grand tour, a heat wave, a big local gran fondo. It is not schedulable,
@@ -119,9 +168,33 @@ series where the product appears without the video being an ad.
 
 ## The premise this is built on
 
-With 130 followers the feed reaches nobody. Posting *to* an audience is not the job;
-the job is being **served to strangers by the algorithm**. That single fact decides
-almost every choice here:
+> **Revised 2026-08-05 against real per-Reel numbers.** An earlier version of this
+> section said the feed reaches nobody. That was wrong, and the correction matters:
+> the Reels take **1,028 / 1,353 / 1,374 / 1,506 views** — roughly ten times the
+> follower count. Reach is not the binding constraint. Two other things are.
+
+**Constraint 1 — about 80% of that reach is a closed loop.** The views come mostly
+from stories reshared by the founder and his friends; **only ~20% arrives organically**
+through Explore or the Reels tab. So the real discovery number is around **260 views
+per Reel**, not 1,300. The loop is a genuine asset and it is why the account looks
+healthier than the referral data suggests — but it is finite and already saturated:
+it is the same people every time, it does not compound, and a friend resharing out of
+goodwill is not a signal that the content found its audience.
+
+**This also means the view ranking cannot be used to choose content.** The best
+performer is a landscape riding clip and the worst is the product Reel — but inside a
+reshare loop, pretty riding gets reshared and a product demo does not. That ranks the
+loop's taste, not the algorithm's. **The only number that discriminates is organic
+share per Reel**, and it is the one thing still missing.
+
+**Constraint 2 — the path from view to install leaks almost everything.** Around
+1,300 views per Reel against ~0.5 website visitors a day means the handoff is where
+the funnel dies, and it deserves at least as much attention as reach. See "Fix the
+path" below — it is not a content problem and it is probably the cheapest win
+available.
+
+Growing the organic 20% is what the rest of this document is for. The platform decides
+what to push to non-followers on **watch time and shares**, not on likes, so:
 
 - The hook has to work for someone who has never heard of Summit, in the first
   1.5 seconds, with the sound off.
