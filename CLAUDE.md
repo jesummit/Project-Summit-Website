@@ -574,3 +574,32 @@ tracking change:
 Push to the branch GitHub Pages serves (the site builds from the branch, not from
 an Actions artifact). The committed HTML is what ships, so make sure the shell is
 rebuilt (locally or by the CI auto-commit) before/at merge.
+
+### When `pages build and deployment` fails — re-running will NOT fix it
+Seen 2026-08-06. Symptom: the `build` job succeeds in ~25 s (Jekyll builds, the
+artifact uploads), then the `deploy` job sits at `Current status:
+deployment_queued` for exactly 10 minutes and dies with `Timeout reached,
+aborting!` → `Canceling Pages deployment...`. The live site keeps serving the
+last deployment that worked, so the repo looks fine and the site looks stale.
+
+**The trap**: re-running that workflow — failed jobs *or* the whole run — can
+never recover it. The Pages **deployment ID is the commit SHA**, so a re-run of
+the same commit re-creates an ID the timeout already put in a terminal
+cancelled state, and the deploy step returns `Error: Deployment cancelled.`
+immediately. It does this even though the re-run produced a brand-new artifact
+id, which is what makes it look like a fresh attempt. Two re-runs on
+`707b138` both failed this way in under a minute.
+
+**What actually fixes it**: a new commit on `main`, so a new SHA mints a new
+deployment ID. A PR merge does this by itself (the merge commit is the new
+SHA); there is no need for anything clever.
+
+**What triggers it**: a burst of pushes in quick succession — e.g. several
+"Add files via upload" commits from the GitHub web UI a minute apart. Each push
+cancels the in-flight Pages deployment, and the queue ends up wedged; every
+later deployment then queues behind it forever. Prefer one commit with all the
+files over several back-to-back.
+
+Before assuming the worst, check https://www.githubstatus.com — Pages being
+`operational` with no open incident is what tells you the wedge is this repo's
+queue and not an outage.
