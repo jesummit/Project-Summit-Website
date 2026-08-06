@@ -309,11 +309,12 @@ exactly like `blog/es/`, `blog/ca/`.
   the same `processPages()` / `reroot()` machinery, so the shared shell is
   injected and re-rooted per depth (`../` in `compare/`, `../../` in
   `compare/<locale>/`). Edit `partials/`, run `npm run build`, as always.
-- The `'compare'` nav key matches **no `$$token$$`** in the header partial on
-  purpose — the cluster is not in the site nav, so nothing lights up. Which also
-  means **it is currently reachable only from `sitemap.xml`, `llms.txt` and the
-  pages' own cross-links**: no shell page links into it. Adding a nav/footer
-  entry means editing `partials/` (it would touch every page's generated shell).
+- The `'compare'` nav key lights up **`$$compare$$`** in the header's "More"
+  dropdown and in the mobile menu, and the cluster also has a footer entry — it
+  earned a nav slot on 2026-08-06, once it had five pages. (Before that it was
+  reachable only from `sitemap.xml`, `llms.txt` and the pages' own cross-links,
+  which is fatal for pages whose whole job is to rank.) Both nav surfaces live in
+  `partials/`, so touching them regenerates every page's shell.
 - `tools/check-links.js` globs `compare/`, `compare/es/`, `compare/ca/` in the
   same `clusterDirs` list as the blog, so a new comparison page is covered the
   moment its file exists.

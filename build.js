@@ -97,18 +97,21 @@ const COMPARE_PAGES = {
   'compare/summit-vs-strava.html': 'compare',
   'compare/whoop-alternatives-no-subscription.html': 'compare',
   'compare/free-hrv-recovery-apps-iphone.html': 'compare',
+  'compare/adaptive-cycling-training-apps.html': 'compare',
   'compare/es/index.html': 'compare',
   'compare/es/summit-vs-whoop.html': 'compare',
   'compare/es/summit-vs-trainingpeaks.html': 'compare',
   'compare/es/summit-vs-strava.html': 'compare',
   'compare/es/whoop-alternatives-no-subscription.html': 'compare',
   'compare/es/free-hrv-recovery-apps-iphone.html': 'compare',
+  'compare/es/adaptive-cycling-training-apps.html': 'compare',
   'compare/ca/index.html': 'compare',
   'compare/ca/summit-vs-whoop.html': 'compare',
   'compare/ca/summit-vs-trainingpeaks.html': 'compare',
   'compare/ca/summit-vs-strava.html': 'compare',
   'compare/ca/whoop-alternatives-no-subscription.html': 'compare',
   'compare/ca/free-hrv-recovery-apps-iphone.html': 'compare',
+  'compare/ca/adaptive-cycling-training-apps.html': 'compare',
 };
 
 function renderHeader(activeKey) {
