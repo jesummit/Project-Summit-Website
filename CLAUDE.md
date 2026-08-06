@@ -356,7 +356,14 @@ before touching this copy, because a false claim here is a support ticket:
   on-wrist surface until that ADR is reversed.
 - **Apple Watch is not required** (`faq.q6` says so, and it's true — any wearable
   writing to Apple Health works). The watch framing is an ICP filter, not a
-  requirement; keep both readings consistent.
+  requirement; keep both readings consistent. **But never write "any wearable
+  works" unqualified**: `Core/HealthKit/HealthKitTypes.swift` reads HRV (SDNN),
+  resting HR, sleep, respiratory rate, blood oxygen, VO2 max *and*
+  `appleSleepingWristTemperature`, which is Apple-Watch-only — so the Apple Watch
+  is the only device that writes the complete set. Another wearable gives a
+  recovery score from a partial picture. The site's standing formulation is
+  "any wearable that writes to Apple Health works, though only the Apple Watch
+  writes the complete set of metrics Summit uses".
 - **Premium has a 14-day trial** (`PaywallView`). "Free forever" must stay visibly
   distinct from it — hence the `free.note` line and the "not a trial" wording in
   `faq.q12`/`faq.q16`.

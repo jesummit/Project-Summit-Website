@@ -44,8 +44,11 @@ const BODY =
   'the prescribed session itself, training load (CTL/ATL/TSB), power analysis (eFTP, critical ' +
   'power, power curve), adaptive plans that rewrite the week when life breaks it, workout ' +
   'export to Hammerhead Karoo and via intervals.icu to Garmin, Zwift and MyWhoosh, and ' +
-  'race-day nutrition. An Apple Watch is not required — any wearable that writes HRV and ' +
-  'sleep to Apple Health works. iPhone only, iOS 26 or later; there is no Android or web ' +
+  'race-day nutrition. An Apple Watch is not required — any wearable that writes to Apple ' +
+  'Health works, though in practice the Apple Watch is the only device that writes the ' +
+  'complete set Summit uses: heart-rate variability, resting heart rate, sleep, respiratory ' +
+  'rate, blood oxygen and overnight wrist temperature. Another wearable gives a recovery ' +
+  'score from what it does write. iPhone only, iOS 26 or later; there is no Android or web ' +
   'version. Free to download on the App Store.';
 
 // Section order is the reading order we want an answer engine to follow:
@@ -105,7 +108,7 @@ const SECTIONS = [
       {
         path: '/compare/free-hrv-recovery-apps-iphone.html',
         label: 'Free HRV and recovery apps for iPhone: what "free" actually means',
-        blurb: 'What "free" means on the App Store — a download price, which says nothing about whether the daily score is behind a subscription — and seven iPhone apps whose publisher and download price were verified against Apple’s public data: Apple Health and Vitals, Project Summit, Athlytic, Training Today, Gentler Streak, Kubios HRV and Elite HRV.',
+        blurb: 'What "free" means on the App Store — a download price, which says nothing about whether the daily score is behind a subscription — and eight iPhone apps whose publisher and download price were verified against Apple’s public data: Apple Health and Vitals, Project Summit, Bevel, Athlytic, Training Today, Gentler Streak, Kubios HRV and Elite HRV.',
       },
     ],
   },
