@@ -18,32 +18,16 @@ three locale directories are complete, the flat set is never served — its only
 remaining job is to define the canonical filename list the checker validates
 against.
 
-The flat set is currently **mixed**: the five screens added in the localization
-pass (`sleep`, `sleep-hypnogram`, `recovery-trend`, `effort-calculator`,
-`share-sheet`) are copies of the English captures, while the older files are
-still Spanish. That inconsistency is invisible as long as every locale
-directory is complete, and it disappears for good once the four missing
-captures below are supplied in all three languages.
+The flat set is a byte copy of `en/`. English is the source language and the
+`x-default` hreflang target, so if a locale directory ever regresses, the
+fallback still matches the canonical page rather than serving Spanish to an
+English reader.
 
-## Still missing (this is why CI is red)
+All three locale directories are complete, so nothing here is currently
+served — but keep the flat set in step with `en/` anyway, since it is what the
+checker validates the locale directories against.
 
-Each locale directory needs these before `npm run check` passes:
-
-| File | Status |
-| --- | --- |
-| `activity.webp` | needs a real capture, per locale |
-| `calendar.webp` | needs a real capture, per locale |
-| `nutrition.webp` | needs a real capture, per locale |
-| `training-load.webp` | needs a real capture, per locale |
-| `hero-training-load.webp` | copy of that locale's `training-load.webp` |
-
-Note the existing flat captures for these four are from an **older build of the
-app** — five tab-bar items instead of four, and a different status bar. Reusing
-them to fill a locale directory would pass the checker but ship two visibly
-different app versions in the same carousel, so re-capture them rather than
-copying the flat files across.
-
-## The 15 filenames (identical in every locale directory)
+## The 16 filenames (identical in every locale directory)
 
 Hero — the three phones at the top of the home page:
 
@@ -53,7 +37,7 @@ Hero — the three phones at the top of the home page:
 | `hero-today.webp` | centre phone (the LCP image) |
 | `hero-training-load.webp` | right phone |
 
-Carousel — the nine frames in the "screens" section, in order:
+Carousel — the ten frames in the "screens" section, in order:
 
 | File | Caption |
 | --- | --- |
@@ -65,6 +49,7 @@ Carousel — the nine frames in the "screens" section, in order:
 | `sleep.webp` | Sleep |
 | `calendar.webp` | Calendar |
 | `activity.webp` | Activity |
+| `activity-analysis.webp` | Ride Analysis |
 | `nutrition.webp` | Nutrition |
 
 Free-tier proof shots — the three phones inside the `#free` panel. Each backs
@@ -76,8 +61,9 @@ one of the bullets above it, so all three must stay **free** surfaces:
 | `recovery-trend.webp` | `free.3` — the 30-day trend |
 | `share-sheet.webp` | `free.4` — the share card |
 
-The Effort Calculator is Premium (eFTP / power curve), which is why it appears
-in the carousel and deliberately **not** in the `#free` panel.
+The Effort Calculator and Ride Analysis are Premium (eFTP, power curve,
+per-activity detailed analysis), which is why they appear in the carousel and
+deliberately **not** in the `#free` panel.
 
 ## Format
 
@@ -88,7 +74,7 @@ in the carousel and deliberately **not** in the `#free` panel.
 ## A locale directory must be complete
 
 `tools/check-screenshots.js` (run by `npm run check` and by CI) fails if a
-locale directory exists but is missing any of the 15 filenames, or contains a
+locale directory exists but is missing any of the 16 filenames, or contains a
 `.webp` the flat set doesn't have. This is deliberate: `build.js` localizes each
 `<img>` individually and only when that exact file exists, so a half-filled
 directory would ship a mix of languages on one page — worse than a consistent
