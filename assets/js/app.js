@@ -239,7 +239,7 @@
     home: [
       { trigger: '#screens',      items: ['.showcase-top', '.carousel-track', '.carousel-dots'] },
       { trigger: '#how',          items: ['.section-head', '.split-block'] },
-      { trigger: '#free',         items: ['.free-text', '.free-list li'] },
+      { trigger: '#free',         items: ['.free-text', '.free-list li', '.free-shot'] },
       { trigger: '#getting-started', items: ['.section-head', '.feature-card'] },
       { trigger: '#features',     items: ['.section-head', '.feature-card'] },
       { trigger: '#nutrition',    items: ['.section-head', '.split-block'] },

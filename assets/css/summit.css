@@ -509,6 +509,16 @@ a { color: inherit; }
 .free-list li:last-child { border-bottom: none; }
 .free-list li strong { color: var(--ink); font-weight: 700; }
 .free-list li svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; margin-top: 3px; stroke-width: 2.2; }
+/* Proof shots — their own full-width row under both panel columns, so the
+   offer reads text-first and the captures back it up rather than compete
+   with it. Stays 3-across on mobile: at that size they read as "there is a
+   real screen behind this claim", which is the whole job. */
+.free-shots { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding-top: 40px; border-top: 1px solid var(--ink-hair); }
+.free-shot { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.free-shot .phone { width: 100%; max-width: 200px; }
+/* min() so the caption can never be wider than its grid column — a bare 26ch
+   overflows the track once the columns get narrow. */
+.free-shot figcaption { font-size: 13px; line-height: 1.5; color: var(--ink-soft); text-align: center; max-width: min(26ch, 100%); }
 
 /* =====================================================================
    FEATURES grid
@@ -722,6 +732,13 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
 
   .whofor-grid { grid-template-columns: 1fr; gap: 32px; }
   .free-panel { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
+  /* Three columns would put each capture at ~88px with a four-line caption
+     under it — unreadable both ways. One per row, phone beside its caption,
+     keeps the shots legible and the text on two lines. */
+  .free-shots { grid-template-columns: 1fr; gap: 22px; padding-top: 28px; }
+  .free-shot { flex-direction: row; align-items: center; gap: 18px; }
+  .free-shot .phone { flex: 0 0 96px; width: 96px; }
+  .free-shot figcaption { text-align: left; max-width: none; }
   .split-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
