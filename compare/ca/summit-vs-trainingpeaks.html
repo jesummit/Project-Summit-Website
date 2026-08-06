@@ -69,7 +69,7 @@
           { "@type": "Thing", "name": "Project Summit" },
           { "@type": "Thing", "name": "TrainingPeaks" }
         ],
-        "wordCount": 2695
+        "wordCount": 2956
       },
       {
         "@type": "FAQPage",
@@ -87,7 +87,7 @@
             "name": "Puc fer servir Summit i TrainingPeaks alhora?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Res no t'ho impedeix, però convé tenir clar què es connecta i què no: no existeix cap integració directa entre Summit i TrainingPeaks. Summit llegeix sortides de Strava i de Hammerhead Karoo, i exporta entrenaments al Karoo i, via intervals.icu, a Garmin, Zwift i MyWhoosh. Si el teu entrenador viu a TrainingPeaks, allà és on continuareu treballant tots dos; Summit és el que llegeix la teva recuperació i decideix el teu dia."
+              "text": "Res no t'ho impedeix, però convé tenir clar què es connecta i què no: no existeix cap integració directa entre Summit i TrainingPeaks. Summit llegeix sortides de Strava i de Hammerhead Karoo, i exporta entrenaments al Karoo i, via intervals.icu, a Garmin, Zwift i MyWhoosh. Si el teu entrenador viu a TrainingPeaks, allà és on continuareu treballant tots dos: Summit no té costat d'entrenador on endollar-se i res no hi està pensat perquè ho vegi una segona persona."
             }
           },
           {
@@ -95,7 +95,7 @@
             "name": "Summit substitueix un entrenador?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, i no es ven com a tal. Un entrenador sap coses que cap motor no té: què ha passat a la teva feina aquest mes, com competeixes, què et fa por. Summit està fet per a ciclistes que no en contractaran cap, i funciona al costat d'un entrenador, no en lloc seu. Tampoc no és una IA ni un chatbot: el motor és determinista i cada decisió es traça fins a una regla de ciència de l'esport codificada aplicada a les teves pròpies dades."
+              "text": "No, i no es ven com a tal. Un entrenador sap coses que cap motor no té: què ha passat a la teva feina aquest mes, com competeixes, què et fa por. El que el motor de Summit està programat per fer és prendre les decisions que prendria un entrenador —quan carregar, quan recuperar, quan descarregar— a partir de les teves pròpies dades, cada matí. Així que no substitueix un entrenador del tot, i no té costat d'entrenador en absolut: ni llista d'esportistes, ni calendari compartit, ni res on pugui escriure una segona persona. Tampoc no és una IA ni un chatbot: el motor és determinista i cada decisió es traça fins a una regla de ciència de l'esport codificada aplicada a les teves pròpies dades."
             }
           },
           {
@@ -253,7 +253,7 @@
 
           <div class="callout">
             <p class="callout-label">En resum</p>
-            <p>TrainingPeaks ensenya; Summit decideix. TrainingPeaks et dona —a tu i a l'entrenador amb qui treballis— la visió més profunda del teu entrenament que hi ha a l'esport, i deixa la decisió en mans d'una persona. Summit genera el pla i després el reescriu al voltant de la teva recuperació i de les hores que realment tens aquesta setmana, de manera determinista, sense chatbot i sense IA enlloc. Si tens entrenador, TrainingPeaks continua sent el centre i Summit es posa al costat.</p>
+            <p>TrainingPeaks ensenya; Summit decideix. TrainingPeaks et dona —a tu i a l'entrenador amb qui treballis— la visió més profunda del teu entrenament que hi ha a l'esport, i deixa la decisió en mans d'una persona. Summit genera el pla i després el reescriu al voltant de la teva recuperació i de les hores que realment tens aquesta setmana, de manera determinista, sense chatbot i sense IA enlloc. Si tens entrenador, TrainingPeaks continua sent el centre: Summit no té costat d'entrenador en absolut.</p>
           </div>
 
           <h2>D'un cop d'ull</h2>
@@ -290,8 +290,8 @@
                 </tr>
                 <tr>
                   <th scope="row">Vocabulari de càrrega</th>
-                  <td class="col-us">CTL / ATL / TSB, eFTP, potència crítica, la teva corba de potència (Premium)</td>
-                  <td>El Performance Management Chart: la versió en què pensen els entrenadors</td>
+                  <td class="col-us">El mateix model del PMC —CTL / ATL / TSB— dibuixat a la pestanya d'Entrenament, més eFTP, potència crítica i la teva corba de potència (Premium)</td>
+                  <td>El Performance Management Chart que va inventar: la implementació de referència que llegeix tot l'esport</td>
                 </tr>
                 <tr>
                   <th scope="row">Recuperació i son</th>
@@ -332,7 +332,7 @@
 
           <h2>El vocabulari és el mateix, i Summit el parla</h2>
 
-          <p>Que «el motor decideixi» no vol dir que els números s'amaguin. Summit està construït sobre el mateix model de càrrega que l'esport ja va acordar: càrrega crònica i aguda i la forma que en resulta (CTL, ATL, TSB), més eFTP, potència crítica, la teva corba de potència i l'anàlisi per activitat del que la sessió va ser realment, no de com de dura es va sentir. Això és el que et diu si arribaràs en pic el cap de setmana correcte o si hi arribaràs pla, i és Premium.</p>
+          <p>Que «el motor decideixi» no vol dir que els números s'amaguin, i això val la pena dir-ho sense embuts perquè la suposició va en sentit contrari: <strong>Summit també calcula i dibuixa el Performance Management Chart</strong>. Les mateixes tres corbes —càrrega crònica, càrrega aguda i la forma que en resulta (CTL, ATL, TSB)— estan dibuixades a la pestanya d'Entrenament de Summit, al costat d'eFTP, potència crítica, la teva corba de potència i l'anàlisi per activitat del que la sessió va ser realment, no de com de dura es va sentir. Això és el que et diu si arribaràs en pic el cap de setmana correcte o si hi arribaràs pla, i és Premium. La diferència entre aquests dos productes mai no va ser qui té el gràfic. És què passa quan el gràfic diu alguna cosa.</p>
 
           <p>I ha de sortir de l'app. Summit llegeix sortides de Strava i de Hammerhead Karoo, i exporta entrenaments al Karoo i —via intervals.icu— a Garmin, Zwift i MyWhoosh, perquè la sessió que va escriure el motor sigui al ciclocomputador dissabte al matí. Exportar també és Premium. La nutrició de dia de cursa és a l'app; la nutrició del dia a dia que segueix el teu entrenament és al full de ruta, no publicada.</p>
 
@@ -340,7 +340,7 @@
 
           <h2>El que mou el pla és la teva recuperació — i aquesta part és gratis</h2>
 
-          <p>Summit llegeix la variabilitat cardíaca, la freqüència cardíaca en repòs i el son de Salut d'Apple. El que sigui que els hi hagi escrit és el sensor: un Apple Watch, un Garmin, un anell Oura o qualsevol altra cosa que escrigui a Salut. Val la pena ser precís amb una cosa, perquè es dona per feta: <strong>no existeix cap app de Summit per al rellotge</strong>. Res per instal·lar al rellotge, cap complicació, cap pantalla al canell. El rellotge mesura; l'iPhone llegeix. I l'Apple Watch no és obligatori: serveix qualsevol dispositiu que escrigui aquestes mètriques.</p>
+          <p>Summit llegeix de Salut d'Apple, així que funciona amb allò que hi escrigui. Val la pena ser precís amb dues coses, perquè totes dues es donen per fetes. La primera: <strong>no existeix cap app de Summit per al rellotge</strong>. Res per instal·lar al rellotge, cap complicació, cap pantalla al canell. El rellotge mesura; l'iPhone llegeix. La segona: l'Apple Watch no és obligatori de debò, però a la pràctica és l'únic dispositiu que escriu el conjunt complet que Summit fa servir — variabilitat cardíaca, freqüència cardíaca en repòs, son, freqüència respiratòria, oxigen en sang i temperatura del canell durant la nit. Un Garmin o un anell Oura et donen una puntuació de recuperació a partir del que sí que escriuen; l'Apple Watch et dona la imatge completa.</p>
 
           <p>Quatre coses no costen res a Summit i no està previst que comencin a costar-ne:</p>
 
@@ -363,7 +363,7 @@
 
           <p>Summit no té costat d'entrenador. Ni llista d'esportistes, ni safata d'entrada, ni cap manera que una altra persona escrigui al teu calendari i vegi què n'has fet. No és un oblit que s'arregli el trimestre que ve: és un altre producte. Un entrenador sap coses que cap motor no té —què ha passat a la teva feina aquest mes, com competeixes, què et fa por en una baixada— i qui en tingui un s'hauria de quedar amb la plataforma on aquell entrenador treballa.</p>
 
-          <p>Per això el marc útil no és «en lloc de». És: Summit està fet per al ciclista que mai no anava a contractar un entrenador i que fa temps que s'entrena sol a partir d'un gràfic i d'un pla descarregat. Si això et descriu, el que et falta no són més dades. És algú que mogui el dijous.</p>
+          <p>Així que el marc honest no és «en lloc de» ni «al costat de». Summit està fet per al ciclista que mai no anava a contractar un entrenador i que fa temps que s'entrena sol a partir d'un gràfic i d'un pla descarregat. El que el seu motor està programat per fer és prendre les decisions que prendria un entrenador —quan carregar, quan afluixar, quan descarregar— a partir dels teus propis números, cada matí. Això no és tot el que és un entrenador. És la part que fa temps que fas malament a les 22:40. Si això et descriu, el que et falta no són més dades. És algú que mogui el dijous.</p>
 
           <h2>On guanya TrainingPeaks</h2>
 
@@ -378,8 +378,8 @@
           <h3>Integracions amb anys de rodatge al darrere</h3>
           <p>Dispositius, rodets i eines de tercers fa moltíssim temps que sincronitzen amb TrainingPeaks, i aquella maduresa val una cosa molt concreta: els casos rars ja estan trobats. El juliol del 2026 Garmin va anunciar la compra de TrainingPeaks i TrainHeroic (<a href="https://www.garmin.com/en-US/newsroom/press-release/corporate/garmin-acquires-trainingpeaks-and-trainheroic-leading-endurance-and-strength-training-platforms-for-athletes-and-coaches/" target="_blank" rel="noopener">sala de premsa de Garmin, 22 de juliol del 2026</a>), cosa que, si apunta a alguna banda, és que aquell costat s'estrenyi més, no menys.</p>
 
-          <h3>El PMC és en què pensen els entrenadors</h3>
-          <p>Summit calcula el mateix model de càrrega, però el Performance Management Chart tal com el dibuixa TrainingPeaks és la implementació de referència: la imatge que tothom en la conversa ja ha vist. Si parles d'entrenament amb un entrenador, amb un club o en un fòrum, estaràs parlant d'aquell gràfic. Parlar el dialecte estàndard amb fluïdesa és un avantatge real.</p>
+          <h3>Va inventar el PMC, i el PMC és la llengua comuna</h3>
+          <p>Els dos productes calculen CTL, ATL i TSB, i tots dos els dibuixen — així que això no és una funció que TrainingPeaks tingui i a Summit li falti. El que TrainingPeaks té és l'autoria. Va crear el Performance Management Chart i el va popularitzar fins a convertir-lo en la manera mateixa com l'entrenament de resistència parla de la càrrega, i la seva versió és la implementació de referència, la imatge que tothom en la conversa ja ha vist. Parla d'entrenament amb un entrenador, amb un club o en un fòrum i estaràs parlant d'aquell gràfic, i amb aquelles paraules. Ser amo del dialecte estàndard és un avantatge real i durador, i calcular els mateixos números no l'hi treu.</p>
 
           <h3>Multiesport</h3>
           <p>TrainingPeaks cobreix ciclisme, curses a peu, triatló, rem i més (<a href="https://www.trainingpeaks.com/athlete-features/" target="_blank" rel="noopener">trainingpeaks.com/athlete-features/</a>, comprovat el 5 d'agost del 2026), i un sol calendari amb una natació, una cursa a peu i una sortida és exactament el que necessita un triatleta. Summit és només ciclisme, a propòsit i per força temps. Si la teva setmana no és sobretot bici, aquesta comparació ja s'ha acabat.</p>
@@ -400,10 +400,10 @@
           <p>Només per a una de les dues feines que fa TrainingPeaks. Si t'entrenes tu i el que vols és un pla de ciclisme que decideixi sol i es reorganitzi quan canvien la teva setmana o la teva recuperació, això ho fa Summit i és justament el que TrainingPeaks deixa a propòsit en mans d'una persona. Si el que vols és l'espai de treball que comparteixes amb un entrenador, el mercat de plans o un calendari multiesport, Summit no en substitueix res.</p>
 
           <h3>Puc fer servir Summit i TrainingPeaks alhora?</h3>
-          <p>Res no t'ho impedeix, però convé tenir clar què es connecta i què no: no existeix cap integració directa entre Summit i TrainingPeaks. Summit llegeix sortides de Strava i de Hammerhead Karoo, i exporta entrenaments al Karoo i, via intervals.icu, a Garmin, Zwift i MyWhoosh. Si el teu entrenador viu a TrainingPeaks, allà és on continuareu treballant tots dos; Summit és el que llegeix la teva recuperació i decideix el teu dia.</p>
+          <p>Res no t'ho impedeix, però convé tenir clar què es connecta i què no: no existeix cap integració directa entre Summit i TrainingPeaks. Summit llegeix sortides de Strava i de Hammerhead Karoo, i exporta entrenaments al Karoo i, via intervals.icu, a Garmin, Zwift i MyWhoosh. Si el teu entrenador viu a TrainingPeaks, allà és on continuareu treballant tots dos: Summit no té costat d'entrenador on endollar-se i res no hi està pensat perquè ho vegi una segona persona.</p>
 
           <h3>Summit substitueix un entrenador?</h3>
-          <p>No, i no es ven com a tal. Un entrenador sap coses que cap motor no té: què ha passat a la teva feina aquest mes, com competeixes, què et fa por. Summit està fet per a ciclistes que no en contractaran cap, i funciona al costat d'un entrenador, no en lloc seu. Tampoc no és una IA ni un chatbot: el motor és determinista i cada decisió es traça fins a una regla de ciència de l'esport codificada aplicada a les teves pròpies dades.</p>
+          <p>No, i no es ven com a tal. Un entrenador sap coses que cap motor no té: què ha passat a la teva feina aquest mes, com competeixes, què et fa por. El que el motor de Summit està programat per fer és prendre les decisions que prendria un entrenador —quan carregar, quan recuperar, quan descarregar— a partir de les teves pròpies dades, cada matí. Així que no substitueix un entrenador del tot, i no té costat d'entrenador en absolut: ni llista d'esportistes, ni calendari compartit, ni res on pugui escriure una segona persona. Tampoc no és una IA ni un chatbot: el motor és determinista i cada decisió es traça fins a una regla de ciència de l'esport codificada aplicada a les teves pròpies dades.</p>
 
           <h3>Quant costa TrainingPeaks el 2026?</h3>
           <p>Segons els preus publicats el 5 d'agost del 2026, TrainingPeaks Premium per a esportistes costa uns 134,99 $ l'any amb facturació anual, o uns 19,95 $ al mes amb facturació mensual, i hi ha un pla Basic gratuït que TrainingPeaks descriu com a registre d'entrenaments, sincronització de dispositius i planificació limitada. Coach Edition arrenca a 21,99 $ al mes. Els preus canvien i varien, així que la referència és <a href="https://www.trainingpeaks.com/pricing/" target="_blank" rel="noopener">trainingpeaks.com/pricing</a>. Summit no publica preus propis: Apple fixa el preu de Premium a cada botiga, així que la fitxa de l'App Store és l'única font honesta.</p>

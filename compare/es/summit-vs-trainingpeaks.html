@@ -69,7 +69,7 @@
           { "@type": "Thing", "name": "Project Summit" },
           { "@type": "Thing", "name": "TrainingPeaks" }
         ],
-        "wordCount": 2720
+        "wordCount": 2980
       },
       {
         "@type": "FAQPage",
@@ -87,7 +87,7 @@
             "name": "¿Puedo usar Summit y TrainingPeaks a la vez?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Nada te lo impide, pero conviene tener claro qué se conecta y qué no: no existe ninguna integración directa entre Summit y TrainingPeaks. Summit lee salidas de Strava y de Hammerhead Karoo, y exporta entrenamientos al Karoo y, vía intervals.icu, a Garmin, Zwift y MyWhoosh. Si tu entrenador vive en TrainingPeaks, ahí es donde seguiréis trabajando los dos; Summit es lo que lee tu recuperación y decide tu día."
+              "text": "Nada te lo impide, pero conviene tener claro qué se conecta y qué no: no existe ninguna integración directa entre Summit y TrainingPeaks. Summit lee salidas de Strava y de Hammerhead Karoo, y exporta entrenamientos al Karoo y, vía intervals.icu, a Garmin, Zwift y MyWhoosh. Si tu entrenador vive en TrainingPeaks, ahí es donde seguiréis trabajando los dos: Summit no tiene lado de entrenador al que enchufarse y nada en él está pensado para que lo vea una segunda persona."
             }
           },
           {
@@ -95,7 +95,7 @@
             "name": "¿Summit sustituye a un entrenador?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, y no se vende como tal. Un entrenador sabe cosas que ningún motor tiene: qué ha pasado en tu trabajo este mes, cómo compites, qué te da miedo. Summit está hecho para ciclistas que no van a contratar a uno, y funciona al lado de un entrenador, no en su lugar. Tampoco es una IA ni un chatbot: el motor es determinista y cada decisión se traza hasta una regla de ciencia del deporte codificada aplicada a tus propios datos."
+              "text": "No, y no se vende como tal. Un entrenador sabe cosas que ningún motor tiene: qué ha pasado en tu trabajo este mes, cómo compites, qué te da miedo. Lo que el motor de Summit está programado para hacer es tomar las decisiones que tomaría un entrenador —cuándo cargar, cuándo recuperar, cuándo descargar— a partir de tus propios datos, cada mañana. Así que no sustituye a un entrenador del todo, y no tiene lado de entrenador en absoluto: ni lista de deportistas, ni calendario compartido, ni nada donde pueda escribir una segunda persona. Tampoco es una IA ni un chatbot: el motor es determinista y cada decisión se traza hasta una regla de ciencia del deporte codificada aplicada a tus propios datos."
             }
           },
           {
@@ -253,7 +253,7 @@
 
           <div class="callout">
             <p class="callout-label">En resumen</p>
-            <p>TrainingPeaks enseña; Summit decide. TrainingPeaks te da —a ti y al entrenador con quien trabajes— la visión más profunda de tu entrenamiento que hay en el deporte, y deja la decisión en manos de una persona. Summit genera el plan y después lo reescribe alrededor de tu recuperación y de las horas que de verdad tienes esta semana, de forma determinista, sin chatbot y sin IA por ninguna parte. Si tienes entrenador, TrainingPeaks sigue siendo el centro y Summit se pone al lado.</p>
+            <p>TrainingPeaks enseña; Summit decide. TrainingPeaks te da —a ti y al entrenador con quien trabajes— la visión más profunda de tu entrenamiento que hay en el deporte, y deja la decisión en manos de una persona. Summit genera el plan y después lo reescribe alrededor de tu recuperación y de las horas que de verdad tienes esta semana, de forma determinista, sin chatbot y sin IA por ninguna parte. Si tienes entrenador, TrainingPeaks sigue siendo el centro: Summit no tiene lado de entrenador en absoluto.</p>
           </div>
 
           <h2>De un vistazo</h2>
@@ -290,8 +290,8 @@
                 </tr>
                 <tr>
                   <th scope="row">Vocabulario de carga</th>
-                  <td class="col-us">CTL / ATL / TSB, eFTP, potencia crítica, tu curva de potencia (Premium)</td>
-                  <td>El Performance Management Chart: la versión en la que piensan los entrenadores</td>
+                  <td class="col-us">El mismo modelo del PMC —CTL / ATL / TSB— dibujado en la pestaña de Entrenamiento, más eFTP, potencia crítica y tu curva de potencia (Premium)</td>
+                  <td>El Performance Management Chart que inventó: la implementación de referencia que lee todo el deporte</td>
                 </tr>
                 <tr>
                   <th scope="row">Recuperación y sueño</th>
@@ -332,7 +332,7 @@
 
           <h2>El vocabulario es el mismo, y Summit lo habla</h2>
 
-          <p>Que «el motor decida» no significa que los números se escondan. Summit está construido sobre el mismo modelo de carga que el deporte ya acordó: carga crónica y aguda y la forma que resulta de ambas (CTL, ATL, TSB), más eFTP, potencia crítica, tu curva de potencia y el análisis por actividad de lo que la sesión fue realmente, no de lo dura que se sintió. Eso es lo que te dice si vas a llegar en pico el fin de semana correcto o si vas a llegar plano, y es Premium.</p>
+          <p>Que «el motor decida» no significa que los números se escondan, y esto conviene decirlo sin rodeos porque la suposición va en sentido contrario: <strong>Summit también calcula y dibuja el Performance Management Chart</strong>. Las mismas tres curvas —carga crónica, carga aguda y la forma que resulta de ambas (CTL, ATL, TSB)— están dibujadas en la pestaña de Entrenamiento de Summit, junto a eFTP, potencia crítica, tu curva de potencia y el análisis por actividad de lo que la sesión fue realmente, no de lo dura que se sintió. Eso es lo que te dice si vas a llegar en pico el fin de semana correcto o si vas a llegar plano, y es Premium. La diferencia entre estos dos productos nunca fue quién tiene el gráfico. Es qué pasa cuando el gráfico dice algo.</p>
 
           <p>Y tiene que salir de la app. Summit lee salidas de Strava y de Hammerhead Karoo, y exporta entrenamientos al Karoo y —vía intervals.icu— a Garmin, Zwift y MyWhoosh, para que la sesión que escribió el motor esté en el ciclocomputador el sábado por la mañana. Exportar también es Premium. La nutrición de día de carrera está en la app; la nutrición del día a día que sigue tu entrenamiento está en la hoja de ruta, no publicada.</p>
 
@@ -340,7 +340,7 @@
 
           <h2>Lo que mueve el plan es tu recuperación — y esa parte es gratis</h2>
 
-          <p>Summit lee la variabilidad cardíaca, la frecuencia cardíaca en reposo y el sueño de Salud de Apple. Lo que sea que los haya escrito ahí es el sensor: un Apple Watch, un Garmin, un anillo Oura o cualquier otra cosa que escriba en Salud. Vale la pena ser preciso con una cosa, porque se da por supuesta: <strong>no existe una app de Summit para el reloj</strong>. Nada que instalar en el reloj, ninguna complicación, ninguna pantalla en la muñeca. El reloj mide; el iPhone lee. Y el Apple Watch no es obligatorio: sirve cualquier dispositivo que escriba esas métricas.</p>
+          <p>Summit lee de Salud de Apple, así que funciona con lo que sea que escriba ahí. Vale la pena ser preciso con dos cosas, porque las dos se dan por supuestas. La primera: <strong>no existe una app de Summit para el reloj</strong>. Nada que instalar en el reloj, ninguna complicación, ninguna pantalla en la muñeca. El reloj mide; el iPhone lee. La segunda: el Apple Watch no es obligatorio de verdad, pero en la práctica es el único dispositivo que escribe el conjunto completo que Summit usa — variabilidad cardíaca, frecuencia cardíaca en reposo, sueño, frecuencia respiratoria, oxígeno en sangre y temperatura de la muñeca durante la noche. Un Garmin o un anillo Oura te dan una puntuación de recuperación a partir de lo que sí escriben; el Apple Watch te da la imagen completa.</p>
 
           <p>Cuatro cosas no cuestan nada en Summit y no está previsto que empiecen a costarlo:</p>
 
@@ -363,7 +363,7 @@
 
           <p>Summit no tiene lado de entrenador. Ni lista de deportistas, ni bandeja de entrada, ni forma de que otra persona escriba en tu calendario y vea qué hiciste con ello. No es un olvido que se arregle el trimestre que viene: es otro producto. Un entrenador sabe cosas que ningún motor tiene —qué ha pasado en tu trabajo este mes, cómo compites, qué te da miedo en una bajada— y quien tenga uno debería quedarse con la plataforma en la que ese entrenador trabaja.</p>
 
-          <p>Por eso el marco útil no es «en lugar de». Es: Summit está hecho para el ciclista que nunca iba a contratar a un entrenador y que lleva tiempo entrenándose solo a partir de un gráfico y un plan descargado. Si eso te describe, lo que te falta no son más datos. Es alguien que mueva el jueves.</p>
+          <p>Así que el marco honesto no es «en lugar de» ni «al lado de». Summit está hecho para el ciclista que nunca iba a contratar a un entrenador y que lleva tiempo entrenándose solo a partir de un gráfico y un plan descargado. Lo que su motor está programado para hacer es tomar las decisiones que tomaría un entrenador —cuándo cargar, cuándo aflojar, cuándo descargar— a partir de tus propios números, cada mañana. Eso no es todo lo que es un entrenador. Es la parte que llevas tiempo haciendo mal a las 22:40. Si eso te describe, lo que te falta no son más datos. Es alguien que mueva el jueves.</p>
 
           <h2>Dónde gana TrainingPeaks</h2>
 
@@ -378,8 +378,8 @@
           <h3>Integraciones con años de rodaje detrás</h3>
           <p>Dispositivos, rodillos y herramientas de terceros llevan muchísimo tiempo sincronizando con TrainingPeaks, y esa madurez vale algo muy concreto: los casos raros ya están encontrados. En julio de 2026 Garmin anunció la compra de TrainingPeaks y TrainHeroic (<a href="https://www.garmin.com/en-US/newsroom/press-release/corporate/garmin-acquires-trainingpeaks-and-trainheroic-leading-endurance-and-strength-training-platforms-for-athletes-and-coaches/" target="_blank" rel="noopener">sala de prensa de Garmin, 22 de julio de 2026</a>), lo cual, si algo apunta, es a que ese lado se estreche más, no menos.</p>
 
-          <h3>El PMC es en lo que piensan los entrenadores</h3>
-          <p>Summit calcula el mismo modelo de carga, pero el Performance Management Chart tal y como lo dibuja TrainingPeaks es la implementación de referencia: la imagen que todo el mundo en la conversación ya ha visto. Si hablas de entrenamiento con un entrenador, con un club o en un foro, vas a estar hablando de ese gráfico. Hablar el dialecto estándar con fluidez es una ventaja real.</p>
+          <h3>Inventó el PMC, y el PMC es la lengua común</h3>
+          <p>Los dos productos calculan CTL, ATL y TSB, y los dos los dibujan — así que esto no es una función que TrainingPeaks tenga y a Summit le falte. Lo que TrainingPeaks tiene es la autoría. Creó el Performance Management Chart y lo popularizó hasta convertirlo en la manera misma en que el entrenamiento de resistencia habla de la carga, y su versión es la implementación de referencia, la imagen que todo el mundo en la conversación ya ha visto. Habla de entrenamiento con un entrenador, con un club o en un foro y estarás hablando de ese gráfico, y con esas palabras. Ser dueño del dialecto estándar es una ventaja real y duradera, y calcular los mismos números no se la quita.</p>
 
           <h3>Multideporte</h3>
           <p>TrainingPeaks cubre ciclismo, carrera, triatlón, remo y más (<a href="https://www.trainingpeaks.com/athlete-features/" target="_blank" rel="noopener">trainingpeaks.com/athlete-features/</a>, comprobado el 5 de agosto de 2026), y un solo calendario con un nado, una carrera a pie y una salida es exactamente lo que necesita un triatleta. Summit es solo ciclismo, a propósito y por bastante tiempo. Si tu semana no es sobre todo bici, esta comparación ya se ha acabado.</p>
@@ -400,10 +400,10 @@
           <p>Solo para uno de los dos trabajos que hace TrainingPeaks. Si te entrenas tú y lo que quieres es un plan de ciclismo que decida solo y se reorganice cuando cambian tu semana o tu recuperación, eso lo hace Summit y es justo lo que TrainingPeaks deja a propósito en manos de una persona. Si lo que quieres es el espacio de trabajo que compartes con un entrenador, el mercado de planes o un calendario multideporte, Summit no sustituye nada de eso.</p>
 
           <h3>¿Puedo usar Summit y TrainingPeaks a la vez?</h3>
-          <p>Nada te lo impide, pero conviene tener claro qué se conecta y qué no: no existe ninguna integración directa entre Summit y TrainingPeaks. Summit lee salidas de Strava y de Hammerhead Karoo, y exporta entrenamientos al Karoo y, vía intervals.icu, a Garmin, Zwift y MyWhoosh. Si tu entrenador vive en TrainingPeaks, ahí es donde seguiréis trabajando los dos; Summit es lo que lee tu recuperación y decide tu día.</p>
+          <p>Nada te lo impide, pero conviene tener claro qué se conecta y qué no: no existe ninguna integración directa entre Summit y TrainingPeaks. Summit lee salidas de Strava y de Hammerhead Karoo, y exporta entrenamientos al Karoo y, vía intervals.icu, a Garmin, Zwift y MyWhoosh. Si tu entrenador vive en TrainingPeaks, ahí es donde seguiréis trabajando los dos: Summit no tiene lado de entrenador al que enchufarse y nada en él está pensado para que lo vea una segunda persona.</p>
 
           <h3>¿Summit sustituye a un entrenador?</h3>
-          <p>No, y no se vende como tal. Un entrenador sabe cosas que ningún motor tiene: qué ha pasado en tu trabajo este mes, cómo compites, qué te da miedo. Summit está hecho para ciclistas que no van a contratar a uno, y funciona al lado de un entrenador, no en su lugar. Tampoco es una IA ni un chatbot: el motor es determinista y cada decisión se traza hasta una regla de ciencia del deporte codificada aplicada a tus propios datos.</p>
+          <p>No, y no se vende como tal. Un entrenador sabe cosas que ningún motor tiene: qué ha pasado en tu trabajo este mes, cómo compites, qué te da miedo. Lo que el motor de Summit está programado para hacer es tomar las decisiones que tomaría un entrenador —cuándo cargar, cuándo recuperar, cuándo descargar— a partir de tus propios datos, cada mañana. Así que no sustituye a un entrenador del todo, y no tiene lado de entrenador en absoluto: ni lista de deportistas, ni calendario compartido, ni nada donde pueda escribir una segunda persona. Tampoco es una IA ni un chatbot: el motor es determinista y cada decisión se traza hasta una regla de ciencia del deporte codificada aplicada a tus propios datos.</p>
 
           <h3>¿Cuánto cuesta TrainingPeaks en 2026?</h3>
           <p>Según los precios publicados el 5 de agosto de 2026, TrainingPeaks Premium para deportistas cuesta unos 134,99 $ al año con facturación anual, o unos 19,95 $ al mes con facturación mensual, y existe un plan Basic gratuito que TrainingPeaks describe como registro de entrenamientos, sincronización de dispositivos y planificación limitada. Coach Edition arranca en 21,99 $ al mes. Los precios cambian y varían, así que la referencia es <a href="https://www.trainingpeaks.com/pricing/" target="_blank" rel="noopener">trainingpeaks.com/pricing</a>. Summit no publica precios propios: Apple fija el precio de Premium en cada tienda, así que la ficha de la App Store es la única fuente honesta.</p>

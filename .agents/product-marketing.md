@@ -1,7 +1,7 @@
 # Product Marketing Context
 
-**Document version:** v3
-**Last updated:** 2026-08-04
+**Document version:** v4
+**Last updated:** 2026-08-06
 
 > Shared context for every marketing skill. Everything here is sourced from the
 > two repos (`Project-Summit-Website`, `Project-Summit-MVP`), not invented.
@@ -16,7 +16,7 @@
 | Constraint | Why | Source of truth |
 |---|---|---|
 | **There is no Apple Watch app in the shipped build.** Never imply a watch app, complication, or on-wrist surface. The watch is a **sensor**, read through Apple Health. | `FeatureFlags.watchAppEnabled` is `false` in Release and `Config/Release.xcconfig` strips `SummitWatch.app` from the IPA (staged rollout). | `ios/App/SummitSport/Helpers/FeatureFlags.swift:45-54`, ADR-2026-07-22 |
-| **Apple Watch is not required.** Any wearable writing HRV/sleep to Apple Health works. The watch framing is an ICP filter, not a requirement. | `faq.q6` states this publicly. | `faq.html` |
+| **Apple Watch is not required — but do not claim parity.** Any wearable writing to Apple Health works, and `faq.q6` says so publicly. In practice the Apple Watch is the **only** device that writes the full set Summit reads (HRV, resting HR, sleep, respiratory rate, blood oxygen and `appleSleepingWristTemperature`, which is Apple-Watch-only). Another wearable gives a score from a partial picture. Never write "any wearable works" unqualified. | `faq.q6` states the requirement publicly; `HealthKitTypes.swift` lists what is actually read. | `faq.html`, `ios/App/SummitSport/Core/HealthKit/HealthKitTypes.swift` |
 | **Free tier = everything not behind one of the 17 `EntitlementGate` cases** — and that is a lot more than this doc used to claim (see "Free tier, verified" below). Never list a Premium feature as free, and never shrink the free list either: understating it throws away the product's strongest differentiator. | `gates(for:)` returns what a tier **unlocks**, so `case .free: return []` means Free unlocks none of the 17 gates — *not* that nothing is gated. Entitlement is the tier comparison in `SubscriptionManager.isEntitled`. | `Core/Subscriptions/EntitlementGate.swift:338-368`, `Core/Subscriptions/SubscriptionManager.swift:184-186` |
 | **"Free forever" must stay visibly distinct from the 14-day Premium trial.** Never blur them. | Both exist; conflating them is the single most likely false claim. | `Features/Subscriptions/PaywallView.swift`, `free.note`, `faq.q12`/`q16` |
 | **Never call the product "AI" or "a chatbot"** — and in blog/long-form use "the engine" / "the algorithm". The site's own hero simile ("a coach in the shape of an algorithm") is deliberate and allowed; a flat claim of "AI coach" is not. | Positioning is explicitly anti-chatbot; `faq.q2` answers this head-on. | `faq.q2`, `docs/blog.md`, `index.html` |
@@ -32,6 +32,8 @@ Audited directly in `Project-Summit-MVP` at MARKETING_VERSION 1.4.1, call site b
 call site. This supersedes the narrower list this document carried until now,
 which was **materially under-inclusive** — the site has been underselling the one
 thing competitors cannot match.
+
+**Device note (applies to everything below):** all of it is read out of Apple Health. Any wearable that writes there works, but only the Apple Watch writes the complete metric set — a different wearable produces the same screens from a partial picture.
 
 **Free, confirmed ungated:**
 - Daily recovery score, its detail screen and the **30-day recovery trend**
@@ -152,7 +154,7 @@ widget.
 | Objection | Response |
 |---|---|
 | "Is this just another AI wrapper?" | No LLM, no chatbot, no generative content. A deterministic algorithmic system following codified sports-science rules — traceable, predictable, explainable. (`faq.q2`) |
-| "Do I need an Apple Watch?" | No. Any wearable writing HRV/sleep to Apple Health works. Apple Watch currently gives the most consistent data, but it is not required. (`faq.q6`) |
+| "Do I need an Apple Watch?" | No — Summit reads Apple Health, so anything writing there works. Be precise, though: the Apple Watch is the only device that writes the full set Summit uses (HRV, resting HR, sleep, respiratory rate, blood oxygen, overnight wrist temperature). Another wearable gives a recovery score from what it does write; the Apple Watch gives the complete picture. (`faq.q6`) |
 | "I already pay for TrainingPeaks / Whoop / Strava." | Those describe; Summit decides. And the recovery layer that Whoop charges monthly for is Summit's free tier. |
 | "Free tier is bait for a trial that expires." | It is not a trial. Recovery score, sleep score + breakdown, trend and widgets stay free for as long as you use the app. The 14-day trial is a separate thing, for Premium. |
 | "Another app to add to my stack." | It replaces the synthesis layer across 3–5 apps; rides come in from Strava automatically and sessions go out to your head unit. |
