@@ -764,6 +764,27 @@ body[data-vibe="product"] { --content-max: 1120px; --wash-opacity: 0.24; --secti
   .footer-bottom { padding-left: 24px; padding-right: 24px; flex-direction: column; align-items: flex-start; }
   .cta-aside { align-items: flex-start; }
 }
+/* Narrow phones (iPhone SE and down). The header is the one bar that can't
+   reflow: .nav-brand and .nav-tools both refuse to shrink, so below ~370px
+   their intrinsic widths plus the nav gap and padding exceed the viewport and
+   the whole document scrolls sideways. Nothing is dropped here — the row is
+   just tightened until it fits. Must stay AFTER the 640px block above, which
+   sets the .nav padding this overrides. */
+@media (max-width: 380px) {
+  .nav { padding-left: 16px; padding-right: 16px; gap: 12px; }
+  .nav-name { font-size: 20px; }
+  .nav-logo { width: 26px; height: 26px; }
+  .nav-tools { gap: 8px; }
+  .lang-selected { padding: 6px 8px; gap: 4px; }
+  .theme-toggle { width: 34px; height: 34px; }
+  .nav-hamburger { width: 34px; height: 34px; }
+}
+/* Below any phone screen (the Galaxy Fold cover display reports 280px) even
+   the tightened row is ~5px too wide. The wordmark goes and the logo carries
+   the brand alone — it is still a link to the home page. */
+@media (max-width: 300px) {
+  .nav-name { display: none; }
+}
 
 /* =====================================================================
    COOKIE CONSENT BANNER
