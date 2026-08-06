@@ -86,6 +86,11 @@ const SECTIONS = [
         blurb: 'Side-by-side comparisons against the tools cyclists weigh Summit against, each conceding what the other does better and dating every competitor fact.',
       },
       {
+        path: '/compare/adaptive-cycling-training-apps.html',
+        label: 'Adaptive cycling training apps: what actually adapts, and to what',
+        blurb: 'Seven adaptive training platforms compared on what each one adapts to and whether the plan changes without being approved: TrainerRoad (adapts to your training; $21.99/month or $209.99/year), JOIN Cycling (adapts daily on a self-reported readiness score), Project Summit (recovery measured from the wearable via Apple Health, applied to the session automatically, plus race-day fuelling), Xert (test-free physiology; $14.99/month or $99.95/year), Stride (the widest wearable recovery ingestion, but nothing changes until the athlete applies the proposal), Athletica (the most multi-sport, and its own pages disagree on whether HRV changes training load or only advises) and Intervals.icu (free, and the broadest data ingestion here). Every figure is dated 6 August 2026 and taken from the vendor’s own pages; four questions those pages do not answer are stated as unknown rather than as limitations. Summit publishes no prices of its own.',
+      },
+      {
         path: '/compare/summit-vs-whoop.html',
         label: 'Summit vs Whoop: a recovery score only counts if something changes',
         blurb: 'Whoop measures recovery continuously on its own hardware; Summit reads the wearable you already own through Apple Health and turns the same physiology into a cycling session. Includes what Whoop does better and what each one costs.',
