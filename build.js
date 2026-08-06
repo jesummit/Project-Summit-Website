@@ -87,22 +87,28 @@ const BLOG_PAGES = {
 // different docs) and tools/check-links.js globs them as separate directory
 // sets; folding them together would make "the blog" mean two things.
 //
-// The 'compare' key matches no $$token$$ in partials/header.html on purpose:
-// the cluster is not in the site nav, so no nav item should light up. Add a
-// $$compare$$ token to the partial the day it earns a nav slot.
+// The 'compare' key lights up $$compare$$ in the header's "More" dropdown and
+// mobile menu — the cluster earned a nav slot on 2026-08-06, once it had five
+// pages. Before that it was footer-only and the token did not exist.
 const COMPARE_PAGES = {
   'compare/index.html': 'compare',
   'compare/summit-vs-whoop.html': 'compare',
   'compare/summit-vs-trainingpeaks.html': 'compare',
   'compare/summit-vs-strava.html': 'compare',
+  'compare/whoop-alternatives-no-subscription.html': 'compare',
+  'compare/free-hrv-recovery-apps-iphone.html': 'compare',
   'compare/es/index.html': 'compare',
   'compare/es/summit-vs-whoop.html': 'compare',
   'compare/es/summit-vs-trainingpeaks.html': 'compare',
   'compare/es/summit-vs-strava.html': 'compare',
+  'compare/es/whoop-alternatives-no-subscription.html': 'compare',
+  'compare/es/free-hrv-recovery-apps-iphone.html': 'compare',
   'compare/ca/index.html': 'compare',
   'compare/ca/summit-vs-whoop.html': 'compare',
   'compare/ca/summit-vs-trainingpeaks.html': 'compare',
   'compare/ca/summit-vs-strava.html': 'compare',
+  'compare/ca/whoop-alternatives-no-subscription.html': 'compare',
+  'compare/ca/free-hrv-recovery-apps-iphone.html': 'compare',
 };
 
 function renderHeader(activeKey) {

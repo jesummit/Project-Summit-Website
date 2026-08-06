@@ -97,6 +97,16 @@ const SECTIONS = [
         label: 'Summit vs Strava: one records the ride, the other decides it',
         blurb: 'Complementary rather than competing: Strava records, keeps and shares the ride, and Summit imports those rides to decide what today’s session should be. Includes what Strava does better and what each one costs.',
       },
+      {
+        path: '/compare/whoop-alternatives-no-subscription.html',
+        label: 'Whoop alternatives with no subscription: six that work',
+        blurb: 'A ranked buyer’s guide to getting a daily recovery score with no recurring fee, because Whoop’s membership includes the strap: Garmin Body Battery, Apple Watch Vitals, Polar Nightly Recharge, what an Oura Ring still shows without a membership, Summit on a wearable you already own, and HRV4Training. Every third-party figure is dated and linked to the vendor’s own page.',
+      },
+      {
+        path: '/compare/free-hrv-recovery-apps-iphone.html',
+        label: 'Free HRV and recovery apps for iPhone: what "free" actually means',
+        blurb: 'What "free" means on the App Store — a download price, which says nothing about whether the daily score is behind a subscription — and seven iPhone apps whose publisher and download price were verified against Apple’s public data: Apple Health and Vitals, Project Summit, Athlytic, Training Today, Gentler Streak, Kubios HRV and Elite HRV.',
+      },
     ],
   },
   {
