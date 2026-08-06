@@ -107,6 +107,8 @@ tools/check-screenshots.js CI/local check: each screenshot locale dir is complet
 compare/**                 comparison cluster (hub + `summit-vs-whoop`), en/es/ca —
                            hand-written prose like the blog, NOT dictionary-generated
 docs/cloudflare-security.md Cloudflare headers/CSP + SPF/DKIM/DMARC guide
+docs/adr/                  decision records — read ADR-2026-08-06 before writing
+                           any product or competitor claim
 .github/workflows/         build-shell (auto-rebuild) + verify (quality gate)
 infra/cloudflare-worker.js Cloudflare Worker: /ingest (PostHog) + /appstore-rating + /blog-subscribe + /unsubscribe
 robots.txt, sitemap.xml    SEO (indexable pages only, incl. es//ca/ with hreflang)
