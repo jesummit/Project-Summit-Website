@@ -268,6 +268,9 @@
       { trigger: '.amb-how',   items: ['.amb-how-label', '.step'] },
       { trigger: '.amb-cta',   items: ['.amb-cta-inner'] }
     ],
+    changelog: [
+      { each: '.release', items: ['.release-head', '.release-group', '.release-closing'] }
+    ],
     pricing: [
       { trigger: '.plans-grid',  items: ['.plan'] },
       { trigger: '.plans-notes', items: ['.plans-note-title', '.plans-note-body'] },

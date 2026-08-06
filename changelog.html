@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- PostHog Analytics -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // PostHog is initialised lazily from assets/js/consent.js once the visitor
+    // grants consent; until then the snippet above is just a queueing stub.
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+  <title>Changelog — Project Summit</title>
+  <meta name="description" content="Every Summit release and what shipped in it, version by version, since the app reached the App Store." />
+  <link rel="canonical" href="https://projectsummit.app/changelog.html" />
+  <link rel="alternate" hreflang="en" href="https://projectsummit.app/changelog.html" />
+  <link rel="alternate" hreflang="es" href="https://projectsummit.app/es/changelog.html" />
+  <link rel="alternate" hreflang="ca" href="https://projectsummit.app/ca/changelog.html" />
+  <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/changelog.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://projectsummit.app/changelog.html" />
+  <meta property="og:title" content="Changelog — Project Summit" />
+  <meta property="og:description" content="Every Summit release and what shipped in it, version by version, since the app reached the App Store." />
+  <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Changelog — Project Summit" />
+  <meta name="twitter:description" content="Every Summit release and what shipped in it, version by version, since the app reached the App Store." />
+  <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://projectsummit.app/#organization",
+        "name": "Project Summit",
+        "url": "https://projectsummit.app/",
+        "logo": { "@type": "ImageObject", "url": "https://projectsummit.app/assets/img/summit-logo.png" },
+        "founder": { "@type": "Person", "name": "Jordi Espanyol" },
+        "sameAs": ["https://instagram.com/projectsummit.app", "https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://projectsummit.app/#website",
+        "url": "https://projectsummit.app/",
+        "name": "Project Summit",
+        "publisher": { "@id": "https://projectsummit.app/#organization" },
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://projectsummit.app/changelog.html#webpage",
+        "url": "https://projectsummit.app/changelog.html",
+        "name": "Changelog — Project Summit",
+        "description": "Every Summit release and what shipped in it, version by version, since the app reached the App Store.",
+        "isPartOf": { "@id": "https://projectsummit.app/#website" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://projectsummit.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Changelog", "item": "https://projectsummit.app/changelog.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/summit.css" />
+
+  <style>
+    /* ── Changelog page — scoped component styles (tokens only, no literal colors).
+         Same visual language as the roadmap timeline: one vertical rule, a dot
+         per entry, monospace meta. The entries themselves are GENERATED into
+         #changelog-entries by build.js from tools/changelog-content.js — do not
+         hand-edit them here. ── */
+
+    .changelog { position: relative; z-index: 1; padding-top: 64px; padding-bottom: 96px; }
+
+    /* Timeline vertical rule (matches .timeline on the roadmap) */
+    .changelog::before {
+      content: '';
+      position: absolute;
+      left: calc(48px + 15px);
+      top: 64px; bottom: 96px;
+      width: 1px;
+      background: var(--ink-hair);
+      pointer-events: none;
+    }
+
+    .release { position: relative; padding-left: 56px; margin-bottom: 60px; }
+    .release:last-child { margin-bottom: 0; }
+
+    .release-dot {
+      position: absolute;
+      left: 7px; top: 9px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--ink-hair);
+    }
+    /* Newest release — the one that answers "is this thing still alive?" */
+    .release--latest .release-dot { background: var(--accent); border-color: var(--accent); }
+
+    .release-head {
+      display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .release-version {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .release-date {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+    }
+
+    .release-group { margin-bottom: 22px; }
+    .release-group:last-child { margin-bottom: 0; }
+
+    .release-label {
+      font-family: var(--font-mono);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    /* Fixes are the quieter half of a release note */
+    .release-group--fixed .release-label { color: var(--ink-faint); }
+
+    .release-list { list-style: none; padding: 0; margin: 0; max-width: 660px; }
+    .release-list li {
+      position: relative;
+      padding-left: 20px; margin-bottom: 10px;
+      font-size: 14px; line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .release-list li:last-child { margin-bottom: 0; }
+    .release-list li::before {
+      content: "–"; position: absolute; left: 0;
+      color: var(--accent); font-weight: 700;
+    }
+    .release-group--fixed .release-list li::before { color: var(--ink-faint); }
+
+    .release-closing {
+      margin-top: 20px;
+      font-size: 13px; line-height: 1.6;
+      color: var(--ink-faint);
+      max-width: 660px;
+    }
+
+    @media (max-width: 640px) {
+      .changelog { padding-left: 24px; padding-right: 24px; }
+      .changelog::before { left: calc(24px + 15px); }
+    }
+  </style>
+</head>
+
+<body data-vibe="product" data-page="changelog" data-alt-en="/changelog.html" data-alt-es="/es/changelog.html" data-alt-ca="/ca/changelog.html">
+
+<header class="site-header">
+  <div class="nav-progress" id="nav-progress"></div>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
+      <span class="nav-name">Summit<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="blog/index.html" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+    <div class="nav-more" id="nav-more">
+      <button class="nav-more-btn" id="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+        <span data-i18n="nav.more">More</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-more-dropdown">
+        <a href="pricing.html" class="nav-more-option" data-i18n="nav.pricing">Plans</a>
+        <a href="compare/index.html" class="nav-more-option" data-i18n="nav.compare">Compare</a>
+        <a href="changelog.html" class="nav-more-option active" data-i18n="nav.changelog">Changelog</a>
+        <a href="about.html" class="nav-more-option" data-i18n="nav.about">About</a>
+        <a href="ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
+        <a href="terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
+        <a href="privacy-policy.html" class="nav-more-option" data-i18n="nav.privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="nav-tools">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-selected" id="lang-selected-btn" aria-label="Language" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-label">ES</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en"><span class="fi fi-gb"></span> English</button>
+          <button class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</button>
+          <button class="lang-option" data-lang="ca"><span class="fi fi-es-ct"></span> Català</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="nav" class="appstore appstore--sm appstore--white" aria-label="Download on the App Store"><img class="appstore-img" alt="Download on the App Store" src="assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+    <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="blog/index.html" data-i18n="nav.blog">Blog</a>
+    <a href="pricing.html" data-i18n="nav.pricing">Plans</a>
+    <a href="compare/index.html" data-i18n="nav.compare">Compare</a>
+    <a href="changelog.html" class="active" data-i18n="nav.changelog">Changelog</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
+    <a href="terms.html" data-i18n="nav.terms">Terms</a>
+    <a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
+    <div class="nav-mobile-foot">
+      <a href="https://apps.apple.com/app/apple-store/id6754172654?pt=128228195&amp;ct=web&amp;mt=8" data-source="nav_mobile" class="appstore appstore--white"><img class="appstore-img" alt="Download on the App Store" src="assets/img/appstore-badges/Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg" /></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ====================== PAGE HEADER ====================== -->
+<div class="page-header">
+  <div class="wrap">
+    <p class="page-eyebrow" data-i18n="changelog.eyebrow">Every version, in the open</p>
+    <h1 class="page-title"><span data-i18n="changelog.title.main">Everything we've</span> <em data-i18n="changelog.title.drop">shipped so far.</em></h1>
+    <p class="page-sub" data-i18n="changelog.sub">Every Summit release since launch, and what changed in each one. Updated whenever a new version reaches the App Store.</p>
+  </div>
+</div>
+
+<!-- ====================== RELEASES ======================
+     GENERATED — build.js fills #changelog-entries from tools/changelog-content.js
+     for this page's locale (English here, translated in es/ and ca/). Add a new
+     release there and run `npm run build`; never hand-edit the markup below. -->
+<div class="changelog wrap">
+  <div id="changelog-entries">
+    <article class="release release--latest" id="v1-4-0">
+      <span class="release-dot" aria-hidden="true"></span>
+      <div class="release-head">
+        <h2 class="release-version">1.4.0</h2>
+        <time class="release-date" datetime="2026-07-29">29 July 2026</time>
+      </div>
+      <section class="release-group release-group--new">
+        <h3 class="release-label">New</h3>
+        <ul class="release-list">
+          <li>New sleep scoring engine, with an expanded detail view: comparison against your historical median, a sleep debt chart, stages and rhythm.</li>
+          <li>Recovery, Sleep and Load are now three separate cards in Today. The Recovery detail shows where today's value falls within your personal range, and coach insights read your trend over the past month, not just today's value.</li>
+          <li>New optional notifications, each with its own toggle in Settings: disconnected integration, fitness improvement, race reminder, weekly summary, and an ease-off alert after several days of low recovery.</li>
+        </ul>
+      </section>
+      <section class="release-group release-group--fixed">
+        <h3 class="release-label">Fixed</h3>
+        <ul class="release-list">
+          <li>A double count of heart rate and HRV between Sleep and Recovery was distorting both scores.</li>
+          <li>Elevation, power or HR data was missing on some activities due to a caching issue.</li>
+          <li>Karoo activities without a power meter could lose the rest of their data (HR, elevation, speed, cadence).</li>
+          <li>A second recovery measurement in the morning could change your workout for no real reason.</li>
+          <li>A planned workout could change its duration or intensity on the same day.</li>
+        </ul>
+      </section>
+      <p class="release-closing">Other minor fixes and stability improvements.</p>
+    </article>
+    <article class="release" id="v1-3-0">
+      <span class="release-dot" aria-hidden="true"></span>
+      <div class="release-head">
+        <h2 class="release-version">1.3.0</h2>
+      </div>
+      <section class="release-group release-group--new">
+        <h3 class="release-label">New</h3>
+        <ul class="release-list">
+          <li>Completely redesigned onboarding: more visual and faster, with what Summit is for from the very first screen, and the option to enter your FTP if you want to.</li>
+          <li>A new power-record notification: when you beat your all-time best on any of the 16 durations on your power curve, we let you know.</li>
+          <li>Free users now see the outline of their plan (the type, duration and phase of each session), as a preview of the full planning.</li>
+        </ul>
+      </section>
+      <section class="release-group release-group--fixed">
+        <h3 class="release-label">Fixed</h3>
+        <ul class="release-list">
+          <li>The “Structure” list in the workout detail showed the wrong zone or intensity on single-rep blocks.</li>
+          <li>The Analysis panel could come up empty when you opened an activity.</li>
+          <li>Karoo activities without power were saved without their charts.</li>
+          <li>The monthly calendar could show a workout that didn't exist on days with no availability.</li>
+          <li>Contradictory messages in Today during a rest day inside a taper.</li>
+          <li>The CP model curve could run outside the chart on the Power tab.</li>
+        </ul>
+      </section>
+      <p class="release-closing">Other minor fixes and stability improvements.</p>
+    </article>
+    <article class="release" id="v1-2-0">
+      <span class="release-dot" aria-hidden="true"></span>
+      <div class="release-head">
+        <h2 class="release-version">1.2.0</h2>
+      </div>
+      <section class="release-group release-group--new">
+        <h3 class="release-label">New</h3>
+        <ul class="release-list">
+          <li>Redesigned activity detail: tabbed navigation (Summary, HR, Power, Analysis), a route map in the header, and a visual comparison of planned versus executed, rep by rep, with your historical power curve as the reference.</li>
+          <li>Revamped special-event card (races, training camps, holidays): a weather forecast per stage (with heat warnings at ≥30°C and extreme heat at ≥35°C) and your race nutrition plan, with more context in the countdown and in the progress of multi-day events.</li>
+          <li>A new execution analysis based on the real laps recorded by your device, and more reliable for it: your easy rides and recovery spins now get an analysis too, not just interval sessions.</li>
+          <li>The Calendar now clearly distinguishes when you completed the workout, when you did part of it, and when you rode freely on a day with a workout scheduled.</li>
+          <li>A new share-card style with your route traced on it, a cover photo on outdoor rides, and a route thumbnail on the activity cards.</li>
+          <li>Wider free access: the route, the stats and the elevation in the activity detail are now visible without a subscription; heart rate, power and analysis stay in Pro or Elite.</li>
+          <li>When you complete the workout for a special event (your target race, for instance), you'll see a single combined card with the real result.</li>
+        </ul>
+      </section>
+      <section class="release-group release-group--improved">
+        <h3 class="release-label">Improved</h3>
+        <ul class="release-list">
+          <li>A smoother, faster Calendar, with no flicker when moving between months and days.</li>
+          <li>Usability improvements, including a more realistic anaerobic battery (W'bal) reading on long rides, cleaner elevation, power and HR charts, and an optional notice when a new version is available.</li>
+        </ul>
+      </section>
+      <section class="release-group release-group--fixed">
+        <h3 class="release-label">Fixed</h3>
+        <ul class="release-list">
+          <li>Creating a special event, or certain plan settings, could wrongly erase the record of a workout you had already completed.</li>
+          <li>A free ride on a day with a workout scheduled could show an interval breakdown you hadn't actually done.</li>
+          <li>Today's workout could still show as pending even after you had completed it.</li>
+          <li>The execution chart (planned vs. completed) and the interval detail didn't appear on some Strava and Karoo activities.</li>
+          <li>A planned workout could disappear from the Calendar when you logged another, unrelated activity.</li>
+        </ul>
+      </section>
+      <p class="release-closing">Other minor fixes and stability improvements.</p>
+    </article>
+    <article class="release" id="v1-1-0">
+      <span class="release-dot" aria-hidden="true"></span>
+      <div class="release-head">
+        <h2 class="release-version">1.1.0</h2>
+      </div>
+      <section class="release-group release-group--new">
+        <h3 class="release-label">New</h3>
+        <ul class="release-list">
+          <li>Automatic sync with Hammerhead Karoo: your activities import themselves once you connect the device, every activity shows where it came from (Strava or Karoo), and your power curve and personal records stay consistent whatever the source.</li>
+          <li>Workouts exported to your device now include descriptions and instructions in Spanish or Catalan, following your phone's language.</li>
+        </ul>
+      </section>
+      <section class="release-group release-group--improved">
+        <h3 class="release-label">Improved</h3>
+        <ul class="release-list">
+          <li>A clearer Premium free trial: you now see the exact date your free access runs until, before anything is charged.</li>
+          <li>The weekly availability button has moved to the Calendar, next to add event, so you can edit it from where you can see the weeks it affects.</li>
+          <li>A clearer, simpler confidence indicator for your estimated FTP (eFTP).</li>
+        </ul>
+      </section>
+      <section class="release-group release-group--fixed">
+        <h3 class="release-label">Fixed</h3>
+        <ul class="release-list">
+          <li>Activities that didn't show up in the day's calendar even though their dot did.</li>
+          <li>A blank activity detail when data from one of the sensors was missing.</li>
+          <li>Missing elevation profiles on older activities.</li>
+          <li>Incorrect power zones when exporting workouts to Karoo or intervals.icu.</li>
+          <li>When you didn't do the key workout, an alternative plan sometimes wasn't generated for the next day.</li>
+        </ul>
+      </section>
+      <p class="release-closing">Other minor fixes and stability improvements.</p>
+    </article>
+    <article class="release" id="v1-0">
+      <span class="release-dot" aria-hidden="true"></span>
+      <div class="release-head">
+        <h2 class="release-version">1.0</h2>
+        <time class="release-date" datetime="2026-06-22">22 June 2026</time>
+      </div>
+      <section class="release-group release-group--new">
+        <h3 class="release-label">New</h3>
+        <ul class="release-list">
+          <li>Summit is on the App Store.</li>
+          <li>The daily recovery score and your sleep analysis are free from day one — a free tier, not a trial.</li>
+        </ul>
+      </section>
+    </article>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-wordmark">
+        <span class="footer-logo"><img src="assets/img/summit-logo.png" alt="Summit" /></span>
+        <span class="footer-name">Summit<span class="dot">.</span></span>
+      </a>
+      <p class="footer-tagline" data-i18n="foot.tagline">Train harder. Smarter.</p>
+      <p class="footer-desc" data-i18n="foot.desc">An adaptive iOS training platform built for cyclists who take performance seriously. Now on the App Store.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.nav">Navigate</h4>
+      <ul>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="pricing.html" data-i18n="nav.pricing">Plans</a></li>
+        <li><a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="compare/index.html" data-i18n="nav.compare">Compare</a></li>
+        <li><a href="changelog.html" data-i18n="nav.changelog">Changelog</a></li>
+        <li><a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
+        <li><a href="terms.html" data-i18n="nav.terms">Terms</a></li>
+        <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <ul>
+        <li><a href="https://instagram.com/projectsummit.app" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@projectsummit.app</a></li>
+        <li><a href="mailto:team@projectsummit.app"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>team@projectsummit.app</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="foot.copy">© 2026 <b>Project Summit</b> · All rights reserved</span>
+    <span class="footer-made" data-i18n="foot.made">Made for riders who take it seriously</span>
+    <button type="button" class="footer-cookies" onclick="if(window.SummitConsent)SummitConsent.reopen();return false;" data-i18n="foot.cookies">Cookie settings</button>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/analytics.js"></script>
+  <script src="assets/js/consent.js"></script>
+<script src="assets/js/lang-routing.js"></script>
+
+</body>
+</html>

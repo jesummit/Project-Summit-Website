@@ -152,6 +152,8 @@
       </button>
       <div class="nav-more-dropdown">
         <a href="pricing.html" class="nav-more-option active" data-i18n="nav.pricing">Plans</a>
+        <a href="compare/index.html" class="nav-more-option" data-i18n="nav.compare">Compare</a>
+        <a href="changelog.html" class="nav-more-option" data-i18n="nav.changelog">Changelog</a>
         <a href="about.html" class="nav-more-option" data-i18n="nav.about">About</a>
         <a href="ambassadors.html" class="nav-more-option" data-i18n="nav.ambassadors">Ambassadors</a>
         <a href="terms.html" class="nav-more-option" data-i18n="nav.terms">Terms</a>
@@ -184,6 +186,8 @@
     <a href="faq.html" data-i18n="nav.faq">FAQ</a>
     <a href="blog/index.html" data-i18n="nav.blog">Blog</a>
     <a href="pricing.html" class="active" data-i18n="nav.pricing">Plans</a>
+    <a href="compare/index.html" data-i18n="nav.compare">Compare</a>
+    <a href="changelog.html" data-i18n="nav.changelog">Changelog</a>
     <a href="about.html" data-i18n="nav.about">About</a>
     <a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a>
     <a href="terms.html" data-i18n="nav.terms">Terms</a>
@@ -214,10 +218,14 @@
           <div class="plan-name" data-i18n="plans.free.name">Free</div>
           <div class="plan-tag" data-i18n="plans.free.tag">Free forever · not a trial</div>
           <ul class="plan-list">
-            <li data-i18n="plans.free.i1"><strong>Daily recovery score</strong> — from your HRV, resting heart rate and sleep, read from Apple Health.</li>
+            <li data-i18n="plans.free.i1"><strong>Daily recovery score</strong> — from your HRV, resting heart rate and sleep, read from Apple Health, with the detail screen behind it.</li>
             <li data-i18n="plans.free.i2"><strong>Sleep score with the full breakdown</strong> — how last night compares to your own historical median, sleep debt, stages and rhythm.</li>
-            <li data-i18n="plans.free.i3"><strong>Recovery trend</strong> — how your recovery is moving, not just today's number.</li>
-            <li data-i18n="plans.free.i4"><strong>Home and Lock Screen widgets</strong> — your numbers without opening the app.</li>
+            <li data-i18n="plans.free.i3"><strong>Recovery trend</strong> — thirty days of it, not just today's number.</li>
+            <li data-i18n="plans.free.i4"><strong>Home and Lock Screen widgets</strong> — recovery, sleep and load without opening the app.</li>
+            <li data-i18n="plans.free.i5"><strong>Your rides, imported automatically</strong> — connect Strava, a Hammerhead Karoo or Apple Health once and they arrive on their own.</li>
+            <li data-i18n="plans.free.i6"><strong>What you actually did</strong> — every activity's route map, stats and elevation profile, plus a share card for the rides worth showing.</li>
+            <li data-i18n="plans.free.i7"><strong>Your calendar and your events</strong> — add races, camps and holidays, and see the days you completed and how recovered you were on each.</li>
+            <li data-i18n="plans.free.i8"><strong>The shape of the session</strong> — its type, its duration and the training phase you're in, on Today and when you open a day. The prescription itself — structure, intervals, TSS — is Elite.</li>
           </ul>
           <p class="plan-note" data-i18n="plans.free.note">Any wearable that writes HRV and sleep to Apple Health works. An Apple Watch is not required.</p>
         </div>
@@ -226,9 +234,9 @@
           <div class="plan-name" data-i18n="plans.pro.name">Pro</div>
           <div class="plan-tag" data-i18n="plans.pro.tag">Everything free, plus the training layer</div>
           <ul class="plan-list">
-            <li data-i18n="plans.pro.i1"><strong>Training load</strong> — CTL, ATL and TSB, live across every session.</li>
-            <li data-i18n="plans.pro.i2"><strong>Power analysis</strong> — eFTP and your power curve, estimated continuously from your ride history. No manual tests.</li>
-            <li data-i18n="plans.pro.i3"><strong>Per-activity detailed analysis</strong> — power, heart rate, elevation and zones, ride by ride.</li>
+            <li data-i18n="plans.pro.i1"><strong>Training load</strong> — CTL, ATL and TSB, live across every session, with the detail behind today's number.</li>
+            <li data-i18n="plans.pro.i2"><strong>Power analysis</strong> — eFTP, your power curve and your best efforts, estimated continuously from your ride history. No manual tests.</li>
+            <li data-i18n="plans.pro.i3"><strong>Per-activity detailed analysis</strong> — the heart rate, power and analysis panes on every ride, on top of the route and stats you already get free.</li>
             <li data-i18n="plans.pro.i4"><strong>Progression tracking and the effort calculator.</strong></li>
             <li data-i18n="plans.pro.i5"><strong>Race weather</strong> for your target events.</li>
             <li data-i18n="plans.pro.i6"><strong>Notifications</strong> — eFTP change, form peak, race-day fuelling and your weekly recap.</li>
@@ -239,11 +247,12 @@
           <div class="plan-name" data-i18n="plans.elite.name">Elite</div>
           <div class="plan-tag" data-i18n="plans.elite.tag">Everything in Pro, plus the adaptive plan</div>
           <ul class="plan-list">
-            <li data-i18n="plans.elite.i1"><strong>The adaptive training plan</strong> — periodisation that rewrites itself around your recovery and the time you actually have.</li>
+            <li data-i18n="plans.elite.i1"><strong>The adaptive training plan</strong> — the prescribed session in full (structure, intervals and targets), the week ahead, and periodisation that rewrites itself around your recovery and the time you actually have.</li>
             <li data-i18n="plans.elite.i2"><strong>Peak-form adaptation</strong> — the plan reshapes around the events in your calendar.</li>
             <li data-i18n="plans.elite.i3"><strong>Workout export</strong> — ZWO and FIT files, plus intervals.icu sync out to Garmin, Zwift and MyWhoosh.</li>
             <li data-i18n="plans.elite.i4"><strong>Race-day nutrition plan</strong> — carbs, fluid and sodium matched to your event's duration and your bodyweight.</li>
-            <li data-i18n="plans.elite.i5"><strong>Notifications</strong> — today's plan and your weekly availability reminder.</li>
+            <li data-i18n="plans.elite.i5"><strong>The workout widget</strong> — today's prescribed session on your Home and Lock Screen.</li>
+            <li data-i18n="plans.elite.i6"><strong>Notifications</strong> — today's plan and your weekly availability reminder.</li>
           </ul>
           <p class="plan-note" data-i18n="plans.elite.note">Daily training-driven nutrition, with recipes and a shopping list, is in development and not part of the current App Store release.</p>
         </div>
@@ -257,7 +266,7 @@
       <div class="plans-notes">
         <div>
           <div class="plans-note-title" data-i18n="plans.trial.title">The free tier is not the trial</div>
-          <p class="plans-note-body" data-i18n="plans.trial.body">Summit Premium comes with a 14-day free trial. That is a separate thing. Your recovery score, your sleep score and its breakdown, the trend and the widgets stay free whether or not you ever start a trial, and they do not expire when one ends.</p>
+          <p class="plans-note-body" data-i18n="plans.trial.body">Summit Premium offers a 14-day free trial to new subscribers. That is a separate thing. Your recovery score, your sleep score and its breakdown, the trend and the widgets stay free whether or not you ever start a trial, and they do not expire when one ends.</p>
         </div>
         <div>
           <div class="plans-note-title" data-i18n="plans.where.title">Where to see the price</div>
@@ -293,10 +302,13 @@
       <h4 data-i18n="foot.nav">Navigate</h4>
       <ul>
         <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="pricing.html" data-i18n="nav.pricing">Plans</a></li>
         <li><a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a></li>
         <li><a href="about.html" data-i18n="nav.about">About</a></li>
         <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
         <li><a href="blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="compare/index.html" data-i18n="nav.compare">Compare</a></li>
+        <li><a href="changelog.html" data-i18n="nav.changelog">Changelog</a></li>
         <li><a href="ambassadors.html" data-i18n="nav.ambassadors">Ambassadors</a></li>
         <li><a href="terms.html" data-i18n="nav.terms">Terms</a></li>
         <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>

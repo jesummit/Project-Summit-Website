@@ -23,6 +23,7 @@ const META = {
   'pricing.html':        { navKey: 'nav.pricing',    descKey: 'plans.sub' },
   'about.html':          { navKey: 'nav.about',       descKey: 'about.sub' },
   'ambassadors.html':    { navKey: 'nav.ambassadors', descKey: 'amb.sub' },
+  'changelog.html':      { navKey: 'nav.changelog',   descKey: 'changelog.sub' },
   'terms.html':          { navKey: 'nav.terms',       descKey: 'terms.metadesc' },
   'privacy-policy.html': { navKey: 'nav.privacy',     descKey: 'privacy.metadesc' },
 };
@@ -33,6 +34,7 @@ const TITLE_EN = {
   'pricing.html': 'Plans — Project Summit',
   'about.html': 'About — Project Summit',
   'ambassadors.html': 'Ambassadors — Project Summit',
+  'changelog.html': 'Changelog — Project Summit',
   'terms.html': 'Terms of Service — Project Summit',
   'privacy-policy.html': 'Privacy Policy — Project Summit',
 };
@@ -43,6 +45,7 @@ const DESC_EN = {
   'pricing.html': "What's free in Summit and what Premium adds. Your daily recovery and full sleep analysis are free for as long as you use the app.",
   'about.html': "Why Jordi Espanyol built Summit — and the problem it's solving for serious amateur cyclists.",
   'ambassadors.html': "Ride with Summit. Share it with your community. We're looking for cyclists who train seriously and love talking about it.",
+  'changelog.html': 'Every Summit release and what shipped in it, version by version, since the app reached the App Store.',
   'terms.html': 'Project Summit Terms of Service. Simple, clear, and fair.',
   'privacy-policy.html': 'Privacy Policy for Project Summit — the adaptive iOS cycling training platform. Learn how we collect, use, and protect your personal data.',
 };

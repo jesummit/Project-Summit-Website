@@ -15,10 +15,11 @@
  * class for that page. Re-running is idempotent. thanks.html is standalone (no
  * shared shell) and is intentionally excluded.
  *
- * Blog pages live one level deep in blog/. The partials use root-relative paths
- * (index.html, assets/…), so for those pages the injected shell is re-rooted
- * with a "../" prefix. The page body itself is authored with correct paths and
- * is left untouched.
+ * Blog pages live one level deep in blog/, and the comparison cluster likewise
+ * in compare/. The partials use root-relative paths (index.html, assets/…), so
+ * for those pages the injected shell is re-rooted with a "../" prefix (and
+ * "../../" for their es/ca sub-directories). The page body itself is authored
+ * with correct paths and is left untouched.
  *
  * To change the header/footer: edit partials/header.html or partials/footer.html,
  * then run the build. Do NOT hand-edit the generated blocks inside the pages.
@@ -49,6 +50,7 @@ const PAGES = {
   'pricing.html': 'pricing',
   'about.html': 'about',
   'ambassadors.html': 'ambassadors',
+  'changelog.html': 'changelog',
   'terms.html': 'terms',
   'privacy-policy.html': 'privacy',
 };
@@ -75,6 +77,38 @@ const BLOG_PAGES = {
   'blog/ca/taper-and-peak-tsb.html': 'blog',
   'blog/ca/cycling-in-the-heat-hydration-sodium.html': 'blog',
   'blog/ca/apple-watch-sleep-recovery-cycling.html': 'blog',
+};
+
+// Comparison cluster (compare/). Structurally identical to BLOG_PAGES — long-form
+// prose pages one directory deep, with hand-translated es/ca twins at their own
+// URLs — so it rides the exact same processPages()/reroot() machinery. It is a
+// SEPARATE map rather than more entries in BLOG_PAGES because the two clusters
+// are different sections of the site (different URL root, different nav key,
+// different docs) and tools/check-links.js globs them as separate directory
+// sets; folding them together would make "the blog" mean two things.
+//
+// The 'compare' key lights up $$compare$$ in the header's "More" dropdown and
+// mobile menu — the cluster earned a nav slot on 2026-08-06, once it had five
+// pages. Before that it was footer-only and the token did not exist.
+const COMPARE_PAGES = {
+  'compare/index.html': 'compare',
+  'compare/summit-vs-whoop.html': 'compare',
+  'compare/summit-vs-trainingpeaks.html': 'compare',
+  'compare/summit-vs-strava.html': 'compare',
+  'compare/whoop-alternatives-no-subscription.html': 'compare',
+  'compare/free-hrv-recovery-apps-iphone.html': 'compare',
+  'compare/es/index.html': 'compare',
+  'compare/es/summit-vs-whoop.html': 'compare',
+  'compare/es/summit-vs-trainingpeaks.html': 'compare',
+  'compare/es/summit-vs-strava.html': 'compare',
+  'compare/es/whoop-alternatives-no-subscription.html': 'compare',
+  'compare/es/free-hrv-recovery-apps-iphone.html': 'compare',
+  'compare/ca/index.html': 'compare',
+  'compare/ca/summit-vs-whoop.html': 'compare',
+  'compare/ca/summit-vs-trainingpeaks.html': 'compare',
+  'compare/ca/summit-vs-strava.html': 'compare',
+  'compare/ca/whoop-alternatives-no-subscription.html': 'compare',
+  'compare/ca/free-hrv-recovery-apps-iphone.html': 'compare',
 };
 
 function renderHeader(activeKey) {
@@ -118,7 +152,8 @@ function processPages(map) {
 
 processPages(PAGES);
 processPages(BLOG_PAGES);
-const total = Object.keys(PAGES).length + Object.keys(BLOG_PAGES).length;
+processPages(COMPARE_PAGES);
+const total = Object.keys(PAGES).length + Object.keys(BLOG_PAGES).length + Object.keys(COMPARE_PAGES).length;
 console.log(`build complete — ${total} pages, ${changed} updated`);
 
 // ============================================================================
@@ -289,6 +324,79 @@ function localizeScreenshots(html, locale) {
   });
 }
 
+// ============================================================================
+// Changelog: changelog.html (+ its es/ca twins) is a normal shell page whose
+// #changelog-entries container is filled here, per locale, from
+// tools/changelog-content.js.
+//
+// The release history deliberately does NOT live in assets/js/i18n.js: that
+// dictionary is the site's UI strings, a bounded set every page shares, while
+// this grows by one entry with every App Store release and is used on exactly
+// one page. Same generated-from-a-data-module pattern as llms.txt above.
+//
+// Rendering is idempotent: the container's existing children are REPLACED (the
+// closing </div> is found depth-aware, so the nested markup of a previous run
+// doesn't confuse it), which is what lets `node build.js` twice be a no-op.
+const { SECTION_LABELS, CLOSING, MONTHS, RELEASES } = require('./tools/changelog-content');
+const CHANGELOG_FILE = 'changelog.html';
+const CHANGELOG_ID = 'changelog-entries';
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// "2026-07-29" -> "29 July 2026" / "29 de julio de 2026" / "29 de juliol de
+// 2026". Catalan elides the article before a vowel-initial month (d'agost).
+function formatReleaseDate(iso, locale) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const month = MONTHS[locale][m - 1];
+  if (locale === 'en') return `${d} ${month} ${y}`;
+  const article = (locale === 'ca' && /^[aeiouàèéíòóú]/i.test(month)) ? "d'" : 'de ';
+  return `${d} ${article}${month} de ${y}`;
+}
+
+function renderChangelogEntries(locale) {
+  const out = [];
+  RELEASES.forEach((release, i) => {
+    const anchor = 'v' + release.version.replace(/\./g, '-');
+    out.push(`    <article class="release${i === 0 ? ' release--latest' : ''}" id="${anchor}">`);
+    out.push('      <span class="release-dot" aria-hidden="true"></span>');
+    out.push('      <div class="release-head">');
+    out.push(`        <h2 class="release-version">${escapeHtml(release.version)}</h2>`);
+    // Undated releases render with the version alone — no date is invented to
+    // fill the slot (only 1.0 and 1.4.0 have a sourced release date).
+    if (release.date) {
+      out.push(`        <time class="release-date" datetime="${release.date}">${escapeHtml(formatReleaseDate(release.date, locale))}</time>`);
+    }
+    out.push('      </div>');
+
+    const groups = release.groups[locale];
+    if (!groups) throw new Error(`changelog: release ${release.version} has no "${locale}" copy`);
+    for (const group of groups) {
+      const label = SECTION_LABELS[group.section];
+      if (!label) throw new Error(`changelog: release ${release.version} uses unknown section "${group.section}"`);
+      out.push(`      <section class="release-group release-group--${group.section}">`);
+      out.push(`        <h3 class="release-label">${escapeHtml(label[locale])}</h3>`);
+      out.push('        <ul class="release-list">');
+      for (const item of group.items) out.push(`          <li>${escapeHtml(item)}</li>`);
+      out.push('        </ul>');
+      out.push('      </section>');
+    }
+
+    if (release.closing) out.push(`      <p class="release-closing">${escapeHtml(CLOSING[locale])}</p>`);
+    out.push('    </article>');
+  });
+  return out.join('\n');
+}
+
+function renderChangelog(html, locale) {
+  const m = html.match(new RegExp('<div id="' + CHANGELOG_ID + '"[^>]*>'));
+  if (!m) throw new Error(`changelog.html: no <div id="${CHANGELOG_ID}"> container to render into`);
+  const openEnd = m.index + m[0].length;
+  const close = findMatchingClose(html, openEnd, 'div');
+  return html.slice(0, openEnd) + '\n' + renderChangelogEntries(locale) + '\n  ' + html.slice(close.start);
+}
+
 // hreflang, data-alt-* body attributes, and the lang-routing script are
 // identical across a page's en/es/ca variants, so they're added to the
 // canonical (English) root pages ONCE, before locale copies are made — the
@@ -314,6 +422,7 @@ function augmentRootShells() {
     }
     // The root pages ARE the English variant, so they get the en/ overrides.
     html = localizeScreenshots(html, 'en');
+    if (file === CHANGELOG_FILE) html = renderChangelog(html, 'en');
 
     if (html !== before) fs.writeFileSync(p, html);
   }
@@ -327,15 +436,16 @@ const SHELL_FILES = new Set(Object.keys(PAGES));
 function rerootShellLocale(html, locale) {
   return html.replace(/\b(href|src)="([^"]*)"/g, (whole, attr, val) => {
     if (/^(https?:|mailto:|tel:|data:|#|\/)/.test(val)) return whole;
-    // The blog keeps one directory per locale (blog/, blog/es/, blog/ca/) with
-    // the same filenames, so the locale segment is the only difference: a shell
-    // page linking blog/<page> must land on blog/<locale>/<page>, never the
-    // English original. This is deliberately generic rather than a per-link
-    // special case — an untranslated post would otherwise be linked in English
-    // from the es/ca pages with nothing to catch it. If a translation is
-    // missing, tools/check-links.js fails on the resulting path.
-    const blogPage = val.match(/^blog\/(.+)$/);
-    if (blogPage) return `${attr}="../blog/${locale}/${blogPage[1]}"`;
+    // The content clusters each keep one directory per locale (blog/, blog/es/,
+    // blog/ca/ — and the same shape under compare/) with identical filenames, so
+    // the locale segment is the only difference: a shell page linking
+    // <cluster>/<page> must land on <cluster>/<locale>/<page>, never the English
+    // original. Deliberately generic rather than a per-link special case — an
+    // untranslated page would otherwise be linked in English from the es/ca
+    // pages with nothing to catch it. If a translation is missing,
+    // tools/check-links.js fails on the resulting path.
+    const clusterPage = val.match(/^(blog|compare)\/(.+)$/);
+    if (clusterPage) return `${attr}="../${clusterPage[1]}/${locale}/${clusterPage[2]}"`;
     if (SHELL_FILES.has(val.split('#')[0])) return whole;
     return `${attr}="../${val}"`;
   });
@@ -387,6 +497,11 @@ function generateLocaleShells() {
       // Before rerootShellLocale(), while the paths are still root-relative —
       // the "../" prefixing then applies to the localized path as usual.
       html = localizeScreenshots(html, locale);
+      // Replaces the English entries this file inherited from the root page
+      // with the same releases in `locale` (the changelog copy lives in
+      // tools/changelog-content.js, not in the data-i18n dictionary, so
+      // localizeContent() above leaves it untouched).
+      if (file === CHANGELOG_FILE) html = renderChangelog(html, locale);
       html = rerootShellLocale(html, locale);
 
       const outDir = path.join(ROOT, locale);

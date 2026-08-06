@@ -35,9 +35,13 @@ const INTRO =
 const BODY =
   'Summit is not an AI product and has no chatbot. The engine is deterministic: every ' +
   'recommendation traces back to a codified sports-science rule and your own data, so you ' +
-  'can see why it made a call. Recovery score, sleep score with its full breakdown, the ' +
-  'recovery trend and the Home and Lock Screen widgets are permanently free — a free tier, ' +
-  'not a trial. Premium adds training load (CTL/ATL/TSB), power analysis (eFTP, critical ' +
+  'can see why it made a call. The free tier is broad: the daily recovery score and its ' +
+  '30-day trend, the sleep score with its full breakdown, the Home and Lock Screen widgets, ' +
+  'automatic ride import from Strava, Hammerhead Karoo and Apple Health, every ride\'s route ' +
+  'map, stats and elevation profile, share cards, a calendar you can put races, camps and ' +
+  'holidays on, and the shape of the day\'s session — its type, its duration and the training ' +
+  'phase you are in. All of that is permanently free — a free tier, not a trial. Premium adds ' +
+  'the prescribed session itself, training load (CTL/ATL/TSB), power analysis (eFTP, critical ' +
   'power, power curve), adaptive plans that rewrite the week when life breaks it, workout ' +
   'export to Hammerhead Karoo and via intervals.icu to Garmin, Zwift and MyWhoosh, and ' +
   'race-day nutrition. An Apple Watch is not required — any wearable that writes HRV and ' +
@@ -62,7 +66,47 @@ const SECTIONS = [
     heading: 'How it works',
     links: [
       { path: '/roadmap.html', label: 'Roadmap', blurb: 'What has shipped and what is next.' },
+      { path: '/changelog.html', label: 'Changelog', blurb: 'Every release since launch and what changed in it, version by version.' },
       { path: '/about.html', label: 'About', blurb: 'Who builds Summit, and the training problem it was built to solve.' },
+    ],
+  },
+  {
+    // Comparison queries are where answer engines are asked to pick, so the
+    // cluster is listed before the guides. Blurbs must stay as even-handed as
+    // the pages themselves: an engine quoting this section out of context must
+    // not end up making a claim about a competitor that the page would not.
+    heading: 'How Summit compares',
+    links: [
+      {
+        path: '/compare/',
+        label: 'How Summit compares',
+        blurb: 'Side-by-side comparisons against the tools cyclists weigh Summit against, each conceding what the other does better and dating every competitor fact.',
+      },
+      {
+        path: '/compare/summit-vs-whoop.html',
+        label: 'Summit vs Whoop: a recovery score only counts if something changes',
+        blurb: 'Whoop measures recovery continuously on its own hardware; Summit reads the wearable you already own through Apple Health and turns the same physiology into a cycling session. Includes what Whoop does better and what each one costs.',
+      },
+      {
+        path: '/compare/summit-vs-trainingpeaks.html',
+        label: 'Summit vs TrainingPeaks: one shows you the data, the other decides',
+        blurb: 'TrainingPeaks is the endurance world’s shared vocabulary and the workspace a human coach works in; Summit generates the cycling plan and rewrites it around recovery and available time. Includes what TrainingPeaks does better and what each one costs.',
+      },
+      {
+        path: '/compare/summit-vs-strava.html',
+        label: 'Summit vs Strava: one records the ride, the other decides it',
+        blurb: 'Complementary rather than competing: Strava records, keeps and shares the ride, and Summit imports those rides to decide what today’s session should be. Includes what Strava does better and what each one costs.',
+      },
+      {
+        path: '/compare/whoop-alternatives-no-subscription.html',
+        label: 'Whoop alternatives with no subscription: six that work',
+        blurb: 'A ranked buyer’s guide to getting a daily recovery score with no recurring fee, because Whoop’s membership includes the strap: Garmin Body Battery, Apple Watch Vitals, Polar Nightly Recharge, what an Oura Ring still shows without a membership, Summit on a wearable you already own, and HRV4Training. Every third-party figure is dated and linked to the vendor’s own page.',
+      },
+      {
+        path: '/compare/free-hrv-recovery-apps-iphone.html',
+        label: 'Free HRV and recovery apps for iPhone: what "free" actually means',
+        blurb: 'What "free" means on the App Store — a download price, which says nothing about whether the daily score is behind a subscription — and seven iPhone apps whose publisher and download price were verified against Apple’s public data: Apple Health and Vitals, Project Summit, Athlytic, Training Today, Gentler Streak, Kubios HRV and Elite HRV.',
+      },
     ],
   },
   {
