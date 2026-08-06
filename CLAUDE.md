@@ -604,15 +604,29 @@ deployment ID, and its `deploy` still sat at `deployment_queued` for the full
 ten minutes and aborted. When the queue is wedged this deeply, no amount of
 pushing clears it.
 
-**What is left when a new SHA doesn't work**: repo Settings → Pages, change the
-source branch to something else, save, change it back. That forces Pages to
-re-initialise its deployment pipeline, and it is a UI action — there is no API
-for it. Check that page for a custom-domain DNS warning at the same time: the
-apex is Cloudflare-proxied (A records resolve to Cloudflare, not to
+**Check https://www.githubstatus.com before touching anything, and do not
+trust a single green reading.** On 2026-08-06 the page said Pages and Actions
+were `operational` with no open incident at ~13:30 — and at 15:03 GitHub opened
+**"Incident with Pages - Deployment Lag"**, followed at 15:22 by an Actions
+partial outage. The deploy failures had started at 12:19, nearly three hours
+before the incident was declared. The status page lags the degradation badly,
+so an `operational` reading early in an outage means nothing. Re-check it
+before concluding the problem is yours.
+
+`deployment_queued` that never advances *is* what a Pages deployment-lag
+incident looks like from inside a repo. When one is open, the fix is to wait
+for GitHub and then push a commit; nothing done in the repo will help.
+
+**Only if the status page is genuinely clean and it still won't deploy**: repo
+Settings → Pages, change the source branch to something else, save, change it
+back, which re-initialises the deployment pipeline (UI-only, there is no API).
+Treat this as a last resort — doing it during a GitHub-side incident risks the
+custom-domain config for no benefit. While there, check for a custom-domain DNS
+warning: the apex is Cloudflare-proxied (A records resolve to Cloudflare, not to
 `185.199.10[89].153` / `185.199.11[01].153`), so GitHub's periodic re-check of
-the custom domain cannot see its own records, and a failed re-check is a
-plausible way for this to start on its own. If none of that clears it, the
-remaining state is server-side and only GitHub Support can reset it.
+the custom domain cannot see its own records. That was a suspect on 2026-08-06
+until the incident was found, and it is worth ruling out, but it was not the
+cause.
 
 **How to tell the site is stale rather than broken**: fetch the GitHub origin
 directly, bypassing Cloudflare —
