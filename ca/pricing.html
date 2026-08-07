@@ -96,6 +96,86 @@
           "item": "https://projectsummit.app/ca/pricing.html"
         }
       ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://projectsummit.app/pricing.html#premium",
+      "name": "Summit Premium",
+      "url": "https://projectsummit.app/pricing.html",
+      "brand": {
+        "@id": "https://projectsummit.app/#organization"
+      },
+      "description": "Summit Premium's Pro and Elite subscription tiers. Prices are the Spanish App Store listing in euros, VAT included, checked 7 August 2026 — Apple sets the price per storefront, so it can differ by country.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Summit Pro — monthly",
+          "price": "7.99",
+          "priceCurrency": "EUR",
+          "url": "https://projectsummit.app/pricing.html",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "7.99",
+            "priceCurrency": "EUR",
+            "valueAddedTaxIncluded": true,
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Summit Pro — yearly",
+          "price": "63.99",
+          "priceCurrency": "EUR",
+          "url": "https://projectsummit.app/pricing.html",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "63.99",
+            "priceCurrency": "EUR",
+            "valueAddedTaxIncluded": true,
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "ANN"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Summit Elite — monthly",
+          "price": "14.99",
+          "priceCurrency": "EUR",
+          "url": "https://projectsummit.app/pricing.html",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "14.99",
+            "priceCurrency": "EUR",
+            "valueAddedTaxIncluded": true,
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Summit Elite — yearly",
+          "price": "119.99",
+          "priceCurrency": "EUR",
+          "url": "https://projectsummit.app/pricing.html",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "119.99",
+            "priceCurrency": "EUR",
+            "valueAddedTaxIncluded": true,
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "ANN"
+          }
+        }
+      ]
     }
   ]
 }
@@ -123,8 +203,27 @@
     .plan-tag {
       font-family: var(--font-mono); font-size: 10px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 22px;
+      color: var(--accent); margin-bottom: 18px;
     }
+    .plan-price {
+      padding-bottom: 20px; margin-bottom: 22px;
+      border-bottom: 1px solid var(--ink-hair);
+    }
+    .plan-price-figure {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 900;
+      letter-spacing: -0.02em; color: var(--ink); line-height: 1.1;
+    }
+    .plan-price-unit {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-soft); margin-left: 4px;
+    }
+    .plan-price-annual {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-soft); margin-top: 8px; line-height: 1.5;
+    }
+    .plan-price-annual strong { color: var(--accent); }
     .plan-list { list-style: none; padding: 0; margin: 0; flex: 1; }
     .plan-list li {
       font-size: 14px; line-height: 1.65; color: var(--ink-soft);
@@ -244,6 +343,10 @@
         <div class="plan plan--free">
           <div class="plan-name" data-i18n="plans.free.name">Gratis</div>
           <div class="plan-tag" data-i18n="plans.free.tag">Gratis per sempre · no és cap prova</div>
+          <div class="plan-price">
+            <div class="plan-price-figure" data-i18n="plans.free.price">0&nbsp;€</div>
+            <div class="plan-price-annual" data-i18n="plans.free.pricenote">Gratis, per sempre — no és cap prova.</div>
+          </div>
           <ul class="plan-list">
             <li data-i18n="plans.free.i1"><strong>Puntuació diària de recuperació</strong> — a partir de la teva VFC, la teva freqüència cardíaca en repòs i el teu son, llegits des d'Apple Health, amb la pantalla de detall que hi ha al darrere.</li>
             <li data-i18n="plans.free.i2"><strong>Puntuació de son amb el desglossament complet</strong> — com es compara la nit passada amb la teva pròpia mediana històrica, deute de son, fases i ritme.</li>
@@ -260,6 +363,10 @@
         <div class="plan">
           <div class="plan-name" data-i18n="plans.pro.name">Pro</div>
           <div class="plan-tag" data-i18n="plans.pro.tag">Tot el gratuït, més la capa d'entrenament</div>
+          <div class="plan-price">
+            <div class="plan-price-figure" data-i18n="plans.pro.price">7,99&nbsp;€<span class="plan-price-unit">/mes</span></div>
+            <div class="plan-price-annual" data-i18n="plans.pro.priceannual">63,99&nbsp;€/any — <strong>5,33&nbsp;€/mes</strong> pagant anual</div>
+          </div>
           <ul class="plan-list">
             <li data-i18n="plans.pro.i1"><strong>Càrrega d'entrenament</strong> — CTL, ATL i TSB, en directe a cada sessió, amb el detall que hi ha al darrere del número d'avui.</li>
             <li data-i18n="plans.pro.i2"><strong>Anàlisi de potència</strong> — eFTP, la teva corba de potència i els teus millors esforços, estimats de manera contínua des del teu historial. Sense tests manuals.</li>
@@ -273,6 +380,10 @@
         <div class="plan">
           <div class="plan-name" data-i18n="plans.elite.name">Elite</div>
           <div class="plan-tag" data-i18n="plans.elite.tag">Tot el de Pro, més el pla adaptatiu</div>
+          <div class="plan-price">
+            <div class="plan-price-figure" data-i18n="plans.elite.price">14,99&nbsp;€<span class="plan-price-unit">/mes</span></div>
+            <div class="plan-price-annual" data-i18n="plans.elite.priceannual">119,99&nbsp;€/any — <strong>10,00&nbsp;€/mes</strong> pagant anual</div>
+          </div>
           <ul class="plan-list">
             <li data-i18n="plans.elite.i1"><strong>El pla d'entrenament adaptatiu</strong> — la sessió prescrita completa (estructura, sèries i objectius), la setmana vinent i una periodització que es reescriu segons la teva recuperació i el temps que realment tens.</li>
             <li data-i18n="plans.elite.i2"><strong>Adaptació al pic de forma</strong> — el pla es reorganitza al voltant dels esdeveniments del teu calendari.</li>
@@ -296,8 +407,8 @@
           <p class="plans-note-body" data-i18n="plans.trial.body">Summit Premium ofereix una prova gratuïta de 14 dies a qui se subscriu per primera vegada. Això és una altra cosa. La teva puntuació de recuperació, la teva puntuació de son i el seu desglossament, la tendència i els widgets continuen sent gratis tant si comences una prova com si no, i no caduquen quan aquesta s'acaba.</p>
         </div>
         <div>
-          <div class="plans-note-title" data-i18n="plans.where.title">On veure el preu</div>
-          <p class="plans-note-body" data-i18n="plans.where.body">Aquí no publiquem xifres. Apple fixa el preu de Premium per país i pot canviar, així que l'únic número fiable és el de debò: el veuràs a la fitxa de l'App Store i dins de l'app abans que se't cobri res. Hi ha mensual i anual.</p>
+          <div class="plans-note-title" data-i18n="plans.where.title">Sobre aquests preus</div>
+          <p class="plans-note-body" data-i18n="plans.where.body">Els preus que veus són els de la fitxa de l'App Store espanyola en euros, IVA inclòs, comprovats el 7 d'agost de 2026. Apple fixa el preu per país i pot canviar, així que el teu pot ser diferent — l'App Store i l'app sempre et mostren el teu preu local abans de cobrar-te res. Pagar en anual estalvia al voltant d'un terç en qualsevol dels dos nivells, i Premium és una única subscripció que cobreix tota la cadena — recuperació, entrenament i, a Elite, nutrició juntes, no compres separades.</p>
         </div>
       </div>
     </div>
