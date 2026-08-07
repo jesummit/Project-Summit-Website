@@ -16,8 +16,8 @@
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#F6F1E8" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
-  <title>Plans — Project Summit</title>
-  <meta name="description" content="What's free in Summit and what Premium adds. Your daily recovery and full sleep analysis are free for as long as you use the app." />
+  <title>Plans & Pricing — Project Summit</title>
+  <meta name="description" content="What's free in Summit, and what Pro and Elite cost — in euros. Your daily recovery and full sleep analysis are free for as long as you use the app." />
   <link rel="canonical" href="https://projectsummit.app/pricing.html" />
   <link rel="alternate" hreflang="en" href="https://projectsummit.app/pricing.html" />
   <link rel="alternate" hreflang="es" href="https://projectsummit.app/es/pricing.html" />
@@ -25,12 +25,12 @@
   <link rel="alternate" hreflang="x-default" href="https://projectsummit.app/pricing.html" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://projectsummit.app/pricing.html" />
-  <meta property="og:title" content="Plans — Project Summit" />
-  <meta property="og:description" content="What's free in Summit and what Premium adds. Your daily recovery and full sleep analysis are free for as long as you use the app." />
+  <meta property="og:title" content="Plans & Pricing — Project Summit" />
+  <meta property="og:description" content="What's free in Summit, and what Pro and Elite cost — in euros. Your daily recovery and full sleep analysis are free for as long as you use the app." />
   <meta property="og:image" content="https://projectsummit.app/assets/img/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Plans — Project Summit" />
-  <meta name="twitter:description" content="What's free in Summit and what Premium adds. Your daily recovery and full sleep analysis are free for as long as you use the app." />
+  <meta name="twitter:title" content="Plans & Pricing — Project Summit" />
+  <meta name="twitter:description" content="What's free in Summit, and what Pro and Elite cost — in euros. Your daily recovery and full sleep analysis are free for as long as you use the app." />
   <meta name="twitter:image" content="https://projectsummit.app/assets/img/og-image.png" />
 
   <script type="application/ld+json">
@@ -58,8 +58,8 @@
         "@type": "WebPage",
         "@id": "https://projectsummit.app/pricing.html#webpage",
         "url": "https://projectsummit.app/pricing.html",
-        "name": "Plans — Project Summit",
-        "description": "What's free in Summit and what Premium adds. Your daily recovery and full sleep analysis are free for as long as you use the app.",
+        "name": "Plans & Pricing — Project Summit",
+        "description": "What's free in Summit, and what Pro and Elite cost — in euros. Your daily recovery and full sleep analysis are free for as long as you use the app.",
         "isPartOf": { "@id": "https://projectsummit.app/#website" },
         "inLanguage": "en"
       },
@@ -68,6 +68,48 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://projectsummit.app/" },
           { "@type": "ListItem", "position": 2, "name": "Plans", "item": "https://projectsummit.app/pricing.html" }
+        ]
+      },
+      {
+        "@type": "Product",
+        "@id": "https://projectsummit.app/pricing.html#premium",
+        "name": "Summit Premium",
+        "url": "https://projectsummit.app/pricing.html",
+        "brand": { "@id": "https://projectsummit.app/#organization" },
+        "description": "Summit Premium's Pro and Elite subscription tiers. Prices are the Spanish App Store listing in euros, VAT included, checked 7 August 2026 — Apple sets the price per storefront, so it can differ by country.",
+        "offers": [
+          {
+            "@type": "Offer", "name": "Summit Pro — monthly", "price": "7.99", "priceCurrency": "EUR",
+            "url": "https://projectsummit.app/pricing.html", "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification", "price": "7.99", "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": true, "billingDuration": 1, "billingIncrement": 1, "unitCode": "MON"
+            }
+          },
+          {
+            "@type": "Offer", "name": "Summit Pro — yearly", "price": "63.99", "priceCurrency": "EUR",
+            "url": "https://projectsummit.app/pricing.html", "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification", "price": "63.99", "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": true, "billingDuration": 1, "billingIncrement": 1, "unitCode": "ANN"
+            }
+          },
+          {
+            "@type": "Offer", "name": "Summit Elite — monthly", "price": "14.99", "priceCurrency": "EUR",
+            "url": "https://projectsummit.app/pricing.html", "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification", "price": "14.99", "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": true, "billingDuration": 1, "billingIncrement": 1, "unitCode": "MON"
+            }
+          },
+          {
+            "@type": "Offer", "name": "Summit Elite — yearly", "price": "119.99", "priceCurrency": "EUR",
+            "url": "https://projectsummit.app/pricing.html", "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification", "price": "119.99", "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": true, "billingDuration": 1, "billingIncrement": 1, "unitCode": "ANN"
+            }
+          }
         ]
       }
     ]
@@ -96,8 +138,27 @@
     .plan-tag {
       font-family: var(--font-mono); font-size: 10px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 22px;
+      color: var(--accent); margin-bottom: 18px;
     }
+    .plan-price {
+      padding-bottom: 20px; margin-bottom: 22px;
+      border-bottom: 1px solid var(--ink-hair);
+    }
+    .plan-price-figure {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 900;
+      letter-spacing: -0.02em; color: var(--ink); line-height: 1.1;
+    }
+    .plan-price-unit {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-soft); margin-left: 4px;
+    }
+    .plan-price-annual {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-soft); margin-top: 8px; line-height: 1.5;
+    }
+    .plan-price-annual strong { color: var(--accent); }
     .plan-list { list-style: none; padding: 0; margin: 0; flex: 1; }
     .plan-list li {
       font-size: 14px; line-height: 1.65; color: var(--ink-soft);
@@ -217,6 +278,10 @@
         <div class="plan plan--free">
           <div class="plan-name" data-i18n="plans.free.name">Free</div>
           <div class="plan-tag" data-i18n="plans.free.tag">Free forever · not a trial</div>
+          <div class="plan-price">
+            <div class="plan-price-figure" data-i18n="plans.free.price">€0</div>
+            <div class="plan-price-annual" data-i18n="plans.free.pricenote">Free, permanently — not a trial.</div>
+          </div>
           <ul class="plan-list">
             <li data-i18n="plans.free.i1"><strong>Daily recovery score</strong> — from your HRV, resting heart rate and sleep, read from Apple Health, with the detail screen behind it.</li>
             <li data-i18n="plans.free.i2"><strong>Sleep score with the full breakdown</strong> — how last night compares to your own historical median, sleep debt, stages and rhythm.</li>
@@ -233,6 +298,10 @@
         <div class="plan">
           <div class="plan-name" data-i18n="plans.pro.name">Pro</div>
           <div class="plan-tag" data-i18n="plans.pro.tag">Everything free, plus the training layer</div>
+          <div class="plan-price">
+            <div class="plan-price-figure" data-i18n="plans.pro.price">€7.99<span class="plan-price-unit">/month</span></div>
+            <div class="plan-price-annual" data-i18n="plans.pro.priceannual">€63.99/year — <strong>€5.33/month</strong> paid annually</div>
+          </div>
           <ul class="plan-list">
             <li data-i18n="plans.pro.i1"><strong>Training load</strong> — CTL, ATL and TSB, live across every session, with the detail behind today's number.</li>
             <li data-i18n="plans.pro.i2"><strong>Power analysis</strong> — eFTP, your power curve and your best efforts, estimated continuously from your ride history. No manual tests.</li>
@@ -246,6 +315,10 @@
         <div class="plan">
           <div class="plan-name" data-i18n="plans.elite.name">Elite</div>
           <div class="plan-tag" data-i18n="plans.elite.tag">Everything in Pro, plus the adaptive plan</div>
+          <div class="plan-price">
+            <div class="plan-price-figure" data-i18n="plans.elite.price">€14.99<span class="plan-price-unit">/month</span></div>
+            <div class="plan-price-annual" data-i18n="plans.elite.priceannual">€119.99/year — <strong>€10.00/month</strong> paid annually</div>
+          </div>
           <ul class="plan-list">
             <li data-i18n="plans.elite.i1"><strong>The adaptive training plan</strong> — the prescribed session in full (structure, intervals and targets), the week ahead, and periodisation that rewrites itself around your recovery and the time you actually have.</li>
             <li data-i18n="plans.elite.i2"><strong>Peak-form adaptation</strong> — the plan reshapes around the events in your calendar.</li>
@@ -269,8 +342,8 @@
           <p class="plans-note-body" data-i18n="plans.trial.body">Summit Premium offers a 14-day free trial to new subscribers. That is a separate thing. Your recovery score, your sleep score and its breakdown, the trend and the widgets stay free whether or not you ever start a trial, and they do not expire when one ends.</p>
         </div>
         <div>
-          <div class="plans-note-title" data-i18n="plans.where.title">Where to see the price</div>
-          <p class="plans-note-body" data-i18n="plans.where.body">We don't publish figures here. Apple sets Premium pricing per country and it can change, so the only number worth trusting is the live one: you'll see it on the App Store listing and inside the app before anything is charged. Monthly and yearly are both available.</p>
+          <div class="plans-note-title" data-i18n="plans.where.title">About these prices</div>
+          <p class="plans-note-body" data-i18n="plans.where.body">Prices shown are the Spanish App Store listing in euros, VAT included, checked 7 August 2026. Apple sets the price per storefront and it can change, so yours may differ — the App Store and the app always show your live local price before anything is charged. Paying yearly saves about a third on either tier, and Premium is one subscription that covers the whole chain — recovery, training and, on Elite, nutrition together, not separate purchases.</p>
         </div>
       </div>
     </div>

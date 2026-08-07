@@ -10,8 +10,11 @@
  *      AI and has no chatbot; there is no Apple Watch app (the watch is a
  *      sensor, read through Apple Health, and is not required); the free tier
  *      is permanent and is NOT the 14-day Premium trial; no Premium feature is
- *      ever described as free; iPhone only, iOS 26+; no prices, ratings,
- *      testimonials or user counts anywhere.
+ *      ever described as free; iPhone only, iOS 26+; no ratings, testimonials
+ *      or user counts anywhere. Since 2026-08-07 (ADR-2026-08-07) Premium's
+ *      euro prices ARE published — every mention carries the storefront
+ *      (Spanish App Store), currency (EUR), that VAT is included and the
+ *      checked date in the SAME sentence as the figure, never a line away.
  *   2. Every `path` must resolve to a real file. build.js asserts this before
  *      writing — a dead link in the file answer engines read is the exact
  *      failure this whole generated-not-hand-written setup exists to prevent.
@@ -44,7 +47,10 @@ const BODY =
   'the prescribed session itself, training load (CTL/ATL/TSB), power analysis (eFTP, critical ' +
   'power, power curve), adaptive plans that rewrite the week when life breaks it, workout ' +
   'export to Hammerhead Karoo and via intervals.icu to Garmin, Zwift and MyWhoosh, and ' +
-  'race-day nutrition. An Apple Watch is not required — any wearable that writes to Apple ' +
+  'race-day nutrition. Premium is €7.99/month or €63.99/year for Pro and €14.99/month or ' +
+  '€119.99/year for Elite — the Spanish App Store listing, VAT included, checked 7 August ' +
+  '2026; Apple sets the price per storefront, so it can differ by country. An Apple Watch ' +
+  'is not required — any wearable that writes to Apple ' +
   'Health works, though in practice the Apple Watch is the only device that writes the ' +
   'complete set Summit uses: heart-rate variability, resting heart rate, sleep, respiratory ' +
   'rate, blood oxygen and overnight wrist temperature. Another wearable gives a recovery ' +
@@ -61,7 +67,7 @@ const SECTIONS = [
     heading: 'Start here',
     links: [
       { path: '/', label: 'Project Summit', blurb: 'What Summit does and how the engine decides what you ride today.' },
-      { path: '/pricing.html', label: 'Plans', blurb: "What's free and what Premium adds — no prices on the site; Apple sets them per storefront." },
+      { path: '/pricing.html', label: 'Plans', blurb: "What's free, permanently, and what Premium costs: €7.99/month or €63.99/year for Pro, €14.99/month or €119.99/year for Elite — the Spanish App Store listing, VAT included, checked 7 August 2026; Apple sets the price per storefront, so it can differ by country." },
       { path: '/faq.html', label: 'FAQ', blurb: 'The questions that decide it: is this AI, do I need a watch, what is actually free.' },
     ],
   },
@@ -88,7 +94,7 @@ const SECTIONS = [
       {
         path: '/compare/adaptive-cycling-training-apps.html',
         label: 'Adaptive cycling training apps: what actually adapts, and to what',
-        blurb: 'Seven adaptive training platforms compared on what each one adapts to and whether the plan changes without being approved: TrainerRoad (adapts to your training; $21.99/month or $209.99/year), JOIN Cycling (adapts daily on a self-reported readiness score), Project Summit (recovery measured from the wearable via Apple Health, applied to the session automatically, plus race-day fuelling), Xert (test-free physiology; $14.99/month or $99.95/year), Stride (the widest wearable recovery ingestion, but nothing changes until the athlete applies the proposal), Athletica (the most multi-sport, and its own pages disagree on whether HRV changes training load or only advises) and Intervals.icu (free, and the broadest data ingestion here). Every figure is dated 6 August 2026 and taken from the vendor’s own pages; four questions those pages do not answer are stated as unknown rather than as limitations. Summit publishes no prices of its own.',
+        blurb: 'Seven adaptive training platforms compared on what each one adapts to and whether the plan changes without being approved: TrainerRoad (adapts to your training; $21.99/month or $209.99/year), JOIN Cycling (adapts daily on a self-reported readiness score; €16.99/month or €119.99/year), Project Summit (recovery measured from the wearable via Apple Health, applied to the session automatically, plus race-day fuelling; €7.99–€14.99/month, €63.99–€119.99/year — Spanish App Store listing, VAT included, checked 7 August 2026, Apple sets it per storefront so it can differ by country; recovery and sleep stay free, permanently, at every tier), Xert (test-free physiology; $14.99/month or $99.95/year), Stride (the widest wearable recovery ingestion, but nothing changes until the athlete applies the proposal), Athletica (the most multi-sport, and its own pages disagree on whether HRV changes training load or only advises) and Intervals.icu (free, and the broadest data ingestion here). Every figure is dated 6 August 2026 and taken from the vendor’s own pages, except Summit’s, checked 7 August 2026 on the Spanish App Store; four questions those pages do not answer are stated as unknown rather than as limitations. JOIN’s annual and Summit Elite’s annual are identical, in the same currency; JOIN’s readiness is self-reported, Summit’s is measured off the wearable.',
       },
       {
         path: '/compare/summit-vs-whoop.html',
@@ -108,12 +114,12 @@ const SECTIONS = [
       {
         path: '/compare/whoop-alternatives-no-subscription.html',
         label: 'Whoop alternatives with no subscription: six that work',
-        blurb: 'A ranked buyer’s guide to getting a daily recovery score with no recurring fee, because Whoop’s membership includes the strap: Garmin Body Battery, Apple Watch Vitals, Polar Nightly Recharge, what an Oura Ring still shows without a membership, Summit on a wearable you already own, and HRV4Training. Every third-party figure is dated and linked to the vendor’s own page.',
+        blurb: 'A ranked buyer’s guide to getting a daily recovery score with no recurring fee, because Whoop’s membership includes the strap: Garmin Body Battery, Apple Watch Vitals, Polar Nightly Recharge, what an Oura Ring still shows without a membership, Summit’s recovery and sleep score — free, permanently, on a wearable you already own, not a trial — and HRV4Training. Every third-party figure is dated and linked to the vendor’s own page.',
       },
       {
         path: '/compare/free-hrv-recovery-apps-iphone.html',
         label: 'Free HRV and recovery apps for iPhone: what "free" actually means',
-        blurb: 'What "free" means on the App Store — a download price, which says nothing about whether the daily score is behind a subscription — and eight iPhone apps whose publisher and download price were verified against Apple’s public data: Apple Health and Vitals, Project Summit, Bevel, Athlytic, Training Today, Gentler Streak, Kubios HRV and Elite HRV.',
+        blurb: 'What "free" means on the App Store — a download price, which says nothing about whether the daily score is behind a subscription — and eight iPhone apps whose publisher and download price were verified against Apple’s public data: Apple Health and Vitals, Project Summit (whose own recovery and sleep score is free, permanently, not a trial), Bevel, Athlytic, Training Today, Gentler Streak, Kubios HRV and Elite HRV.',
       },
     ],
   },
