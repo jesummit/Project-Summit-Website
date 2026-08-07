@@ -331,16 +331,57 @@ exactly like `blog/es/`, `blog/ca/`.
   competitor's price includes hardware. Each page must carry a genuine "Where
   <competitor> wins" section. All the "Free-tier copy" rules below apply here
   too, unchanged.
+- **Copy posture — fair, but not arguing the other side** (added 2026-08-07, see
+  `docs/adr/ADR-2026-08-07-publish-premium-prices.md`). Accuracy was never the
+  problem with these pages; shape was. So: lead a Summit section with the claim
+  and qualify **inside the same paragraph**, never open on the limitation;
+  state a competitor's fact without appending our endorsement of it (the fact is
+  the honest part, "and it is not close" is editorialising for them); never
+  **close** a Summit section on a weakness; draw Summit's "Best for:" at the
+  real width of who it serves, the same generosity every competitor's gets; and
+  surface the permanently-free recovery + sleep tier, which nothing else on
+  these pages matches. None of this licenses touching a fact — every "Where
+  <competitor> wins" section, source link, checked date, "not documented" and
+  Summit constraint (cycling-only, iPhone-only, iOS 26+, no watch app, free ≠
+  trial) stays exactly as strict as the rules above require.
 - The Whoop page's figures (WHOOP One $199/yr, Peak $239/yr, Life $359/yr,
   device included) were checked **2026-08-05**. Re-check and update the date
   before treating them as current.
 
 ## Free-tier copy — what is actually free (verify before editing)
-The same rules govern **`pricing.html`** (the plans page, added 2026-08-04):
-it exists because most directories require a pricing page, and it
-deliberately carries **no figures** — Apple sets Premium pricing per country,
-so the page points at the App Store listing and the app instead. Keep it that
-way; adding numbers here means keeping them in sync with every storefront.
+The same rules govern **`pricing.html`** (the plans page, added 2026-08-04). It
+exists because most directories require a pricing page, and since **2026-08-07
+it carries real figures** — the "no prices on the site" policy was reversed by
+`docs/adr/ADR-2026-08-07-publish-premium-prices.md` (read it before touching any
+price). The published numbers, from the in-app purchase list on the **Spanish**
+App Store listing, VAT included, **checked 7 August 2026**:
+
+| Tier  | Monthly | Yearly  | Annual works out at |
+|-------|---------|---------|---------------------|
+| Free  | €0      | €0      | —                   |
+| Pro   | €7.99   | €63.99  | €5.33 / month       |
+| Elite | €14.99  | €119.99 | €10.00 / month      |
+
+Rules, all of them load-bearing:
+- **A price never ships without its caveat** — storefront, currency, VAT
+  included, the date checked, that Apple sets it per country and it can change,
+  and that the App Store and the app show the live local price before anything
+  is charged. Or the surface links to `pricing.html`, where the caveat lives in
+  full. A number quoted out of an answer engine with no caveat attached is the
+  failure this rule exists to prevent.
+- **Euros are only compared with euros.** Most competitor figures on this site
+  are USD. Never imply an exchange rate, never total a mixed-currency stack, and
+  never write "cheaper" across two currencies. The one clean like-for-like is
+  **JOIN at €119.99/year — identical to Elite's annual**, with JOIN's readiness
+  self-reported and Summit's measured; that comparison is the anchor of the
+  price section on `compare/adaptive-cycling-training-apps.html`.
+- **Never claim to beat Intervals.icu (free) or Xert ($99.95/yr) on price.** We
+  don't. Both stay on the pages as plain facts.
+- **No `aggregateRating`, ever** — `offers` markup is fine, review markup is not.
+- These four figures are now duplicated across three locales, the comparison
+  cluster and JSON-LD, and **no checker can verify them** (nothing in this repo
+  can read an App Store storefront). They are dated so a stale one is visible.
+  Re-check them on the same schedule as the competitor facts.
 
 The home `#free` section (between `#how` and `#features`) and `faq.q16` are the
 site's free-tier magnet: same ICP (cyclists), the watch as the hook. Every claim
