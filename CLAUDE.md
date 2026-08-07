@@ -582,17 +582,57 @@ deployment_queued` for exactly 10 minutes and dies with `Timeout reached,
 aborting!` → `Canceling Pages deployment...`. The live site keeps serving the
 last deployment that worked, so the repo looks fine and the site looks stale.
 
-**The trap**: re-running that workflow — failed jobs *or* the whole run — can
-never recover it. The Pages **deployment ID is the commit SHA**, so a re-run of
-the same commit re-creates an ID the timeout already put in a terminal
-cancelled state, and the deploy step returns `Error: Deployment cancelled.`
-immediately. It does this even though the re-run produced a brand-new artifact
-id, which is what makes it look like a fresh attempt. Two re-runs on
-`707b138` both failed this way in under a minute.
+**Trap 1 — re-running makes it worse, twice over.** The Pages **deployment ID
+is the commit SHA**, so re-running the same commit re-creates an ID the timeout
+already put in a terminal cancelled state, and the deploy returns
+`Error: Deployment cancelled.` immediately — even with a freshly built artifact,
+which is what makes a re-run look like a fresh attempt. Worse, the second
+attempt's `build` job uploads a *second* artifact named `github-pages` into the
+same run, and from then on the run is unusable for good:
 
-**What actually fixes it**: a new commit on `main`, so a new SHA mints a new
-deployment ID. A PR merge does this by itself (the merge commit is the new
-SHA); there is no need for anything clever.
+```
+Error: Multiple artifacts named "github-pages" were unexpectedly found
+for this workflow run. Artifact count is 2.
+```
+
+Every further re-run adds another. Never re-run a Pages run; let a new one be
+created instead.
+
+**Trap 2 — a new commit is NOT reliably enough.** This was tried on 2026-08-06
+and failed: `7ef7591` was a brand-new merge commit with its own fresh
+deployment ID, and its `deploy` still sat at `deployment_queued` for the full
+ten minutes and aborted. When the queue is wedged this deeply, no amount of
+pushing clears it.
+
+**Check https://www.githubstatus.com before touching anything, and do not
+trust a single green reading.** On 2026-08-06 the page said Pages and Actions
+were `operational` with no open incident at ~13:30 — and at 15:03 GitHub opened
+**"Incident with Pages - Deployment Lag"**, followed at 15:22 by an Actions
+partial outage. The deploy failures had started at 12:19, nearly three hours
+before the incident was declared. The status page lags the degradation badly,
+so an `operational` reading early in an outage means nothing. Re-check it
+before concluding the problem is yours.
+
+`deployment_queued` that never advances *is* what a Pages deployment-lag
+incident looks like from inside a repo. When one is open, the fix is to wait
+for GitHub and then push a commit; nothing done in the repo will help.
+
+**Only if the status page is genuinely clean and it still won't deploy**: repo
+Settings → Pages, change the source branch to something else, save, change it
+back, which re-initialises the deployment pipeline (UI-only, there is no API).
+Treat this as a last resort — doing it during a GitHub-side incident risks the
+custom-domain config for no benefit. While there, check for a custom-domain DNS
+warning: the apex is Cloudflare-proxied (A records resolve to Cloudflare, not to
+`185.199.10[89].153` / `185.199.11[01].153`), so GitHub's periodic re-check of
+the custom domain cannot see its own records. That was a suspect on 2026-08-06
+until the incident was found, and it is worth ruling out, but it was not the
+cause.
+
+**How to tell the site is stale rather than broken**: fetch the GitHub origin
+directly, bypassing Cloudflare —
+`curl --resolve projectsummit.app:443:185.199.108.153 https://projectsummit.app/`.
+If the origin serves the old build too, Pages genuinely has not published and
+the CDN is not involved.
 
 **What triggers it**: a burst of pushes in quick succession — e.g. several
 "Add files via upload" commits from the GitHub web UI a minute apart. Each push
